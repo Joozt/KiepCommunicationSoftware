@@ -1,0 +1,8 @@
+c:\Projects\Most\Most\bin\Release\Most.exe
+c:\Projects\Most\Most\bin\Release\Most.pdb
+c:\Projects\Most\Most\obj\Release\ResolveAssemblyReference.cache
+c:\Projects\Most\Most\obj\Release\Most.GUI.frmMain.resources
+c:\Projects\Most\Most\obj\Release\Most.Properties.Resources.resources
+c:\Projects\Most\Most\obj\Release\Most.csproj.GenerateResource.Cache
+c:\Projects\Most\Most\obj\Release\Most.exe
+c:\Projects\Most\Most\obj\Release\Most.pdb
