@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Most.GUI
+{
+    public interface ICustomButton
+    {
+        bool AutoFontSize
+        {
+            get;
+            set;
+        }
+
+        string Keys
+        {
+            get;
+            set;
+        }
+    }
+}
