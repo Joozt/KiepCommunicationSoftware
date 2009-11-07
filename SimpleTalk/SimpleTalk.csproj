@@ -64,6 +64,10 @@
     <Compile Include="GUI\MostButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Model\AutoComplete.cs" />
+    <Compile Include="Model\Interpreter.cs" />
+    <Compile Include="Model\Sounds.cs" />
+    <Compile Include="Model\TextToSpeech.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmMain.resx">
