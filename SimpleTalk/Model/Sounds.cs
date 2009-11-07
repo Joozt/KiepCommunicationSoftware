@@ -16,5 +16,15 @@ namespace SimpleTalk.Model
     {
       throw new NotImplementedException();
     }
+
+    public void VolumeUp()
+    {
+      throw new NotImplementedException();
+    }
+
+    public void VolumeDown()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

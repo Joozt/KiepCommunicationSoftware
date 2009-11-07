@@ -38,12 +38,16 @@ namespace SimpleTalk.GUI
     void OnButtonUp(object sender, CustomButtonEventArgs e)
     {
       // TODO: Need a better keyup and down capture way
-      //txtOutput.Text += String.Format("(up {0})", e.Button.ToString());
+      UpdateButtons(new CustomButtonEventArgs(ButtonType.None)); // Uncheck all buttons
     }
 
     void OnButtonDown(object sender, CustomButtonEventArgs e)
     {
-      //txtOutput.Text += String.Format("(down {0})", e.Button.ToString());
+      UpdateButtons(e);
+    }
+
+    private void UpdateButtons(CustomButtonEventArgs e)
+    {
       cbButton1.Checked = (e.Button == ButtonType.FirstButton);
       cbButton2.Checked = (e.Button == ButtonType.SecondButton);
     }
@@ -57,9 +61,9 @@ namespace SimpleTalk.GUI
     {
       switch (keyData)
       {
-        case Keys.Oemplus:
+        case Keys.Add:
           return ButtonType.FirstButton;
-        case Keys.OemMinus:
+        case Keys.Subtract:
           return ButtonType.SecondButton;
         default:
           return ButtonType.None;
@@ -113,6 +117,16 @@ namespace SimpleTalk.GUI
     {
       // Possiblity to stop a very long during sound
       _Sounds.StopSound();
+    }
+
+    private void button9_Click(object sender, EventArgs e)
+    {
+      _Sounds.VolumeUp();
+    }
+
+    private void button10_Click(object sender, EventArgs e)
+    {
+      _Sounds.VolumeDown();
     }
   }
 }

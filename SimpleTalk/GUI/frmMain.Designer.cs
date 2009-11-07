@@ -48,6 +48,8 @@ namespace SimpleTalk.GUI
           this.lbAutoSuggestions = new System.Windows.Forms.ListBox();
           this.btnGetAutoList = new System.Windows.Forms.Button();
           this.pnlAutoComplete = new System.Windows.Forms.Panel();
+          this.button9 = new System.Windows.Forms.Button();
+          this.button10 = new System.Windows.Forms.Button();
           this.gbTest.SuspendLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).BeginInit();
           this.SuspendLayout();
@@ -76,6 +78,8 @@ namespace SimpleTalk.GUI
           // 
           this.gbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.gbTest.Controls.Add(this.button10);
+          this.gbTest.Controls.Add(this.button9);
           this.gbTest.Controls.Add(this.label1);
           this.gbTest.Controls.Add(this.nSelectionTime);
           this.gbTest.Controls.Add(this.cbButton2);
@@ -100,7 +104,7 @@ namespace SimpleTalk.GUI
           // label1
           // 
           this.label1.AutoSize = true;
-          this.label1.Location = new System.Drawing.Point(6, 474);
+          this.label1.Location = new System.Drawing.Point(6, 497);
           this.label1.Name = "label1";
           this.label1.Size = new System.Drawing.Size(73, 13);
           this.label1.TabIndex = 22;
@@ -114,7 +118,7 @@ namespace SimpleTalk.GUI
             0,
             0,
             65536});
-          this.nSelectionTime.Location = new System.Drawing.Point(85, 472);
+          this.nSelectionTime.Location = new System.Drawing.Point(85, 495);
           this.nSelectionTime.Maximum = new decimal(new int[] {
             5,
             0,
@@ -156,7 +160,7 @@ namespace SimpleTalk.GUI
           // 
           // button8
           // 
-          this.button8.Location = new System.Drawing.Point(6, 443);
+          this.button8.Location = new System.Drawing.Point(6, 466);
           this.button8.Name = "button8";
           this.button8.Size = new System.Drawing.Size(136, 23);
           this.button8.TabIndex = 18;
@@ -260,6 +264,26 @@ namespace SimpleTalk.GUI
           this.pnlAutoComplete.Size = new System.Drawing.Size(166, 446);
           this.pnlAutoComplete.TabIndex = 10;
           // 
+          // button9
+          // 
+          this.button9.Location = new System.Drawing.Point(6, 430);
+          this.button9.Name = "button9";
+          this.button9.Size = new System.Drawing.Size(62, 23);
+          this.button9.TabIndex = 23;
+          this.button9.Text = "Vol. up";
+          this.button9.UseVisualStyleBackColor = true;
+          this.button9.Click += new System.EventHandler(this.button9_Click);
+          // 
+          // button10
+          // 
+          this.button10.Location = new System.Drawing.Point(80, 430);
+          this.button10.Name = "button10";
+          this.button10.Size = new System.Drawing.Size(62, 23);
+          this.button10.TabIndex = 24;
+          this.button10.Text = "Vol. down";
+          this.button10.UseVisualStyleBackColor = true;
+          this.button10.Click += new System.EventHandler(this.button10_Click);
+          // 
           // frmMain
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +324,8 @@ namespace SimpleTalk.GUI
         private CheckBox cbButton2;
         private CheckBox cbButton1;
         private Label label1;
+        private Button button10;
+        private Button button9;
     }
 }
 
