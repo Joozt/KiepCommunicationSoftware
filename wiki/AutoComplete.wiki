@@ -1,0 +1,11 @@
+#summary Automatic word completion and next word suggestion function.
+
+= Introduction =
+
+Automatic word completion and next word suggestion function.
+
+
+= Features =
+
+Add your content here.
+  * 
