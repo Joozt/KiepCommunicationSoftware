@@ -1,4 +1,5 @@
 #summary Project status, responsible persons and due dates
+#labels Phase-Requirements
 
 = Introduction =
 
@@ -7,7 +8,7 @@ Project status, responsible persons and due dates  are given in the table below
 = Status overview =
 
 ||*Component*||*Responsible*||*Status*||*Planning*||*Remarks*||
-||GUI||Paul|| || || ||
+||[GUI]||Paul|| || || ||
 ||Interpreter||Anton|| || || ||
 ||AutoComplete||Marcel|| || ||(voor SQLExpress server database graag een script/batch voor het aanmaken van een nieuwe database ivm svn)||
 ||Sounds||Maarten || || || ||
