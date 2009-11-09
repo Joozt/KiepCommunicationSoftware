@@ -9,7 +9,7 @@ Project status, responsible persons and due dates  are given in the table below
 
 ||*Component*||*Responsible*||*Status*||*Planning*||*Remarks*||
 ||[GUI]||Paul|| || || ||
-||[Interpreter]||Anton|| || || ||
+||[Interpreter]||Anton||Ready for review of Paul|| || ||
 ||[AutoComplete]||Marcel|| || ||(voor SQLExpress server database graag een script/batch voor het aanmaken van een nieuwe database ivm svn)||
 ||[Sounds]||Maarten || || || ||
 ||[TextToSpeech]||Marc|| || || ||
