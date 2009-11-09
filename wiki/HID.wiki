@@ -1,0 +1,11 @@
+#summary Human Interface Devices (HID)
+
+= Introduction =
+
+Hardware human interface devices (buttons in this case) that are connected to the PC via USB .
+
+
+= Details =
+
+Add your content here. 
+  * 
