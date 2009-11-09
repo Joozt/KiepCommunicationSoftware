@@ -33,6 +33,12 @@ namespace SimpleTalk.GUI
       _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
+      _Interpreter.TextChanged += new EventHandler(OnTextChanged);
+    }
+
+    void OnTextChanged(object sender, EventArgs e)
+    {
+      txtOutput.Text = _Interpreter.TextOutput;
     }
 
     void OnButtonUp(object sender, CustomButtonEventArgs e)
@@ -54,7 +60,7 @@ namespace SimpleTalk.GUI
 
     void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
     {
-      txtOutput.Text += String.Format("{0}", e.Keys);
+      _Interpreter.ProcessCommand(e.Keys);
     }
 
     protected override ButtonType CheckButton(Keys keyData)
