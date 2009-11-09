@@ -1,0 +1,10 @@
+#summary Hardware for which the project is intended
+
+= Introduction =
+
+PC platform hardware with windows XP. 
+
+= Details =
+
+Add your content here.
+  * 
