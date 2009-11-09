@@ -1,0 +1,11 @@
+#summary Module for playing prerecorded sound bits
+
+= Introduction =
+
+Module for playing prerecorded sound bits that is using the windows media player engine
+
+
+= Details =
+
+Add your content here.
+  * 
