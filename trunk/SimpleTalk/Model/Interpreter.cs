@@ -18,6 +18,7 @@ namespace SimpleTalk.Model
       set
       {
         _TextOutput = value;
+        OnTextChanged(this, new EventArgs());
       }
     }
 
@@ -35,7 +36,7 @@ namespace SimpleTalk.Model
     {
       if (command.Length == 1 || Char.IsLetter(command[0]))
       {
-        _TextOutput += command;
+        TextOutput += command;
       }
       else
       {
@@ -43,19 +44,19 @@ namespace SimpleTalk.Model
         {
           case "&back":
             //back space action
-            if (_TextOutput.Length > 1)
+            if (TextOutput.Length > 1)
             {
-              _TextOutput += _TextOutput.Remove(_TextOutput.Length - 2);
+              TextOutput += TextOutput.Remove(TextOutput.Length - 2);
             }
             else
             {
-              _TextOutput = "";
+              TextOutput = "";
             }
             break;
 
           case "&menu":
             //Call menu that jumps to menu form
-            _TextOutput += "[Menu]";
+            TextOutput += "[Menu]";
             //throw new NotImplementedException();
             break;
 
@@ -65,15 +66,15 @@ namespace SimpleTalk.Model
             //break;
 
           case "&space":
-            _TextOutput += " ";
+            TextOutput += " ";
             break;
 
           case "&clear":
-            _TextOutput = "";
+            TextOutput = "";
             break;
           default:
             //todo: insert nice exception handler.
-            _TextOutput = "ERROR";
+            TextOutput = "ERROR";
             break;
         }
       }
