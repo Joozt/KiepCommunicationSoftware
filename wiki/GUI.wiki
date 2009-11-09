@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Description of Graphical User Interface (GUI)
+Description of the Graphical User Interface (GUI)
 
 
 = Functions =
