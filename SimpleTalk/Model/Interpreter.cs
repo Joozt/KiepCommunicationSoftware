@@ -18,8 +18,6 @@ namespace SimpleTalk.Model
       set
       {
         _TextOutput = value;
-
-
       }
     }
 
@@ -35,9 +33,50 @@ namespace SimpleTalk.Model
 
     public void ProcessCommand(string command)
     {
-      throw new NotImplementedException();
+      if (command.Length == 1 || Char.IsLetter(command[0]))
+      {
+        _TextOutput += command;
+      }
+      else
+      {
+        switch (command)
+        {
+          case "&back":
+            //back space action
+            if (_TextOutput.Length > 1)
+            {
+              _TextOutput += _TextOutput.Remove(_TextOutput.Length - 2);
+            }
+            else
+            {
+              _TextOutput = "";
+            }
+            break;
+
+          case "&menu":
+            //Call menu that jumps to menu form
+            _TextOutput += "[Menu]";
+            //throw new NotImplementedException();
+            break;
+
+          case "&auto":
+            //Call function that jumps to suggestions from auto completion
+            throw new NotImplementedException();
+            //break;
+
+          case "&space":
+            _TextOutput += " ";
+            break;
+
+          case "&clear":
+            _TextOutput = "";
+            break;
+          default:
+            //todo: insert nice exception handler.
+            _TextOutput = "ERROR";
+            break;
+        }
+      }
     }
-
-
   }
 }
