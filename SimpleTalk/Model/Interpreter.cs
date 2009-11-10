@@ -9,6 +9,9 @@ namespace SimpleTalk.Model
   {
     private string _TextOutput;
 
+    //added for debugging
+    private List<string> _CommandOutput= new List<string>();
+    
     public string TextOutput
     {
       get
@@ -20,6 +23,21 @@ namespace SimpleTalk.Model
         _TextOutput = value;
         OnTextChanged(this, new EventArgs());
       }
+    }
+
+    //added for debugging
+    public List<string> CommandOutput
+    {
+      get
+      {
+        return _CommandOutput;
+      }
+    }
+
+    //added for debugging
+    public void ClearCommand()
+    {
+      _CommandOutput.Clear();
     }
 
     public event EventHandler TextChanged;
@@ -46,7 +64,7 @@ namespace SimpleTalk.Model
             //back space action
             if (TextOutput.Length > 1)
             {
-              TextOutput += TextOutput.Remove(TextOutput.Length - 2);
+              TextOutput = TextOutput.Remove(TextOutput.Length - 1);
             }
             else
             {
@@ -56,14 +74,16 @@ namespace SimpleTalk.Model
 
           case "&menu":
             //Call menu that jumps to menu form
-            TextOutput += "[Menu]";
+            _CommandOutput.Add("[menu]");
             //throw new NotImplementedException();
             break;
 
           case "&auto":
             //Call function that jumps to suggestions from auto completion
-            throw new NotImplementedException();
-            //break;
+            
+            //added for debugging
+            _CommandOutput.Add("[auto]");
+            break;
 
           case "&space":
             TextOutput += " ";
@@ -72,9 +92,10 @@ namespace SimpleTalk.Model
           case "&clear":
             TextOutput = "";
             break;
+
           default:
-            //todo: insert nice exception handler.
-            TextOutput = "ERROR";
+            //Todo: insert nice exception handler.
+            _CommandOutput.Add("[ERROR]");
             break;
         }
       }

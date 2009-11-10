@@ -98,7 +98,15 @@ namespace SimpleTalk.GUI
 
     private void button3_Click(object sender, EventArgs e)
     {
-      txtOutput.Text = _Interpreter.TextOutput;
+      //txtOutput.Text = _Interpreter.TextOutput;
+             
+      
+      foreach (string item in _Interpreter.CommandOutput)
+      {
+        lbAutoSuggestions.Items.Add(item);
+      }
+      _Interpreter.ClearCommand();
+     
     }
 
     private void button4_Click(object sender, EventArgs e)
@@ -119,7 +127,7 @@ namespace SimpleTalk.GUI
       _Sounds.PlaySound("Ja.wav");
     }
 
-    private void button7_Click(object sender, EventArgs e)
+    private void button7_Click(object  sender, EventArgs e)
     {
       // Possiblity to stop a very long during sound
       _Sounds.StopSound();
@@ -133,6 +141,16 @@ namespace SimpleTalk.GUI
     private void button10_Click(object sender, EventArgs e)
     {
       _Sounds.VolumeDown();
+    }
+
+    private void txtOutput_TextChanged(object sender, EventArgs e)
+    {
+       _AutComplete.OnTextChanged(txtOutput.Text);
+      lbAutoSuggestions.Items.Clear();
+      foreach (string item in _AutComplete.GetAutoCompleteList())
+      {
+        lbAutoSuggestions.Items.Add(item);
+      }
     }
   }
 }
