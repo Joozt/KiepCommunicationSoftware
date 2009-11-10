@@ -7,14 +7,18 @@ Project status, responsible persons and due dates  are given in the table below
 
 = Status overview =
 
-||*Component*||*Responsible*||*Status*||*Planning*||*Remarks*||
-||[GUI]||Paul|| || || ||
-||[Interpreter]||Anton||Ready for review of Paul|| || ||
-||[AutoComplete]||Marcel|| || ||(voor SQLExpress server database graag een script/batch voor het aanmaken van een nieuwe database ivm svn)||
-||[Sounds]||Maarten || || || ||
-||[TextToSpeech]||Marc|| || || ||
-||[HID]||Rob/Sjors||Ready|| || ||
-||[Hardware]||Willem/Sjors|| || || ||
+||*Component*||*Responsible*||*Status*||*Milestone*||*Remarks*||
+||[GUI]||Paul||Partially  implemented||M1|| ||
+||[Interpreter]||Anton||Implemented||M1|| ||
+||[AutoComplete]||Marcel||Partially  implemented||M1||(voor SQLExpress server database graag een script/batch voor het aanmaken van een nieuwe database ivm svn)||
+||[Sounds]||Maarten || ||M1|| ||
+||[TextToSpeech]||Marc|| ||M2|| ||
+||[HID]||Rob/Sjors||Ready||M1|| ||
+||[Hardware]||Willem/Sjors||Ready||M1|| ||
+
+== Milestones ==
+ * *M1* 1st release
+ * *M2* 1st upgrade
 
 
 
