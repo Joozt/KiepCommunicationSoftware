@@ -33,6 +33,8 @@ namespace SimpleTalk.GUI
           this.pnlKeyboard = new System.Windows.Forms.Panel();
           this.txtOutput = new System.Windows.Forms.TextBox();
           this.gbTest = new System.Windows.Forms.GroupBox();
+          this.button10 = new System.Windows.Forms.Button();
+          this.button9 = new System.Windows.Forms.Button();
           this.label1 = new System.Windows.Forms.Label();
           this.nSelectionTime = new System.Windows.Forms.NumericUpDown();
           this.cbButton2 = new System.Windows.Forms.CheckBox();
@@ -48,8 +50,6 @@ namespace SimpleTalk.GUI
           this.lbAutoSuggestions = new System.Windows.Forms.ListBox();
           this.btnGetAutoList = new System.Windows.Forms.Button();
           this.pnlAutoComplete = new System.Windows.Forms.Panel();
-          this.button9 = new System.Windows.Forms.Button();
-          this.button10 = new System.Windows.Forms.Button();
           this.gbTest.SuspendLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).BeginInit();
           this.SuspendLayout();
@@ -73,6 +73,7 @@ namespace SimpleTalk.GUI
           this.txtOutput.Name = "txtOutput";
           this.txtOutput.Size = new System.Drawing.Size(549, 124);
           this.txtOutput.TabIndex = 6;
+          this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
           // 
           // gbTest
           // 
@@ -100,6 +101,26 @@ namespace SimpleTalk.GUI
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
+          // 
+          // button10
+          // 
+          this.button10.Location = new System.Drawing.Point(80, 430);
+          this.button10.Name = "button10";
+          this.button10.Size = new System.Drawing.Size(62, 23);
+          this.button10.TabIndex = 24;
+          this.button10.Text = "Vol. down";
+          this.button10.UseVisualStyleBackColor = true;
+          this.button10.Click += new System.EventHandler(this.button10_Click);
+          // 
+          // button9
+          // 
+          this.button9.Location = new System.Drawing.Point(6, 430);
+          this.button9.Name = "button9";
+          this.button9.Size = new System.Drawing.Size(62, 23);
+          this.button9.TabIndex = 23;
+          this.button9.Text = "Vol. up";
+          this.button9.UseVisualStyleBackColor = true;
+          this.button9.Click += new System.EventHandler(this.button9_Click);
           // 
           // label1
           // 
@@ -213,7 +234,7 @@ namespace SimpleTalk.GUI
           this.button3.Name = "button3";
           this.button3.Size = new System.Drawing.Size(136, 23);
           this.button3.TabIndex = 13;
-          this.button3.Text = "Get interpreter text";
+          this.button3.Text = "Get interpreter commands";
           this.button3.UseVisualStyleBackColor = true;
           this.button3.Click += new System.EventHandler(this.button3_Click);
           // 
@@ -263,26 +284,6 @@ namespace SimpleTalk.GUI
           this.pnlAutoComplete.Name = "pnlAutoComplete";
           this.pnlAutoComplete.Size = new System.Drawing.Size(166, 446);
           this.pnlAutoComplete.TabIndex = 10;
-          // 
-          // button9
-          // 
-          this.button9.Location = new System.Drawing.Point(6, 430);
-          this.button9.Name = "button9";
-          this.button9.Size = new System.Drawing.Size(62, 23);
-          this.button9.TabIndex = 23;
-          this.button9.Text = "Vol. up";
-          this.button9.UseVisualStyleBackColor = true;
-          this.button9.Click += new System.EventHandler(this.button9_Click);
-          // 
-          // button10
-          // 
-          this.button10.Location = new System.Drawing.Point(80, 430);
-          this.button10.Name = "button10";
-          this.button10.Size = new System.Drawing.Size(62, 23);
-          this.button10.TabIndex = 24;
-          this.button10.Text = "Vol. down";
-          this.button10.UseVisualStyleBackColor = true;
-          this.button10.Click += new System.EventHandler(this.button10_Click);
           // 
           // frmMain
           // 
