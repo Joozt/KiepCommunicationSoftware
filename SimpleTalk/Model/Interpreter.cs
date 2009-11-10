@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SimpleTalk.GUI;
 
 namespace SimpleTalk.Model
 {
@@ -75,6 +76,8 @@ namespace SimpleTalk.Model
           case "&menu":
             //Call menu that jumps to menu form
             _CommandOutput.Add("[menu]");
+            frmSettings formSettings = new frmSettings();
+            formSettings.Show();
             //throw new NotImplementedException();
             break;
 
