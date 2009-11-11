@@ -65,6 +65,9 @@ namespace SimpleTalk.GUI
 
         public bool PreFilterMessage(ref Message m)
         {
+          // TODO: Only perform the keyup and keydown events if form is active (on top)
+          
+
             if ((m.Msg != WM_KEYDOWN) &&
                 (m.Msg != WM_KEYUP))
                 return false;
