@@ -61,6 +61,8 @@ namespace SimpleTalk.GUI
 
         #region IMessageFilter Members
 
+        bool _KeyPressed = false;
+
         public bool PreFilterMessage(ref Message m)
         {
             if ((m.Msg != WM_KEYDOWN) &&
@@ -71,8 +73,9 @@ namespace SimpleTalk.GUI
 
             Keys keyData = (Keys)(int)m.WParam & Keys.KeyCode;
 
-            if (m.Msg == WM_KEYDOWN)
+            if ((m.Msg == WM_KEYDOWN) && (!_KeyPressed))
             {
+                _KeyPressed = true;
                 ButtonPressed = CheckButton(keyData);
                 OnCustomButtonDown(this, new CustomButtonEventArgs(ButtonPressed));
                 if (ButtonPressed != ButtonType.None)
@@ -80,6 +83,7 @@ namespace SimpleTalk.GUI
             }
             else if (m.Msg == WM_KEYUP)
             {
+                _KeyPressed = false;
                 ButtonPressed = CheckButton(keyData);
                 OnCustomButtonUp(this, new CustomButtonEventArgs(ButtonPressed));
                 if (ButtonPressed != ButtonType.None)
