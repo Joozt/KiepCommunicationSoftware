@@ -7,7 +7,7 @@ PC platform hardware with windows XP.
 = Details =
 
   * BoxPC HDMI audio working. 
-  * BoxPC new video drivers, minor issues might be related to TV 
+  * BoxPC new video drivers, still some minor issues might be related to TV. 
   * WinXP License available (Anton) 
   * Cables available: HDMI-HDMI + HDMI-DVI (for using standard PC monitor) 
   * (extra usb keyboard and mouse required?)
@@ -16,3 +16,4 @@ Todo:
   * Autostart program
   * Increase partition size or make extra drive D:\
   * Install visual studio C#
+  * Check display issues
