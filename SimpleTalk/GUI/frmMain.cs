@@ -80,11 +80,13 @@ namespace SimpleTalk.GUI
 
     public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
     {
-      int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
-      int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
-      return Color.FromArgb(ColorValue, ColorValue, ColorValue);
-      //int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
-      //return Color.FromArgb(Alpha, Color.DarkGray);
+        /* TODO: Other color function
+        int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
+        int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
+        return Color.FromArgb(ColorValue, ColorValue, ColorValue);
+         */
+      int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
+      return Color.FromArgb(Alpha, Color.DarkGray);
     }
 
     void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
