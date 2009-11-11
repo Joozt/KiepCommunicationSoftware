@@ -303,7 +303,7 @@ namespace SimpleTalk.GUI
         {
           _CurrentColumn += 1;
 
-          if (_CurrentColumn < 0)
+          if ((_CurrentColumn < 0) || (_CurrentRow <0))
             return false;
 
           if (RowButtons[_CurrentRow].Buttons.Count == _CurrentColumn)
