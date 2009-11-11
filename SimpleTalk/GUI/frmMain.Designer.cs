@@ -33,6 +33,8 @@ namespace SimpleTalk.GUI
           this.pnlKeyboard = new System.Windows.Forms.Panel();
           this.txtOutput = new System.Windows.Forms.TextBox();
           this.gbTest = new System.Windows.Forms.GroupBox();
+          this.button12 = new System.Windows.Forms.Button();
+          this.button11 = new System.Windows.Forms.Button();
           this.button10 = new System.Windows.Forms.Button();
           this.button9 = new System.Windows.Forms.Button();
           this.label1 = new System.Windows.Forms.Label();
@@ -61,7 +63,7 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.pnlKeyboard.Location = new System.Drawing.Point(12, 142);
           this.pnlKeyboard.Name = "pnlKeyboard";
-          this.pnlKeyboard.Size = new System.Drawing.Size(377, 446);
+          this.pnlKeyboard.Size = new System.Drawing.Size(377, 499);
           this.pnlKeyboard.TabIndex = 5;
           // 
           // txtOutput
@@ -79,6 +81,8 @@ namespace SimpleTalk.GUI
           // 
           this.gbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.gbTest.Controls.Add(this.button12);
+          this.gbTest.Controls.Add(this.button11);
           this.gbTest.Controls.Add(this.button10);
           this.gbTest.Controls.Add(this.button9);
           this.gbTest.Controls.Add(this.label1);
@@ -97,10 +101,30 @@ namespace SimpleTalk.GUI
           this.gbTest.Controls.Add(this.btnGetAutoList);
           this.gbTest.Location = new System.Drawing.Point(567, 12);
           this.gbTest.Name = "gbTest";
-          this.gbTest.Size = new System.Drawing.Size(150, 576);
+          this.gbTest.Size = new System.Drawing.Size(150, 629);
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
+          // 
+          // button12
+          // 
+          this.button12.Location = new System.Drawing.Point(80, 495);
+          this.button12.Name = "button12";
+          this.button12.Size = new System.Drawing.Size(62, 23);
+          this.button12.TabIndex = 26;
+          this.button12.Text = "Next Row";
+          this.button12.UseVisualStyleBackColor = true;
+          this.button12.Click += new System.EventHandler(this.button12_Click);
+          // 
+          // button11
+          // 
+          this.button11.Location = new System.Drawing.Point(6, 495);
+          this.button11.Name = "button11";
+          this.button11.Size = new System.Drawing.Size(62, 23);
+          this.button11.TabIndex = 25;
+          this.button11.Text = "Next Col";
+          this.button11.UseVisualStyleBackColor = true;
+          this.button11.Click += new System.EventHandler(this.button11_Click);
           // 
           // button10
           // 
@@ -125,11 +149,12 @@ namespace SimpleTalk.GUI
           // label1
           // 
           this.label1.AutoSize = true;
-          this.label1.Location = new System.Drawing.Point(6, 497);
+          this.label1.Location = new System.Drawing.Point(6, 567);
           this.label1.Name = "label1";
           this.label1.Size = new System.Drawing.Size(73, 13);
           this.label1.TabIndex = 22;
           this.label1.Text = "Sel. time (sec)";
+          this.label1.Click += new System.EventHandler(this.label1_Click);
           // 
           // nSelectionTime
           // 
@@ -139,7 +164,7 @@ namespace SimpleTalk.GUI
             0,
             0,
             65536});
-          this.nSelectionTime.Location = new System.Drawing.Point(85, 495);
+          this.nSelectionTime.Location = new System.Drawing.Point(85, 565);
           this.nSelectionTime.Maximum = new decimal(new int[] {
             5,
             0,
@@ -154,7 +179,7 @@ namespace SimpleTalk.GUI
           this.nSelectionTime.Size = new System.Drawing.Size(57, 20);
           this.nSelectionTime.TabIndex = 21;
           this.nSelectionTime.Value = new decimal(new int[] {
-            1,
+            15,
             0,
             0,
             65536});
@@ -162,7 +187,7 @@ namespace SimpleTalk.GUI
           // cbButton2
           // 
           this.cbButton2.AutoSize = true;
-          this.cbButton2.Location = new System.Drawing.Point(6, 553);
+          this.cbButton2.Location = new System.Drawing.Point(6, 606);
           this.cbButton2.Name = "cbButton2";
           this.cbButton2.Size = new System.Drawing.Size(96, 17);
           this.cbButton2.TabIndex = 20;
@@ -172,7 +197,7 @@ namespace SimpleTalk.GUI
           // cbButton1
           // 
           this.cbButton1.AutoSize = true;
-          this.cbButton1.Location = new System.Drawing.Point(6, 530);
+          this.cbButton1.Location = new System.Drawing.Point(6, 583);
           this.cbButton1.Name = "cbButton1";
           this.cbButton1.Size = new System.Drawing.Size(78, 17);
           this.cbButton1.TabIndex = 19;
@@ -282,14 +307,14 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.pnlAutoComplete.Location = new System.Drawing.Point(395, 142);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
-          this.pnlAutoComplete.Size = new System.Drawing.Size(166, 446);
+          this.pnlAutoComplete.Size = new System.Drawing.Size(166, 499);
           this.pnlAutoComplete.TabIndex = 10;
           // 
           // frmMain
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-          this.ClientSize = new System.Drawing.Size(729, 600);
+          this.ClientSize = new System.Drawing.Size(729, 653);
           this.Controls.Add(this.pnlAutoComplete);
           this.Controls.Add(this.gbTest);
           this.Controls.Add(this.txtOutput);
@@ -297,6 +322,7 @@ namespace SimpleTalk.GUI
           this.Name = "frmMain";
           this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
           this.Text = " ";
+          this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
           this.gbTest.ResumeLayout(false);
           this.gbTest.PerformLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).EndInit();
@@ -327,6 +353,8 @@ namespace SimpleTalk.GUI
         private Label label1;
         private Button button10;
         private Button button9;
+        private Button button12;
+        private Button button11;
     }
 }
 

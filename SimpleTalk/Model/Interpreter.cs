@@ -63,13 +63,9 @@ namespace SimpleTalk.Model
         {
           case "&back":
             //back space action
-            if (TextOutput.Length > 1)
+            if (!String.IsNullOrEmpty(TextOutput))
             {
               TextOutput = TextOutput.Remove(TextOutput.Length - 1);
-            }
-            else
-            {
-              TextOutput = "";
             }
             break;
 
