@@ -8,3 +8,9 @@ Description of the Graphical User Interface (GUI)
 = Functions =
 
 Add your content here. 
+
+= Button Input =
+
+All forms are provided with the following events:
+ * OnButtonPressed ( {Select, Next, Prev, ...} )
+ * OnSpeakCommand( {Yes, No, ...} )
