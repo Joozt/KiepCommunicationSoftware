@@ -20,6 +20,9 @@ namespace SimpleTalk.GUI
     private TextToSpeech _TextToSpeech;
     private Sounds _Sounds;
 
+    private bool _RowSelect;
+    private bool _Selected;
+
     public frmMain()
     {
       InitializeComponent();
@@ -31,9 +34,82 @@ namespace SimpleTalk.GUI
       _Sounds = new Sounds();
 
       _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
+      _Keyboard.TimeStarted += new EventHandler(OnTimeStarted);
+      _Keyboard.UpdateSelection += new UpdateSelectionEventHandler(OnUpdateSelection);
+      _Keyboard.SelectionChanged += new EventHandler(OnSelectionChanged);
+      _Keyboard.TimePassed += new EventHandler(OnTimePassed);
+
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
+
       _Interpreter.TextChanged += new EventHandler(OnTextChanged);
+    }
+
+    void OnTimePassed(object sender, EventArgs e)
+    {
+      Console.Write("\nSelection ended\n");
+    }
+
+    void OnSelectionChanged(object sender, EventArgs e)
+    {
+      if (_RowSelect)
+      {
+        if (!_Keyboard.NextRow())
+        {
+          _Keyboard.StopSelection();
+        }
+      }
+      else
+      {
+        if (!_Keyboard.NextColumn())
+        {
+          _Keyboard.StopSelection();
+        }
+      }
+    }
+
+    public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
+    {
+      if (currentTime.Ticks == 0)
+        return 0;
+      else if (currentTime > duration)
+        return 0;
+      else
+        return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
+    }
+
+    public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
+    {
+      int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
+      int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
+      return Color.FromArgb(ColorValue, ColorValue, ColorValue);
+      //int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
+      //return Color.FromArgb(Alpha, Color.DarkGray);
+    }
+
+    void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
+    {
+      e.BgColor = GetSelectColor(e.CurrentTime, e.Duration);
+      e.FgColor = Color.Black;
+
+      if (_Selected)
+      {
+        if (_Keyboard.ColumnSelected >= 0)
+        {
+          e.Done = true;
+        }
+
+        e.Selected = true;
+        _Selected = false;
+      }
+    }
+
+    void OnTimeStarted(object sender, EventArgs e)
+    {
+      Console.Write("Start selection\n");
+
+      _RowSelect = true;
+      _Selected = false;
     }
 
     void OnTextChanged(object sender, EventArgs e)
@@ -49,6 +125,23 @@ namespace SimpleTalk.GUI
 
     void OnButtonDown(object sender, CustomButtonEventArgs e)
     {
+      if (e.Button == ButtonType.FirstButton)
+      {
+        if ((_Keyboard.ColumnSelected == -1) && (_Keyboard.RowSelected == -1))
+        {
+          _Keyboard.StartSelection(new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000)));
+        }
+        else if ((_Keyboard.ColumnSelected == -1) && (_Keyboard.RowSelected != -1))
+        {
+          _RowSelect = false;
+          _Selected = true;
+        }
+        else if ((_Keyboard.ColumnSelected >= 0) && (_Keyboard.RowSelected >= 0))
+        {
+          _Selected = true;
+        }
+      }
+
       UpdateButtons(e);
     }
 
@@ -60,7 +153,14 @@ namespace SimpleTalk.GUI
 
     void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
     {
-      _Interpreter.ProcessCommand(e.Keys);
+      if (InvokeRequired) 
+      {
+        this.BeginInvoke(new CustomKeyPressedEventHandler(OnKeyPressed), new Object[] { sender, e });
+      }
+      else
+      {
+        _Interpreter.ProcessCommand(e.Keys);
+      }
     }
 
     protected override ButtonType CheckButton(Keys keyData)
@@ -151,6 +251,26 @@ namespace SimpleTalk.GUI
       {
         lbAutoSuggestions.Items.Add(item);
       }
+    }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+      _Keyboard.StopSelection();
+    }
+
+    private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      _Keyboard.StopSelection();
+    }
+
+    private void button11_Click(object sender, EventArgs e)
+    {
+      _Keyboard.NextColumn();
+    }
+
+    private void button12_Click(object sender, EventArgs e)
+    {
+      _Keyboard.NextRow();
     }
   }
 }

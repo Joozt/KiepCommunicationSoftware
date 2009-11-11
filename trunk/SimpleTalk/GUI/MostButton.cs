@@ -11,8 +11,12 @@ namespace SimpleTalk.GUI
         string _Keys = "";
         bool _AutoSizeFont = true;
 
-        public MostButton() { }
-        public MostButton(string keys)
+        public MostButton()
+        {
+          Font = new System.Drawing.Font("Microsoft Sans Serif", 14, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+
+        public MostButton(string keys) : this()
         {
             _Keys = keys;
         }
