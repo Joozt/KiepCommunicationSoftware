@@ -115,27 +115,6 @@ namespace SimpleTalk.GUI
                    new ButtonDefinition("Menu terug", "&menuBack", new Size(Width, DefaultHeight)),
                 });
 
-            //NewRow(DefaultWidth, DefaultHeight, new ButtonDefinition[1]("Aan/Uit", "&scanSpeedFixed, new Size(Width, DefaultHeight)));
-
-
-    
-           /* List<ButtonDefinition> NewButtons = new List<ButtonDefinition>();
-            
-            for ( char c = 'a'; c <= 'z'; c++)
-            {
-                if ((c != 'a') && ((c - 'a') % 6 == 0))
-                    NewButtons.Add(null);
-
-                NewButtons.Add(new ButtonDefinition( c.ToString().ToUpper(), c.ToString()));
-            }
-
-            Width = (int)Math.Round((2.0 * DefaultWidth) + vSpace);
-
-            NewButtons.Add(new ButtonDefinition("Menu", "&menu", new Size(Width, DefaultHeight)));
-            NewButtons.Add(new ButtonDefinition("??", "&??", new Size(Width, DefaultHeight)));
-
-            NewRow(DefaultWidth, DefaultHeight, NewButtons);
-          */
             AutoFormat(0, 0, vSpace, hSpace);
         }
 
