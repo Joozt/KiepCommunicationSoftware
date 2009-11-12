@@ -6,35 +6,39 @@ using WMPLib;
 
 namespace SimpleTalk.Model
 {
-  class Sounds
-  {
-      public WindowsMediaPlayer MediaPlayer;
-      
-      public Sounds()
-      {
-      MediaPlayer = new WindowsMediaPlayer();
-      }
-
-      
-      public void PlaySound(string filename)
+    class Sounds
     {
-        MediaPlayer.URL = filename; 
-        
-    }
+        private string _ProjectPath;
 
-    public void StopSound()
-    {
-      throw new NotImplementedException();
-    }
+        public WindowsMediaPlayer MediaPlayer;
 
-    public void VolumeUp()
-    {
-      throw new NotImplementedException();
-    }
+        public Sounds()
+        {
+            MediaPlayer = new WindowsMediaPlayer();
 
-    public void VolumeDown()
-    {
-      throw new NotImplementedException();
+            _ProjectPath = AppDomain.CurrentDomain.BaseDirectory;
+        }
+
+
+        public void PlaySound(string filename)
+        {
+            MediaPlayer.URL = System.IO.Path.Combine(_ProjectPath, string.Format(@"AudioFiles\{0}", filename));
+
+        }
+
+        public void StopSound()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VolumeUp()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void VolumeDown()
+        {
+            throw new NotImplementedException();
+        }
     }
-  }
 }
