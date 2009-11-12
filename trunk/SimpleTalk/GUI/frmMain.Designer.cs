@@ -49,11 +49,12 @@ namespace SimpleTalk.GUI
           this.button3 = new System.Windows.Forms.Button();
           this.button2 = new System.Windows.Forms.Button();
           this.button1 = new System.Windows.Forms.Button();
-          this.lbAutoSuggestions = new System.Windows.Forms.ListBox();
           this.btnGetAutoList = new System.Windows.Forms.Button();
+          this.lbAutoSuggestions = new System.Windows.Forms.ListBox();
           this.pnlAutoComplete = new System.Windows.Forms.Panel();
           this.gbTest.SuspendLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).BeginInit();
+          this.pnlAutoComplete.SuspendLayout();
           this.SuspendLayout();
           // 
           // pnlKeyboard
@@ -63,17 +64,18 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.pnlKeyboard.Location = new System.Drawing.Point(12, 142);
           this.pnlKeyboard.Name = "pnlKeyboard";
-          this.pnlKeyboard.Size = new System.Drawing.Size(377, 499);
+          this.pnlKeyboard.Size = new System.Drawing.Size(557, 533);
           this.pnlKeyboard.TabIndex = 5;
           // 
           // txtOutput
           // 
           this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
           this.txtOutput.Location = new System.Drawing.Point(12, 12);
           this.txtOutput.Multiline = true;
           this.txtOutput.Name = "txtOutput";
-          this.txtOutput.Size = new System.Drawing.Size(549, 124);
+          this.txtOutput.Size = new System.Drawing.Size(932, 124);
           this.txtOutput.TabIndex = 6;
           this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
           // 
@@ -97,11 +99,10 @@ namespace SimpleTalk.GUI
           this.gbTest.Controls.Add(this.button3);
           this.gbTest.Controls.Add(this.button2);
           this.gbTest.Controls.Add(this.button1);
-          this.gbTest.Controls.Add(this.lbAutoSuggestions);
           this.gbTest.Controls.Add(this.btnGetAutoList);
-          this.gbTest.Location = new System.Drawing.Point(567, 12);
+          this.gbTest.Location = new System.Drawing.Point(950, 12);
           this.gbTest.Name = "gbTest";
-          this.gbTest.Size = new System.Drawing.Size(150, 629);
+          this.gbTest.Size = new System.Drawing.Size(150, 663);
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
@@ -283,14 +284,6 @@ namespace SimpleTalk.GUI
           this.button1.UseVisualStyleBackColor = true;
           this.button1.Click += new System.EventHandler(this.button1_Click);
           // 
-          // lbAutoSuggestions
-          // 
-          this.lbAutoSuggestions.FormattingEnabled = true;
-          this.lbAutoSuggestions.Location = new System.Drawing.Point(6, 77);
-          this.lbAutoSuggestions.Name = "lbAutoSuggestions";
-          this.lbAutoSuggestions.Size = new System.Drawing.Size(136, 147);
-          this.lbAutoSuggestions.TabIndex = 10;
-          // 
           // btnGetAutoList
           // 
           this.btnGetAutoList.Location = new System.Drawing.Point(6, 19);
@@ -301,20 +294,31 @@ namespace SimpleTalk.GUI
           this.btnGetAutoList.UseVisualStyleBackColor = true;
           this.btnGetAutoList.Click += new System.EventHandler(this.btnGetAutoList_Click);
           // 
+          // lbAutoSuggestions
+          // 
+          this.lbAutoSuggestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          this.lbAutoSuggestions.FormattingEnabled = true;
+          this.lbAutoSuggestions.ItemHeight = 55;
+          this.lbAutoSuggestions.Location = new System.Drawing.Point(0, 0);
+          this.lbAutoSuggestions.Name = "lbAutoSuggestions";
+          this.lbAutoSuggestions.Size = new System.Drawing.Size(369, 499);
+          this.lbAutoSuggestions.TabIndex = 10;
+          // 
           // pnlAutoComplete
           // 
           this.pnlAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
-          this.pnlAutoComplete.Location = new System.Drawing.Point(395, 142);
+          this.pnlAutoComplete.Controls.Add(this.lbAutoSuggestions);
+          this.pnlAutoComplete.Location = new System.Drawing.Point(575, 142);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
-          this.pnlAutoComplete.Size = new System.Drawing.Size(166, 499);
+          this.pnlAutoComplete.Size = new System.Drawing.Size(369, 533);
           this.pnlAutoComplete.TabIndex = 10;
           // 
           // frmMain
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-          this.ClientSize = new System.Drawing.Size(729, 653);
+          this.ClientSize = new System.Drawing.Size(1112, 687);
           this.Controls.Add(this.pnlAutoComplete);
           this.Controls.Add(this.gbTest);
           this.Controls.Add(this.txtOutput);
@@ -326,6 +330,7 @@ namespace SimpleTalk.GUI
           this.gbTest.ResumeLayout(false);
           this.gbTest.PerformLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).EndInit();
+          this.pnlAutoComplete.ResumeLayout(false);
           this.ResumeLayout(false);
           this.PerformLayout();
 
