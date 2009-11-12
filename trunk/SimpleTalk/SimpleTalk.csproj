@@ -31,7 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\Interop.WMPLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -46,8 +51,23 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Voets.Data, Version=1.6.3386.34256, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\Voets.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Voets.Diagnostics, Version=2.7.3386.34253, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\Voets.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Voets.Net.Multicast, Version=1.0.3386.34252, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Assemblies\Voets.Net.Multicast.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AutoWords.cs" />
+    <Compile Include="DataAccess\Database.cs" />
+    <Compile Include="DataAccess\NextWords.cs" />
     <Compile Include="GUI\AbcKeyboard.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -74,7 +94,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\AutoComplete.cs" />
+    <Compile Include="Model\AutoWords.cs" />
     <Compile Include="Model\Interpreter.cs" />
+    <Compile Include="Model\NextWords.cs" />
     <Compile Include="Model\Sounds.cs" />
     <Compile Include="Model\TextToSpeech.cs" />
     <Compile Include="Program.cs" />
@@ -94,6 +116,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,16 +126,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="WMPLib">
-      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

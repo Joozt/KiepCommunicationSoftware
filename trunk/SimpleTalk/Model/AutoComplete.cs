@@ -8,16 +8,25 @@ namespace SimpleTalk.Model
 {
   class AutoComplete
   {
-    private List<string> _ListSuggestions = new List<string>();
+    private List<string> _listSuggestions = new List<string>();
     //remember length of word list, because items are only stored with increasing amount of text. 
     private int textLength = 0;
     private int previousTextLength = 0;
+
+    private DataAccess.AutoWords _autoWords;
+    private DataAccess.NextWords _nextWords;
+
+    public AutoComplete()
+    {
+      _autoWords = new DataAccess.AutoWords();
+      _nextWords = new DataAccess.NextWords();
+    }
 
     public List<string> ListSuggestions
     {
       get
       {
-        return _ListSuggestions;
+        return _listSuggestions;
       }
     }
 
@@ -30,7 +39,7 @@ namespace SimpleTalk.Model
         // Todo:  make database connection and add word row to database
         // Todo: if word row does exists skip word
 
-        //_autoWords.Add(new AutoComplete.Model.AutoWord(default(int), word, 0, false, false));
+        _autoWords.Add(new Model.AutoWord(default(int), word, 0, false, false));
       }
     }
 
@@ -39,10 +48,10 @@ namespace SimpleTalk.Model
       //Todo: make database connection and update word counter.
       //Todo: if word row does not exists create row
 
-      //_autoWords.UpdateWordCount(word);
+      _autoWords.UpdateWordCount(word);
 
       //for debugging:
-      _ListSuggestions.Add("SetWordsCount(" + word + ")");
+      //_listSuggestions.Add("SetWordsCount(" + word + ")");
     }
 
     private void SetNextWordsCount(string secondLastWord, string lastWord)
@@ -50,30 +59,30 @@ namespace SimpleTalk.Model
       //Todo: make database connection and update next word counter.
       //Todo: if nextWord row does not exists create it
 
-      // _nextWords.UpdateNextWordCount(_newSecondLastWord, _newLastWord);
+      _nextWords.UpdateNextWordCount(secondLastWord, lastWord);
 
       //for debugging:
-      _ListSuggestions.Add("SetNextWordsCount(" + secondLastWord + "," + lastWord + ")");
+      //_listSuggestions.Add("SetNextWordsCount(" + secondLastWord + "," + lastWord + ")");
     }
 
-    private void GetByWord(string word)
+    private void GetWordList(string word)
     {
       //Todo: make database connection and return word list.
 
-      //_ListSuggestions = null; //Todo: change null to output of database 
+      _listSuggestions = _autoWords.GetWordList(word);
 
       //for debugging:
-      _ListSuggestions.Add("GetByWord(" + word + ")");
+      //_listSuggestions.Add("GetByWord(" + word + ")");
     }
 
-    private void GetNextWord(string word)
+    private void GetNextWordList(string word)
     {
       //Todo: make database connection and return next word list.
 
-      //_ListSuggestions = null; //Todo: change null to output of database 
+      _listSuggestions = _nextWords.GetNextWordList(word);
 
       //for debugging:
-      _ListSuggestions.Add("GetNextWord(" + word + ")");
+      //_listSuggestions.Add("GetNextWord(" + word + ")");
     }
 
     public void OnTextChanged(string text)
@@ -84,20 +93,21 @@ namespace SimpleTalk.Model
       textLength = text.Length;
 
       //for debugging:
-      _ListSuggestions.Clear();
+      //_listSuggestions.Clear();
 
       if (string.IsNullOrEmpty(text))
       {
         //return empty list in case of empty string
-        //_ListSuggestions.Clear();  //This line should be uncommented in the final code 
+        _listSuggestions.Clear();  //This line should be uncommented in the final code 
 
         //for debugging:
-        _ListSuggestions.Add("Clear list");
+        //_listSuggestions.Add("Clear list");
       }
       else
       {
         List<string> lineArray = new List<string>(text.Split(new string[] { "\r\n" }, StringSplitOptions.None));
         List<string> wordArray = new List<string>();
+        
         if (lineArray != null && lineArray.Count > 0)//if is required for handling empty list exception
         {
           foreach (string word in lineArray[lineArray.Count - 1].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
@@ -167,14 +177,14 @@ namespace SimpleTalk.Model
         if (text[text.Length - 1].Equals(' ') && wordArray.Count > 0)
         {
           //Get suggestions for next word only is space is added and there is a word on the last line
-          GetNextWord(wordArray[wordArray.Count - 1]);
+          GetNextWordList(wordArray[wordArray.Count - 1]);
         }
         else
         {
           if (wordArray.Count > 0 && !text[text.Length - 1].Equals('\n'))
           {
             //Incomplete last word (do not count it)
-            GetByWord(wordArray[wordArray.Count - 1]);
+            GetWordList(wordArray[wordArray.Count - 1]);
           }
         }
       }
@@ -184,17 +194,17 @@ namespace SimpleTalk.Model
 
     public List<string> GetAutoCompleteList()
     {
-      return _ListSuggestions;
+      return _listSuggestions;
     }
 
     public void Reset()
     {
       //Todo: add database reset function
 
-      //_nextWords.Reset();
-      //_autoWords.Reset();
+      _nextWords.Reset();
+      _autoWords.Reset();
 
-      throw new NotImplementedException();
+      //throw new NotImplementedException();
     }
   }
 }
