@@ -59,17 +59,5 @@ namespace SimpleTalk.Properties {
                 resourceCulture = value;
             }
         }
-        
-        internal static System.IO.UnmanagedMemoryStream Ja {
-            get {
-                return ResourceManager.GetStream("Ja", resourceCulture);
-            }
-        }
-        
-        internal static System.IO.UnmanagedMemoryStream Nee {
-            get {
-                return ResourceManager.GetStream("Nee", resourceCulture);
-            }
-        }
     }
 }

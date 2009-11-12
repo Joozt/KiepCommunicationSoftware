@@ -152,8 +152,8 @@ namespace SimpleTalk.GUI
       }
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(@"Ja.wav");
-      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(@"Nee.wav");
+      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(SoundFiles.Ja);
+      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(SoundFiles.Nee);
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
@@ -239,7 +239,7 @@ namespace SimpleTalk.GUI
     private void button6_Click(object sender, EventArgs e)
     {
       // Sound must be played in a seperate thread to avoid hanging the application!!
-      _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
+      //_Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
     }
 
     private void button7_Click(object  sender, EventArgs e)
