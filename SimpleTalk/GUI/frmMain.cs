@@ -27,6 +27,8 @@ namespace SimpleTalk.GUI
     private bool _RowSelect;
     private bool _Selected;
 
+    
+
 
     public frmMain()
     {
@@ -150,8 +152,8 @@ namespace SimpleTalk.GUI
       }
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
-      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Nee.wav");
+      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(@"Ja.wav");
+      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(@"Nee.wav");
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
