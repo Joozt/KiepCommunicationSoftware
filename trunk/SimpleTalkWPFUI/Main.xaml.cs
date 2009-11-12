@@ -12,10 +12,14 @@ namespace SimpleTalkWPFUI
     /// </summary>
     public partial class Main : Window
     {
-        private System.Timers.Timer _Timer = new System.Timers.Timer(1000);
+        private const int INTERVAL = 1000;
+        private const bool AUTORESTARTAFTERSELECTION = true;
+
+
+        private System.Timers.Timer _Timer = new System.Timers.Timer(INTERVAL);
         private int _SelectedRow;
         private int _SelectedColumn;
-        private bool _RowSelected;
+        private bool _DoCellSelection;
 
         public Main()
         {
@@ -25,11 +29,18 @@ namespace SimpleTalkWPFUI
 
         void _Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (_RowSelected)
+            if (_DoCellSelection)
             {
                 _SelectedColumn++;
+
+                if (_SelectedRow == 2)
+                {
+                    _SelectedColumn++;
+                }
+
                 HighlightCell(_SelectedRow, _SelectedColumn);
 
+                //Stop if all columns have been highlighted
                 if (_SelectedColumn >= _Grid.ColumnDefinitions.Count)
                 {
                     Reset();
@@ -40,6 +51,7 @@ namespace SimpleTalkWPFUI
                 _SelectedRow++;
                 HighlightRow(_SelectedRow);
 
+                //Stop if all rows have been highlighted
                 if (_SelectedRow >= _Grid.RowDefinitions.Count)
                 {
                     Reset();
@@ -148,12 +160,33 @@ namespace SimpleTalkWPFUI
                     }
                 }
             }
+
+            if (result.Equals("space"))
+            {
+                result = " ";
+            }
+
+            if (result.Equals("clear"))
+            {
+                txtOutput.Clear();
+                result = "";
+            }
+
+            if (result.Equals("back"))
+            {
+                if (txtOutput.Text.Length >= 1)
+                {
+                    txtOutput.Text = txtOutput.Text.Remove(txtOutput.Text.Length - 1);
+                }
+                result = "";
+            }
+
             return result;
         }
 
         private void Reset()
         {
-            _RowSelected = false;
+            _DoCellSelection = false;
             _Timer.Stop();
             _SelectedRow = 2;
             _SelectedColumn = 0;
@@ -164,17 +197,25 @@ namespace SimpleTalkWPFUI
         {
             if (_Timer.Enabled)
             {
-                if (_RowSelected)
+                if (_DoCellSelection)
                 {
+                    // Completed selection
                     _Timer.Stop();
-                    _RowSelected = false;
                     txtOutput.AppendText(GetSelection(_SelectedRow, _SelectedColumn));
                     Reset();
+
+                    if (AUTORESTARTAFTERSELECTION)
+                    {
+                        // Restart automatically
+                        HighlightRow(2);
+                        _Timer.Start();
+                    }
                 }
                 else
                 {
+                    // Row is selected -> switch to cell selection mode
                     _Timer.Stop();
-                    _RowSelected = true;
+                    _DoCellSelection = true;
                     HighlightCell(_SelectedRow, 0);
                     _SelectedColumn = 0;
                     _Timer.Start();
@@ -182,8 +223,9 @@ namespace SimpleTalkWPFUI
             }
             else
             {
+                // Initialize selection
+                Reset();
                 HighlightRow(2);
-                _SelectedRow = 2;
                 _Timer.Start();
             }
         }

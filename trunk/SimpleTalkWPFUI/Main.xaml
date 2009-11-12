@@ -25,8 +25,8 @@
             <TextBox Name="txtOutput" Margin="10" Foreground="White" TextWrapping="Wrap" Background="Transparent" BorderThickness="0" VerticalScrollBarVisibility="Auto" AcceptsReturn="True"></TextBox>
         </Border>
         <DockPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"><Button>Space</Button></DockPanel>
-        <DockPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"><Button>Auto</Button></DockPanel>
-        <DockPanel Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2"><Button>Back</Button></DockPanel>
+        <DockPanel Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"><Button>Back</Button></DockPanel>
+        <DockPanel Grid.Column="4" Grid.Row="2" Grid.ColumnSpan="2"><Button>Clear</Button></DockPanel>
 
         <DockPanel Grid.Column="0" Grid.Row="3"><Button>A</Button></DockPanel>
         <DockPanel Grid.Column="1" Grid.Row="3"><Button>B</Button></DockPanel>
