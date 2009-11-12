@@ -11,7 +11,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="BorderBrush" Value="White" />
-            <Setter Property="Margin" Value="15" />
+            <Setter Property="Margin" Value="20 10 20 10" />
             <Setter Property="FontSize" Value="40" />
             <Style.Triggers>
                 <EventTrigger RoutedEvent="Button.MouseEnter">
