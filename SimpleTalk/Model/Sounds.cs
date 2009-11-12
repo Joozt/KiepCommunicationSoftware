@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WMPLib;
 
 namespace SimpleTalk.Model
 {
   class Sounds
   {
-    public void PlaySound(string filename)
+      public WindowsMediaPlayer MediaPlayer;
+      
+      public Sounds()
+      {
+      MediaPlayer = new WindowsMediaPlayer();
+      }
+
+      
+      public void PlaySound(string filename)
     {
-      throw new NotImplementedException();
+        MediaPlayer.URL = filename; 
+        
     }
 
     public void StopSound()
