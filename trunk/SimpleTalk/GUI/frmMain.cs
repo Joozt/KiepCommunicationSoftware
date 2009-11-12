@@ -20,9 +20,14 @@ namespace SimpleTalk.GUI
     private TextToSpeech _TextToSpeech;
     private Sounds _Sounds;
 
+<<<<<<< .mine
+    //private bool _keyPressed = false;
+
+=======
     private bool _RowSelect;
     private bool _Selected;
 
+>>>>>>> .r56
     public frmMain()
     {
       InitializeComponent();
@@ -145,12 +150,16 @@ namespace SimpleTalk.GUI
       }
 
       UpdateButtons(e);
+      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
+      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Nee.wav");
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
     {
+      
       cbButton1.Checked = (e.Button == ButtonType.FirstButton);
       cbButton2.Checked = (e.Button == ButtonType.SecondButton);
+     
     }
 
     void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
@@ -173,6 +182,8 @@ namespace SimpleTalk.GUI
           return ButtonType.FirstButton;
         case Keys.Subtract:
           return ButtonType.SecondButton;
+        case Keys.Multiply:
+          return ButtonType.ThirdButton;
         default:
           return ButtonType.None;
       }
@@ -226,7 +237,7 @@ namespace SimpleTalk.GUI
     private void button6_Click(object sender, EventArgs e)
     {
       // Sound must be played in a seperate thread to avoid hanging the application!!
-      _Sounds.PlaySound("Ja.wav");
+      _Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
     }
 
     private void button7_Click(object  sender, EventArgs e)
