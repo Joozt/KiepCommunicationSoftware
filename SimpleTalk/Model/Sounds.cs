@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using WMPLib;
 
 namespace SimpleTalk.Model
 {
+    public enum SoundFiles
+    {
+        Ja = 0,
+        Nee = 1
+    }
+
     class Sounds
     {
-        private string _ProjectPath;
+        private string _baseDirectory;
 
         public WindowsMediaPlayer MediaPlayer;
 
@@ -16,14 +23,29 @@ namespace SimpleTalk.Model
         {
             MediaPlayer = new WindowsMediaPlayer();
 
-            _ProjectPath = AppDomain.CurrentDomain.BaseDirectory;
+            _baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AudioFiles");
         }
 
 
-        public void PlaySound(string filename)
+        public void PlaySound(SoundFiles soundFiles)
         {
-            MediaPlayer.URL = System.IO.Path.Combine(_ProjectPath, string.Format(@"AudioFiles\{0}", filename));
-
+            switch (soundFiles)
+            {
+                case SoundFiles.Ja:
+                    {
+                        MediaPlayer.URL = Path.Combine(_baseDirectory, "Ja.wav");
+                        break;
+                    }
+                case SoundFiles.Nee:
+                    {
+                        MediaPlayer.URL = Path.Combine(_baseDirectory, "Nee.wav");
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
 
         public void StopSound()
