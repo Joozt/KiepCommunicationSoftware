@@ -9,7 +9,8 @@ namespace SimpleTalk.GUI
     {
         None,
         FirstButton,
-        SecondButton
+        SecondButton,
+        ThirdButton
     }
 
     public class CustomButtonEventArgs : EventArgs
