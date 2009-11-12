@@ -20,14 +20,14 @@ namespace SimpleTalk.GUI
     private TextToSpeech _TextToSpeech;
     private Sounds _Sounds;
 
-<<<<<<< .mine
+
     //private bool _keyPressed = false;
 
-=======
+
     private bool _RowSelect;
     private bool _Selected;
 
->>>>>>> .r56
+
     public frmMain()
     {
       InitializeComponent();
