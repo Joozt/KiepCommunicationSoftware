@@ -22,7 +22,7 @@ namespace SimpleTalk.DataAccess
       if (ConfigurationManager.ConnectionStrings["AutoComplete"] == null)
         throw new Exception("Can't find connectionstring 'AutoComplete' in configuration file");
 
-      DbConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["AutoComplete"].ConnectionString);
+      DbConnection conn = new SqlConnection(@"Data Source=PRODRIVE_BOXPC\SQLEXPRESS;Initial Catalog=AutoComplete;Integrated Security=SSPI;");//ConfigurationManager.ConnectionStrings["AutoComplete"].ConnectionString);
       return conn;
     }
 
