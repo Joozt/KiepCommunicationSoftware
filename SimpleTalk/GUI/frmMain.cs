@@ -10,6 +10,8 @@ using System.IO;
 using SimpleTalk.Model;
 using System.Threading;
 
+
+
 namespace SimpleTalk.GUI
 {
   public partial class frmMain : CustomForm
@@ -286,6 +288,11 @@ namespace SimpleTalk.GUI
     private void button12_Click(object sender, EventArgs e)
     {
       _Keyboard.NextRow();
+    }
+
+    private void frmMain_Load(object sender, EventArgs e)
+    {
+
     }
   }
 }

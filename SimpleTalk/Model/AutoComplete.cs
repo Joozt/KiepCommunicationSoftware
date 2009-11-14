@@ -1,4 +1,6 @@
-﻿using System;
+﻿//#define DATABASE_ENABLED //uncomment this line to enable autocompletion database
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +15,18 @@ namespace SimpleTalk.Model
     private int textLength = 0;
     private int previousTextLength = 0;
 
+#if (DATABASE_ENABLED)
     private DataAccess.AutoWords _autoWords;
     private DataAccess.NextWords _nextWords;
+#endif
+
 
     public AutoComplete()
     {
+#if (DATABASE_ENABLED)
       _autoWords = new DataAccess.AutoWords();
       _nextWords = new DataAccess.NextWords();
+#endif
     }
 
     public List<string> ListSuggestions
@@ -39,7 +46,10 @@ namespace SimpleTalk.Model
         // Todo:  make database connection and add word row to database
         // Todo: if word row does exists skip word
 
+#if (DATABASE_ENABLED)
         _autoWords.Add(new Model.AutoWord(default(int), word, 0, false, false));
+#endif
+
       }
     }
 
@@ -48,7 +58,9 @@ namespace SimpleTalk.Model
       //Todo: make database connection and update word counter.
       //Todo: if word row does not exists create row
 
+#if (DATABASE_ENABLED)
       _autoWords.UpdateWordCount(word);
+#endif
 
       //for debugging:
       //_listSuggestions.Add("SetWordsCount(" + word + ")");
@@ -59,7 +71,9 @@ namespace SimpleTalk.Model
       //Todo: make database connection and update next word counter.
       //Todo: if nextWord row does not exists create it
 
+#if (DATABASE_ENABLED)
       _nextWords.UpdateNextWordCount(secondLastWord, lastWord);
+#endif
 
       //for debugging:
       //_listSuggestions.Add("SetNextWordsCount(" + secondLastWord + "," + lastWord + ")");
@@ -69,7 +83,9 @@ namespace SimpleTalk.Model
     {
       //Todo: make database connection and return word list.
 
+#if (DATABASE_ENABLED)
       _listSuggestions = _autoWords.GetWordList(word);
+#endif
 
       //for debugging:
       //_listSuggestions.Add("GetByWord(" + word + ")");
@@ -79,7 +95,9 @@ namespace SimpleTalk.Model
     {
       //Todo: make database connection and return next word list.
 
+#if (DATABASE_ENABLED)
       _listSuggestions = _nextWords.GetNextWordList(word);
+#endif
 
       //for debugging:
       //_listSuggestions.Add("GetNextWord(" + word + ")");
@@ -107,7 +125,7 @@ namespace SimpleTalk.Model
       {
         List<string> lineArray = new List<string>(text.Split(new string[] { "\r\n" }, StringSplitOptions.None));
         List<string> wordArray = new List<string>();
-        
+
         if (lineArray != null && lineArray.Count > 0)//if is required for handling empty list exception
         {
           foreach (string word in lineArray[lineArray.Count - 1].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries))
@@ -200,9 +218,10 @@ namespace SimpleTalk.Model
     public void Reset()
     {
       //Todo: add database reset function
-
+#if (DATABASE_ENABLED)
       _nextWords.Reset();
       _autoWords.Reset();
+#endif
 
       //throw new NotImplementedException();
     }
