@@ -20,6 +20,18 @@ Project status, responsible persons and due dates  are given in the table below
  * *M1* 1st release
  * *M2* 1st upgrade
 
+== Results first demo for Joost ==
+ * Increase font size of output and autosuggestion fields
+ * covert all letters on screen to upper case (so they are better readable)
+ * Use monospace letters (every char on the screen should have the same width)
+ * Print underscore "`_`" in stead of space " " (give user feedback when space button is pressed)
+ * Auto start scanning after a letter is selected. Do not automatic restart when no button is selected.
+ * Button hardware should be reconsidered
+ * Increase contrast between letter and background
+ * Increase contrast between selection bar and letter
+ * Optional: make font adjustment per individual key possible (request of Ad)
+
+
 
 
 
