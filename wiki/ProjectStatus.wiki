@@ -21,7 +21,8 @@ Project status, responsible persons and due dates  are given in the table below
  * *M2* 1st upgrade
 
 == Results first demo for Joost ==
-Use software version r82 for demo
+Use software version r82 for demonstration to Joost on 13-11-2009.
+Note that the auto completion database was working during the demonstration. 
  * Increase font size of output and autosuggestion fields
  * covert all letters on screen to upper case (so they are better readable)
  * Use monospace letters (every char on the screen should have the same width)
