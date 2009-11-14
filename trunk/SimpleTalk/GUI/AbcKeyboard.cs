@@ -59,8 +59,8 @@ namespace SimpleTalk.GUI
 
         public override void ConstructLayout()
         {
-            int DefaultWidth = 80;
-            int DefaultHeight = 80;
+            int DefaultWidth = 110;
+            int DefaultHeight = 110;
             int hSpace = 10;
             int vSpace = 10;
 
@@ -71,7 +71,7 @@ namespace SimpleTalk.GUI
                 DefaultHeight,
                 new ButtonDefinition[4]
                 {
-                    new ButtonDefinition("Space", " ", new Size(Width, DefaultHeight)),
+                    new ButtonDefinition("Spac", " ", new Size(Width, DefaultHeight)),
                     new ButtonDefinition("Auto", "&auto", new Size(Width, DefaultHeight)),
                     new ButtonDefinition("Back", "&back", new Size(Width, DefaultHeight)),
                     new ButtonDefinition("Clear", "&clear", new Size(Width, DefaultHeight)),
