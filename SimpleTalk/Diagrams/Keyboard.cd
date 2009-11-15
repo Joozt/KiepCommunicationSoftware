@@ -3,7 +3,7 @@
   <Class Name="SimpleTalk.GUI.RowButtons" Collapsed="true">
     <Position X="4.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAhAAAAABAAEAACAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <HashCode>AAAIAAAAAIAhAAAAABAAEAACAAAAAAAAAAAAAIAAAgA=</HashCode>
       <FileName>GUI\Keyboard\CustomKeyboard.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -15,6 +15,13 @@
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
+    <AssociationLine Name="KeyboardLayout" Type="SimpleTalk.GUI.ICustomLayout" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.812" Y="3.75" />
+        <Point X="4.812" Y="3.375" />
+        <Point X="3" Y="3.375" />
+      </Path>
+    </AssociationLine>
     <AssociationLine Name="KeyboardBeheaviour" Type="SimpleTalk.GUI.ICustomBeheaviour" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="5.656" Y="3.75" />
@@ -23,12 +30,12 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AIAAAEAAAAIAAAgAADEAIAADAAgAAAAAEAAAAAAIQEI=</HashCode>
+      <HashCode>AIAIQEAAAAIAAAgAADEAIACDAAgAAAAAEAAAAAAIQEI=</HashCode>
       <FileName>GUI\Keyboard\CustomKeyboard.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="KeyboardBeheaviour" />
       <Property Name="KeyboardLayout" />
+      <Property Name="KeyboardBeheaviour" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="RowButtons" />
@@ -37,7 +44,7 @@
   <Class Name="SimpleTalk.GUI.SettingsLayout" Collapsed="true">
     <Position X="0.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAABAAAAAAAAAACACAAAAAEAAAQQA=</HashCode>
       <FileName>GUI\Layouts\SettingsLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -75,7 +82,7 @@
   <Class Name="SimpleTalk.GUI.CustomLayout" Collapsed="true">
     <Position X="1.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAgAAAAAAAEAAAAAABAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>GUI\Layouts\CustomLayout.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -86,7 +93,7 @@
   <Class Name="SimpleTalk.GUI.AbcLayout" Collapsed="true">
     <Position X="2.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAgAAABAAAAAAAAAACACAAAAAEAAAQQA=</HashCode>
       <FileName>GUI\Layouts\AbcLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -107,7 +114,7 @@
   <Interface Name="SimpleTalk.GUI.ICustomLayout" Collapsed="true">
     <Position X="1.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
       <FileName>GUI\Layouts\ICustomLayout.cs</FileName>
     </TypeIdentifier>
   </Interface>
