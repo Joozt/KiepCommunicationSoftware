@@ -54,9 +54,19 @@ namespace SimpleTalk.GUI
             }
         }
 
-        protected virtual ButtonType CheckButton(Keys keyData)
+        protected ButtonType CheckButton(Keys keyData)
         {
-            throw new NotImplementedException();
+          switch (keyData)
+          {
+            case Keys.Add:
+              return ButtonType.FirstButton;
+            case Keys.Subtract:
+              return ButtonType.SecondButton;
+            case Keys.Multiply:
+              return ButtonType.ThirdButton;
+            default:
+              return ButtonType.None;
+          }
         }
 
         #region IMessageFilter Members
@@ -65,7 +75,9 @@ namespace SimpleTalk.GUI
 
         public bool PreFilterMessage(ref Message m)
         {
-          // TODO: Only perform the keyup and keydown events if form is active (on top)
+            // TODO: Only perform the keyup and keydown events if form is active (on top)
+            if (ActiveForm != this)
+              return false;
           
 
             if ((m.Msg != WM_KEYDOWN) &&

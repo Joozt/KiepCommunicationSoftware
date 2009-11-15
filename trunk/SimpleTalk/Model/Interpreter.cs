@@ -6,7 +6,7 @@ using SimpleTalk.GUI;
 
 namespace SimpleTalk.Model
 {
-  class Interpreter
+  public class Interpreter
   {
     private string _TextOutput;
 
@@ -83,7 +83,7 @@ namespace SimpleTalk.Model
             //Call menu that jumps to menu form
             _CommandOutput.Add("[menu]");
             frmSettings formSettings = new frmSettings();
-            formSettings.Show();
+            formSettings.ShowDialog();
             //throw new NotImplementedException();
             break;
 

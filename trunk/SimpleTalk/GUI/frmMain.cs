@@ -13,7 +13,7 @@ using SimpleTalk;
 
 namespace SimpleTalk.GUI
 {
-  public partial class frmMain : CustomForm
+  public partial class frmMain : CustomForm, IDisposable
   {
     private CustomKeyboard _Keyboard;
     private CustomLayout _AbcLayout = new AbcLayout();
@@ -23,10 +23,8 @@ namespace SimpleTalk.GUI
     private AutoCompleteLayout _AutoLayout = new AutoCompleteLayout();
     private CustomBeheaviour _AutoBeheaviour = new SimpleBeheaviour();
 
-    private Interpreter _Interpreter;
     private AutoComplete _AutoComplete;
     private TextToSpeech _TextToSpeech;
-    private Sounds _Sounds;
 
     private bool _AutoActive;
 
@@ -46,19 +44,16 @@ namespace SimpleTalk.GUI
       _AutoBeheaviour.TimePassed += new EventHandler(OnEndSelection);
       _AutoActive = false;
 
-      _Interpreter = new Interpreter();
-      _Interpreter.AutoComplete += new EventHandler(OnAutoComplete);
+      Core.Instance.Interpreter.AutoComplete += new EventHandler(OnAutoComplete);
+      Core.Instance.Interpreter.TextChanged += new EventHandler(OnTextChanged);
 
       _AutoComplete = new AutoComplete();
       _AutoComplete.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
 
       _TextToSpeech = new TextToSpeech();
-      _Sounds = new Sounds();
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
-
-      _Interpreter.TextChanged += new EventHandler(OnTextChanged);
     }
 
     void OnSuggestionsChanged(object sender, EventArgs e)
@@ -83,7 +78,7 @@ namespace SimpleTalk.GUI
 
     void OnTextChanged(object sender, EventArgs e)
     {
-      txtOutput.Text = _Interpreter.TextOutput;
+      txtOutput.Text = Core.Instance.Interpreter.TextOutput;
     }
 
     void OnButtonUp(object sender, CustomButtonEventArgs e)
@@ -100,8 +95,8 @@ namespace SimpleTalk.GUI
         _AutoKeyboard.OnButtonPressed(e);
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(SoundFiles.Ja);
-      if ((e.Button == ButtonType.ThirdButton)) _Sounds.PlaySound(SoundFiles.Nee);
+      if ((e.Button == ButtonType.SecondButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
+      if ((e.Button == ButtonType.ThirdButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
@@ -120,22 +115,7 @@ namespace SimpleTalk.GUI
       }
       else
       {
-        _Interpreter.ProcessCommand(e.Keys);
-      }
-    }
-
-    protected override ButtonType CheckButton(Keys keyData)
-    {
-      switch (keyData)
-      {
-        case Keys.Add:
-          return ButtonType.FirstButton;
-        case Keys.Subtract:
-          return ButtonType.SecondButton;
-        case Keys.Multiply:
-          return ButtonType.ThirdButton;
-        default:
-          return ButtonType.None;
+        Core.Instance.Interpreter.ProcessCommand(e.Keys);
       }
     }
 
@@ -156,8 +136,8 @@ namespace SimpleTalk.GUI
 
     private void button2_Click(object sender, EventArgs e)
     {
-      _Interpreter.ProcessCommand("a"); // Letter
-      _Interpreter.ProcessCommand("&menu"); // Special function
+      Core.Instance.Interpreter.ProcessCommand("a"); // Letter
+      Core.Instance.Interpreter.ProcessCommand("&menu"); // Special function
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -165,11 +145,11 @@ namespace SimpleTalk.GUI
       //txtOutput.Text = _Interpreter.TextOutput;
              
       
-      foreach (string item in _Interpreter.CommandOutput)
+      foreach (string item in Core.Instance.Interpreter.CommandOutput)
       {
         lbAutoSuggestions.Items.Add(item);
       }
-      _Interpreter.ClearCommand();
+      Core.Instance.Interpreter.ClearCommand();
      
     }
 
@@ -194,17 +174,17 @@ namespace SimpleTalk.GUI
     private void button7_Click(object  sender, EventArgs e)
     {
       // Possiblity to stop a very long during sound
-      _Sounds.StopSound();
+      Core.Instance.Sounds.StopSound();
     }
 
     private void button9_Click(object sender, EventArgs e)
     {
-      _Sounds.VolumeUp();
+      Core.Instance.Sounds.VolumeUp();
     }
 
     private void button10_Click(object sender, EventArgs e)
     {
-      _Sounds.VolumeDown();
+      Core.Instance.Sounds.VolumeDown();
     }
 
     private void txtOutput_TextChanged(object sender, EventArgs e)
@@ -224,7 +204,9 @@ namespace SimpleTalk.GUI
 
     private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
     {
+      // TODO: Automatically stop selection when stopping the application
       _SimpleBeheaviour.StopSelection();
+      _AutoBeheaviour.StopSelection();
     }
 
     private void button11_Click(object sender, EventArgs e)
@@ -244,6 +226,25 @@ namespace SimpleTalk.GUI
     {
       _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
       _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
+    }
+
+    #region IDisposable Members
+
+    void IDisposable.Dispose()
+    {
+      Dispose(true);
+
+      Core.Instance.Interpreter.AutoComplete -= OnAutoComplete;
+      Core.Instance.Interpreter.TextChanged -= OnTextChanged;
+
+      GC.SuppressFinalize(this);
+    }
+
+    #endregion
+
+    private void button8_Click(object sender, EventArgs e)
+    {
+      Core.Instance.Interpreter.ProcessCommand("&menu");
     }
   }
 }

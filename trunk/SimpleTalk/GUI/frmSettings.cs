@@ -20,7 +20,32 @@ namespace SimpleTalk.GUI
     {
       InitializeComponent();
       _Keyboard = new CustomKeyboard(pnlControls.Controls, _SettingsLayout, _SimpleBeheaviour);
+      _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
 
+      CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
+    }
+
+    void OnButtonDown(object sender, CustomButtonEventArgs e)
+    {
+      _Keyboard.OnButtonPressed(e);
+    }
+
+    void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
+    {
+      if (InvokeRequired)
+      {
+        this.BeginInvoke(new CustomKeyPressedEventHandler(OnKeyPressed), new Object[] { sender, e });
+      }
+      else
+      {
+        Core.Instance.Interpreter.ProcessCommand(e.Keys);
+      }
+    }
+
+    private void frmSettings_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      // TODO: Automatically stop selection when stopping the application
+      _SimpleBeheaviour.StopSelection();
     }
   }
 }
