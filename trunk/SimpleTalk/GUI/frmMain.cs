@@ -9,44 +9,51 @@ using System.Windows.Forms;
 using System.IO;
 using SimpleTalk.Model;
 using System.Threading;
-
-
+using SimpleTalk;
 
 namespace SimpleTalk.GUI
 {
   public partial class frmMain : CustomForm
   {
-    private AbcKeyboard _Keyboard;
+    private CustomKeyboard _Keyboard;
+    private CustomLayout _AbcLayout = new AbcLayout();
+    private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
+
+    private CustomKeyboard _AutoKeyboard;
+    private AutoCompleteLayout _AutoLayout = new AutoCompleteLayout();
+    private CustomBeheaviour _AutoBeheaviour = new SimpleBeheaviour();
+
     private Interpreter _Interpreter;
-    private AutoComplete _AutComplete;
+    private AutoComplete _AutoComplete;
     private TextToSpeech _TextToSpeech;
     private Sounds _Sounds;
 
+    private bool _AutoActive;
 
     //private bool _keyPressed = false;
-
-
-    private bool _RowSelect;
-    private bool _Selected;
-
-    
-
 
     public frmMain()
     {
       InitializeComponent();
 
-      _Keyboard = new AbcKeyboard(pnlKeyboard.Controls);
+      nSelectionTime_ValueChanged(this, new EventArgs()); // Update Timer
+
+      _Keyboard = new CustomKeyboard(pnlKeyboard.Controls, _AbcLayout, _SimpleBeheaviour);
+      _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
+
+      _AutoKeyboard = new CustomKeyboard(pnlAutoComplete.Controls, _AutoLayout, _AutoBeheaviour);
+      _AutoKeyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
+      _AutoBeheaviour.TimePassed += new EventHandler(OnEndSelection);
+      _AutoActive = false;
+
       _Interpreter = new Interpreter();
-      _AutComplete = new AutoComplete();
+      _Interpreter.AutoComplete += new EventHandler(OnAutoComplete);
+
+      _AutoComplete = new AutoComplete();
+      _AutoComplete.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
+
       _TextToSpeech = new TextToSpeech();
       _Sounds = new Sounds();
-
-      _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
-      _Keyboard.TimeStarted += new EventHandler(OnTimeStarted);
-      _Keyboard.UpdateSelection += new UpdateSelectionEventHandler(OnUpdateSelection);
-      _Keyboard.SelectionChanged += new EventHandler(OnSelectionChanged);
-      _Keyboard.TimePassed += new EventHandler(OnTimePassed);
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
@@ -54,73 +61,24 @@ namespace SimpleTalk.GUI
       _Interpreter.TextChanged += new EventHandler(OnTextChanged);
     }
 
-    void OnTimePassed(object sender, EventArgs e)
+    void OnSuggestionsChanged(object sender, EventArgs e)
     {
-      Console.Write("\nSelection ended\n");
+      _AutoLayout.ClearButtons();
+      _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6);
     }
 
-    void OnSelectionChanged(object sender, EventArgs e)
+    void OnAutoComplete(object sender, EventArgs e)
     {
-      if (_RowSelect)
+      if (_AutoComplete.Suggestions.Count > 0)
       {
-        if (!_Keyboard.NextRow())
-        {
-          _Keyboard.StopSelection();
-        }
-      }
-      else
-      {
-        if (!_Keyboard.NextColumn())
-        {
-          _Keyboard.StopSelection();
-        }
+        _AutoActive = true;
+        _AutoKeyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.FirstButton)); // TODO: Hack to start autocomplete automatically
       }
     }
 
-    public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
+    void OnEndSelection(object sender, EventArgs e)
     {
-      if (currentTime.Ticks == 0)
-        return 0;
-      else if (currentTime > duration)
-        return 0;
-      else
-        return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
-    }
-
-    public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
-    {
-        /* TODO: Other color function
-        int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
-        int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
-        return Color.FromArgb(ColorValue, ColorValue, ColorValue);
-         */
-      int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
-      return Color.FromArgb(Alpha, Color.DarkGray);
-    }
-
-    void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
-    {
-      e.BgColor = GetSelectColor(e.CurrentTime, e.Duration);
-      e.FgColor = Color.Black;
-
-      if (_Selected)
-      {
-        if (_Keyboard.ColumnSelected >= 0)
-        {
-          e.Done = true;
-        }
-
-        e.Selected = true;
-        _Selected = false;
-      }
-    }
-
-    void OnTimeStarted(object sender, EventArgs e)
-    {
-      Console.Write("Start selection\n");
-
-      _RowSelect = true;
-      _Selected = false;
+      _AutoActive = false;
     }
 
     void OnTextChanged(object sender, EventArgs e)
@@ -136,22 +94,10 @@ namespace SimpleTalk.GUI
 
     void OnButtonDown(object sender, CustomButtonEventArgs e)
     {
-      if (e.Button == ButtonType.FirstButton)
-      {
-        if ((_Keyboard.ColumnSelected == -1) && (_Keyboard.RowSelected == -1))
-        {
-          _Keyboard.StartSelection(new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000)));
-        }
-        else if ((_Keyboard.ColumnSelected == -1) && (_Keyboard.RowSelected != -1))
-        {
-          _RowSelect = false;
-          _Selected = true;
-        }
-        else if ((_Keyboard.ColumnSelected >= 0) && (_Keyboard.RowSelected >= 0))
-        {
-          _Selected = true;
-        }
-      }
+      if (!_AutoActive)
+        _Keyboard.OnButtonPressed(e);
+      else
+        _AutoKeyboard.OnButtonPressed(e);
 
       UpdateButtons(e);
       if ((e.Button == ButtonType.SecondButton)) _Sounds.PlaySound(SoundFiles.Ja);
@@ -196,7 +142,8 @@ namespace SimpleTalk.GUI
     private void btnGetAutoList_Click(object sender, EventArgs e)
     {
       lbAutoSuggestions.Items.Clear();
-      foreach (string item in _AutComplete.GetAutoCompleteList())
+
+      foreach (string item in _AutoComplete.GetAutoCompleteList())
       {
         lbAutoSuggestions.Items.Add(item);
       }
@@ -204,7 +151,7 @@ namespace SimpleTalk.GUI
 
     private void button1_Click(object sender, EventArgs e)
     {
-      _AutComplete.Reset();
+      _AutoComplete.Reset();
     }
 
     private void button2_Click(object sender, EventArgs e)
@@ -262,9 +209,9 @@ namespace SimpleTalk.GUI
 
     private void txtOutput_TextChanged(object sender, EventArgs e)
     {
-       _AutComplete.OnTextChanged(txtOutput.Text);
+       _AutoComplete.OnTextChanged(txtOutput.Text);
       lbAutoSuggestions.Items.Clear();
-      foreach (string item in _AutComplete.GetAutoCompleteList())
+      foreach (string item in _AutoComplete.GetAutoCompleteList())
       {
         lbAutoSuggestions.Items.Add(item);
       }
@@ -272,27 +219,31 @@ namespace SimpleTalk.GUI
 
     private void label1_Click(object sender, EventArgs e)
     {
-      _Keyboard.StopSelection();
+      _SimpleBeheaviour.StopSelection();
     }
 
     private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
     {
-      _Keyboard.StopSelection();
+      _SimpleBeheaviour.StopSelection();
     }
 
     private void button11_Click(object sender, EventArgs e)
     {
-      _Keyboard.NextColumn();
     }
 
     private void button12_Click(object sender, EventArgs e)
     {
-      _Keyboard.NextRow();
     }
 
     private void frmMain_Load(object sender, EventArgs e)
     {
 
+    }
+
+    private void nSelectionTime_ValueChanged(object sender, EventArgs e)
+    {
+      _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
+      _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
     }
   }
 }

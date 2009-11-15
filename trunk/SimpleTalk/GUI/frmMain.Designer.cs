@@ -64,7 +64,7 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.pnlKeyboard.Location = new System.Drawing.Point(12, 171);
           this.pnlKeyboard.Name = "pnlKeyboard";
-          this.pnlKeyboard.Size = new System.Drawing.Size(627, 741);
+          this.pnlKeyboard.Size = new System.Drawing.Size(627, 602);
           this.pnlKeyboard.TabIndex = 5;
           // 
           // txtOutput
@@ -102,7 +102,7 @@ namespace SimpleTalk.GUI
           this.gbTest.Controls.Add(this.btnGetAutoList);
           this.gbTest.Location = new System.Drawing.Point(1020, 12);
           this.gbTest.Name = "gbTest";
-          this.gbTest.Size = new System.Drawing.Size(150, 900);
+          this.gbTest.Size = new System.Drawing.Size(150, 761);
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
@@ -165,25 +165,26 @@ namespace SimpleTalk.GUI
             0,
             0,
             65536});
-            this.nSelectionTime.Location = new System.Drawing.Point(85, 565);
-            this.nSelectionTime.Maximum = new decimal(new int[] {
+          this.nSelectionTime.Location = new System.Drawing.Point(85, 565);
+          this.nSelectionTime.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.nSelectionTime.Minimum = new decimal(new int[] {
+          this.nSelectionTime.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.nSelectionTime.Name = "nSelectionTime";
-            this.nSelectionTime.Size = new System.Drawing.Size(57, 20);
-            this.nSelectionTime.TabIndex = 21;
-            this.nSelectionTime.Value = new decimal(new int[] {
+          this.nSelectionTime.Name = "nSelectionTime";
+          this.nSelectionTime.Size = new System.Drawing.Size(57, 20);
+          this.nSelectionTime.TabIndex = 21;
+          this.nSelectionTime.Value = new decimal(new int[] {
             15,
             0,
             0,
             65536});
+          this.nSelectionTime.ValueChanged += new System.EventHandler(this.nSelectionTime_ValueChanged);
           // 
           // cbButton2
           // 
@@ -299,9 +300,9 @@ namespace SimpleTalk.GUI
           this.lbAutoSuggestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
           this.lbAutoSuggestions.FormattingEnabled = true;
           this.lbAutoSuggestions.ItemHeight = 61;
-          this.lbAutoSuggestions.Location = new System.Drawing.Point(-3, 3);
+          this.lbAutoSuggestions.Location = new System.Drawing.Point(135, 308);
           this.lbAutoSuggestions.Name = "lbAutoSuggestions";
-          this.lbAutoSuggestions.Size = new System.Drawing.Size(369, 736);
+          this.lbAutoSuggestions.Size = new System.Drawing.Size(231, 431);
           this.lbAutoSuggestions.TabIndex = 10;
           // 
           // pnlAutoComplete
@@ -311,14 +312,14 @@ namespace SimpleTalk.GUI
           this.pnlAutoComplete.Controls.Add(this.lbAutoSuggestions);
           this.pnlAutoComplete.Location = new System.Drawing.Point(645, 171);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
-          this.pnlAutoComplete.Size = new System.Drawing.Size(369, 741);
+          this.pnlAutoComplete.Size = new System.Drawing.Size(369, 602);
           this.pnlAutoComplete.TabIndex = 10;
           // 
           // frmMain
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-          this.ClientSize = new System.Drawing.Size(1182, 924);
+          this.ClientSize = new System.Drawing.Size(1182, 785);
           this.Controls.Add(this.pnlAutoComplete);
           this.Controls.Add(this.gbTest);
           this.Controls.Add(this.txtOutput);

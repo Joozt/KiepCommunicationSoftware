@@ -12,12 +12,14 @@ namespace SimpleTalk.GUI
 {
   public partial class frmSettings : CustomForm
   {
-    private ControlsKeyboard _Keyboard;
+    private CustomKeyboard _Keyboard;
+    private CustomLayout _SettingsLayout = new SettingsLayout();
+    private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
 
     public frmSettings()
     {
       InitializeComponent();
-      _Keyboard = new ControlsKeyboard(pnlControls.Controls);
+      _Keyboard = new CustomKeyboard(pnlControls.Controls, _SettingsLayout, _SimpleBeheaviour);
 
     }
   }

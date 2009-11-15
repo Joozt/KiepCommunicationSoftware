@@ -10,10 +10,19 @@ namespace SimpleTalk.Model
 {
   class AutoComplete
   {
-    private List<string> _listSuggestions = new List<string>();
+    private List<string> _Suggestions = new List<string>();
     //remember length of word list, because items are only stored with increasing amount of text. 
     private int textLength = 0;
     private int previousTextLength = 0;
+
+    public event EventHandler SuggestionsChanged;
+    private void OnSuggestionsChanged(object sender, EventArgs e)
+    {
+      if (SuggestionsChanged != null)
+      {
+        SuggestionsChanged(sender, e);
+      }
+    }
 
 #if (DATABASE_ENABLED)
     private DataAccess.AutoWords _autoWords;
@@ -29,11 +38,11 @@ namespace SimpleTalk.Model
 #endif
     }
 
-    public List<string> ListSuggestions
+    public List<string> Suggestions
     {
       get
       {
-        return _listSuggestions;
+        return _Suggestions;
       }
     }
 
@@ -116,7 +125,8 @@ namespace SimpleTalk.Model
       if (string.IsNullOrEmpty(text))
       {
         //return empty list in case of empty string
-        _listSuggestions.Clear();  //This line should be uncommented in the final code 
+        Suggestions.Clear();  //This line should be uncommented in the final code 
+        OnSuggestionsChanged(this, new EventArgs());
 
         //for debugging:
         //_listSuggestions.Add("Clear list");
@@ -212,7 +222,7 @@ namespace SimpleTalk.Model
 
     public List<string> GetAutoCompleteList()
     {
-      return _listSuggestions;
+      return Suggestions;
     }
 
     public void Reset()
