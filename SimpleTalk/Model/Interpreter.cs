@@ -51,6 +51,16 @@ namespace SimpleTalk.Model
       }
     }
 
+    public event EventHandler AutoComplete;
+
+    private void OnAutoComplete(object sender, EventArgs e)
+    {
+      if (AutoComplete != null)
+      {
+        AutoComplete(sender, e);
+      }
+    }
+
     public void ProcessCommand(string command)
     {
       if (command.Length == 1 || Char.IsLetter(command[0]))
@@ -79,7 +89,8 @@ namespace SimpleTalk.Model
 
           case "&auto":
             //Call function that jumps to suggestions from auto completion
-            
+            OnAutoComplete(this, new EventArgs());
+
             //added for debugging
             _CommandOutput.Add("[auto]");
             break;

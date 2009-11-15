@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8D3D7248-4628-4AF1-BD8C-E876D5380936}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -91,15 +91,24 @@
     <Compile Include="DataAccess\AutoWords.cs" />
     <Compile Include="DataAccess\Database.cs" />
     <Compile Include="DataAccess\NextWords.cs" />
-    <Compile Include="GUI\AbcKeyboard.cs">
+    <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
+    <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
+    <Compile Include="GUI\Beheaviour\SimpleBeheaviour.cs" />
+    <Compile Include="GUI\Keyboard\ButtonEventArgs.cs" />
+    <Compile Include="GUI\Keyboard\CustomKeyPressedEventArgs.cs" />
+    <Compile Include="GUI\Keyboard\UpdateSelectionEventArgs.cs" />
+    <Compile Include="GUI\Layouts\AbcLayout.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GUI\ControlsKeyboard.cs" />
+    <Compile Include="GUI\Layouts\AutoCompleteLayout.cs" />
+    <Compile Include="GUI\Layouts\ButtoDefinition.cs" />
+    <Compile Include="GUI\Layouts\SettingsLayout.cs" />
     <Compile Include="GUI\CustomButtonEvent.cs" />
     <Compile Include="GUI\CustomForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\CustomKeyboard.cs" />
+    <Compile Include="GUI\Keyboard\CustomKeyboard.cs" />
+    <Compile Include="GUI\Layouts\CustomLayout.cs" />
     <Compile Include="GUI\frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,8 +121,9 @@
     <Compile Include="GUI\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ICustomButton.cs" />
-    <Compile Include="GUI\MostButton.cs">
+    <Compile Include="GUI\Keyboard\ICustomButton.cs" />
+    <Compile Include="GUI\Layouts\ICustomLayout.cs" />
+    <Compile Include="GUI\Keyboard\MostButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\AutoComplete.cs" />
@@ -145,6 +155,8 @@
     </None>
     <None Include="AudioFiles\Ja.wav" />
     <None Include="AudioFiles\Nee.wav" />
+    <None Include="Diagrams\Forms.cd" />
+    <None Include="Diagrams\Keyboard.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimpleTalk.GUI.RowButtons" Collapsed="true">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAhAAAAABAAEAACAAAAAAAAAAAAAIAAAgA=</HashCode>
+      <FileName>GUI\Keyboard\CustomKeyboard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Buttons" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SimpleTalk.GUI.CustomKeyboard" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="KeyboardBeheaviour" Type="SimpleTalk.GUI.ICustomBeheaviour" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.656" Y="3.75" />
+        <Point X="5.656" Y="3.375" />
+        <Point X="7.75" Y="3.375" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIAAAEAAAAIAAAgAADEAIAADAAgAAAAAEAAAAAAIQEI=</HashCode>
+      <FileName>GUI\Keyboard\CustomKeyboard.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="KeyboardBeheaviour" />
+      <Property Name="KeyboardLayout" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="RowButtons" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SimpleTalk.GUI.SettingsLayout" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQA=</HashCode>
+      <FileName>GUI\Layouts\SettingsLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleTalk.GUI.MostButton" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAACAgAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\Keyboard\MostButton.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Forms.Button" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SimpleTalk.GUI.SimpleBeheaviour" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAABAAAAIAAABAAAAAAIAAAAEAAAAAgEAiAAA=</HashCode>
+      <FileName>GUI\Beheaviour\SimpleBeheaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleTalk.GUI.CustomBeheaviour" Collapsed="true">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hAhAIEAAEBkAEAIAAABAAAAQAIAAQAQAAABAUCAuQQA=</HashCode>
+      <FileName>GUI\Beheaviour\CustomBeheaviour.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Keyboard" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleTalk.GUI.CustomLayout" Collapsed="true">
+    <Position X="1.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>GUI\Layouts\CustomLayout.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Keyboard" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleTalk.GUI.AbcLayout" Collapsed="true">
+    <Position X="2.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQA=</HashCode>
+      <FileName>GUI\Layouts\AbcLayout.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SimpleTalk.GUI.ICustomButton">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GUI\Keyboard\ICustomButton.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SimpleTalk.GUI.ICustomBeheaviour" Collapsed="true">
+    <Position X="7.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAEAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>GUI\Beheaviour\ICustomBeheaviour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SimpleTalk.GUI.ICustomLayout" Collapsed="true">
+    <Position X="1.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>GUI\Layouts\ICustomLayout.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
