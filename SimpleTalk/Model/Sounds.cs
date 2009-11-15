@@ -9,11 +9,11 @@ namespace SimpleTalk.Model
 {
     public enum SoundFiles
     {
-        Ja = 0,
-        Nee = 1
+        Ja,
+        Nee
     }
 
-    class Sounds
+    public class Sounds
     {
         private string _baseDirectory;
 

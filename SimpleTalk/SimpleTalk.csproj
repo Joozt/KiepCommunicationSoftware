@@ -128,6 +128,7 @@
     </Compile>
     <Compile Include="Model\AutoComplete.cs" />
     <Compile Include="Model\AutoWords.cs" />
+    <Compile Include="Model\Core.cs" />
     <Compile Include="Model\Interpreter.cs" />
     <Compile Include="Model\NextWords.cs" />
     <Compile Include="Model\Sounds.cs" />

@@ -38,17 +38,18 @@
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlControls.Location = new System.Drawing.Point(12, 12);
       this.pnlControls.Name = "pnlControls";
-      this.pnlControls.Size = new System.Drawing.Size(125, 513);
+      this.pnlControls.Size = new System.Drawing.Size(177, 513);
       this.pnlControls.TabIndex = 6;
       // 
-      // frmSetting
+      // frmSettings
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(740, 580);
       this.Controls.Add(this.pnlControls);
-      this.Name = "frmSetting";
+      this.Name = "frmSettings";
       this.Text = "Settings";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
       this.ResumeLayout(false);
 
     }

@@ -10,7 +10,7 @@ namespace SimpleTalk.GUI
   abstract class CustomBeheaviour : ICustomBeheaviour
   {
     private CustomKeyboard _Keyboard;
-    private TimeSpan _Timer;
+    private TimeSpan _Timer = new TimeSpan(0, 0, 0, 1); // Default 1 sec.
 
     TimeSpan _SelectDuration;
     bool _CancelSelection;
