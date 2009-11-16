@@ -6,14 +6,20 @@ PC platform hardware with windows XP.
 
 = Details =
 
-  * BoxPC HDMI audio working. 
-  * BoxPC new video drivers, still some minor issues might be related to TV. 
   * WinXP License available (Anton) 
-  * Cables available: HDMI-HDMI + HDMI-DVI (for using standard PC monitor) 
-  * (extra usb keyboard and mouse required?)
 
 Todo: 
   * Autostart program
-  * Increase partition size or make extra drive D:\
-  * Install visual studio C#
-  * Check display issues
+  * Test with hardware Joost
+
+Issues:
+  * Installing the database decreases performance, but this might also be related to the automatic updates of Windows XP (Have to check) Before making backup, issue has to be resolved.
+
+Current state:
+  * Partition 8GB
+  * No virusscan
+  * Visual studio installed
+  * SQL server installed
+
+Backup state:
+  * SQL server not installed
