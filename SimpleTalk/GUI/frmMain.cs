@@ -27,7 +27,7 @@ namespace SimpleTalk.GUI
     private TextToSpeech _TextToSpeech;
 
     private bool _AutoActive;
-
+    private int W2;
     //private bool _keyPressed = false;
 
     public frmMain()
@@ -54,6 +54,16 @@ namespace SimpleTalk.GUI
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
+
+      CreateProcessWindow();
+    }
+
+    void CreateProcessWindow()
+    {
+        _TextToSpeech.MakeProcess();
+
+        ActiveWindow AW = new ActiveWindow();
+        W2 = AW.GetActiveWindow();
     }
 
     void OnSuggestionsChanged(object sender, EventArgs e)
@@ -156,13 +166,15 @@ namespace SimpleTalk.GUI
     private void button4_Click(object sender, EventArgs e)
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
-      _TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt");
+        //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
+        _TextToSpeech.Say(txtOutput.Text, W2);
     }
 
     private void button5_Click(object sender, EventArgs e)
     {
       // Possiblity to stop a very long text
-      _TextToSpeech.StopSpeaking();
+      _TextToSpeech.StopSpeaking(W2);
+      CreateProcessWindow();
     }
 
     private void button6_Click(object sender, EventArgs e)

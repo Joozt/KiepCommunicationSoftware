@@ -1,0 +1,9 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=004A9232
+eax=6B627668 ebx=6B627668 ecx=0022F702 edx=0A04367C esi=0022F650 edi=00497550
+ebp=0022F628 esp=0022F610 program=c:\Project\festivalbinaries\nextens\bin\festival.exe
+cs=001B ds=0023 es=0023 fs=003B gs=0000 ss=0023
+Stack trace:
+Frame     Function  Args
+0022F628  004A9232  (6B627668, 0022F650, 004A9A3E, 0061C319)
+0022F6E8  004A9AEC  (6B627668, 6F77766E, 6664715B, 7A766B62)
+      4 [main] festival 4040 handle_exceptions: Error while dumping state (probably corrupted stack)

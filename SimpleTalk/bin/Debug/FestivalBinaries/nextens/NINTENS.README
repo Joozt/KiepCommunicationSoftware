@@ -1,0 +1,219 @@
+======================================================================
+NINTENS.README
+======================================================================
+
+NINTENS: Nederlands Interface voor Tekst naar Spraak
+         'Dutch Interface for Text to Speech'
+
+Version: 1.0 beta, February 2003
+
+http://nextens.uvt.nl
+
+
+Principal authors: Albert Russel, Erwin Marsi, Joop Kerkhoff
+
+
+Induction of Linguistic Knowledge Group 
+Computational Linguistics and AI section
+Tilburg University
+P.O. Box 90153
+5000 LE Tilburg
+The Netherlands
+
+Department of Language and Speech
+University of Nijmegen
+P.O. Box 9103
+6500 HD Nijmegen
+The Netherlands
+
+Stichting Spraaktechnologie
+Trans 10
+3512 JK Utrecht 
+The Netherlands
+
+
+
+----------------------------------------------------------------------
+SUMMARY
+----------------------------------------------------------------------
+
+This the README file for the NINTENS source distribution. NINTENS
+stands for 'Nederlandse Interface voor Tekst-naar-Spraak' (Dutch
+Interface for text-to-speech). It is a graphical user interface on top
+of NEXTENS, which is a system for Dutch text-to-speech conversion
+based on the Festival speech synthesis system. NINTENS runs on both
+Linux, and Cygwin under MS Windows. For more information, see
+http://nextens.uvt.nl.
+
+
+--------------------------------------------------------------------------------
+LICENSE
+--------------------------------------------------------------------------------
+
+Conditions on usage and/or copying of the NINTENS software are defined
+in the files NINTENS.COPYING and NINTENS.LICENSE.
+
+
+----------------------------------------------------------------------
+REQUIREMENTS
+----------------------------------------------------------------------
+
+Supported Systems
+-----------------
+
+We have successfully compiled and tested NINTENS on the following
+systems: 
+
+- Linux i386 (2.4): 
+  Slackware 8.1 with gcc-2.95.3, 
+  RedHat 8.0 with gcc 3.2
+
+- MS Windows (98,2000,XP) under Cygwin (1.3.19) with gcc-3.2.3
+
+It will probably compile on other Unix platforms and with other
+versions of gcc well.
+
+
+
+Dependencies
+------------
+
+Before trying to compile the NINTENS sources, make sure that you have:
+
+1) Succesfully build and installed NEXTENS, version 1.0 
+   (see http://nextens.uvt.nl).
+
+2) Succesfully build wxWindows (see http://www.wxwindows.org/).
+
+   On Linux, we have tested with wxGTK, version 2.9.2 or 2.4.0.
+   On Cygwin, you need wxMSW, version 2.9.3 or 2.4.0 
+
+   Note: do *not* call 'make clean' after compilation!
+
+
+----------------------------------------------------------------------
+BUILDING
+----------------------------------------------------------------------
+
+
+1. Change directory to the one that contains the 'festival' and
+   'speech_tools' directories
+
+2. Unpack the Nintens sources with 'tar xvzf nintens-src-1.0-beta.tar.gz'
+
+   Do *not* use Windows zip programs (e.g. WinZip), as they may
+   corrupts the file format.
+
+3. Change to the Nintens directory.  There are 2 Makefiles:
+   'Makefile.linux' and 'Makefile.cygwin'.  Copy the file appropriate
+   for your platform to 'Makefile'.
+
+4. Change the variable WXDIR so that it points to the root directory
+   of your wxWindows sources. For instance:
+  
+	WXDIR = /usr/local/src/wxGTK-2.4.0
+
+   That should be sufficient. Optionally, modify these paths as well:
+
+   - The directory of where the speech tools and festival reside. By
+     default, this is the same directory where the nintens directory
+     resides.
+ 
+	FESTDIR = ..
+
+   - The directory of the Nintens sources (on Linux only). By default,
+     it is the current directory.
+
+	PROGRAM_DIR = ./
+
+5. Type 'make' to build the program. On Linux this will result in a
+   'Nintens' binary; on Cygwin this will give a 'Nintens.exe'.
+
+	
+----------------------------------------------------------------------
+USAGE
+----------------------------------------------------------------------
+
+Linux
+-----
+
+To start NINTENS, execute the simple Bash shell script called
+'nintens'.
+
+Alternatively, you can run NINTENS manually. The 'Nintens' executable
+expects 2 commandline parameters:
+
+    1. the path to the festival lib directory
+    2. the path to a directory in which the log files will be saved
+
+For instance, the Linux version can be started with:
+
+	Nintens ../festival/lib /tmp
+
+Please notice that both paths have *no* trailing slashes!
+
+
+Cygwin
+------
+
+To start NINTENS, execute the simple batch file called 'nintens.bat'.
+
+Alternatively, you can run NINTENS manually. The 'Nintens.exe'
+executable expects 2 commandline parameters:
+
+    1. the path to the festival lib directory
+    2. the path to a directory in which the log files will be saved
+
+The Cygwin version can thus be started through a Bash shell in the
+following way (assuming that you have 'sh.exe' in your Windows PATH):
+
+	sh -c "nextens ../festival/lib C:/WINDOWS/TEMP"
+
+Please notice that both paths have *no* trailing slashes!
+
+
+Note: if you run into trouble, make sure that the $HOME environment
+variable is set.
+
+----------------------------------------------------------------------
+CONFIGURATION
+----------------------------------------------------------------------
+
+On Linux, you can set the default fonts that Nintens must use in the
+file festival/lib/nintens.scm.
+
+
+----------------------------------------------------------------------
+DOCUMENTATION
+----------------------------------------------------------------------
+
+Further documentation can be found in the directory
+festdoc-1.4.[23]/nintens
+
+
+----------------------------------------------------------------------
+KNOWN ISSUES
+----------------------------------------------------------------------
+
+- The Linux binary cannot be distributed, because the path to the
+  wxLibraries is currently hard coded in the executable
+
+
+----------------------------------------------------------------------
+ACKNOWLEDGEMENTS
+----------------------------------------------------------------------
+
+NINTENS was developed by Albert Russel from Plankton (C++ code), Erwin
+Marsi from the University of Tilburg (Scheme interfacing code), and
+Joop Kerkhoff from the University of Nijmegen (Scheme interfacing
+code) within the NEXTENS project, which received financial support
+from Stichting Spraaktechnologie.
+
+As NINTENS is build on top of the NEXTENS software, see also the
+section "ACKNOWLEDGEMENTS" in the file NEXTENS.README.
+
+
+
+$Id: NINTENS.README,v 1.5 2003/02/12 10:26:34 emarsi Exp $
+
+
