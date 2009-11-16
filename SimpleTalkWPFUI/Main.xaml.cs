@@ -12,8 +12,10 @@ namespace SimpleTalkWPFUI
     /// </summary>
     public partial class Main : Window
     {
-        private const int INTERVAL = 1000;
+        private const int INTERVAL = 2000;
         private const bool AUTORESTARTAFTERSELECTION = true;
+        private const int FONTSIZEDEFAULT = 60;
+        private const int FONTSIZETEXTBOX = 80;
 
 
         private System.Timers.Timer _Timer = new System.Timers.Timer(INTERVAL);
@@ -25,6 +27,8 @@ namespace SimpleTalkWPFUI
         {
             InitializeComponent();
             _Timer.Elapsed += new System.Timers.ElapsedEventHandler(_Timer_Elapsed);
+            this.FontSize = FONTSIZEDEFAULT;
+            txtOutput.FontSize = FONTSIZETEXTBOX;
         }
 
         void _Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -73,10 +77,14 @@ namespace SimpleTalkWPFUI
 
                         if (Grid.GetRow(dockPanel) == rowNumber)
                         {
-                            dockPanel.Background = Brushes.White;
+                            // Frozen colors cannot be animated
+                            if (dockPanel.Background.IsFrozen)
+                            {
+                                dockPanel.Background = dockPanel.Background.CloneCurrentValue();
+                            }
 
-                            //ColorAnimation animation = new ColorAnimation(Colors.Transparent, Colors.White, new Duration(new System.TimeSpan(0,0,0,0,200)));
-                            //dockPanel.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
+                            ColorAnimation animation = new ColorAnimation(Colors.Transparent, Colors.White, new Duration(new System.TimeSpan(0, 0, 0, 0, 500)));
+                            dockPanel.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
                         }
                         else
                         {
@@ -107,7 +115,14 @@ namespace SimpleTalkWPFUI
                         {
                             if (Grid.GetColumn(dockPanel) == columnNumber)
                             {
-                                dockPanel.Background = Brushes.White;
+                                // Frozen colors cannot be animated
+                                if (dockPanel.Background.IsFrozen)
+                                {
+                                    dockPanel.Background = dockPanel.Background.CloneCurrentValue();
+                                }
+
+                                ColorAnimation animation = new ColorAnimation(Colors.Transparent, Colors.White, new Duration(new System.TimeSpan(0, 0, 0, 0, 500)));
+                                dockPanel.Background.BeginAnimation(SolidColorBrush.ColorProperty, animation);
                             }
                             else
                             {
@@ -154,25 +169,25 @@ namespace SimpleTalkWPFUI
                         Button button = dockPanel.Children[0] as Button;
                         if (button != null)
                         {
-                            result = button.Content.ToString().ToLower();
+                            result = button.Content.ToString().ToUpper();
                             break;
                         }
                     }
                 }
             }
 
-            if (result.Equals("space"))
+            if (result.Equals("SPACE"))
             {
-                result = " ";
+                result = "_";
             }
 
-            if (result.Equals("clear"))
+            if (result.Equals("CLEAR"))
             {
                 txtOutput.Clear();
                 result = "";
             }
 
-            if (result.Equals("back"))
+            if (result.Equals("BACK"))
             {
                 if (txtOutput.Text.Length >= 1)
                 {
@@ -228,6 +243,12 @@ namespace SimpleTalkWPFUI
                 HighlightRow(2);
                 _Timer.Start();
             }
+        }
+
+        private void Window_Deactivated(object sender, System.EventArgs e)
+        {
+            this.Topmost = true;
+            this.Activate();
         }
     }
 }
