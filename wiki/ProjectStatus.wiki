@@ -14,7 +14,7 @@ Project status, responsible persons and due dates  are given in the table below
 ||[Sounds]||Maarten || ||M1|| ||
 ||[TextToSpeech]||Marc|| ||M2|| ||
 ||[HID]||Rob/Sjors||Ready||M1|| ||
-||[Hardware]||Willem/Sjors||Ready||M1|| ||
+||[Hardware]||Willem/Sjors||Ready*||M1||* Database server is running but could not test it with project||
 
 == Milestones ==
  * *M1* 1st release
