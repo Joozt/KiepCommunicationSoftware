@@ -93,7 +93,7 @@ namespace SimpleTalk.Model
       //Todo: make database connection and return word list.
 
 #if (DATABASE_ENABLED)
-      _listSuggestions = _autoWords.GetWordList(word);
+      _Suggestions = _autoWords.GetWordList(word);
 #endif
 
       //for debugging:
@@ -105,7 +105,7 @@ namespace SimpleTalk.Model
       //Todo: make database connection and return next word list.
 
 #if (DATABASE_ENABLED)
-      _listSuggestions = _nextWords.GetNextWordList(word);
+      _Suggestions = _nextWords.GetNextWordList(word);
 #endif
 
       //for debugging:
