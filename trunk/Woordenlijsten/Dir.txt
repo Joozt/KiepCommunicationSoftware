@@ -1,0 +1,6 @@
+Woordenlijsten om database te vullen;
+
+File                                Opmerking                           Bron
+basiswoorden_adam.xls               AD: nagelopen tor regel 3212        http://amsterdam.nl/@184044/basiswoordenlijst/
+basiswoorden_OpenTaal_110G.txt      140.000 woorden                     www.OpenTaal.org
+1000_basiswoorden_wiki.txt                                              http://nl.wiktionary.org/wiki/Categorie:Woordenlijsten
