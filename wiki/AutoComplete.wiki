@@ -5,7 +5,10 @@
 Automatic word completion and next word suggestion function.
 
 
-= Features =
-
-Add your content here.
-  * 
+= Initial database content =
+The database will be initially filled with the words in the files below
+ * "basiswoorden_OpenTaal_110G.txt" (with wordCnt = -1, so these words are only used after typed one time manually)
+ * "Joost_woorden.xls" (with wordCnt = 0)
+ * "1000_basiswoorden_wiki.txt" (with wordCnt = 0)
+ * "basiswoorden_adam.xls" (with wordCnt = 0)                                  
+The last 2 files are used so the auto completion feature is functional directly after installation of the ProMo
