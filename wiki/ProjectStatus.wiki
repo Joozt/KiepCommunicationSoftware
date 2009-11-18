@@ -21,11 +21,36 @@ Project status, responsible persons and due dates  are given in the table below
  * *M2* 1st upgrade
 
 == To do ==
+_Sjors/Rob_
+ * Button hardware should be reconsidered
+_Marc_
+ * Command window of text to speech should be hidden and closed when the program is closed
+_Marcel_ 
  * Make database connection in a nice way
+_Marcel/Anton_
  * Add word lists to database with the correct offsets
  * Make a script or function for adding Joost specific words easily to the database
+ * Remove double words from the word list "basiswoorden_OpenTaal_110G.txt" e.g. Ben and ben. Remove the word with the capital.
+ * covert all letters on screen to upper case (so they are better readable)
+ * Remove debugging buttons/boxes from the main form
+_Anton_
  * Only give next word suggestions when there are 3 or more options in the database to make it hard for regenerate the last sentences. (Privacy issue)
- * 
+ * Use monospace letters (every char on the screen should have the same width)
+ * Print underscore "`_`" in stead of space " " (give user feedback when space button is pressed)(Note that the auto word warping of the textbox will probably not function anymore with underscores)
+ * Add auto suggestions the the buttons of the from
+ * Add text to speech button on main form keyboard
+ * Finish the settings menu layout
+_Willem_
+ * Test WPF on the BoxPC
+ * Setup database on the BoxPC correctly
+_Paul_
+ * Make it possible to switch on and off functions
+ * Make release version and add this version to the download section
+ * Finish the settings menu implementation
+_not assigned tasks_
+ * Increase contrast between letter and background
+ * Increase contrast between selection bar and letter  
+ * Start with scanning after character/button is selected. Do not automatic restart when no button is selected.
 
 == Results first demo for Joost ==
 Use software version r82 for demonstration to Joost on 13-11-2009.
