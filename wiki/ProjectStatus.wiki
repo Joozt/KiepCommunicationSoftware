@@ -51,7 +51,7 @@ _Paul_
 _not assigned tasks_
  * Increase contrast between letter and background
  * Increase contrast between selection bar and letter  
-
+ * Autostart program
 
 == Results first demo for Joost ==
 Use software version r82 for demonstration to Joost on 13-11-2009.
