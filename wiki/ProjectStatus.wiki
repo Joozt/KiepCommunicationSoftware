@@ -20,6 +20,13 @@ Project status, responsible persons and due dates  are given in the table below
  * *M1* 1st release
  * *M2* 1st upgrade
 
+== To do ==
+ * Make database connection in a nice way
+ * Add word lists to database with the correct offsets
+ * Make a script or function for adding Joost specific words easily to the database
+ * Only give next word suggestions when there are 3 or more options in the database to make it hard for regenerate the last sentences. (Privacy issue)
+ * 
+
 == Results first demo for Joost ==
 Use software version r82 for demonstration to Joost on 13-11-2009.
 Note that the auto completion database was working during the demonstration. 
