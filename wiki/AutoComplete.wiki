@@ -12,3 +12,4 @@ The database will be initially filled with the words in the files below
  * "1000_basiswoorden_wiki.txt" (with wordCnt = 0)
  * "basiswoorden_adam.xls" (with wordCnt = 0)                                  
 The last 2 files are used so the auto completion feature is functional directly after installation of the ProMo
+_NOTE: do not enter spaces behind the words in the the word lists_
