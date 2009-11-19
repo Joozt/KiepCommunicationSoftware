@@ -118,6 +118,8 @@ namespace SimpleTalk.Model
 
       //for debugging:
       //_listSuggestions.Add("GetNextWord(" + word + ")");
+
+      OnSuggestionsChanged(this, new EventArgs());
     }
 
     public void OnTextChanged(string text)

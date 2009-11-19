@@ -86,45 +86,60 @@ namespace SimpleTalk.Model
       }
       else
       {
-        switch (command)
+        //Check if command is word for autocompletion
+        if (command[0] == '#')
         {
-          case "&back":
-            //back space action
-            if (!String.IsNullOrEmpty(_TextOutput))
-            {
-              _TextOutput = _TextOutput.Remove(_TextOutput.Length - 1);
-            }
-            break;
+          //Relpace partial word with complete word and add space
 
-          case "&menu":
-            //Call menu that jumps to menu form
-            _CommandOutput.Add("[menu]");
-            frmSettings formSettings = new frmSettings();
-            formSettings.ShowDialog();
-            //throw new NotImplementedException();
-            break;
+          _TextOutput = _TextOutput + "_" + command.TrimStart('#') +" ";
+            
+          //Or add next word and add space
+          ///_TextOutput += "#";
 
-          case "&auto":
-            //Call function that jumps to suggestions from auto completion
-            OnAutoComplete(this, new EventArgs());
-
-            //added for debugging
-            _CommandOutput.Add("[auto]");
-            break;
-
-          case "&space":
-            _TextOutput += " ";
-            break;
-
-          case "&clear":
-            _TextOutput = "";
-            break;
-
-          default:
-            //Todo: insert nice exception handler.
-            _CommandOutput.Add("[ERROR]");
-            break;
+          //_TextOutput += "#";
         }
+        else
+        {
+          switch (command)
+          {
+            case "&back":
+              //back space action
+              if (!String.IsNullOrEmpty(_TextOutput))
+              {
+                _TextOutput = _TextOutput.Remove(_TextOutput.Length - 1);
+              }
+              break;
+
+            case "&menu":
+              //Call menu that jumps to menu form
+              _CommandOutput.Add("[menu]");
+              frmSettings formSettings = new frmSettings();
+              formSettings.ShowDialog();
+              //throw new NotImplementedException();
+              break;
+
+            case "&auto":
+              //Call function that jumps to suggestions from auto completion
+              OnAutoComplete(this, new EventArgs());
+
+              //added for debugging
+              _CommandOutput.Add("[auto]");
+              break;
+
+            case "&space":
+              _TextOutput += " ";
+              break;
+
+            case "&clear":
+              _TextOutput = "";
+              break;
+
+            default:
+              //Todo: insert nice exception handler.
+              _CommandOutput.Add("[ERROR]");
+              break;
+          }
+        }      
       }
       OnTextChanged(this, new EventArgs());
     }
