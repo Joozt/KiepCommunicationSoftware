@@ -29,7 +29,8 @@ namespace SimpleTalk.GUI
     private bool _AutoActive;
     private int W2;
     //private bool _keyPressed = false;
-
+    private Font _defaultFont = new Font("Consolas", 38.00F, FontStyle.Bold);
+   
     public frmMain()
     {
       InitializeComponent();
@@ -54,6 +55,9 @@ namespace SimpleTalk.GUI
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
+
+      txtOutput.Font = _defaultFont;
+      OnTextChanged(this, new EventArgs());
 
       CreateProcessWindow();
     }
@@ -201,12 +205,15 @@ namespace SimpleTalk.GUI
 
     private void txtOutput_TextChanged(object sender, EventArgs e)
     {
-       _AutoComplete.OnTextChanged(txtOutput.Text);
+      /* _AutoComplete.OnTextChanged(txtOutput.Text);
       lbAutoSuggestions.Items.Clear();
       foreach (string item in _AutoComplete.GetAutoCompleteList())
       {
         lbAutoSuggestions.Items.Add(item);
-      }
+      }*/
+
+      _AutoComplete.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
+      
     }
 
     private void label1_Click(object sender, EventArgs e)

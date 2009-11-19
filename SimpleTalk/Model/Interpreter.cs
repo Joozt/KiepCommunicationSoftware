@@ -9,6 +9,7 @@ namespace SimpleTalk.Model
   public class Interpreter
   {
     private string _TextOutput;
+    private string _TextOutputUpper;
 
     //added for debugging
     private List<string> _CommandOutput= new List<string>();
@@ -17,12 +18,28 @@ namespace SimpleTalk.Model
     {
       get
       {
-        return _TextOutput;
+        if (!String.IsNullOrEmpty(_TextOutput))
+        {
+          _TextOutputUpper = _TextOutput.ToUpper() + '|';
+        }
+        else
+        {
+          _TextOutputUpper = "|";
+        }
+        return _TextOutputUpper;
       }
       set
       {
         _TextOutput = value;
         OnTextChanged(this, new EventArgs());
+      }
+    }
+
+    public string TextAutoComplete
+    {
+      get
+      {
+        return _TextOutput;
       }
     }
 
@@ -65,7 +82,7 @@ namespace SimpleTalk.Model
     {
       if (command.Length == 1 || Char.IsLetter(command[0]))
       {
-        TextOutput += command;
+        _TextOutput += command;
       }
       else
       {
@@ -73,9 +90,9 @@ namespace SimpleTalk.Model
         {
           case "&back":
             //back space action
-            if (!String.IsNullOrEmpty(TextOutput))
+            if (!String.IsNullOrEmpty(_TextOutput))
             {
-              TextOutput = TextOutput.Remove(TextOutput.Length - 1);
+              _TextOutput = _TextOutput.Remove(_TextOutput.Length - 1);
             }
             break;
 
@@ -96,11 +113,11 @@ namespace SimpleTalk.Model
             break;
 
           case "&space":
-            TextOutput += " ";
+            _TextOutput += " ";
             break;
 
           case "&clear":
-            TextOutput = "";
+            _TextOutput = "";
             break;
 
           default:
@@ -109,6 +126,7 @@ namespace SimpleTalk.Model
             break;
         }
       }
+      OnTextChanged(this, new EventArgs());
     }
   }
 }

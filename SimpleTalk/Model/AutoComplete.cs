@@ -97,16 +97,24 @@ namespace SimpleTalk.Model
 #endif
 
       //for debugging:
-      //_listSuggestions.Add("GetByWord(" + word + ")");
+      _Suggestions.Add(word);
+
+      OnSuggestionsChanged(this, new EventArgs());
     }
 
     private void GetNextWordList(string word)
     {
-      //Todo: make database connection and return next word list.
-
+      
 #if (DATABASE_ENABLED)
       _Suggestions = _nextWords.GetNextWordList(word);
 #endif
+
+      //Gives only next word suggestions when there are 3 or more options in the database to make it hard for regenerate the last typed sentences. (Privacy issue)
+      if (_Suggestions.Count() < 3)
+      {
+        _Suggestions.Clear();
+      }
+
 
       //for debugging:
       //_listSuggestions.Add("GetNextWord(" + word + ")");
@@ -117,8 +125,14 @@ namespace SimpleTalk.Model
       //note that C# adds "\r\n" to the end of a line. 
       //"\r\n" should also be added when a on screen buton "carriage return" is implemented
 
-      textLength = text.Length;
-
+      if (string.IsNullOrEmpty(text))
+      {
+        textLength = 0;
+      }
+      else
+      {
+        textLength = text.Length;
+      }
       //for debugging:
       //_listSuggestions.Clear();
 
