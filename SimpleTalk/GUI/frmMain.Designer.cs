@@ -33,6 +33,10 @@ namespace SimpleTalk.GUI
           this.pnlKeyboard = new System.Windows.Forms.Panel();
           this.txtOutput = new System.Windows.Forms.TextBox();
           this.gbTest = new System.Windows.Forms.GroupBox();
+          this.buttonClearDatabase = new System.Windows.Forms.Button();
+          this.numericUpDownCountOffset = new System.Windows.Forms.NumericUpDown();
+          this.buttonImport = new System.Windows.Forms.Button();
+          this.textBoxFilePathName = new System.Windows.Forms.TextBox();
           this.button12 = new System.Windows.Forms.Button();
           this.button11 = new System.Windows.Forms.Button();
           this.button10 = new System.Windows.Forms.Button();
@@ -52,6 +56,7 @@ namespace SimpleTalk.GUI
           this.btnGetAutoList = new System.Windows.Forms.Button();
           this.pnlAutoComplete = new System.Windows.Forms.Panel();
           this.gbTest.SuspendLayout();
+          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCountOffset)).BeginInit();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).BeginInit();
           this.SuspendLayout();
           // 
@@ -81,6 +86,10 @@ namespace SimpleTalk.GUI
           // 
           this.gbTest.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.gbTest.Controls.Add(this.buttonClearDatabase);
+          this.gbTest.Controls.Add(this.numericUpDownCountOffset);
+          this.gbTest.Controls.Add(this.buttonImport);
+          this.gbTest.Controls.Add(this.textBoxFilePathName);
           this.gbTest.Controls.Add(this.button12);
           this.gbTest.Controls.Add(this.button11);
           this.gbTest.Controls.Add(this.button10);
@@ -104,6 +113,45 @@ namespace SimpleTalk.GUI
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
+          // 
+          // buttonClearDatabase
+          // 
+          this.buttonClearDatabase.Location = new System.Drawing.Point(6, 186);
+          this.buttonClearDatabase.Name = "buttonClearDatabase";
+          this.buttonClearDatabase.Size = new System.Drawing.Size(75, 23);
+          this.buttonClearDatabase.TabIndex = 30;
+          this.buttonClearDatabase.Text = "Clear";
+          this.buttonClearDatabase.UseVisualStyleBackColor = true;
+          this.buttonClearDatabase.Click += new System.EventHandler(this.buttonClearDatabase_Click);
+          // 
+          // numericUpDownCountOffset
+          // 
+          this.numericUpDownCountOffset.Location = new System.Drawing.Point(6, 91);
+          this.numericUpDownCountOffset.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
+          this.numericUpDownCountOffset.Name = "numericUpDownCountOffset";
+          this.numericUpDownCountOffset.Size = new System.Drawing.Size(120, 20);
+          this.numericUpDownCountOffset.TabIndex = 29;
+          // 
+          // buttonImport
+          // 
+          this.buttonImport.Location = new System.Drawing.Point(6, 143);
+          this.buttonImport.Name = "buttonImport";
+          this.buttonImport.Size = new System.Drawing.Size(75, 23);
+          this.buttonImport.TabIndex = 28;
+          this.buttonImport.Text = "Import";
+          this.buttonImport.UseVisualStyleBackColor = true;
+          this.buttonImport.Click += new System.EventHandler(this.buttonImportWords_Click);
+          // 
+          // textBoxFilePathName
+          // 
+          this.textBoxFilePathName.Location = new System.Drawing.Point(6, 117);
+          this.textBoxFilePathName.Name = "textBoxFilePathName";
+          this.textBoxFilePathName.Size = new System.Drawing.Size(138, 20);
+          this.textBoxFilePathName.TabIndex = 27;
           // 
           // button12
           // 
@@ -320,6 +368,7 @@ namespace SimpleTalk.GUI
           this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
           this.gbTest.ResumeLayout(false);
           this.gbTest.PerformLayout();
+          ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCountOffset)).EndInit();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).EndInit();
           this.ResumeLayout(false);
           this.PerformLayout();
@@ -349,6 +398,10 @@ namespace SimpleTalk.GUI
         private Button button9;
         private Button button12;
         private Button button11;
+        private Button buttonImport;
+        private TextBox textBoxFilePathName;
+        private NumericUpDown numericUpDownCountOffset;
+        private Button buttonClearDatabase;
     }
 }
 

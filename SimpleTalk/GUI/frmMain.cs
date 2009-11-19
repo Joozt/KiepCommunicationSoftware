@@ -145,7 +145,7 @@ namespace SimpleTalk.GUI
 
     private void button1_Click(object sender, EventArgs e)
     {
-      _AutoComplete.Reset();
+      _AutoComplete.ResetDatabase();
     }
 
     private void button2_Click(object sender, EventArgs e)
@@ -226,6 +226,8 @@ namespace SimpleTalk.GUI
       // TODO: Automatically stop selection when stopping the application
       _SimpleBeheaviour.StopSelection();
       _AutoBeheaviour.StopSelection();
+
+      _AutoComplete.Dispose();
       DataAccess.Database.Disconnect();
     }
 
@@ -265,6 +267,16 @@ namespace SimpleTalk.GUI
     private void button8_Click(object sender, EventArgs e)
     {
       Core.Instance.Interpreter.ProcessCommand("&menu");
+    }
+
+    private void buttonImportWords_Click(object sender, EventArgs e)
+    {
+      _AutoComplete.ImportWords(textBoxFilePathName.Text, Convert.ToInt32(numericUpDownCountOffset.Value), 0);
+    }
+
+    private void buttonClearDatabase_Click(object sender, EventArgs e)
+    {
+      _AutoComplete.ClearDatabase();
     }
   }
 }

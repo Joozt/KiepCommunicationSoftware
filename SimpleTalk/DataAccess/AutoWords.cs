@@ -92,6 +92,7 @@ namespace SimpleTalk.DataAccess
       try
       {
         int recordsAffected = Database.ExecuteQuery("AutoWords_Modify",
+                                                    new SqlParameter("@WordID", modifiedWord.WordID),
                                                     new SqlParameter("@Word", modifiedWord.Word),
                                                     new SqlParameter("@Count", modifiedWord.Count),
                                                     new SqlParameter("@Deleted", modifiedWord.Deleted),
@@ -301,6 +302,25 @@ namespace SimpleTalk.DataAccess
       try
       {
         Database.ExecuteQuery("AutoWords_Reset");
+      }
+      catch
+      {
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
+    }
+
+    public void Clear()
+    {
+      try
+      {
+        Database.ExecuteQuery("AutoWords_Clear");
       }
       catch
       {
