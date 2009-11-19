@@ -33,6 +33,8 @@ namespace SimpleTalk.Model
     public AutoComplete()
     {
 #if (DATABASE_ENABLED)
+      DataAccess.Database.Connect();
+
       _autoWords = new DataAccess.AutoWords();
       _nextWords = new DataAccess.NextWords();
 #endif

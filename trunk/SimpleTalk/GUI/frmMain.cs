@@ -226,6 +226,7 @@ namespace SimpleTalk.GUI
       // TODO: Automatically stop selection when stopping the application
       _SimpleBeheaviour.StopSelection();
       _AutoBeheaviour.StopSelection();
+      DataAccess.Database.Disconnect();
     }
 
     private void button11_Click(object sender, EventArgs e)
