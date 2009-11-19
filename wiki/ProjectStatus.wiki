@@ -30,7 +30,7 @@ _Marcel_
 _Marcel/Anton_
  * Add word lists to database with the correct offsets
  * Make a script or function for adding Joost specific words easily to the database
- * Remove double words from the word list "basiswoorden_OpenTaal_110G.txt" e.g. Ben and ben. Remove the word with the capital.
+ * Remove double words from the word list "`basiswoorden_OpenTaal_110G.txt`" e.g. Ben and ben. Remove the word with the capital.
  * covert all letters on screen to upper case (so they are better readable)
  * Remove debugging buttons/boxes from the main form
 _Anton_
