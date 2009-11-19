@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace SimpleTalk.DataAccess
 {
@@ -13,146 +14,180 @@ namespace SimpleTalk.DataAccess
   {
     private const string CLASSNAME = "DataAccess.AutoWords";
 
-    public Int32 Add(Model.AutoWord newWord)
+    private Database _database = new Database();
+    private DbDataReader _dataReader = null;
+    private DataSet _dataSet = null;
+
+    public void Dispose()
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        DbParameter WordIDParam = DbHelper.CreateOutputParameter("@WordID", SqlDbType.Int);
+        if (_dataSet != null)
+        {
+          _dataSet.Dispose();
+        }
 
-        int recordsAffected = helper.ExecuteSPNonQuery("AutoWords_Add",
-  WordIDParam,
-  DbHelper.CreateInputParameter("@Word", newWord.Word),
-  DbHelper.CreateInputParameter("@Count", newWord.Count),
-  DbHelper.CreateInputParameter("@Deleted", newWord.Deleted),
-  DbHelper.CreateInputParameter("@Added", newWord.Added));
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+          _dataReader.Dispose();
+        }
 
-        if (recordsAffected == 0)
-          throw new Exception(String.Format("Could not add Word with ID '{0}'", newWord.WordID));
-
-        return (Int32)WordIDParam.Value;
+        if (_database != null)
+        {
+          _database.Disconnect();
+        }
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
     }
 
+    public void Add(Model.AutoWord newWord)
+    {
+      try
+      {
+        _database.ExecuteQuery("AutoWords_Add",
+                               new SqlParameter("@Word", newWord.Word),
+                               new SqlParameter("@Count", newWord.Count),
+                               new SqlParameter("@Deleted", newWord.Deleted),
+                               new SqlParameter("@Added", newWord.Added));
+      }
+      catch
+      {
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
+    }
 
     public void Delete(Model.AutoWord word)
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        int recordsAffected = helper.ExecuteSPNonQuery("AutoWords_Delete",
-                          DbHelper.CreateInputParameter("@WordID", word.WordID));
+        int recordsAffected = _database.ExecuteQuery("AutoWords_Delete",
+                                                     new SqlParameter("@WordID", word.WordID));
 
+        if (recordsAffected == 0)
+        {
+          throw new Exception(string.Format("Unable to delete Word with ID '{0}'", word.WordID));
+        }
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
     }
-
-
 
     public void Modify(Model.AutoWord modifiedWord)
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        int recordsAffected = helper.ExecuteSPNonQuery("AutoWords_Modify",
-                  DbHelper.CreateInputParameter("@WordID", modifiedWord.WordID),
-        DbHelper.CreateInputParameter("@Word", modifiedWord.Word),
-        DbHelper.CreateInputParameter("@Count", modifiedWord.Count),
-        DbHelper.CreateInputParameter("@Deleted", modifiedWord.Deleted),
-        DbHelper.CreateInputParameter("@Added", modifiedWord.Added));
-
+        int recordsAffected = _database.ExecuteQuery("AutoWords_Modify",
+                                                     new SqlParameter("@Word", modifiedWord.Word),
+                                                     new SqlParameter("@Count", modifiedWord.Count),
+                                                     new SqlParameter("@Deleted", modifiedWord.Deleted),
+                                                     new SqlParameter("@Added", modifiedWord.Added));
+ 
         if (recordsAffected == 0)
         {
-          throw new Exception(string.Format("Could not modify Word with ID '{0}'", modifiedWord.WordID));
+          throw new Exception(string.Format("Unable to modify Word with ID '{0}'", modifiedWord.WordID));
         }
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
     }
-
-
 
     public Model.AutoWord GetById(Int32 wordID)
     {
-      DbDataReader reader = null;
       try
       {
+        _dataReader = _database.GetDataReader("AutoWords_GetById",
+                                              new SqlParameter("@WordID", wordID));
 
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
+        Model.AutoWord autoWord = null;
 
-        reader = helper.ExecuteSPReader("AutoWords_GetById",
-              DbHelper.CreateInputParameter("@WordID", wordID));
+        if (_dataReader.Read())
+        {
+          autoWord = CreateAutoWord(_dataReader);
+        }
 
-        Model.AutoWord result = null;
-        if (reader.Read())
-          result = CreateWord(reader);
-        return result;
+        return autoWord;
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
       finally
       {
-        if (reader != null)
-          reader.Close();
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
-
-
-
 
     public List<Model.AutoWord> GetAll()
     {
-      DbDataReader reader = null;
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        reader = helper.ExecuteSPReader("AutoWords_GetAll");
+        _dataReader = _database.GetDataReader("AutoWords_GetAll");
 
-        List<Model.AutoWord> result = new List<Model.AutoWord>();
-        while (reader.Read())
+        List<Model.AutoWord> autoWordList = new List<Model.AutoWord>();
+
+        while (_dataReader.Read())
         {
-          result.Add(CreateWord(reader));
+          autoWordList.Add(CreateAutoWord(_dataReader));
         }
 
-        return result;
+        return autoWordList;
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
       finally
       {
-        if (reader != null)
-          reader.Close();
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
 
-
-    private Model.AutoWord CreateWord(DbDataReader reader)
+    private Model.AutoWord CreateAutoWord(DbDataReader reader)
     {
       try
       {
-        Model.AutoWord result = new Model.AutoWord(
-          (Int32)reader["WordID"],
-          (String)reader["Word"],
-          (Int32)reader["Count"],
-          (Boolean)reader["Deleted"],
-          (Boolean)reader["Added"]
-            );
-        return result;
+        return new Model.AutoWord((Int32)reader["WordID"],
+                                  (String)reader["Word"],
+                                  (Int32)reader["Count"],
+                                  (Boolean)reader["Deleted"],
+                                  (Boolean)reader["Added"]);
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
@@ -162,78 +197,81 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
+        int recordsAffected = _database.ExecuteQuery("AutoWords_DeleteByWord",
+                                                     new SqlParameter("@Word", word));
 
-        int recordsAffected = helper.ExecuteSPNonQuery("AutoWords_DeleteByWord",
-                          DbHelper.CreateInputParameter("@Word", word));
-
-      }
-      catch (Exception ex)
-      {
-        throw;
-      }
-    }
-
-    public Model.AutoWord GetByWord(string word)
-    {
-      DbDataReader reader = null;
-
-      try
-      {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        reader = helper.ExecuteSPReader("AutoWords_GetByWord",
-              DbHelper.CreateInputParameter("@Word", word));
-
-        Model.AutoWord result = null;
-        if (reader.Read())
+        if (recordsAffected == 0)
         {
-          result = CreateWord(reader);
+          throw new Exception(string.Format("Unable to delete Word '{0}'", word));
         }
-
-        return result;
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
       finally
       {
-        if (reader != null)
+        if (_dataReader != null)
         {
-          reader.Close();
+          _dataReader.Close();
+        }
+      }
+    }
+
+    public Model.AutoWord GetByWord(string word)
+    {
+      try
+      {
+        _dataReader = _database.GetDataReader("AutoWords_GetByWord",
+                                              new SqlParameter("@Word", word));
+
+        Model.AutoWord autoWord = null;
+
+        if (_dataReader.Read())
+        {
+          autoWord = CreateAutoWord(_dataReader);
+        }
+
+        return autoWord;
+      }
+      catch
+      {
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
         }
       }
     }
 
     public List<string> GetWordList(string word)
     {
-      DbDataReader reader = null;
-
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        reader = helper.ExecuteSPReader("AutoWords_GetWordList",
-              DbHelper.CreateInputParameter("@Word", word));
+        _dataReader = _database.GetDataReader("AutoWords_GetWordList",
+                                              new SqlParameter("@Word", word));
 
-        List<string> result = new List<string>();
+        List<string> wordList = new List<string>();
 
-        while (reader.Read())
+        while (_dataReader.Read())
         {
-          result.Add(CreateOnlyWord(reader));
+          wordList.Add(CreateWord(_dataReader));
         }
 
-        return result;
+        return wordList;
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
       finally
       {
-        if (reader != null)
+        if (_dataReader != null)
         {
-          reader.Close();
+          _dataReader.Close();
         }
       }
     }
@@ -242,19 +280,24 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        int recordsAffected = helper.ExecuteSPNonQuery("AutoWords_UpdateWordCount",
-                  DbHelper.CreateInputParameter("@Word", word));
+        int recordsAffected = _database.ExecuteQuery("AutoWords_UpdateWordCount",
+                                                     new SqlParameter("@Word", word));
 
         if (recordsAffected == 0)
         {
           Add(new Model.AutoWord(default(int), word, -3, false, true));
         }
       }
-      catch (Exception ex)
+      catch
       {
         throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
 
@@ -262,23 +305,28 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        helper.ExecuteSPNonQuery("AutoWords_Reset");
+        _database.ExecuteQuery("AutoWords_Reset");
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
     }
 
-    private string CreateOnlyWord(DbDataReader reader)
+    private string CreateWord(DbDataReader reader)
     {
       try
       {
         return (String)reader["Word"];
       }
-      catch (Exception ex)
+      catch
       {
         throw;
       }
