@@ -135,11 +135,11 @@ namespace SimpleTalk.GUI
 
     private void btnGetAutoList_Click(object sender, EventArgs e)
     {
-      lbAutoSuggestions.Items.Clear();
+     // lbAutoSuggestions.Items.Clear();
 
       foreach (string item in _AutoComplete.GetAutoCompleteList())
       {
-        lbAutoSuggestions.Items.Add(item);
+        //lbAutoSuggestions.Items.Add(item);
       }
     }
 
@@ -161,7 +161,7 @@ namespace SimpleTalk.GUI
       
       foreach (string item in Core.Instance.Interpreter.CommandOutput)
       {
-        lbAutoSuggestions.Items.Add(item);
+        //lbAutoSuggestions.Items.Add(item);
       }
       Core.Instance.Interpreter.ClearCommand();
      
