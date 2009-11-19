@@ -2,9 +2,6 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
-using Voets.Diagnostics;
-using Voets.Data.Common;
-using Voets.Data.Exceptions;
 
 namespace SimpleTalk.DataAccess
 {
@@ -31,14 +28,13 @@ namespace SimpleTalk.DataAccess
   DbHelper.CreateInputParameter("@Added", newWord.Added));
 
         if (recordsAffected == 0)
-          throw new DalNothingUpdatedException("Unable to add Word with WordID={0}", newWord);
+          throw new Exception(String.Format("Could not add Word with ID '{0}'", newWord.WordID));
 
         return (Int32)WordIDParam.Value;
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0})", "Add", CLASSNAME, ex, newWord.ToString());
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -54,8 +50,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0})", "Delete", CLASSNAME, ex, word.ToString());
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -75,13 +70,12 @@ namespace SimpleTalk.DataAccess
 
         if (recordsAffected == 0)
         {
-          throw new DalNothingUpdatedException("No records were updated (Table: Words). Word=" + modifiedWord.ToString());
+          throw new Exception(string.Format("Could not modify Word with ID '{0}'", modifiedWord.WordID));
         }
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0})", "Modify", CLASSNAME, ex, modifiedWord.ToString());
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -105,8 +99,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("{0}", "GetById", CLASSNAME, ex, wordID);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
       finally
       {
@@ -136,8 +129,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("()", "GetAll", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
       finally
       {
@@ -162,8 +154,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("", "CreateWord", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -179,8 +170,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0})", "DeleteByWord", CLASSNAME, ex, word.ToString());
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -205,8 +195,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("{0}", "GetByWord", CLASSNAME, ex, word);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
       finally
       {
@@ -238,8 +227,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("()", "GetWordList", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
       finally
       {
@@ -266,8 +254,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0})", "UpdateWordCount", CLASSNAME, ex, word);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -281,8 +268,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("({0}, {1})", "Reset", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 
@@ -294,8 +280,7 @@ namespace SimpleTalk.DataAccess
       }
       catch (Exception ex)
       {
-        Trace.WriteError("", "CreateOnlyWord", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
   }

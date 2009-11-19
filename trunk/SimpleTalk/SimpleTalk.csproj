@@ -74,22 +74,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Voets.Data, Version=1.6.3386.34256, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Assemblies\Voets.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Voets.Diagnostics, Version=2.7.3386.34253, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Assemblies\Voets.Diagnostics.dll</HintPath>
-    </Reference>
-    <Reference Include="Voets.Net.Multicast, Version=1.0.3386.34252, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Assemblies\Voets.Net.Multicast.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\AutoWords.cs" />
-    <Compile Include="DataAccess\Database.cs" />
     <Compile Include="DataAccess\NextWords.cs" />
     <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
