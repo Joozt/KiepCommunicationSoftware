@@ -171,7 +171,7 @@ namespace SimpleTalk.GUI
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
         //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
-        _TextToSpeech.Say(txtOutput.Text, W2);
+      _TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, W2);  //txtOutput.Text
     }
 
     private void button5_Click(object sender, EventArgs e)

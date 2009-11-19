@@ -8,8 +8,8 @@ namespace SimpleTalk.GUI
 {
     class SettingsLayout : CustomLayout
     {
-        int _DefaultWidth = 50;
-        int _DefaultHeight = 50;
+        int _DefaultWidth = 100;
+        int _DefaultHeight = 100;
         int _hSpace = 10;
         int _vSpace = 10;
 
