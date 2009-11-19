@@ -1,4 +1,4 @@
-﻿//#define DATABASE_ENABLED //uncomment this line to enable autocompletion database
+﻿#define DATABASE_ENABLED //uncomment this line to enable autocompletion database
 
 using System;
 using System.Collections.Generic;

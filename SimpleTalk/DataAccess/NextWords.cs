@@ -2,9 +2,6 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
-using Voets.Diagnostics;
-using Voets.Data.Common;
-using Voets.Data.Exceptions;
 
 namespace SimpleTalk.DataAccess
 {
@@ -35,8 +32,7 @@ return;
 			}
 			catch( Exception ex)
 			{
-				Trace.WriteError("({0})", "Add", CLASSNAME, ex, newNextWord.ToString());
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
 		}
 
