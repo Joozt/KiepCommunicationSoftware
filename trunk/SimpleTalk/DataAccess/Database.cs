@@ -44,16 +44,18 @@ namespace SimpleTalk.DataAccess
 
             if (string.IsNullOrEmpty(_serverName))
             {
-              List<string> serverList = GetServers();
+              //List<string> serverList = GetServers();
 
-              if ((serverList != null) && serverList.Count > 0)
-              {
-                _serverName = serverList[0];
-              }
-              else
-              {
-                _serverName = "(local)";
-              }
+              //if ((serverList != null) && serverList.Count > 0)
+              //{
+              //  _serverName = serverList[0];
+              //}
+              //else
+              //{
+              //  
+              //}
+
+              _serverName = string.Format(@"{0}\SQLEXPRESS", System.Environment.MachineName);
             }
 
             _connectionString = string.Format("Data Source = {0};Initial Catalog = {1};{2}", _serverName, _databaseName, authorisation);
