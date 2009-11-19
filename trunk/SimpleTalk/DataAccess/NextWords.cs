@@ -2,6 +2,7 @@ using System;
 using System.Data;
 using System.Data.Common;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace SimpleTalk.DataAccess
 {
@@ -13,207 +14,238 @@ namespace SimpleTalk.DataAccess
 	{
 		private const string CLASSNAME = "DataAccess.NextWords";
 
+    private Database _database = new Database();
+    private DbDataReader _dataReader = null;
+    private DataSet _dataSet = null;
+
+    public void Dispose()
+    {
+      try
+      {
+        if (_dataSet != null)
+        {
+          _dataSet.Dispose();
+        }
+
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+          _dataReader.Dispose();
+        }
+
+        if (_database != null)
+        {
+          _database.Disconnect();
+        }
+      }
+      catch
+      {
+        throw;
+      }
+    }
+
 		public void Add(Model.NextWord newNextWord)
 		{
 			try
 			{
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-		        
-		        int recordsAffected = helper.ExecuteSPNonQuery("NextWords_Add",
-			DbHelper.CreateInputParameter("@WordID", newNextWord.WordID),
-			DbHelper.CreateInputParameter("@NextWordID", newNextWord.NextWordID),
-			DbHelper.CreateInputParameter("@Count", newNextWord.Count));
-
-                if (recordsAffected == 0)
-                    throw new DalNothingUpdatedException("Unable to add NextWord with WordID={0}", newNextWord);
-
-return;    
+        _database.ExecuteQuery("NextWords_Add",
+                               new SqlParameter("@WordID", newNextWord.WordID),
+                               new SqlParameter("@NextWordID", newNextWord.NextWordID),
+                               new SqlParameter("@Count", newNextWord.Count));
 			}
-			catch( Exception ex)
+			catch
 			{
 				throw;
 			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
-
 
 		public void Delete(Model.NextWord nextWord)
 		{
 			try
 			{
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-				int recordsAffected = helper.ExecuteSPNonQuery("NextWords_Delete",
-				          				DbHelper.CreateInputParameter("@WordID", nextWord.WordID),
-								DbHelper.CreateInputParameter("@NextWordID", nextWord.NextWordID));
+        int recordsAffected = _database.ExecuteQuery("NextWords_Delete",
+                                                     new SqlParameter("@WordID", nextWord.WordID),
+                                                     new SqlParameter("@NextWordID", nextWord.NextWordID));
 
+        if (recordsAffected == 0)
+        {
+          throw new Exception(string.Format("Unable to delete NextWord with ID '{0}' and NextID '{1}'", nextWord.WordID, nextWord.NextWordID));
+        }
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("({0})", "Delete", CLASSNAME, ex, nextWord.ToString());
-				throw DbHelper.TranslateException(ex);
+        throw;
 			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
-
-
 
 		public void Modify(Model.NextWord modifiedNextWord)
 		{
 			try
 			{
+        int recordsAffected = _database.ExecuteQuery("NextWords_Modify",
+                                                     new SqlParameter("@WordID", modifiedNextWord.WordID),
+                                                     new SqlParameter("@NextWordID", modifiedNextWord.NextWordID),
+                                                     new SqlParameter("@Count", modifiedNextWord.Count));
 
-				DbHelper helper = new DbHelper(Database.GetConnectionString());
-                int recordsAffected = helper.ExecuteSPNonQuery("NextWords_Modify",
-				          				DbHelper.CreateInputParameter("@WordID", modifiedNextWord.WordID),
-								DbHelper.CreateInputParameter("@NextWordID", modifiedNextWord.NextWordID),
-								DbHelper.CreateInputParameter("@Count", modifiedNextWord.Count));
-
-				if (recordsAffected == 0)
-				{
-					throw new DalNothingUpdatedException( "No records were updated (Table: NextWords). NextWord=" + modifiedNextWord.ToString());
-				}
+        if (recordsAffected == 0)
+        {
+          throw new Exception(string.Format("Unable to modify NextWord with ID '{0}' and NextID '{1}'", modifiedNextWord.WordID, modifiedNextWord.NextWordID));
+        }
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("({0})", "Modify", CLASSNAME, ex, modifiedNextWord.ToString());
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
-
-
 
 		public Model.NextWord GetById(Int32 wordID ,Int32 nextWordID )
 		{
-			DbDataReader reader = null;
 			try
 			{
-				
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-                
-                reader = helper.ExecuteSPReader("NextWords_GetById",
-                      DbHelper.CreateInputParameter("@WordID", wordID),
-                      DbHelper.CreateInputParameter("@NextWordID", nextWordID));
-				
-				Model.NextWord result = null;
-				if (reader.Read())
-                    result = CreateNextWord(reader);
-				return result;
+        _dataReader = _database.GetDataReader("NextWords_GetById",
+                                              new SqlParameter("@WordID", wordID),
+                                              new SqlParameter("@NextWordID", nextWordID));
+
+        Model.NextWord nextWord = null;
+
+        if (_dataReader.Read())
+        {
+          nextWord = CreateNextWord(_dataReader);
+        }
+
+        return nextWord;
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("{0},{1}", "GetById", CLASSNAME, ex,wordID,nextWordID);
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
-			finally 
-			{
-				if (reader != null)
-					reader.Close();
-			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
 
-
-		
 		public List<Model.NextWord> GetByWordID(Int32 wordID)
 		{
-			DbDataReader reader = null;
 			try
 			{
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-                reader = helper.ExecuteSPReader("NextWords_GetByWordID", 
-								DbHelper.CreateInputParameter("@WordID", wordID));
-                
-                List<Model.NextWord> result = new List<Model.NextWord>();
-				while (reader.Read())
-				{
-				    result.Add( CreateNextWord( reader));
-				}
-				return result;
+        _dataReader = _database.GetDataReader("NextWords_GetByWordID",
+                                              new SqlParameter("@WordID", wordID));
 
+        List<Model.NextWord> nextWordList = new List<Model.NextWord>();
+
+        if (_dataReader.Read())
+        {
+          nextWordList.Add(CreateNextWord(_dataReader));
+        }
+
+        return nextWordList;
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("({0})", "GetByWordID", CLASSNAME, ex, wordID);
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
-			finally 
-			{
-				if (reader != null)
-					reader.Close();
-			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
 
 		public List<Model.NextWord> GetByNextWordID(Int32 nextWordID)
 		{
-			DbDataReader reader = null;
 			try
 			{
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-                reader = helper.ExecuteSPReader("NextWords_GetByNextWordID", 
-								DbHelper.CreateInputParameter("@NextWordID", nextWordID));
-                
-                List<Model.NextWord> result = new List<Model.NextWord>();
-				while (reader.Read())
-				{
-				    result.Add( CreateNextWord( reader));
-				}
-				return result;
+        _dataReader = _database.GetDataReader("NextWords_GetByNextWordID",
+                                              new SqlParameter("@NextWordID", nextWordID));
 
+        List<Model.NextWord> nextWordList = new List<Model.NextWord>();
+
+        if (_dataReader.Read())
+        {
+          nextWordList.Add(CreateNextWord(_dataReader));
+        }
+
+        return nextWordList;
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("({0})", "GetByNextWordID", CLASSNAME, ex, nextWordID);
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
-			finally 
-			{
-				if (reader != null)
-					reader.Close();
-			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
-
-		
+	
 		public List<Model.NextWord> GetAll()
 		{
-			DbDataReader reader = null;
 			try
 			{
-                DbHelper helper = new DbHelper(Database.GetConnectionString());
-                reader = helper.ExecuteSPReader("NextWords_GetAll");
-								
-				List<Model.NextWord> result = new List<Model.NextWord>();
-				while (reader.Read())
-				{
-				    result.Add( CreateNextWord( reader));
-				}
-				
-				return result;
+        _dataReader = _database.GetDataReader("NextWords_GetAll");
+
+        List<Model.NextWord> nextWordList = new List<Model.NextWord>();
+
+        while (_dataReader.Read())
+        {
+          nextWordList.Add(CreateNextWord(_dataReader));
+        }
+
+        return nextWordList;
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("()", "GetAll", CLASSNAME, ex);
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
-			finally 
-			{
-				if (reader != null)
-					reader.Close();
-			}
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
+      }
 		}
 		
 		private Model.NextWord CreateNextWord( DbDataReader reader)
 		{
 			try
 			{	
-        Model.NextWord result = new Model.NextWord(
-          (Int32)reader["WordID"], 
-          (Int32)reader["NextWordID"], 
-          (Int32)reader["Count"]
-						);
-				return result;
+        return new Model.NextWord((Int32)reader["WordID"], 
+                                  (Int32)reader["NextWordID"], 
+                                  (Int32)reader["Count"]);
 			}
-			catch( Exception ex)
+			catch
 			{
-				Trace.WriteError("", "CreateNextWord", CLASSNAME, ex);
-				throw DbHelper.TranslateException(ex);
+				throw;
 			}
 		}
 
@@ -221,21 +253,25 @@ return;
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        int recordsAffected = helper.ExecuteSPNonQuery("NextWords_UpdateNextWordCount",
-                  DbHelper.CreateInputParameter("@Word", word),
-                  DbHelper.CreateInputParameter("@NextWord", nextWord));
+        int recordsAffected = _database.ExecuteQuery("NextWords_UpdateNextWordCount",
+                                                     new SqlParameter("@Word", word),
+                                                     new SqlParameter("@NextWord", nextWord));
 
         if (recordsAffected == 0)
         {
           AddNextWord(word, nextWord);
         }
       }
-      catch (Exception ex)
+      catch
       {
-        Trace.WriteError("({0}, {1})", "UpdateNextWordCount", CLASSNAME, ex, word, nextWord);
-        throw DbHelper.TranslateException(ex);
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
 
@@ -243,53 +279,48 @@ return;
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        int recordsAffected = helper.ExecuteSPNonQuery("NextWords_AddNextWord",
-                  DbHelper.CreateInputParameter("@Word", word),
-                  DbHelper.CreateInputParameter("@NextWord", nextWord));
-
-        if (recordsAffected == 0)
-        {
-          throw new DalNothingUpdatedException("Unable to add NextWord with Word = {0}", word);
-        }
+        _database.ExecuteQuery("NextWords_AddNextWord",
+                               new SqlParameter("@Word", word),
+                               new SqlParameter("@NextWord", nextWord));
       }
-      catch (Exception ex)
+      catch
       {
-        Trace.WriteError("({0}, {1})", "AddNextWord", CLASSNAME, ex, word, nextWord);
-        throw DbHelper.TranslateException(ex);
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
 
     public List<string> GetNextWordList(string word)
     {
-      DbDataReader reader = null;
-
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-        reader = helper.ExecuteSPReader("NextWords_GetNextWordList",
-              DbHelper.CreateInputParameter("@Word", word));
+        _dataReader = _database.GetDataReader("NextWords_GetNextWordList",
+                                              new SqlParameter("@Word", word));
 
-        List<string> result = new List<string>();
+        List<string> wordList = new List<string>();
 
-        while (reader.Read())
+        while (_dataReader.Read())
         {
-          result.Add(CreateOnlyWord(reader));
+          wordList.Add(CreateWord(_dataReader));
         }
 
-        return result;
+        return wordList;
       }
-      catch (Exception ex)
+      catch
       {
-        Trace.WriteError("()", "GetNextWordList", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
       finally
       {
-        if (reader != null)
+        if (_dataReader != null)
         {
-          reader.Close();
+          _dataReader.Close();
         }
       }
     }
@@ -298,27 +329,30 @@ return;
     {
       try
       {
-        DbHelper helper = new DbHelper(Database.GetConnectionString());
-
-        helper.ExecuteSPNonQuery("NextWords_Reset");
+        _database.ExecuteQuery("NextWords_Reset");
       }
-      catch (Exception ex)
+      catch
       {
-        Trace.WriteError("({0}, {1})", "Reset", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
+      }
+      finally
+      {
+        if (_dataReader != null)
+        {
+          _dataReader.Close();
+        }
       }
     }
 
-    private string CreateOnlyWord(DbDataReader reader)
+    private string CreateWord(DbDataReader reader)
     {
       try
       {
         return (String)reader["Word"];
       }
-      catch (Exception ex)
+      catch
       {
-        Trace.WriteError("", "CreateOnlyWord", CLASSNAME, ex);
-        throw DbHelper.TranslateException(ex);
+        throw;
       }
     }
 	}
