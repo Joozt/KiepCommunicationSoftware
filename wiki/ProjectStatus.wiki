@@ -48,9 +48,10 @@ _Paul_
  * Make release version and add this version to the download section
  * Finish the settings menu implementation
  * Start with scanning after character/button is selected. Do not automatic restart when no button is selected.
-_not assigned tasks_
  * Increase contrast between letter and background
  * Increase contrast between selection bar and letter  
+
+_not assigned tasks_
  * Autostart program
 
 == Results first demo for Joost ==
