@@ -89,14 +89,24 @@ namespace SimpleTalk.Model
         //Check if command is word for autocompletion
         if (command[0] == '#')
         {
-          //Relpace partial word with complete word and add space
-
-          _TextOutput = _TextOutput + "_" + command.TrimStart('#') +" ";
-            
-          //Or add next word and add space
-          ///_TextOutput += "#";
-
-          //_TextOutput += "#";
+          string word = command.TrimStart('#');
+          //LastWord is?
+          List<string> wordArray = new List<string>(_TextOutput.Split(new string[] { " ","\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+   
+          if(wordArray != null && wordArray.Count > 0)
+          {
+             string lastWord = wordArray[wordArray.Count() - 1];
+             if(String.Compare(lastWord, word, StringComparison.OrdinalIgnoreCase)<=0)// && lastWord.Length<=word.Length)
+             {
+               //Relpace partial word with complete word and add space
+               _TextOutput = _TextOutput.Substring(0, _TextOutput.Length - lastWord.Length) + word + " ";    
+             }
+             else
+             {
+                //Or add next word and add space
+               _TextOutput = _TextOutput + word + " "; 
+             }
+          }
         }
         else
         {
@@ -133,6 +143,30 @@ namespace SimpleTalk.Model
             case "&clear":
               _TextOutput = "";
               break;
+
+            //commands from the settings menu
+
+            case "&scanSpeedDown":
+              //TODO: decrease scanning speed
+              break;
+
+            case "&scanSpeedUp":
+              //TODO: increase scanning speed
+              break;
+
+            case "&scanSpeedFixed":
+              //TODO: switch off dynamical scan speed
+              break;
+
+            case "&scanHighlightWave":
+              //TODO: switch highlighting from wave to hard on/off
+              break;
+
+            case "&autoWordComplete":
+              //TODO: switch automatic word completion on/off
+              break;
+
+
 
             default:
               //Todo: insert nice exception handler.
