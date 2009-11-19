@@ -50,11 +50,9 @@ namespace SimpleTalk.GUI
           this.button2 = new System.Windows.Forms.Button();
           this.button1 = new System.Windows.Forms.Button();
           this.btnGetAutoList = new System.Windows.Forms.Button();
-          this.lbAutoSuggestions = new System.Windows.Forms.ListBox();
           this.pnlAutoComplete = new System.Windows.Forms.Panel();
           this.gbTest.SuspendLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).BeginInit();
-          this.pnlAutoComplete.SuspendLayout();
           this.SuspendLayout();
           // 
           // pnlKeyboard
@@ -296,21 +294,10 @@ namespace SimpleTalk.GUI
           this.btnGetAutoList.UseVisualStyleBackColor = true;
           this.btnGetAutoList.Click += new System.EventHandler(this.btnGetAutoList_Click);
           // 
-          // lbAutoSuggestions
-          // 
-          this.lbAutoSuggestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.lbAutoSuggestions.FormattingEnabled = true;
-          this.lbAutoSuggestions.ItemHeight = 61;
-          this.lbAutoSuggestions.Location = new System.Drawing.Point(135, 308);
-          this.lbAutoSuggestions.Name = "lbAutoSuggestions";
-          this.lbAutoSuggestions.Size = new System.Drawing.Size(231, 431);
-          this.lbAutoSuggestions.TabIndex = 10;
-          // 
           // pnlAutoComplete
           // 
           this.pnlAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
-          this.pnlAutoComplete.Controls.Add(this.lbAutoSuggestions);
           this.pnlAutoComplete.Location = new System.Drawing.Point(645, 171);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
           this.pnlAutoComplete.Size = new System.Drawing.Size(369, 602);
@@ -334,7 +321,6 @@ namespace SimpleTalk.GUI
           this.gbTest.ResumeLayout(false);
           this.gbTest.PerformLayout();
           ((System.ComponentModel.ISupportInitialize)(this.nSelectionTime)).EndInit();
-          this.pnlAutoComplete.ResumeLayout(false);
           this.ResumeLayout(false);
           this.PerformLayout();
 
@@ -345,7 +331,6 @@ namespace SimpleTalk.GUI
         private Panel pnlKeyboard;
         private TextBox txtOutput;
         private GroupBox gbTest;
-        private ListBox lbAutoSuggestions;
         private Button btnGetAutoList;
         private Button button8;
         private Button button7;

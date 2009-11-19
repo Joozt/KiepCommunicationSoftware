@@ -14,7 +14,6 @@ namespace SimpleTalk.DataAccess
   {
     private const string CLASSNAME = "DataAccess.AutoWords";
 
-    private Database _database = new Database();
     private DbDataReader _dataReader = null;
     private DataSet _dataSet = null;
 
@@ -32,11 +31,6 @@ namespace SimpleTalk.DataAccess
           _dataReader.Close();
           _dataReader.Dispose();
         }
-
-        if (_database != null)
-        {
-          _database.Disconnect();
-        }
       }
       catch
       {
@@ -48,11 +42,12 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _database.ExecuteQuery("AutoWords_Add",
-                               new SqlParameter("@Word", newWord.Word),
-                               new SqlParameter("@Count", newWord.Count),
-                               new SqlParameter("@Deleted", newWord.Deleted),
-                               new SqlParameter("@Added", newWord.Added));
+        Database.ExecuteQuery("AutoWords_Add",
+                              new SqlParameter("@WordID", newWord.WordID),
+                              new SqlParameter("@Word", newWord.Word),
+                              new SqlParameter("@Count", newWord.Count),
+                              new SqlParameter("@Deleted", newWord.Deleted),
+                              new SqlParameter("@Added", newWord.Added));
       }
       catch
       {
@@ -71,8 +66,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = _database.ExecuteQuery("AutoWords_Delete",
-                                                     new SqlParameter("@WordID", word.WordID));
+        int recordsAffected = Database.ExecuteQuery("AutoWords_Delete",
+                                                    new SqlParameter("@WordID", word.WordID));
 
         if (recordsAffected == 0)
         {
@@ -96,11 +91,11 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = _database.ExecuteQuery("AutoWords_Modify",
-                                                     new SqlParameter("@Word", modifiedWord.Word),
-                                                     new SqlParameter("@Count", modifiedWord.Count),
-                                                     new SqlParameter("@Deleted", modifiedWord.Deleted),
-                                                     new SqlParameter("@Added", modifiedWord.Added));
+        int recordsAffected = Database.ExecuteQuery("AutoWords_Modify",
+                                                    new SqlParameter("@Word", modifiedWord.Word),
+                                                    new SqlParameter("@Count", modifiedWord.Count),
+                                                    new SqlParameter("@Deleted", modifiedWord.Deleted),
+                                                    new SqlParameter("@Added", modifiedWord.Added));
  
         if (recordsAffected == 0)
         {
@@ -124,8 +119,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = _database.GetDataReader("AutoWords_GetById",
-                                              new SqlParameter("@WordID", wordID));
+        _dataReader = Database.GetDataReader("AutoWords_GetById",
+                                             new SqlParameter("@WordID", wordID));
 
         Model.AutoWord autoWord = null;
 
@@ -153,7 +148,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = _database.GetDataReader("AutoWords_GetAll");
+        _dataReader = Database.GetDataReader("AutoWords_GetAll");
 
         List<Model.AutoWord> autoWordList = new List<Model.AutoWord>();
 
@@ -197,8 +192,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = _database.ExecuteQuery("AutoWords_DeleteByWord",
-                                                     new SqlParameter("@Word", word));
+        int recordsAffected = Database.ExecuteQuery("AutoWords_DeleteByWord",
+                                                    new SqlParameter("@Word", word));
 
         if (recordsAffected == 0)
         {
@@ -222,8 +217,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = _database.GetDataReader("AutoWords_GetByWord",
-                                              new SqlParameter("@Word", word));
+        _dataReader = Database.GetDataReader("AutoWords_GetByWord",
+                                             new SqlParameter("@Word", word));
 
         Model.AutoWord autoWord = null;
 
@@ -251,8 +246,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = _database.GetDataReader("AutoWords_GetWordList",
-                                              new SqlParameter("@Word", word));
+        _dataReader = Database.GetDataReader("AutoWords_GetWordList",
+                                             new SqlParameter("@Word", word));
 
         List<string> wordList = new List<string>();
 
@@ -280,8 +275,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = _database.ExecuteQuery("AutoWords_UpdateWordCount",
-                                                     new SqlParameter("@Word", word));
+        int recordsAffected = Database.ExecuteQuery("AutoWords_UpdateWordCount",
+                                                    new SqlParameter("@Word", word));
 
         if (recordsAffected == 0)
         {
@@ -305,7 +300,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _database.ExecuteQuery("AutoWords_Reset");
+        Database.ExecuteQuery("AutoWords_Reset");
       }
       catch
       {

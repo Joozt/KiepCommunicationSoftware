@@ -14,7 +14,6 @@ namespace SimpleTalk.DataAccess
 	{
 		private const string CLASSNAME = "DataAccess.NextWords";
 
-    private Database _database = new Database();
     private DbDataReader _dataReader = null;
     private DataSet _dataSet = null;
 
@@ -32,11 +31,6 @@ namespace SimpleTalk.DataAccess
           _dataReader.Close();
           _dataReader.Dispose();
         }
-
-        if (_database != null)
-        {
-          _database.Disconnect();
-        }
       }
       catch
       {
@@ -48,10 +42,10 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _database.ExecuteQuery("NextWords_Add",
-                               new SqlParameter("@WordID", newNextWord.WordID),
-                               new SqlParameter("@NextWordID", newNextWord.NextWordID),
-                               new SqlParameter("@Count", newNextWord.Count));
+        Database.ExecuteQuery("NextWords_Add",
+                              new SqlParameter("@WordID", newNextWord.WordID),
+                              new SqlParameter("@NextWordID", newNextWord.NextWordID),
+                              new SqlParameter("@Count", newNextWord.Count));
 			}
 			catch
 			{
@@ -70,9 +64,9 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        int recordsAffected = _database.ExecuteQuery("NextWords_Delete",
-                                                     new SqlParameter("@WordID", nextWord.WordID),
-                                                     new SqlParameter("@NextWordID", nextWord.NextWordID));
+        int recordsAffected = Database.ExecuteQuery("NextWords_Delete",
+                                                    new SqlParameter("@WordID", nextWord.WordID),
+                                                    new SqlParameter("@NextWordID", nextWord.NextWordID));
 
         if (recordsAffected == 0)
         {
@@ -96,10 +90,10 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        int recordsAffected = _database.ExecuteQuery("NextWords_Modify",
-                                                     new SqlParameter("@WordID", modifiedNextWord.WordID),
-                                                     new SqlParameter("@NextWordID", modifiedNextWord.NextWordID),
-                                                     new SqlParameter("@Count", modifiedNextWord.Count));
+        int recordsAffected = Database.ExecuteQuery("NextWords_Modify",
+                                                    new SqlParameter("@WordID", modifiedNextWord.WordID),
+                                                    new SqlParameter("@NextWordID", modifiedNextWord.NextWordID),
+                                                    new SqlParameter("@Count", modifiedNextWord.Count));
 
         if (recordsAffected == 0)
         {
@@ -123,9 +117,9 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = _database.GetDataReader("NextWords_GetById",
-                                              new SqlParameter("@WordID", wordID),
-                                              new SqlParameter("@NextWordID", nextWordID));
+        _dataReader = Database.GetDataReader("NextWords_GetById",
+                                             new SqlParameter("@WordID", wordID),
+                                             new SqlParameter("@NextWordID", nextWordID));
 
         Model.NextWord nextWord = null;
 
@@ -153,8 +147,8 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = _database.GetDataReader("NextWords_GetByWordID",
-                                              new SqlParameter("@WordID", wordID));
+        _dataReader = Database.GetDataReader("NextWords_GetByWordID",
+                                             new SqlParameter("@WordID", wordID));
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
@@ -182,8 +176,8 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = _database.GetDataReader("NextWords_GetByNextWordID",
-                                              new SqlParameter("@NextWordID", nextWordID));
+        _dataReader = Database.GetDataReader("NextWords_GetByNextWordID",
+                                             new SqlParameter("@NextWordID", nextWordID));
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
@@ -211,7 +205,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = _database.GetDataReader("NextWords_GetAll");
+        _dataReader = Database.GetDataReader("NextWords_GetAll");
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
@@ -253,9 +247,9 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = _database.ExecuteQuery("NextWords_UpdateNextWordCount",
-                                                     new SqlParameter("@Word", word),
-                                                     new SqlParameter("@NextWord", nextWord));
+        int recordsAffected = Database.ExecuteQuery("NextWords_UpdateNextWordCount",
+                                                    new SqlParameter("@Word", word),
+                                                    new SqlParameter("@NextWord", nextWord));
 
         if (recordsAffected == 0)
         {
@@ -279,9 +273,9 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _database.ExecuteQuery("NextWords_AddNextWord",
-                               new SqlParameter("@Word", word),
-                               new SqlParameter("@NextWord", nextWord));
+        Database.ExecuteQuery("NextWords_AddNextWord",
+                              new SqlParameter("@Word", word),
+                              new SqlParameter("@NextWord", nextWord));
       }
       catch
       {
@@ -300,8 +294,8 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = _database.GetDataReader("NextWords_GetNextWordList",
-                                              new SqlParameter("@Word", word));
+        _dataReader = Database.GetDataReader("NextWords_GetNextWordList",
+                                             new SqlParameter("@Word", word));
 
         List<string> wordList = new List<string>();
 
@@ -329,7 +323,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _database.ExecuteQuery("NextWords_Reset");
+        Database.ExecuteQuery("NextWords_Reset");
       }
       catch
       {
