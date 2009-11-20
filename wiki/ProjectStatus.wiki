@@ -26,7 +26,7 @@ _Sjors/Rob_
 _Marc_
  * Command window of text to speech should be hidden and closed when the program is closed
 _Marcel_ 
- * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql")
+ * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql") _the script now on the SVN could not find a server on the BoxPC_
 _Marcel/Anton_
  * Make sure that the wordCnt starting value are ok after a database reset
 _Anton_
@@ -76,6 +76,8 @@ Note that the auto completion database was working during the demonstration.
  * Increase contrast between letter and background
  * Increase contrast between selection bar and letter
  * Optional: make font adjustment per individual key possible (request of Ad)
+== Optional features ==
+ * Make is possible for Joost to type some sentences in advance and save, email or SMS them.  
 
 
 
