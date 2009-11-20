@@ -47,5 +47,8 @@ namespace SimpleTalk.GUI
       // TODO: Automatically stop selection when stopping the application
       _SimpleBeheaviour.StopSelection();
     }
+
+
+  
   }
 }
