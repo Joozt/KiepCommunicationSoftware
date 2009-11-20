@@ -53,7 +53,7 @@ _Everyone_
  * Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server
 _not assigned tasks_
  * Autostart program
- * Adjust resolution to 1024 * 768 (current resolution of BoxPC) and make sure that the buttons fit on the screen
+ * Adjust resolution to 1024 `*` 768 (current resolution of BoxPC) and make sure that the buttons fit on the screen
  * Make it possible to switch of next word prediction
  * Make it possible to clear the next word database
 
