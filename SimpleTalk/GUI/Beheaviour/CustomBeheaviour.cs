@@ -184,7 +184,7 @@ namespace SimpleTalk.GUI
     }
 
     private void ResetButtonColor()
-    {-
+    {
       UpdateButtons(
         Color.FromKnownColor(KnownColor.Window),
         Color.FromKnownColor(KnownColor.ControlText));
