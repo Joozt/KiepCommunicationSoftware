@@ -240,7 +240,7 @@ namespace SimpleTalk.GUI
 
         public int GetNumberOfColumns(int row)
         {
-          if (row > GetNumberOfRows())
+          if (row >= GetNumberOfRows())
             return 0;
 
           return RowButtons[row].Buttons.Count;
@@ -248,10 +248,10 @@ namespace SimpleTalk.GUI
 
         public ICustomButton GetButton(int row, int column)
         {
-          if (row > GetNumberOfRows())
+          if (row >= GetNumberOfRows())
             return null;
 
-          if (column > GetNumberOfColumns(row))
+          if (column >= GetNumberOfColumns(row))
             return null;
 
           return RowButtons[row].Buttons[column];

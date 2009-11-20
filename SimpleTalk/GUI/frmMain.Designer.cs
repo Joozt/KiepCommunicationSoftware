@@ -65,9 +65,9 @@ namespace SimpleTalk.GUI
           this.pnlKeyboard.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Left)
                       | System.Windows.Forms.AnchorStyles.Right)));
-          this.pnlKeyboard.Location = new System.Drawing.Point(12, 171);
+          this.pnlKeyboard.Location = new System.Drawing.Point(4, 163);
           this.pnlKeyboard.Name = "pnlKeyboard";
-          this.pnlKeyboard.Size = new System.Drawing.Size(627, 602);
+          this.pnlKeyboard.Size = new System.Drawing.Size(561, 559);
           this.pnlKeyboard.TabIndex = 5;
           // 
           // txtOutput
@@ -76,12 +76,15 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.txtOutput.BackColor = System.Drawing.SystemColors.Window;
           this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-          this.txtOutput.Location = new System.Drawing.Point(12, 12);
+          this.txtOutput.Location = new System.Drawing.Point(4, 4);
           this.txtOutput.Multiline = true;
           this.txtOutput.Name = "txtOutput";
           this.txtOutput.ReadOnly = true;
-          this.txtOutput.Size = new System.Drawing.Size(1002, 153);
+          this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+          this.txtOutput.ShortcutsEnabled = false;
+          this.txtOutput.Size = new System.Drawing.Size(1178, 153);
           this.txtOutput.TabIndex = 6;
+          this.txtOutput.TabStop = false;
           this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
           // 
           // gbTest
@@ -109,9 +112,9 @@ namespace SimpleTalk.GUI
           this.gbTest.Controls.Add(this.button2);
           this.gbTest.Controls.Add(this.button1);
           this.gbTest.Controls.Add(this.btnGetAutoList);
-          this.gbTest.Location = new System.Drawing.Point(1020, 12);
+          this.gbTest.Location = new System.Drawing.Point(1196, 12);
           this.gbTest.Name = "gbTest";
-          this.gbTest.Size = new System.Drawing.Size(150, 761);
+          this.gbTest.Size = new System.Drawing.Size(150, 710);
           this.gbTest.TabIndex = 9;
           this.gbTest.TabStop = false;
           this.gbTest.Text = "Test area";
@@ -348,9 +351,9 @@ namespace SimpleTalk.GUI
           // 
           this.pnlAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Right)));
-          this.pnlAutoComplete.Location = new System.Drawing.Point(645, 171);
+          this.pnlAutoComplete.Location = new System.Drawing.Point(583, 163);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
-          this.pnlAutoComplete.Size = new System.Drawing.Size(369, 602);
+          this.pnlAutoComplete.Size = new System.Drawing.Size(599, 559);
           this.pnlAutoComplete.TabIndex = 10;
           // 
           // frmMain
@@ -358,7 +361,7 @@ namespace SimpleTalk.GUI
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
           this.BackColor = System.Drawing.SystemColors.Window;
-          this.ClientSize = new System.Drawing.Size(1182, 785);
+          this.ClientSize = new System.Drawing.Size(1358, 734);
           this.Controls.Add(this.pnlAutoComplete);
           this.Controls.Add(this.gbTest);
           this.Controls.Add(this.txtOutput);
@@ -366,7 +369,6 @@ namespace SimpleTalk.GUI
           this.Name = "frmMain";
           this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
           this.Text = " ";
-          this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
           this.Load += new System.EventHandler(this.frmMain_Load);
           this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
           this.gbTest.ResumeLayout(false);
