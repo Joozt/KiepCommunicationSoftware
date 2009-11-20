@@ -15,6 +15,7 @@ namespace SimpleTalk.GUI
     private double _Result;
     private bool _Selected;
     private bool _Done;
+    private bool _AutoRestart;
 
     public UpdateSelectionEventArgs(TimeSpan currenttime, TimeSpan duration)
     {
@@ -98,6 +99,18 @@ namespace SimpleTalk.GUI
       {
         _Done = value;
       }
+    }
+
+    public bool AutoRestart
+    {
+        get
+        {
+            return _AutoRestart;
+        }
+        set
+        {
+            _AutoRestart = value;
+        }
     }
   }
 
