@@ -11,6 +11,7 @@ namespace SimpleTalk.GUI
   {
     private CustomKeyboard _Keyboard;
     private TimeSpan _Timer = new TimeSpan(0, 0, 0, 1); // Default 1 sec.
+    Thread SelectionThread = null;
 
     TimeSpan _SelectDuration;
     bool _CancelSelection;
@@ -136,7 +137,10 @@ namespace SimpleTalk.GUI
         while (StartTime.Add(_SelectDuration).CompareTo(DateTime.Now) > 0)
         {
           if (_CancelSelection)
+          {
+            OnTimePassed(this, new EventArgs());
             break; // Exit thread
+          }
 
           SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _SelectDuration);
 
@@ -164,7 +168,10 @@ namespace SimpleTalk.GUI
         }
 
         if (_CancelSelection)
+        {
+          OnTimePassed(this, new EventArgs());
           break;
+        }
 
         ResetButtonColor();
 
@@ -215,7 +222,6 @@ namespace SimpleTalk.GUI
       {
         // Show one button
         MostButton Button = Keyboard.GetButton(RowSelected, ColumnSelected) as MostButton;
-
         Button.BackColor = bgColor;
         Button.ForeColor = fgColor;
       }
@@ -226,7 +232,7 @@ namespace SimpleTalk.GUI
       _SelectDuration = duration;
 
       // Start new thread
-      Thread SelectionThread = new Thread(DoSelection);
+      SelectionThread = new Thread(DoSelection);
       SelectionThread.Start();
       //DoSelection();
     }
@@ -234,6 +240,12 @@ namespace SimpleTalk.GUI
     public void StopSelection()
     {
       _CancelSelection = true;
+
+      if (SelectionThread == null)
+        return;
+
+      while (SelectionThread.ThreadState == ThreadState.Running)
+        Thread.Sleep(100);
     }
 
     #region ICustomBeheaviour Members

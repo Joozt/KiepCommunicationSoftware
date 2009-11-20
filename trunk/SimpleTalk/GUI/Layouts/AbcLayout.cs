@@ -8,10 +8,10 @@ namespace SimpleTalk.GUI
 {
     class AbcLayout : CustomLayout
     {
-        int _DefaultWidth = 60;
-        int _DefaultHeight = 60;
-        int _hSpace = 10;
-        int _vSpace = 10;
+        int _DefaultWidth = 90;
+        int _DefaultHeight = 90;
+        int _hSpace = 4;
+        int _vSpace = 4;
 
         override public void ConstructLayout()
         {

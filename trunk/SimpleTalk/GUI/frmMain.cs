@@ -72,6 +72,7 @@ namespace SimpleTalk.GUI
 
     void OnSuggestionsChanged(object sender, EventArgs e)
     {
+      _AutoBeheaviour.StopSelection();
       _AutoLayout.ClearButtons();
       _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6);
     }

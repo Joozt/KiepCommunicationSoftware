@@ -52,15 +52,14 @@ namespace SimpleTalk.GUI
     void OnTimePassed(object sender, EventArgs e)
     {
       Console.Write("\nSelection ended\n");
+      Reset();
     }
 
     void OnSelectionChanged(object sender, EventArgs e)
     {
         if (_Done)
         {
-            _RowSelect = true;
-            _Selected = false;
-            _Done = false;
+            Reset();
             return;
         }
 
@@ -78,6 +77,13 @@ namespace SimpleTalk.GUI
                 StopSelection();
             }
         }
+    }
+
+    private void Reset()
+    {
+      _RowSelect = true;
+      _Selected = false;
+      _Done = false;
     }
 
     public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)

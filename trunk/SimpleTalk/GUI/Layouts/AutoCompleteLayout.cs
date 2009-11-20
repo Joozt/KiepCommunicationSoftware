@@ -8,10 +8,10 @@ namespace SimpleTalk.GUI
 {
   class AutoCompleteLayout : CustomLayout
   {
-    int _DefaultWidth = 300;
-    int _DefaultHeight = 110;
-    int _hSpace = 10;
-    int _vSpace = 10;
+    int _DefaultWidth = 599;
+    int _DefaultHeight = 90;
+    int _hSpace = 4;
+    int _vSpace = 4;
 
     public override void ConstructLayout()
     {
@@ -36,9 +36,20 @@ namespace SimpleTalk.GUI
         if (Number >= max)
           break;
         else
-          Number++;
+        {
+          //only show words that are not too long
+          int maxWordLength = 12;
+          if (item.Length <= maxWordLength)
+          {
+            AddButton(new ButtonDefinition(item.ToUpper(), "#" + item));
+            Number++;
+          }
+          else
+          {
+            Number--;
+          }
 
-        AddButton(new ButtonDefinition(item.ToUpper(), "#" + item));
+        }
       }
 
       AutoFormat();
