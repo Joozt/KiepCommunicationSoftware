@@ -38,7 +38,7 @@ namespace SimpleTalk.GUI
         else
           Number++;
 
-        AddButton(new ButtonDefinition(item, "#" + item));
+        AddButton(new ButtonDefinition(item.ToUpper(), "#" + item));
       }
 
       AutoFormat();
