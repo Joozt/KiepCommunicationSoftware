@@ -74,10 +74,12 @@ namespace SimpleTalk.GUI
           // 
           this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.txtOutput.BackColor = System.Drawing.SystemColors.Window;
           this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
           this.txtOutput.Location = new System.Drawing.Point(12, 12);
           this.txtOutput.Multiline = true;
           this.txtOutput.Name = "txtOutput";
+          this.txtOutput.ReadOnly = true;
           this.txtOutput.Size = new System.Drawing.Size(1002, 153);
           this.txtOutput.TabIndex = 6;
           this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
@@ -355,6 +357,7 @@ namespace SimpleTalk.GUI
           // 
           this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+          this.BackColor = System.Drawing.SystemColors.Window;
           this.ClientSize = new System.Drawing.Size(1182, 785);
           this.Controls.Add(this.pnlAutoComplete);
           this.Controls.Add(this.gbTest);
