@@ -165,9 +165,7 @@ namespace SimpleTalk.GUI
         if (_CancelSelection)
           break;
 
-        UpdateButtons(
-          Color.FromKnownColor(KnownColor.Control),
-          Color.FromKnownColor(KnownColor.ControlText));
+        ResetButtonColor();
 
         // Trigger event next row/column
         OnSelectionChanged(this, new EventArgs());
@@ -179,12 +177,17 @@ namespace SimpleTalk.GUI
       // Trigger OnTimePassed
       OnTimePassed(this, new EventArgs());
 
-      UpdateButtons(
-        Color.FromKnownColor(KnownColor.Control),
-        Color.FromKnownColor(KnownColor.ControlText));
+      ResetButtonColor();
 
       _CurrentRow = -1;
       _CurrentColumn = -1;
+    }
+
+    private void ResetButtonColor()
+    {-
+      UpdateButtons(
+        Color.FromKnownColor(KnownColor.Window),
+        Color.FromKnownColor(KnownColor.ControlText));
     }
 
     private void UpdateButtons(Color bgColor, Color fgColor)
