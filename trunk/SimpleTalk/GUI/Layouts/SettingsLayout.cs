@@ -15,55 +15,54 @@ namespace SimpleTalk.GUI
 
         override public void ConstructLayout()
         {
-            //Scan speed settting
-            int Width = (int)Math.Round(1.0* _DefaultWidth + 0.0*_vSpace);
+            //Scan speed settting (-)
+            int Width = (int)Math.Round(7.0* _DefaultWidth + 1.0*_hSpace);
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
-                new ButtonDefinition[2]
-                {  
-                   new ButtonDefinition("-", "&scanSpeedDown", new Size(Width, _DefaultHeight)),
-                   new ButtonDefinition("+", "&scanSpeedUp", new Size(Width, _DefaultHeight)),
-                });
-            
-            //Automatic scan speed on/off
-              Width = (int)Math.Round(2.0 * _DefaultWidth + 1.0*_vSpace);
-                 NewRow(
-                _DefaultWidth,
-                _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Aan/Uit", "&scanSpeedFixed", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Loop snelheid -", "&scanSpeedDown", new Size(Width, _DefaultHeight)),
                 });
 
-             //Wave shaped buttton highlighting for scanning on/off
-             Width = (int)Math.Round(2.0 * _DefaultWidth + 1.0 * _vSpace);
-                 NewRow(
+            //Scan speed settting (+)
+            Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
+            NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Aan/Uit", "&scanHighlightWave", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Loop snelheid +", "&scanSpeedUp", new Size(Width, _DefaultHeight)),
                 });
 
-              //Suggestions for automatic word completion on/off
-              Width = (int)Math.Round(2.0 * _DefaultWidth + 1.0 * _vSpace);
+            //Next word proposed by auto complete on/off
+              Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0*_hSpace);
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Aan/Uit", "&autoWordComplete", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("2e woord suggestie", "&scanSpeedFixed", new Size(Width, _DefaultHeight)),
                 });
 
-              //Menu go back
-              Width = (int)Math.Round(2.0 * _DefaultWidth + 1.0 * _vSpace);
+             //Auto complete suggestion on/off
+             Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Menu terug", "&menuBack", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Woord voltooien", "&scanHighlightWave", new Size(Width, _DefaultHeight)),
+                });
+
+              //Go back to form main
+              Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
+                 NewRow(
+                _DefaultWidth,
+                _DefaultHeight,
+                new ButtonDefinition[1]
+                {  
+                   new ButtonDefinition("Terug naar hoofdscherm", "&autoWordComplete", new Size(Width, _DefaultHeight)),
                 });
 
                  AutoFormat();
