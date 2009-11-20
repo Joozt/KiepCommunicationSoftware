@@ -22,10 +22,10 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[4]
                 {
-                    new ButtonDefinition("Spac", " ", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("Auto", "&auto", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("Back", "&back", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("Clear", "&clear", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("SPAC", " ", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("AUTO", "&auto", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("BACK", "&back", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
                 });
     
             List<ButtonDefinition> NewButtons = new List<ButtonDefinition>();
@@ -40,8 +40,8 @@ namespace SimpleTalk.GUI
 
             Width = (int)Math.Round((2.0 * _DefaultWidth) + _vSpace);
 
-            NewButtons.Add(new ButtonDefinition("Menu", "&menu", new Size(Width, _DefaultHeight)));
-            NewButtons.Add(new ButtonDefinition("??", "&??", new Size(Width, _DefaultHeight)));
+            NewButtons.Add(new ButtonDefinition("MENU", "&menu", new Size(Width, _DefaultHeight)));
+            NewButtons.Add(new ButtonDefinition("SAY", "&say", new Size(Width, _DefaultHeight)));
 
             NewRow(_DefaultWidth, _DefaultHeight, NewButtons);
 

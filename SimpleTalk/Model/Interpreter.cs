@@ -95,8 +95,8 @@ namespace SimpleTalk.Model
    
           if(wordArray != null && wordArray.Count > 0)
           {
-             string lastWord = wordArray[wordArray.Count() - 1];
-             if(String.Compare(lastWord, word, StringComparison.OrdinalIgnoreCase)<=0)// && lastWord.Length<=word.Length)
+            string lastWord = wordArray[wordArray.Count() - 1];
+             if(_TextOutput[_TextOutput.Length-1]!=' ')
              {
                //Relpace partial word with complete word and add space
                _TextOutput = _TextOutput.Substring(0, _TextOutput.Length - lastWord.Length) + word + " ";    
@@ -166,6 +166,9 @@ namespace SimpleTalk.Model
               //TODO: switch automatic word completion on/off
               break;
 
+            case "&say":
+              //
+              break;
 
 
             default:
