@@ -123,7 +123,7 @@ namespace SimpleTalk.GUI
         if (ColumnSelected >= 0)
         {
           e.Done = true;
-          e.AutoRestart = true;
+          //e.AutoRestart = true;
         }
 
         e.Selected = true;

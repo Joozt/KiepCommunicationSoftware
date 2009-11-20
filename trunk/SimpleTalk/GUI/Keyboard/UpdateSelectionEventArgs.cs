@@ -23,6 +23,7 @@ namespace SimpleTalk.GUI
       _Duration = duration;
       _Selected = false;
       _Done = false;
+      _AutoRestart = false;
     }
 
     public TimeSpan CurrentTime

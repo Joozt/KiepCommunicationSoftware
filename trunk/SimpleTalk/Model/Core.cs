@@ -31,6 +31,7 @@ namespace SimpleTalk.Model
 
     private Interpreter _Interpreter;
     private Sounds _Sounds;
+    private TextToSpeech _TextToSpeech;
 
     public Interpreter Interpreter
     {
@@ -48,10 +49,19 @@ namespace SimpleTalk.Model
       }
     }
 
+    public TextToSpeech TextToSpeech
+    {
+        get
+        {
+            return _TextToSpeech;
+        }
+    }
+
     Core()
     {
       _Interpreter = new Interpreter();
       _Sounds = new Sounds();
+      _TextToSpeech = new TextToSpeech();
     }
   }
 }
