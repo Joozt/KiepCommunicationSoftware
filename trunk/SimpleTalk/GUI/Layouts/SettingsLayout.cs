@@ -22,7 +22,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Loop snelheid -", "&scanSpeedDown", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Loop snelheid -", "&ScanSpeedDown", new Size(Width, _DefaultHeight)),
                 });
 
             //Scan speed settting (+)
@@ -32,7 +32,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Loop snelheid +", "&scanSpeedUp", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Loop snelheid +", "&ScanSpeedUp", new Size(Width, _DefaultHeight)),
                 });
 
             //Next word proposed by auto complete on/off
@@ -42,7 +42,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("2e woord suggestie", "&scanSpeedFixed", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("2e woord suggestie", "&SecundWordSuggestion", new Size(Width, _DefaultHeight)),
                 });
 
              //Auto complete suggestion on/off
@@ -52,7 +52,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Woord voltooien", "&scanHighlightWave", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Woord voltooien", "&AutoWordComplete", new Size(Width, _DefaultHeight)),
                 });
 
               //Go back to form main
@@ -62,7 +62,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Terug naar hoofdscherm", "&autoWordComplete", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("Terug naar hoofdscherm", "&GoBack", new Size(Width, _DefaultHeight)),
                 });
 
                  AutoFormat();
