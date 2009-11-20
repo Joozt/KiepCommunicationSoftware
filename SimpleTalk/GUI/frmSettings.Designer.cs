@@ -28,29 +28,31 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.pnlControls = new System.Windows.Forms.Panel();
-      this.SuspendLayout();
-      // 
-      // pnlControls
-      // 
-      this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlControls.Location = new System.Drawing.Point(12, 12);
-      this.pnlControls.Name = "pnlControls";
-      this.pnlControls.Size = new System.Drawing.Size(307, 646);
-      this.pnlControls.TabIndex = 6;
-      // 
-      // frmSettings
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(829, 713);
-      this.Controls.Add(this.pnlControls);
-      this.Name = "frmSettings";
-      this.Text = "Settings";
-      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
-      this.ResumeLayout(false);
+        this.pnlControls = new System.Windows.Forms.Panel();
+        this.SuspendLayout();
+        // 
+        // pnlControls
+        // 
+        this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                    | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.pnlControls.Location = new System.Drawing.Point(12, 12);
+        this.pnlControls.Name = "pnlControls";
+        this.pnlControls.Size = new System.Drawing.Size(307, 646);
+        this.pnlControls.TabIndex = 6;
+        // 
+        // frmSettings
+        // 
+        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+        this.ClientSize = new System.Drawing.Size(829, 713);
+        this.Controls.Add(this.pnlControls);
+        this.Name = "frmSettings";
+        this.Text = "Settings";
+        this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
+        this.ResumeLayout(false);
 
     }
 
