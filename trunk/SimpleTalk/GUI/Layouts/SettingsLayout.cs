@@ -42,7 +42,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("2e woord suggestie", "&SecundWordSuggestion", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("2e woord suggestie", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
                 });
 
              //Auto complete suggestion on/off

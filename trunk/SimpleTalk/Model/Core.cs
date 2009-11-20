@@ -33,6 +33,11 @@ namespace SimpleTalk.Model
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
 
+    //TODO: save these settings: 
+    private int _scanSpeed;
+    private bool _nextWordSuggestionOn;
+    private bool _autoWordCompeltionOn;
+
     public Interpreter Interpreter
     {
       get
@@ -46,6 +51,42 @@ namespace SimpleTalk.Model
       get
       {
         return _Sounds;
+      }
+    }
+
+    public int scanSpeed
+    {
+      get
+      {
+        return _scanSpeed;
+      }
+      set
+      {
+        _scanSpeed=value;
+      }
+    }
+
+    public bool nextWordSuggestionOn
+    {
+      get
+      {
+        return _nextWordSuggestionOn;
+      }
+      set
+      {
+        _nextWordSuggestionOn = value;
+      }
+    }
+
+    public bool autoWordCompeltionOn
+    {
+      get
+      {
+        return _autoWordCompeltionOn;
+      }
+      set
+      {
+        _autoWordCompeltionOn = value;
       }
     }
 

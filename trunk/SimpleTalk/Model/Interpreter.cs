@@ -10,6 +10,12 @@ namespace SimpleTalk.Model
   {
     private string _TextOutput;
     private string _TextOutputUpper;
+    private frmSettings _formSettings = new frmSettings();
+
+    public Interpreter()
+    {
+      _formSettings.Hide();
+    }
 
     //added for debugging
     private List<string> _CommandOutput= new List<string>();
@@ -42,6 +48,9 @@ namespace SimpleTalk.Model
         return _TextOutput;
       }
     }
+
+    
+             
 
     //added for debugging
     public List<string> CommandOutput
@@ -123,8 +132,7 @@ namespace SimpleTalk.Model
             case "&menu":
               //Call menu that jumps to menu form
               _CommandOutput.Add("[menu]");
-              frmSettings formSettings = new frmSettings();
-              formSettings.ShowDialog();
+              _formSettings.Show();
               //throw new NotImplementedException();
               break;
 
@@ -146,28 +154,32 @@ namespace SimpleTalk.Model
 
             //commands from the settings menu
 
-            case "&scanSpeedDown":
+            case "&ScanSpeedDown":
               //TODO: decrease scanning speed
+              Core.Instance.scanSpeed--;
               break;
 
-            case "&scanSpeedUp":
+            case "&ScanSpeedUp":
               //TODO: increase scanning speed
+              Core.Instance.scanSpeed++;
               break;
 
-            case "&scanSpeedFixed":
-              //TODO: switch off dynamical scan speed
-              break;
-
-            case "&scanHighlightWave":
+            case "&SecondWordSuggestion":
               //TODO: switch highlighting from wave to hard on/off
+              Core.Instance.nextWordSuggestionOn = !Core.Instance.nextWordSuggestionOn;
               break;
 
-            case "&autoWordComplete":
+            case "&AutoWordComplete":
               //TODO: switch automatic word completion on/off
+              Core.Instance.autoWordCompeltionOn = !Core.Instance.autoWordCompeltionOn;
               break;
 
             case "&say":
               //
+              break;
+
+            case "&GoBack":
+              _formSettings.Hide();
               break;
 
 
