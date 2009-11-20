@@ -49,6 +49,11 @@ namespace SimpleTalk.GUI
     }
 
 
+    public void updateSettingsDisply()
+    {
+      txtScanTime.Text = Convert.ToString(Core.Instance.scanSpeed / 10);
+    }
+
   
   }
 }
