@@ -30,13 +30,14 @@ _Marcel_
 _Marcel/Anton_
  * Make sure that the wordCnt starting value are ok after a database reset
 _Anton_
- * Disable typing with normal keyboard in the Output textbox 
- * Covert all letters on screen to upper case (so they are better readable) auto word suggestions not upper case yet
+ * ~~Disable typing with normal keyboard in the Output textbox~~ 
+ * ~~Covert all letters on screen to upper case (so they are better readable) auto word suggestions not upper case yet~~
  * Remove debugging buttons/boxes from the main form
  * Use monospace letters (every char on the screen should have the same width) ==> update also font in buttons and settings form
  * Add text to speech button on main form keyboard
  * Finish the settings menu layout
- * Check maximum word length of auto suggestion words (also make buttons wider)
+ * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
+ * Define max word length in autocomplete.cs
 _Willem_
  * Test WPF on the BoxPC
  * Setup database on the BoxPC correctly
@@ -44,13 +45,13 @@ _Paul_
  * Make it possible to switch on and off functions
  * Make release version and add this version to the download section
  * Finish the settings menu implementation
- * Start with scanning after character/button is selected. Do not automatic restart when no button is selected.
- * Increase contrast between letter and background
- * Increase contrast between selection bar and letter  
- * Fix button color only ok after on time scanning. 
- * Start scanning in auto suggestion list after pressing auto button
+ * ~~Start with scanning after character/button is selected. Do not automatic restart when no button is selected.~~
+ * ~~Increase contrast between letter and background~~
+ * ~~Increase contrast between selection bar and letter~~  
+ * ~~Fix button color only ok after on time scanning.~~ 
+ * ~~Start scanning in auto suggestion list after pressing auto button~~
 _Everyone_
- * Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server
+ * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server~~
 _not assigned tasks_
  * Autostart program
  * Adjust resolution to 1024 `*` 768 (current resolution of BoxPC) and make sure that the buttons fit on the screen
