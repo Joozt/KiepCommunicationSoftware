@@ -82,12 +82,13 @@ namespace SimpleTalk.GUI
 
     public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
     {
-      if (currentTime.Ticks == 0)
-        return 0;
-      else if (currentTime > duration)
-        return 0;
-      else
-        return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
+        return 1;
+      //if (currentTime.Ticks == 0)
+      //  return 0;
+      //else if (currentTime > duration)
+      //  return 0;
+      //else
+      //  return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
     }
 
     public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
@@ -98,13 +99,13 @@ namespace SimpleTalk.GUI
       return Color.FromArgb(ColorValue, ColorValue, ColorValue);
        */
       int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
-      return Color.FromArgb(Alpha, Color.DarkGray);
+      return Color.FromArgb(Alpha, Color.Black);
     }
 
     void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
     {
       e.BgColor = GetSelectColor(e.CurrentTime, e.Duration);
-      e.FgColor = Color.Black;
+      e.FgColor = Color.White;
 
       if (_Selected)
       {
