@@ -137,10 +137,7 @@ namespace SimpleTalk.GUI
         while (StartTime.Add(_SelectDuration).CompareTo(DateTime.Now) > 0)
         {
           if (_CancelSelection)
-          {
-            OnTimePassed(this, new EventArgs());
             break; // Exit thread
-          }
 
           SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _SelectDuration);
 
@@ -168,10 +165,7 @@ namespace SimpleTalk.GUI
         }
 
         if (_CancelSelection)
-        {
-          OnTimePassed(this, new EventArgs());
           break;
-        }
 
         ResetButtonColor();
 
@@ -234,7 +228,6 @@ namespace SimpleTalk.GUI
       // Start new thread
       SelectionThread = new Thread(DoSelection);
       SelectionThread.Start();
-      //DoSelection();
     }
 
     public void StopSelection()
@@ -244,7 +237,7 @@ namespace SimpleTalk.GUI
       if (SelectionThread == null)
         return;
 
-      while (SelectionThread.ThreadState == ThreadState.Running)
+      while ((SelectionThread.ThreadState & ThreadState.Running) != 0)
         Thread.Sleep(100);
     }
 

@@ -131,6 +131,10 @@ namespace SimpleTalk.GUI
       else
       {
         Core.Instance.Interpreter.ProcessCommand(e.Keys);
+
+        // Automatic proceed with selecting the next button
+        if (!_AutoActive)
+            _Keyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.FirstButton));
       }
     }
 

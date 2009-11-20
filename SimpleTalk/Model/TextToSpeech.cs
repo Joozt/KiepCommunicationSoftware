@@ -32,7 +32,7 @@ namespace SimpleTalk.Model
         }
     }
 
-  class TextToSpeech
+  public class TextToSpeech
   {
     public void Say(string text, int AW1)
     {
