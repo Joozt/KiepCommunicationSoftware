@@ -154,18 +154,25 @@ namespace SimpleTalk.GUI
 
         if (SelectionArgs.Done)
         {
-          if ((ColumnSelected > -1) && (RowSelected > -1))
-          {
-            Keyboard.OnClick(RowSelected, ColumnSelected);
-          }
+            if ((ColumnSelected > -1) && (RowSelected > -1))
+            {
+                Keyboard.OnClick(RowSelected, ColumnSelected);
+            }
 
-          break;
+            if (!SelectionArgs.AutoRestart)
+                break;
         }
 
         if (_CancelSelection)
           break;
 
         ResetButtonColor();
+
+        if (SelectionArgs.AutoRestart)
+        {
+            _CurrentColumn = -1;
+            _CurrentRow = 0;
+        }
 
         // Trigger event next row/column
         OnSelectionChanged(this, new EventArgs());

@@ -10,6 +10,7 @@ namespace SimpleTalk.GUI
   {
     private bool _RowSelect;
     private bool _Selected;
+    private bool _Done;
 
     public override void Attach()
     {
@@ -43,6 +44,7 @@ namespace SimpleTalk.GUI
         else if ((ColumnSelected >= 0) && (RowSelected >= 0))
         {
           _Selected = true;
+          _Done = true;
         }
       }
     }
@@ -54,20 +56,28 @@ namespace SimpleTalk.GUI
 
     void OnSelectionChanged(object sender, EventArgs e)
     {
-      if (_RowSelect)
-      {
-        if (!NextRow())
+        if (_Done)
         {
-          StopSelection();
+            _RowSelect = true;
+            _Selected = false;
+            _Done = false;
+            return;
         }
-      }
-      else
-      {
-        if (!NextColumn())
+
+        if (_RowSelect)
         {
-          StopSelection();
+            if (!NextRow())
+            {
+                StopSelection();
+            }
         }
-      }
+        else
+        {
+            if (!NextColumn())
+            {
+                StopSelection();
+            }
+        }
     }
 
     public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
@@ -106,6 +116,7 @@ namespace SimpleTalk.GUI
         if (ColumnSelected >= 0)
         {
           e.Done = true;
+          e.AutoRestart = true;
         }
 
         e.Selected = true;
