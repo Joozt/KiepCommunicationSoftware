@@ -25,7 +25,7 @@ _Sjors/Rob_
  * Button hardware should be reconsidered
 _Marc_
  * ~~Command window of text to speech should be hidden and closed when the program is closed~~
- * Fix text to speech. Is does not work after merge (in older project version is still working) 
+ * Fix text to speech. Is does not work after merge (older project version on server AD is still working) 
  * TTS set to male voice.
 _Marcel_ 
  * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql") _the script now on the SVN could not find a server on the BoxPC_
@@ -37,10 +37,10 @@ _Anton_
  * ~~Covert all letters on screen to upper case (so they are better readable) auto word suggestions not upper case yet~~
  * Remove debugging buttons/boxes from the main form
  * ~~Use monospace letters (every char on the screen should have the same width) ==> update also font in buttons and settings form~~
- * Add text to speech button on main form keyboard
+ * ~~Add text to speech button on main form keyboard~~
  * ~~Finish the settings menu layout~~
  * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
- * Define max word length in autocomplete.cs. _(postponed until final form layout is ready)
+ * Define max word length in autocomplete.cs. _(postponed until final form layout is ready)_
  * Auto scroll down in output text box when more than two lines are entered. *possible showstopper*
  * ~~Save settings~~
  * call text to speach engine from interperter (make "say" button on abc keyboard functional)
