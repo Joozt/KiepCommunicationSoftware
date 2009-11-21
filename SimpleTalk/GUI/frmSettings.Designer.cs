@@ -41,7 +41,7 @@
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlControls.Location = new System.Drawing.Point(10, 10);
       this.pnlControls.Name = "pnlControls";
-      this.pnlControls.Size = new System.Drawing.Size(750, 600);
+      this.pnlControls.Size = new System.Drawing.Size(850, 600);
       this.pnlControls.TabIndex = 6;
       // 
       // txtScanTime
@@ -49,8 +49,10 @@
       this.txtScanTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.txtScanTime.BackColor = System.Drawing.SystemColors.Window;
-      this.txtScanTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtScanTime.Location = new System.Drawing.Point(760, 10);
+      this.txtScanTime.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtScanTime.Location = new System.Drawing.Point(860, 10);
+      this.txtScanTime.MaximumSize = new System.Drawing.Size(200, 100);
+      this.txtScanTime.MinimumSize = new System.Drawing.Size(200, 100);
       this.txtScanTime.Name = "txtScanTime";
       this.txtScanTime.ReadOnly = true;
       this.txtScanTime.Size = new System.Drawing.Size(200, 100);
@@ -63,8 +65,10 @@
       this.txtNextWord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.txtNextWord.BackColor = System.Drawing.SystemColors.Window;
-      this.txtNextWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNextWord.Location = new System.Drawing.Point(760, 230);
+      this.txtNextWord.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtNextWord.Location = new System.Drawing.Point(860, 230);
+      this.txtNextWord.MaximumSize = new System.Drawing.Size(200, 100);
+      this.txtNextWord.MinimumSize = new System.Drawing.Size(200, 100);
       this.txtNextWord.Name = "txtNextWord";
       this.txtNextWord.ReadOnly = true;
       this.txtNextWord.Size = new System.Drawing.Size(200, 100);
@@ -77,8 +81,10 @@
       this.txtAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.txtAutoComplete.BackColor = System.Drawing.SystemColors.Window;
-      this.txtAutoComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtAutoComplete.Location = new System.Drawing.Point(760, 340);
+      this.txtAutoComplete.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtAutoComplete.Location = new System.Drawing.Point(860, 340);
+      this.txtAutoComplete.MaximumSize = new System.Drawing.Size(200, 100);
+      this.txtAutoComplete.MinimumSize = new System.Drawing.Size(200, 100);
       this.txtAutoComplete.Name = "txtAutoComplete";
       this.txtAutoComplete.ReadOnly = true;
       this.txtAutoComplete.Size = new System.Drawing.Size(200, 100);
@@ -92,10 +98,13 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlLightLight;
       this.ClientSize = new System.Drawing.Size(1264, 732);
+      this.ControlBox = false;
       this.Controls.Add(this.txtAutoComplete);
       this.Controls.Add(this.txtNextWord);
       this.Controls.Add(this.txtScanTime);
       this.Controls.Add(this.pnlControls);
+      this.MaximizeBox = false;
+      this.MinimizeBox = false;
       this.Name = "frmSettings";
       this.Text = "Settings";
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

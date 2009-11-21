@@ -22,9 +22,9 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[4]
                 {
-                    new ButtonDefinition("SPAC", " ", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("AUTO", "&auto", new Size(Width, _DefaultHeight), false),
-                    new ButtonDefinition("BACK", "&back", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition(">>", "&auto", new Size(Width, _DefaultHeight), false),
+                    new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
                 });
     

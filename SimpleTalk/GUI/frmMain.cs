@@ -156,24 +156,12 @@ namespace SimpleTalk.GUI
       Core.Instance.Interpreter.ProcessCommand("a"); // Letter
       Core.Instance.Interpreter.ProcessCommand("&menu"); // Special function
     }
-
-    private void button3_Click(object sender, EventArgs e)
-    {
-      //txtOutput.Text = _Interpreter.TextOutput;
-             
-      
-      foreach (string item in Core.Instance.Interpreter.CommandOutput)
-      {
-        //lbAutoSuggestions.Items.Add(item);
-      }
-      Core.Instance.Interpreter.ClearCommand();
-     
-    }
+  
 
     private void button4_Click(object sender, EventArgs e)
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
-        //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
+      //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
       _TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, _TextToSpeech.P);  //txtOutput.Text
     }
 
@@ -230,8 +218,12 @@ namespace SimpleTalk.GUI
       _SimpleBeheaviour.StopSelection();
       _AutoBeheaviour.StopSelection();
 
+      //Disconnect database
       _AutoComplete.Dispose();
       DataAccess.Database.Disconnect();
+
+      //Save settings
+      Properties.Settings.Default.Save();
     }
 
     private void button11_Click(object sender, EventArgs e)

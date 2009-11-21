@@ -34,9 +34,9 @@ namespace SimpleTalk.Model
     private TextToSpeech _TextToSpeech;
 
     //TODO: save these settings: 
-    private int _scanSpeed = 15;
-    private bool _nextWordSuggestionOn = true;
-    private bool _autoWordCompeltionOn = true;
+    //private int _scanSpeed = Properties.Settings.Default.scanSpeed;
+    //private bool _nextWordSuggestionOn = Properties.Settings.Default.nextWordSuggestionOn;
+    //private bool _autoWordCompeltionOn = Properties.Settings.Default.autoWordCompletionOn;
 
     public Interpreter Interpreter
     {
@@ -59,14 +59,14 @@ namespace SimpleTalk.Model
     {
       get
       {
-        return _scanSpeed;
+        return Properties.Settings.Default.scanSpeed;
       }
       set
       {
-        if (value >= 5)
-          _scanSpeed = value;
+        if (value >= 5) //minimum button highlight time (scanSpeed) is 0.5 seconds
+          Properties.Settings.Default.scanSpeed = value;
         else
-          _scanSpeed = 5;
+          Properties.Settings.Default.scanSpeed = 5;
       }
     }
 
@@ -74,11 +74,11 @@ namespace SimpleTalk.Model
     {
       get
       {
-        return _nextWordSuggestionOn;
+        return Properties.Settings.Default.nextWordSuggestionOn;
       }
       set
       {
-        _nextWordSuggestionOn = value;
+        Properties.Settings.Default.nextWordSuggestionOn = value;
       }
     }
 
@@ -86,11 +86,11 @@ namespace SimpleTalk.Model
     {
       get
       {
-        return _autoWordCompeltionOn;
+        return Properties.Settings.Default.autoWordCompletionOn;
       }
       set
       {
-        _autoWordCompeltionOn = value;
+        Properties.Settings.Default.autoWordCompletionOn = value;
       }
     }
 
