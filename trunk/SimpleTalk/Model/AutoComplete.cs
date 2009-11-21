@@ -156,10 +156,6 @@ namespace SimpleTalk.Model
         {
           //return empty list in case of empty string
           Suggestions.Clear();  //This line should be uncommented in the final code 
-          Suggestions.Add("Hallo");
-          Suggestions.Add("Hallo");
-          Suggestions.Add("Hallo");
-          Suggestions.Add("Hallo");
           OnSuggestionsChanged(this, new EventArgs());
         }
         else
