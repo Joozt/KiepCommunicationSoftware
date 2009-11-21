@@ -29,9 +29,8 @@ namespace SimpleTalk.GUI
 
     private bool _AutoActive;
     //private bool _keyPressed = false;
-    private Font _defaultFont = new Font("Consolas", 38.00F, FontStyle.Bold);
+    private Font _defaultFont = new Font("Consolas", 45.00F, FontStyle.Bold);
 
-    
 
     public frmMain()
     {
@@ -60,23 +59,40 @@ namespace SimpleTalk.GUI
 
       txtOutput.Font = _defaultFont;
       OnTextChanged(this, new EventArgs());
+    }
 
-      
+    private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
+    {
+      // TODO: Automatically stop selection when stopping the application
+      _SimpleBeheaviour.StopSelection();
+      _AutoBeheaviour.StopSelection();
+
+      //Disconnect database
+      _AutoComplete.Dispose();
+      DataAccess.Database.Disconnect();
+
+      //Save settings
+      Properties.Settings.Default.Save();
+    }
+
+    private void frmMain_Load(object sender, EventArgs e)
+    {
+
     }
 
     void CreateProcessWindow()
     {
-        _TextToSpeech.MakeProcess();
+      _TextToSpeech.MakeProcess();
 
-        //ActiveWindow AW = new ActiveWindow();
-        //W2 = AW.GetActiveWindow();
+      //ActiveWindow AW = new ActiveWindow();
+      //W2 = AW.GetActiveWindow();
     }
 
     void OnSuggestionsChanged(object sender, EventArgs e)
     {
       _AutoBeheaviour.StopSelection();
       _AutoLayout.ClearButtons();
-      _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6);
+      _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6); //max number of shown suggestion is 6 (this is limited by the form design)
     }
 
     void OnAutoComplete(object sender, EventArgs e)
@@ -84,7 +100,7 @@ namespace SimpleTalk.GUI
       if (_AutoComplete.Suggestions.Count > 0)
       {
         _AutoActive = true;
-        _AutoKeyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.FirstButton)); // TODO: Hack to start autocomplete automatically
+        _AutoKeyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.ScanButton)); // TODO: Hack to start autocomplete automatically
       }
     }
 
@@ -112,37 +128,27 @@ namespace SimpleTalk.GUI
         _AutoKeyboard.OnButtonPressed(e);
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.SecondButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
-      if ((e.Button == ButtonType.ThirdButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
+      if ((e.Button == ButtonType.YesButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
+      if ((e.Button == ButtonType.NoButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
     {
-      
-      cbButton1.Checked = (e.Button == ButtonType.FirstButton);
-      cbButton2.Checked = (e.Button == ButtonType.SecondButton);
-     
+
+      cbButton1.Checked = (e.Button == ButtonType.ScanButton);
+      cbButton2.Checked = (e.Button == ButtonType.YesButton);
+
     }
 
     void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
     {
-      if (InvokeRequired) 
+      if (InvokeRequired)
       {
         this.BeginInvoke(new CustomKeyPressedEventHandler(OnKeyPressed), new Object[] { sender, e });
       }
       else
       {
         Core.Instance.Interpreter.ProcessCommand(e.Keys);
-      }
-    }
-
-    private void btnGetAutoList_Click(object sender, EventArgs e)
-    {
-     // lbAutoSuggestions.Items.Clear();
-
-      foreach (string item in _AutoComplete.GetAutoCompleteList())
-      {
-        //lbAutoSuggestions.Items.Add(item);
       }
     }
 
@@ -156,7 +162,7 @@ namespace SimpleTalk.GUI
       Core.Instance.Interpreter.ProcessCommand("a"); // Letter
       Core.Instance.Interpreter.ProcessCommand("&menu"); // Special function
     }
-  
+
 
     private void button4_Click(object sender, EventArgs e)
     {
@@ -172,13 +178,7 @@ namespace SimpleTalk.GUI
       //CreateProcessWindow();
     }
 
-    private void button6_Click(object sender, EventArgs e)
-    {
-      // Sound must be played in a seperate thread to avoid hanging the application!!
-      //_Sounds.PlaySound(@"c:\spraakprogramma\audiofiles\Ja.wav");
-    }
-
-    private void button7_Click(object  sender, EventArgs e)
+    private void button7_Click(object sender, EventArgs e)
     {
       // Possiblity to stop a very long during sound
       Core.Instance.Sounds.StopSound();
@@ -196,49 +196,15 @@ namespace SimpleTalk.GUI
 
     private void txtOutput_TextChanged(object sender, EventArgs e)
     {
-      /* _AutoComplete.OnTextChanged(txtOutput.Text);
-      lbAutoSuggestions.Items.Clear();
-      foreach (string item in _AutoComplete.GetAutoCompleteList())
-      {
-        lbAutoSuggestions.Items.Add(item);
-      }*/
-
+      //TODO: set autocompelete on dedicated event (from
       _AutoComplete.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
-      
     }
 
     private void label1_Click(object sender, EventArgs e)
     {
       _SimpleBeheaviour.StopSelection();
     }
-
-    private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
-    {
-      // TODO: Automatically stop selection when stopping the application
-      _SimpleBeheaviour.StopSelection();
-      _AutoBeheaviour.StopSelection();
-
-      //Disconnect database
-      _AutoComplete.Dispose();
-      DataAccess.Database.Disconnect();
-
-      //Save settings
-      Properties.Settings.Default.Save();
-    }
-
-    private void button11_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void button12_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void frmMain_Load(object sender, EventArgs e)
-    {
-
-    }
-
+    
     private void nSelectionTime_ValueChanged(object sender, EventArgs e)
     {
       _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.scanSpeed / 10 * 1000));
@@ -258,11 +224,6 @@ namespace SimpleTalk.GUI
     }
 
     #endregion
-
-    private void button8_Click(object sender, EventArgs e)
-    {
-      Core.Instance.Interpreter.ProcessCommand("&menu");
-    }
 
     private void buttonImportWords_Click(object sender, EventArgs e)
     {

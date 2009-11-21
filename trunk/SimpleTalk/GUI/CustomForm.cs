@@ -59,11 +59,11 @@ namespace SimpleTalk.GUI
           switch (keyData)
           {
             case Keys.Add:
-              return ButtonType.FirstButton;
+              return ButtonType.ScanButton;
             case Keys.Subtract:
-              return ButtonType.SecondButton;
+              return ButtonType.YesButton;
             case Keys.Multiply:
-              return ButtonType.ThirdButton;
+              return ButtonType.NoButton;
             default:
               return ButtonType.None;
           }

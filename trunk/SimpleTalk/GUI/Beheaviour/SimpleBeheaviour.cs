@@ -30,7 +30,7 @@ namespace SimpleTalk.GUI
 
     public override void OnButtonPressed(CustomButtonEventArgs e)
     {
-      if (e.Button == ButtonType.FirstButton)
+      if (e.Button == ButtonType.ScanButton)
       {
         if ((ColumnSelected == -1) && (RowSelected == -1))
         {

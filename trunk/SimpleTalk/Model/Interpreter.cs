@@ -186,6 +186,7 @@ namespace SimpleTalk.Model
         }
       }
       OnTextChanged(this, new EventArgs());
+      //Core.Instance.
     }
   }
 }
