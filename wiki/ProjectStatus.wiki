@@ -82,8 +82,8 @@ Note that the auto completion database was working during the demonstration.
  * ~~Increase contrast between selection bar and letter~~
  * Optional: make font adjustment per individual key possible (request of Ad)
 == Optional features ==
- * Make is possible for Joost to type some sentences in advance and save, email or SMS them.  
-* Center the text in setting buttons menu to te left.
+ * Make is possible for Joost to type some sentences in advance and save, email or SMS them. 
+ * Center the text in setting buttons menu to te left.
 
 
 
