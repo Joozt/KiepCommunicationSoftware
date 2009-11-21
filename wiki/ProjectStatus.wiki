@@ -64,6 +64,8 @@ _Paul_
 _Everyone_
  * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server.~~
  * Add Joost_woorden.CSV to database.
+ * Finish DeliveryCheckList wiki
+ * Find bugs in program, reproduce them and solve or report the bugs
 _not assigned tasks_
  * Autostart program
  * Adjust resolution to ~~1024 `*` 768~~ 1366 `*` 768 (native TV resolution and current resolution of BoxPC) and make sure that the buttons fit on the screen
