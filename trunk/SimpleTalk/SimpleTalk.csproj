@@ -138,6 +138,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="AudioFiles\Ja.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

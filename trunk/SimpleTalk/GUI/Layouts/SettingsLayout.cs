@@ -16,53 +16,53 @@ namespace SimpleTalk.GUI
         override public void ConstructLayout()
         {
             //Scan speed settting (-)
-            int Width = (int)Math.Round(7.0* _DefaultWidth + 1.0*_hSpace);
+            int Width = (int)Math.Round(8.0* _DefaultWidth + 1.0*_hSpace);
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Loop snelheid -", "&ScanSpeedDown", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("KNOP OPLICHT TIJD -", "&ScanSpeedDown", new Size(Width, _DefaultHeight)),
                 });
 
             //Scan speed settting (+)
-            Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
+            Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Loop snelheid +", "&ScanSpeedUp", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("KNOP OPLICHT TIJD +", "&ScanSpeedUp", new Size(Width, _DefaultHeight)),
                 });
 
             //Next word proposed by auto complete on/off
-              Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0*_hSpace);
+              Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0*_hSpace);
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("2e woord suggestie", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("VOLGENDE WOORDSUGGESTIE", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
                 });
 
              //Auto complete suggestion on/off
-             Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
+             Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Woord voltooien", "&AutoWordComplete", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("WOORD VOLTOOIEN", "&AutoWordComplete", new Size(Width, _DefaultHeight)),
                 });
 
               //Go back to form main
-              Width = (int)Math.Round(7.0 * _DefaultWidth + 1.0 * _hSpace);
+              Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Terug naar hoofdscherm", "&GoBack", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("TERUG NAAR HOOFSCHERM", "&GoBack", new Size(Width, _DefaultHeight)),
                 });
 
                  AutoFormat();
