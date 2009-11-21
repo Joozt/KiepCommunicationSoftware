@@ -51,7 +51,17 @@ namespace SimpleTalk.GUI
 
     public void updateSettingsDisply()
     {
-      txtScanTime.Text = Convert.ToString(Core.Instance.scanSpeed / 10);
+      txtScanTime.Text = Convert.ToString((float)Core.Instance.scanSpeed / 10);
+
+      if (Core.Instance.autoWordCompeltionOn)
+        txtAutoComplete.Text = "AAN";
+      else
+        txtAutoComplete.Text = "UIT";
+
+      if (Core.Instance.nextWordSuggestionOn)
+        txtNextWord.Text = "AAN";
+      else
+        txtNextWord.Text = "UIT";
     }
 
   
