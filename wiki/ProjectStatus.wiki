@@ -41,7 +41,7 @@ _Anton_
  * ~~Finish the settings menu layout~~
  * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
  * Define max word length in autocomplete.cs. _(postponed until final form layout is ready)_
- * Auto scroll down in output text box when more than two lines are entered. *possible showstopper*
+ * ~~Auto scroll down in output text box when more than two lines are entered.~~
  * ~~Save settings~~
  * call text to speach engine from interperter (make "say" button on abc keyboard functional)
  * call autocompletion engine from interperter on changed text. First move auto complete to Core.cs
