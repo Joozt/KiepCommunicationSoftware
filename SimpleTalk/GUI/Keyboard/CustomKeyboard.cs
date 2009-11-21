@@ -74,6 +74,13 @@ namespace SimpleTalk.GUI
             return Button;
         }
 
+        public MostButton AddButton(string text, string keys, Size size, bool autoRescan)
+        {
+            MostButton Button = AddButton(text, keys, size);
+            Button.AutoRescan = autoRescan;
+            return Button;
+        }
+
         public MostButton AddButton(string text, string keys, Point location, Size size)
         {
             MostButton Button = AddButton(text, keys, location);

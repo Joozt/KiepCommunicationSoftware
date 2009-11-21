@@ -10,7 +10,7 @@ namespace SimpleTalk.GUI
     {
         string _Keys = "";
         bool _AutoSizeFont = true;
-        bool _UsedByScanning = false;
+        bool _AutoRescan = true;
 
         public MostButton()
         {
@@ -48,15 +48,15 @@ namespace SimpleTalk.GUI
             }
         }
 
-        public bool UsedByScanning
+        public bool AutoRescan
         {
             get
             {
-                return _UsedByScanning;
+                return _AutoRescan;
             }
             set
             {
-                _UsedByScanning = value;
+                _AutoRescan = value;
             }
         }
 

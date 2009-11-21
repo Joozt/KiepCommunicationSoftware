@@ -68,7 +68,6 @@ namespace SimpleTalk.Model
         //cmd.StandardInput.Close();
         
         //string test = cmd.StandardOutput.ReadToEnd();
-        
        // TextWriter tw = new StreamWriter(@"C:\Projectspraak\SimpleTalk\bin\Debug\FestivalBinaries\nextens\test.txt");
        // tw.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
        // tw.WriteLine("(ResynthCurrentInton u0000);");

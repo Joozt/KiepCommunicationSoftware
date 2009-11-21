@@ -23,7 +23,7 @@ namespace SimpleTalk.GUI
                 new ButtonDefinition[4]
                 {
                     new ButtonDefinition("SPAC", " ", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("AUTO", "&auto", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("AUTO", "&auto", new Size(Width, _DefaultHeight), false),
                     new ButtonDefinition("BACK", "&back", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
                 });
@@ -64,8 +64,8 @@ namespace SimpleTalk.GUI
                     Row.AddButton(
                         ButtonDef.Text,
                         ButtonDef.Keys,
-                        ButtonDef.Size.IsEmpty ? new Size(DefaultWidth, DefaultHeight) : ButtonDef.Size
-                        );
+                        ButtonDef.Size.IsEmpty ? new Size(DefaultWidth, DefaultHeight) : ButtonDef.Size,
+                        ButtonDef.AutoRescan);
                 }
             }
         }
