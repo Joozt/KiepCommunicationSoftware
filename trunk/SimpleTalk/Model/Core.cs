@@ -34,7 +34,7 @@ namespace SimpleTalk.Model
     private TextToSpeech _TextToSpeech;
 
     //TODO: save these settings: 
-    private int _scanSpeed = 5;
+    private int _scanSpeed = 15;
     private bool _nextWordSuggestionOn = true;
     private bool _autoWordCompeltionOn = true;
 

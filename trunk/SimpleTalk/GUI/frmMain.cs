@@ -254,8 +254,8 @@ namespace SimpleTalk.GUI
 
     private void nSelectionTime_ValueChanged(object sender, EventArgs e)
     {
-      _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
-      _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(nSelectionTime.Value * 1000));
+      _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.scanSpeed / 10 * 1000));
+      _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.scanSpeed / 10 * 1000));
     }
 
     #region IDisposable Members
