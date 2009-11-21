@@ -10,10 +10,11 @@ namespace SimpleTalk.GUI
     {
         string _Keys = "";
         bool _AutoSizeFont = true;
+        bool _UsedByScanning = false;
 
         public MostButton()
         {
-          Font = new System.Drawing.Font("Microsoft Sans Serif", 40, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          Font = new System.Drawing.Font("Consolas", 38.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
 
         public MostButton(string keys) : this()
@@ -44,6 +45,18 @@ namespace SimpleTalk.GUI
             set
             {
                 _Keys = value;
+            }
+        }
+
+        public bool UsedByScanning
+        {
+            get
+            {
+                return _UsedByScanning;
+            }
+            set
+            {
+                _UsedByScanning = value;
             }
         }
 

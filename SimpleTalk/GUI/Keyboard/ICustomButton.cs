@@ -18,5 +18,11 @@ namespace SimpleTalk.GUI
             get;
             set;
         }
+
+        bool UsedByScanning
+        {
+            get;
+            set;
+        }
     }
 }
