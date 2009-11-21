@@ -25,7 +25,7 @@ _Sjors/Rob_
  * Button hardware should be reconsidered
 _Marc_
  * ~~Command window of text to speech should be hidden and closed when the program is closed~~
- * TTS se to male voice.
+ * TTS set to male voice.
 _Marcel_ 
  * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql") _the script now on the SVN could not find a server on the BoxPC_
 _Marcel/Anton_
@@ -41,8 +41,9 @@ _Anton_
  * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
  * Define max word length in autocomplete.cs.
  * Auto scroll down in output txt box when more than two line are enterd.
+ * Save settings
 _Willem_
- * Test WPF on the BoxPC
+ * ~~Test WPF on the BoxPC~~_WPF works fine on the boxPC_
  * Setup database on the BoxPC correctly
 _Paul_
  * Make it possible to switch on and off functions
@@ -53,6 +54,7 @@ _Paul_
  * ~~Increase contrast between selection bar and letter~~  
  * ~~Fix button color only ok after on time scanning.~~ 
  * ~~Start scanning in auto suggestion list after pressing auto button~~
+ * Adjust scan speed according to scanSpeed setting variable in the Core.cs
 _Everyone_
  * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server.~~
  * Add Joost_woorden.CSV to database.
@@ -83,7 +85,7 @@ Note that the auto completion database was working during the demonstration.
  * Optional: make font adjustment per individual key possible (request of Ad)
 == Optional features ==
  * Make is possible for Joost to type some sentences in advance and save, email or SMS them. 
- * Center the text in setting buttons menu to te left.
+ * Center the text in setting buttons menu to the left.
 
 
 
