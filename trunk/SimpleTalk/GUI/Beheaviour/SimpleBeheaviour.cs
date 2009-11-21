@@ -123,7 +123,7 @@ namespace SimpleTalk.GUI
         if (ColumnSelected >= 0)
         {
           e.Done = true;
-          //e.AutoRestart = true;
+          e.AutoRestart = Keyboard.GetButton(RowSelected, ColumnSelected).AutoRescan;
         }
 
         e.Selected = true;

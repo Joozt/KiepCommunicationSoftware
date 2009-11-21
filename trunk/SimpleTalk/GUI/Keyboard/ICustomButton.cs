@@ -19,7 +19,7 @@ namespace SimpleTalk.GUI
             set;
         }
 
-        bool UsedByScanning
+        bool AutoRescan
         {
             get;
             set;

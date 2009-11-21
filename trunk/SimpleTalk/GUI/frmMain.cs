@@ -28,7 +28,6 @@ namespace SimpleTalk.GUI
     private TextToSpeech _TextToSpeech;
 
     private bool _AutoActive;
-    private int W2;
     //private bool _keyPressed = false;
     private Font _defaultFont = new Font("Consolas", 38.00F, FontStyle.Bold);
 
@@ -134,10 +133,6 @@ namespace SimpleTalk.GUI
       else
       {
         Core.Instance.Interpreter.ProcessCommand(e.Keys);
-
-        // Automatic proceed with selecting the next button
-        if (!_AutoActive)
-            _Keyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.FirstButton));
       }
     }
 
@@ -185,7 +180,7 @@ namespace SimpleTalk.GUI
     private void button5_Click(object sender, EventArgs e)
     {
       // Possiblity to stop a very long text
-      _TextToSpeech.StopSpeaking(W2);
+      //_TextToSpeech.StopSpeaking(W2);
       //CreateProcessWindow();
     }
 

@@ -11,18 +11,32 @@ namespace SimpleTalk.GUI
     string _Text;
     string _Keys;
     Size _Size;
+    bool _AutoRescan;
 
-    public ButtonDefinition(string Text, string Keys)
+    public ButtonDefinition(string text, string keys)
     {
-      _Text = Text;
-      _Keys = Keys;
+      _AutoRescan = true;
+      _Text = text;
+      _Keys = keys;
       _Size = new Size(0, 0);
     }
 
-    public ButtonDefinition(string Text, string Keys, Size Size)
-      : this(Text, Keys)
+    public ButtonDefinition(string text, string keys, bool autoRescan)
+        : this(text, keys)
     {
-      _Size = Size;
+        _AutoRescan = autoRescan;
+    }
+
+    public ButtonDefinition(string text, string keys, Size size)
+      : this(text, keys)
+    {
+      _Size = size;
+    }
+
+    public ButtonDefinition(string text, string keys, Size size, bool autoRescan)
+        : this(text, keys, size)
+    {
+        _AutoRescan = autoRescan;
     }
 
     public string Text
@@ -47,6 +61,14 @@ namespace SimpleTalk.GUI
       {
         return _Size;
       }
+    }
+
+    public bool AutoRescan
+    {
+        get
+        {
+            return _AutoRescan;
+        }
     }
   }
 }
