@@ -25,6 +25,7 @@ _Sjors/Rob_
  * Button hardware should be reconsidered
 _Marc_
  * ~~Command window of text to speech should be hidden and closed when the program is closed~~
+ * Fix text to speech. Is does not work after merge (in older project version is still working) 
  * TTS set to male voice.
 _Marcel_ 
  * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql") _the script now on the SVN could not find a server on the BoxPC_
@@ -39,29 +40,34 @@ _Anton_
  * Add text to speech button on main form keyboard
  * ~~Finish the settings menu layout~~
  * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
- * Define max word length in autocomplete.cs.
- * Auto scroll down in output txt box when more than two line are enterd.
- * Save settings
+ * Define max word length in autocomplete.cs. _(postponed until final form layout is ready)
+ * Auto scroll down in output text box when more than two lines are entered. *possible showstopper*
+ * ~~Save settings~~
+ * call text to speach engine from interperter (make "say" button on abc keyboard functional)
+ * call autocompletion engine from interperter on changed text. First move auto complete to Core.cs
 _Willem_
  * ~~Test WPF on the BoxPC~~ _WPF works fine on the BoxPC_
  * ~~ Setup database on the BoxPC correctly ~~
 _Paul_
  * ~~ Make it possible to switch on and off functions~~
  * Make release version and add this version to the download section
- * Finish the settings menu implementation
+ * ~~Finish the settings menu implementation~~
  * ~~Start with scanning after character/button is selected. Do not automatic restart when no button is selected.~~
  * ~~Increase contrast between letter and background~~
  * ~~Increase contrast between selection bar and letter~~  
  * ~~Fix button color only ok after on time scanning.~~ 
  * ~~Start scanning in auto suggestion list after pressing auto button~~
  * Adjust scan speed according to scanSpeed setting variable in the Core.cs
+ * Rethink scanning structure, code is nog stable (option: "EDD" and review the concept ;-) )
+ * Automatically stop selection when stopping the application  (in frmSettings.cs)
+ * Hack to start autocomplete automatically (in frmMain.cs)
 _Everyone_
  * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server.~~
  * Add Joost_woorden.CSV to database.
 _not assigned tasks_
  * Autostart program
- * Adjust resolution to 1024 `*` 768 (current resolution of BoxPC) and make sure that the buttons fit on the screen
- * Make it possible to switch of next word prediction
+ * Adjust resolution to ~~1024 `*` 768~~ 1366 `*` 768 (native TV resolution and current resolution of BoxPC) and make sure that the buttons fit on the screen
+ * ~~Make it possible to switch of next word prediction~~
  * Make it possible to clear the next word database
  * Set the frm  to full screen no windows bar. 
 == Known issues ==
@@ -86,6 +92,7 @@ Note that the auto completion database was working during the demonstration.
 == Optional features ==
  * Make is possible for Joost to type some sentences in advance and save, email or SMS them. 
  * Center the text in setting buttons menu to the left.
+ * Volume control in te stings window (option use an api to control windows master volume and mute)
 
 
 
