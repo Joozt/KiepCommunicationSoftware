@@ -62,8 +62,6 @@ namespace SimpleTalk.GUI
         txtNextWord.Text = "AAN";
       else
         txtNextWord.Text = "UIT";
-    }
-
-  
+    }  
   }
 }
