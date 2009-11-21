@@ -24,11 +24,11 @@ namespace SimpleTalk.Model
       {
         if (!String.IsNullOrEmpty(_TextOutput))
         {
-          _TextOutputUpper = _TextOutput.ToUpper() + '|';
+          _TextOutputUpper = _TextOutput.ToUpper() + ']';
         }
         else
         {
-          _TextOutputUpper = "|";
+          _TextOutputUpper = "]";
         }
         return _TextOutputUpper;
       }
