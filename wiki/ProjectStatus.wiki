@@ -25,10 +25,12 @@ _Sjors/Rob_
  * Button hardware should be reconsidered
 _Marc_
  * Command window of text to speech should be hidden and closed when the program is closed
+ * TTS se to male voice.
 _Marcel_ 
  * Make batch file that imports the correct data to the database (run SQL command "Generate AutoComplete Database.sql") _the script now on the SVN could not find a server on the BoxPC_
 _Marcel/Anton_
  * Make sure that the wordCnt starting value are ok after a database reset
+ * Create database in code when not exist.
 _Anton_
  * ~~Disable typing with normal keyboard in the Output textbox~~ 
  * ~~Covert all letters on screen to upper case (so they are better readable) auto word suggestions not upper case yet~~
@@ -37,7 +39,8 @@ _Anton_
  * Add text to speech button on main form keyboard
  * Finish the settings menu layout
  * ~~Check maximum word length of auto suggestion words (also make buttons wider~~
- * Define max word length in autocomplete.cs
+ * Define max word length in autocomplete.cs.
+ * Auto scroll down in output txt box when more than two line are enterd.
 _Willem_
  * Test WPF on the BoxPC
  * Setup database on the BoxPC correctly
@@ -51,19 +54,24 @@ _Paul_
  * ~~Fix button color only ok after on time scanning.~~ 
  * ~~Start scanning in auto suggestion list after pressing auto button~~
 _Everyone_
- * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server~~
+ * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the 
+SVN server.~~
+ * Add Joost_woorden.CSV to database.
 _not assigned tasks_
  * Autostart program
  * Adjust resolution to 1024 `*` 768 (current resolution of BoxPC) and make sure that the buttons fit on the screen
  * Make it possible to switch of next word prediction
  * Make it possible to clear the next word database
-
+ * Set the frm  to full screen no windows bar. 
 == Known issues ==
  * SQL sever: "SQLEXPRESS" fixed instance in code (if problem use "local")
 
 == Possible issues ==
  * When SQL connection is lost auto word completion does not work anymore
  * Path in SQL file for database generation ("Generate AutoComplete Database.sql") is fixed
+
+== Nice to have ==
+* Center the text in setting buttons menu to te left.
 
 == Results first demo for Joost ==
 Use software version r82 for demonstration to Joost on 13-11-2009.
