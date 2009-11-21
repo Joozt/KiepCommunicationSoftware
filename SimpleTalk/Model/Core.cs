@@ -33,11 +33,6 @@ namespace SimpleTalk.Model
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
 
-    //TODO: save these settings: 
-    //private int _scanSpeed = Properties.Settings.Default.scanSpeed;
-    //private bool _nextWordSuggestionOn = Properties.Settings.Default.nextWordSuggestionOn;
-    //private bool _autoWordCompeltionOn = Properties.Settings.Default.autoWordCompletionOn;
-
     public Interpreter Interpreter
     {
       get
@@ -53,6 +48,16 @@ namespace SimpleTalk.Model
         return _Sounds;
       }
     }
+
+    public TextToSpeech TextToSpeech
+    {
+      get
+      {
+        return _TextToSpeech;
+      }
+    }
+
+    #region settings
 
     //scan speed in 1/10 of seconds
     public int scanSpeed
@@ -94,13 +99,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    public TextToSpeech TextToSpeech
-    {
-        get
-        {
-            return _TextToSpeech;
-        }
-    }
+    #endregion 
 
     Core()
     {

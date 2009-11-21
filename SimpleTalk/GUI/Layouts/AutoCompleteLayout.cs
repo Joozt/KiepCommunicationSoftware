@@ -37,8 +37,8 @@ namespace SimpleTalk.GUI
           break;
         else
         {
-          //only show words that are not too long
-          int maxWordLength = 12;
+          //only show words that are not too long so they fit on one auto suggestion button (form design dependent)
+          int maxWordLength = 17;
           if (item.Length <= maxWordLength)
           {
             AddButton(new ButtonDefinition(item.ToUpper(), "#" + item));

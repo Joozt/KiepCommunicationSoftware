@@ -49,7 +49,7 @@ namespace SimpleTalk.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("15")]
+        [global::System.Configuration.DefaultSettingValueAttribute("20")]
         public int scanSpeed {
             get {
                 return ((int)(this["scanSpeed"]));

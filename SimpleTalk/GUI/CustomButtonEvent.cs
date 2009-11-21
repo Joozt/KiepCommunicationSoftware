@@ -8,9 +8,9 @@ namespace SimpleTalk.GUI
     public enum ButtonType
     {
         None,
-        FirstButton,
-        SecondButton,
-        ThirdButton
+        ScanButton,
+        YesButton,
+        NoButton
     }
 
     public class CustomButtonEventArgs : EventArgs
