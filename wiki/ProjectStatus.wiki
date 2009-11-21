@@ -43,10 +43,10 @@ _Anton_
  * Auto scroll down in output txt box when more than two line are enterd.
  * Save settings
 _Willem_
- * ~~Test WPF on the BoxPC~~_WPF works fine on the boxPC_
- * Setup database on the BoxPC correctly
+ * ~~Test WPF on the BoxPC~~ _WPF works fine on the BoxPC_
+ * ~~ Setup database on the BoxPC correctly ~~
 _Paul_
- ~~* Make it possible to switch on and off functions~~
+ * ~~ Make it possible to switch on and off functions~~
  * Make release version and add this version to the download section
  * Finish the settings menu implementation
  * ~~Start with scanning after character/button is selected. Do not automatic restart when no button is selected.~~
