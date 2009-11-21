@@ -14,46 +14,88 @@ using System.Runtime.InteropServices;
 
 namespace SimpleTalk.Model
 {
-    class ActiveWindow
-    {
-        [DllImport("user32.dll")]
-
-        static extern int GetForegroundWindow();
-
-        public int GetActiveWindow()
-        {
-            const int nChars = 256;
-            int handle = 0;
-            StringBuilder Buff = new StringBuilder(nChars);
-
-            handle = GetForegroundWindow();
-
-            return handle;
-        }
-    }
 
   public class TextToSpeech
   {
-    public void Say(string text, int AW1)
+      public Process P;
+
+      public TextToSpeech()
+      {
+          P = CreateProcess();
+      }
+//      private System.IO.StreamWriter c_StreamInput = null;
+
+    public Process CreateProcess()
     {
+
+
+        Process cmd = new Process();
+
+        cmd.StartInfo.FileName = "cmd.exe";
+        cmd.StartInfo.RedirectStandardInput = true;
+        cmd.StartInfo.RedirectStandardOutput = true;
+        cmd.StartInfo.CreateNoWindow = true;
+        cmd.StartInfo.UseShellExecute = false;
+
+        cmd.Start();
+
+        cmd.StandardInput.WriteLine("cd .\\FestivalBinaries\\nextens");
+        cmd.StandardInput.WriteLine(".\\bin\\festival.exe --libdir \"./lib/\"");
         
-        if (text != "")
-        {
-            ActiveWindow AW = new ActiveWindow();
-            int W2 = AW.GetActiveWindow();
-            SetForegroundWindow(AW1);
+        return cmd;
+    }
 
-            SendKeys.SendWait("{(}SayText \" " + text + "\"{)} {enter}");
+    public void Say(string text, Process cmd)
+    {
 
-            SetForegroundWindow(W2);
-        }
+        //Process cmd = new Process();
+
+        //cmd.StartInfo.FileName = "cmd.exe";
+        //cmd.StartInfo.RedirectStandardInput = true;
+        //cmd.StartInfo.RedirectStandardOutput = true;
+        //cmd.StartInfo.CreateNoWindow = true;
+        //cmd.StartInfo.UseShellExecute = false;
+
+        //cmd.Start();
+
+        
+
+        //cmd.StandardInput.WriteLine("cd .\\FestivalBinaries\\nextens");
+        //cmd.StandardInput.WriteLine(".\\bin\\festival.exe --libdir \"./lib/\"");
+        cmd.StandardInput.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
+        cmd.StandardInput.WriteLine("(ResynthCurrentInton u0000);");
+        cmd.StandardInput.Flush();
+        //cmd.StandardInput.Close();
+        
+        //string test = cmd.StandardOutput.ReadToEnd();
+        
+       // TextWriter tw = new StreamWriter(@"C:\Projectspraak\SimpleTalk\bin\Debug\FestivalBinaries\nextens\test.txt");
+       // tw.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
+       // tw.WriteLine("(ResynthCurrentInton u0000);");
+       // tw.Close();
+
+        //P.StartInfo.FileName = @".\test.bat";
+        
+        //P.StartInfo.WorkingDirectory = @"C:\Projectspraak\SimpleTalk\bin\Debug\FestivalBinaries\nextens";
+
+        
+        //P.StartInfo.CreateNoWindow = true;
+        //if(P.Responding)
+       //     P.StandardInput.WriteLine("(SayText \"" + text + "\")");
+        
+
+        
+        //P.WaitForExit();
+        
     }
     [DllImport("User32.dll")]
     public static extern bool DestroyWindow(int hWnd);
 
     public void StopSpeaking(int W2)
     {
+    
         
+
         //SetForegroundWindow(W2);
         //SendKeys.SendWait("{(}quit{)} {enter}");
         //System.Threading.Thread.Sleep(3000);

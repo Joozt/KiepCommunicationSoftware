@@ -10,6 +10,7 @@ using System.IO;
 using SimpleTalk.Model;
 using System.Threading;
 using SimpleTalk;
+using System.Diagnostics;
 
 namespace SimpleTalk.GUI
 {
@@ -30,7 +31,9 @@ namespace SimpleTalk.GUI
     private int W2;
     //private bool _keyPressed = false;
     private Font _defaultFont = new Font("Consolas", 38.00F, FontStyle.Bold);
-   
+
+    
+
     public frmMain()
     {
       InitializeComponent();
@@ -59,15 +62,15 @@ namespace SimpleTalk.GUI
       txtOutput.Font = _defaultFont;
       OnTextChanged(this, new EventArgs());
 
-      CreateProcessWindow();
+      
     }
 
     void CreateProcessWindow()
     {
         _TextToSpeech.MakeProcess();
 
-        ActiveWindow AW = new ActiveWindow();
-        W2 = AW.GetActiveWindow();
+        //ActiveWindow AW = new ActiveWindow();
+        //W2 = AW.GetActiveWindow();
     }
 
     void OnSuggestionsChanged(object sender, EventArgs e)
@@ -176,14 +179,14 @@ namespace SimpleTalk.GUI
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
         //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
-      _TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, W2);  //txtOutput.Text
+      _TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, _TextToSpeech.P);  //txtOutput.Text
     }
 
     private void button5_Click(object sender, EventArgs e)
     {
       // Possiblity to stop a very long text
       _TextToSpeech.StopSpeaking(W2);
-      CreateProcessWindow();
+      //CreateProcessWindow();
     }
 
     private void button6_Click(object sender, EventArgs e)

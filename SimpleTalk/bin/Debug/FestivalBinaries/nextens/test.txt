@@ -1,2 +1,1 @@
-(set! u0000 (SynthText "Hallo allemaal"));
-(ResynthCurrentInton u0000);
+(SayText "hallo ik ben een heaum");
