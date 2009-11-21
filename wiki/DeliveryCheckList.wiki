@@ -1,0 +1,9 @@
+#summary Delivery check list ProMO check before delivery at home and after installation
+
+== Delivery check list ProMO ==
+
+ * Screen resolution (set to 1366 x 786)
+ * Check auto and set PC system volume high and adjust TV volume to get a nice sound.
+ * Is there a link to the latest stable and for release complide binary placed in the "startup" folder?
+ * Make sure that the database is filled with a up to date wordlist. 
+ * 
