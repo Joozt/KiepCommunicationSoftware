@@ -198,6 +198,10 @@ namespace SimpleTalk.GUI
     {
       //TODO: set autocompelete on dedicated event (from
       _AutoComplete.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
+      
+      //scroll output text box to the bottom (show the last two lines by default)
+      txtOutput.SelectionStart = txtOutput.Text.Length;
+      txtOutput.ScrollToCaret();
     }
 
     private void label1_Click(object sender, EventArgs e)
