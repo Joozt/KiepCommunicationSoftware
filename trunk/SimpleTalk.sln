@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleTalk", "SimpleTalk\SimpleTalk.csproj", "{8D3D7248-4628-4AF1-BD8C-E876D5380936}"
 EndProject
 Global
