@@ -132,6 +132,7 @@ namespace SimpleTalk.Model
             case "&menu":
               //Call menu that jumps to menu form
               _CommandOutput.Add("[menu]");
+              _formSettings.updateSettingsDisply();
               _formSettings.Show();
               //throw new NotImplementedException();
               break;
@@ -157,21 +158,25 @@ namespace SimpleTalk.Model
             case "&ScanSpeedDown":
               //TODO: decrease scanning speed
               Core.Instance.scanSpeed--;
+              _formSettings.updateSettingsDisply();
               break;
 
             case "&ScanSpeedUp":
               //TODO: increase scanning speed
               Core.Instance.scanSpeed++;
+              _formSettings.updateSettingsDisply();
               break;
 
             case "&SecondWordSuggestion":
               //TODO: switch highlighting from wave to hard on/off
               Core.Instance.nextWordSuggestionOn = !Core.Instance.nextWordSuggestionOn;
+              _formSettings.updateSettingsDisply();
               break;
 
             case "&AutoWordComplete":
               //TODO: switch automatic word completion on/off
               Core.Instance.autoWordCompeltionOn = !Core.Instance.autoWordCompeltionOn;
+              _formSettings.updateSettingsDisply();
               break;
 
             case "&say":

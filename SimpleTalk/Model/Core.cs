@@ -34,9 +34,9 @@ namespace SimpleTalk.Model
     private TextToSpeech _TextToSpeech;
 
     //TODO: save these settings: 
-    private int _scanSpeed;
-    private bool _nextWordSuggestionOn;
-    private bool _autoWordCompeltionOn;
+    private int _scanSpeed = 5;
+    private bool _nextWordSuggestionOn = true;
+    private bool _autoWordCompeltionOn = true;
 
     public Interpreter Interpreter
     {
@@ -54,6 +54,7 @@ namespace SimpleTalk.Model
       }
     }
 
+    //scan speed in 1/10 of seconds
     public int scanSpeed
     {
       get
@@ -62,7 +63,10 @@ namespace SimpleTalk.Model
       }
       set
       {
-        _scanSpeed=value;
+        if (value >= 5)
+          _scanSpeed = value;
+        else
+          _scanSpeed = 5;
       }
     }
 

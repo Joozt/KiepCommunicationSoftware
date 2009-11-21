@@ -30,8 +30,8 @@
     {
       this.pnlControls = new System.Windows.Forms.Panel();
       this.txtScanTime = new System.Windows.Forms.TextBox();
-      this.textNextWord = new System.Windows.Forms.TextBox();
-      this.textAutoComplete = new System.Windows.Forms.TextBox();
+      this.txtNextWord = new System.Windows.Forms.TextBox();
+      this.txtAutoComplete = new System.Windows.Forms.TextBox();
       this.SuspendLayout();
       // 
       // pnlControls
@@ -58,33 +58,33 @@
       this.txtScanTime.Text = "1,2";
       this.txtScanTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
-      // textNextWord
+      // txtNextWord
       // 
-      this.textNextWord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+      this.txtNextWord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
-      this.textNextWord.BackColor = System.Drawing.SystemColors.Window;
-      this.textNextWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textNextWord.Location = new System.Drawing.Point(760, 230);
-      this.textNextWord.Name = "textNextWord";
-      this.textNextWord.ReadOnly = true;
-      this.textNextWord.Size = new System.Drawing.Size(200, 100);
-      this.textNextWord.TabIndex = 8;
-      this.textNextWord.Text = "UIT";
-      this.textNextWord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.txtNextWord.BackColor = System.Drawing.SystemColors.Window;
+      this.txtNextWord.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtNextWord.Location = new System.Drawing.Point(760, 230);
+      this.txtNextWord.Name = "txtNextWord";
+      this.txtNextWord.ReadOnly = true;
+      this.txtNextWord.Size = new System.Drawing.Size(200, 100);
+      this.txtNextWord.TabIndex = 8;
+      this.txtNextWord.Text = "UIT";
+      this.txtNextWord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
-      // textAutoComplete
+      // txtAutoComplete
       // 
-      this.textAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+      this.txtAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                   | System.Windows.Forms.AnchorStyles.Right)));
-      this.textAutoComplete.BackColor = System.Drawing.SystemColors.Window;
-      this.textAutoComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textAutoComplete.Location = new System.Drawing.Point(760, 340);
-      this.textAutoComplete.Name = "textAutoComplete";
-      this.textAutoComplete.ReadOnly = true;
-      this.textAutoComplete.Size = new System.Drawing.Size(200, 100);
-      this.textAutoComplete.TabIndex = 9;
-      this.textAutoComplete.Text = "AAN";
-      this.textAutoComplete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+      this.txtAutoComplete.BackColor = System.Drawing.SystemColors.Window;
+      this.txtAutoComplete.Font = new System.Drawing.Font("Microsoft Sans Serif", 61F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.txtAutoComplete.Location = new System.Drawing.Point(760, 340);
+      this.txtAutoComplete.Name = "txtAutoComplete";
+      this.txtAutoComplete.ReadOnly = true;
+      this.txtAutoComplete.Size = new System.Drawing.Size(200, 100);
+      this.txtAutoComplete.TabIndex = 9;
+      this.txtAutoComplete.Text = "AAN";
+      this.txtAutoComplete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
       // frmSettings
       // 
@@ -92,14 +92,13 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlLightLight;
       this.ClientSize = new System.Drawing.Size(1264, 732);
-      this.Controls.Add(this.textAutoComplete);
-      this.Controls.Add(this.textNextWord);
+      this.Controls.Add(this.txtAutoComplete);
+      this.Controls.Add(this.txtNextWord);
       this.Controls.Add(this.txtScanTime);
       this.Controls.Add(this.pnlControls);
       this.Name = "frmSettings";
       this.Text = "Settings";
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-      this.Load += new System.EventHandler(this.frmSettings_Load);
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
       this.ResumeLayout(false);
       this.PerformLayout();
@@ -110,7 +109,7 @@
 
     private System.Windows.Forms.Panel pnlControls;
     private System.Windows.Forms.TextBox txtScanTime;
-    private System.Windows.Forms.TextBox textNextWord;
-    private System.Windows.Forms.TextBox textAutoComplete;
+    private System.Windows.Forms.TextBox txtNextWord;
+    private System.Windows.Forms.TextBox txtAutoComplete;
   }
 }
