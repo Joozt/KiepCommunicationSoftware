@@ -65,7 +65,8 @@ namespace SimpleTalk.GUI
                         ButtonDef.Text,
                         ButtonDef.Keys,
                         ButtonDef.Size.IsEmpty ? new Size(DefaultWidth, DefaultHeight) : ButtonDef.Size,
-                        ButtonDef.AutoRescan);
+                        ButtonDef.AutoRescan,
+                        ButtonDef.Font);
                 }
             }
         }

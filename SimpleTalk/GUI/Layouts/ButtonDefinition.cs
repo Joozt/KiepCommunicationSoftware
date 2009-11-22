@@ -12,19 +12,39 @@ namespace SimpleTalk.GUI
     string _Keys;
     Size _Size;
     bool _AutoRescan;
+    Font _Font;
 
     public ButtonDefinition(string text, string keys)
     {
+        _Font = new System.Drawing.Font("Consolas", 45.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))); 
       _AutoRescan = true;
       _Text = text;
       _Keys = keys;
       _Size = new Size(0, 0);
     }
 
+    public ButtonDefinition(string text, string keys, Font font)
+        : this(text, keys)
+    {
+        _Font = font;
+    }
+
+    public ButtonDefinition(string text, string keys, bool autoRescan, Font font)
+        : this(text, keys, autoRescan)
+    {
+        _Font= font;
+    }
+
     public ButtonDefinition(string text, string keys, bool autoRescan)
         : this(text, keys)
     {
         _AutoRescan = autoRescan;
+    }
+
+    public ButtonDefinition(string text, string keys, Size size, Font font)
+        : this(text, keys)
+    {
+        _Font = font;
     }
 
     public ButtonDefinition(string text, string keys, Size size)
@@ -68,6 +88,14 @@ namespace SimpleTalk.GUI
         get
         {
             return _AutoRescan;
+        }
+    }
+
+    public Font Font
+    {
+        get
+        {
+            return _Font;
         }
     }
   }

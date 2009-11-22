@@ -41,6 +41,7 @@ namespace SimpleTalk.GUI
             }
         }
 
+        // TODO: Change the different AddButton methods to a AddButton method with a buttonDefinition class
         #region AddButton methods
 
         public MostButton AddButton()
@@ -72,6 +73,20 @@ namespace SimpleTalk.GUI
             MostButton Button = AddButton(text, keys);
             Button.Size = size;
             return Button;
+        }
+
+        public MostButton AddButton(string text, string keys, Size size, Font font)
+        {
+            MostButton Button = AddButton(text, keys, size);
+            Button.Font = font;
+            return Button;
+        }
+
+        public MostButton AddButton(string text, string keys, Size size, bool autoRescan, Font font)
+        {
+            MostButton Button = AddButton(text, keys, size, autoRescan);
+            Button.Font = font;
+            return Button;            
         }
 
         public MostButton AddButton(string text, string keys, Size size, bool autoRescan)
