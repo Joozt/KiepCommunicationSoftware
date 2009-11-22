@@ -25,7 +25,6 @@ namespace SimpleTalk.GUI
     private CustomBeheaviour _AutoBeheaviour = new SimpleBeheaviour();
 
     private AutoComplete _AutoComplete;
-    private TextToSpeech _TextToSpeech;
 
     private bool _AutoActive;
     //private bool _keyPressed = false;
@@ -50,8 +49,6 @@ namespace SimpleTalk.GUI
 
       _AutoComplete = new AutoComplete();
       _AutoComplete.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
-
-      _TextToSpeech = new TextToSpeech();
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
@@ -89,7 +86,7 @@ namespace SimpleTalk.GUI
 
     void CreateProcessWindow()
     {
-      _TextToSpeech.MakeProcess();
+      Core.Instance.TextToSpeech.MakeProcess();
 
       //ActiveWindow AW = new ActiveWindow();
       //W2 = AW.GetActiveWindow();
@@ -175,7 +172,7 @@ namespace SimpleTalk.GUI
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
       //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
-      _TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, _TextToSpeech.P);  //txtOutput.Text
+      Core.Instance.TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, Core.Instance.TextToSpeech.P);  //txtOutput.Tex
     }
 
     private void button5_Click(object sender, EventArgs e)

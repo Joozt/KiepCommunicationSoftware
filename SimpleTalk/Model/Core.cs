@@ -11,7 +11,7 @@ namespace SimpleTalk.Model
   {
     #region Singleton
 
-      static Core _Instance;
+    static Core _Instance;
     static readonly object _PadLock = new object();
 
     public static Core Instance
