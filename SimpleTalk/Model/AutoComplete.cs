@@ -44,6 +44,7 @@ namespace SimpleTalk.Model
     {
       get
       {
+          _Suggestions.Add("Test");
         return _Suggestions;
       }
     }
@@ -108,7 +109,7 @@ namespace SimpleTalk.Model
       try
       {
         //disable autoWord suggestion if autoWord is switched off
-        if (Core.Instance.autoWordCompeltionOn)
+        if (Core.Instance.AutoWordCompeltionOn)
           _Suggestions = _autoWords.GetWordList(word);
         
         else
@@ -128,7 +129,7 @@ namespace SimpleTalk.Model
       try
       {
         //disable nextWord suggestion if nextWord or autoWord is switched off
-        if (Core.Instance.nextWordSuggestionOn && Core.Instance.autoWordCompeltionOn)
+        if (Core.Instance.NextWordSuggestionOn && Core.Instance.AutoWordCompeltionOn)
           _Suggestions = _nextWords.GetNextWordList(word);
         else
           _Suggestions.Clear();

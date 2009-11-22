@@ -36,10 +36,9 @@ namespace SimpleTalk.GUI
     {
       InitializeComponent();
 
-      nSelectionTime_ValueChanged(this, new EventArgs()); // Update Timer
-
       _Keyboard = new CustomKeyboard(pnlKeyboard.Controls, _AbcLayout, _SimpleBeheaviour);
       _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
+      Core.Instance.SpeedChanged += new EventHandler(OnSpeedChanged);
 
       _AutoKeyboard = new CustomKeyboard(pnlAutoComplete.Controls, _AutoLayout, _AutoBeheaviour);
       _AutoKeyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
@@ -61,9 +60,17 @@ namespace SimpleTalk.GUI
       OnTextChanged(this, new EventArgs());
     }
 
+    void OnSpeedChanged(object sender, EventArgs e)
+    {
+        _SimpleBeheaviour.Timer = Core.Instance.GetScanSpeed();
+        _AutoBeheaviour.Timer = Core.Instance.GetScanSpeed();
+    }
+
     private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
     {
-      // TODO: Automatically stop selection when stopping the application
+      Core.Instance.SpeedChanged -= OnSpeedChanged;
+
+      // Automatically stop selection when stopping the application
       _SimpleBeheaviour.StopSelection();
       _AutoBeheaviour.StopSelection();
 
@@ -211,8 +218,8 @@ namespace SimpleTalk.GUI
     
     private void nSelectionTime_ValueChanged(object sender, EventArgs e)
     {
-      _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.scanSpeed / 10 * 1000));
-      _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.scanSpeed / 10 * 1000));
+      _SimpleBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.ScanSpeed / 10 * 1000));
+      _AutoBeheaviour.Timer = new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.ScanSpeed / 10 * 1000));
     }
 
     #region IDisposable Members

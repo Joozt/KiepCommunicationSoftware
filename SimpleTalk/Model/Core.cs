@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SimpleTalk.GUI;
+using System.Windows.Forms;
 
 namespace SimpleTalk.Model
 {
@@ -9,7 +11,7 @@ namespace SimpleTalk.Model
   {
     #region Singleton
 
-    static Core _Instance = null;
+      static Core _Instance;
     static readonly object _PadLock = new object();
 
     public static Core Instance
@@ -21,6 +23,7 @@ namespace SimpleTalk.Model
           if (_Instance == null)
           {
             _Instance = new Core();
+            _Instance.Initialize();
           }
           return _Instance;
         }
@@ -29,6 +32,8 @@ namespace SimpleTalk.Model
 
     #endregion
 
+    private frmMain _MainForm;
+    private frmSettings _SettingsForm;
     private Interpreter _Interpreter;
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
@@ -57,10 +62,35 @@ namespace SimpleTalk.Model
       }
     }
 
+    public Form MainForm
+    {
+        get
+        {
+            return _MainForm;
+        }
+    }
+
+    public Form SettingsForm
+    {
+        get
+        {
+            return _SettingsForm;
+        }
+    }
+
+    public event EventHandler SpeedChanged;
+
+    private void OnSpeedChanged(object sender, EventArgs e)
+    {
+        if (SpeedChanged != null)
+        {
+            SpeedChanged(sender, new EventArgs());
+        }
+    }
     #region settings
 
     //scan speed in 1/10 of seconds
-    public int scanSpeed
+    public int ScanSpeed
     {
       get
       {
@@ -72,10 +102,17 @@ namespace SimpleTalk.Model
           Properties.Settings.Default.scanSpeed = value;
         else
           Properties.Settings.Default.scanSpeed = 5;
+
+        OnSpeedChanged(this, new EventArgs());
       }
     }
 
-    public bool nextWordSuggestionOn
+    public TimeSpan GetScanSpeed()
+    {
+        return new TimeSpan(0, 0, 0, 0, (int)(Core.Instance.ScanSpeed / 10.0 * 1000));
+    }
+
+    public bool NextWordSuggestionOn
     {
       get
       {
@@ -87,7 +124,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    public bool autoWordCompeltionOn
+    public bool AutoWordCompeltionOn
     {
       get
       {
@@ -103,9 +140,17 @@ namespace SimpleTalk.Model
 
     Core()
     {
-      _Interpreter = new Interpreter();
-      _Sounds = new Sounds();
-      _TextToSpeech = new TextToSpeech();
+        // Initialize objects base objects
+        _Interpreter = new Interpreter();
+        _Sounds = new Sounds();
+        _TextToSpeech = new TextToSpeech();
+    }
+
+    private void Initialize()
+    {
+        // Initialize objects that could need the base objects at constructing
+        _MainForm = new frmMain();
+        _SettingsForm = new frmSettings();
     }
   }
 }
