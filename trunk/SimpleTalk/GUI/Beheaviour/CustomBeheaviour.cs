@@ -13,7 +13,6 @@ namespace SimpleTalk.GUI
     private TimeSpan _Timer = new TimeSpan(0, 0, 0, 1); // Default 1 sec.
     Thread SelectionThread = null;
 
-    TimeSpan _SelectDuration;
     bool _CancelSelection;
 
     int _CurrentRow = -1;
@@ -123,7 +122,7 @@ namespace SimpleTalk.GUI
       _CurrentColumn = -1;
       _CurrentRow = 0;
 
-      UpdateSelectionEventArgs SelectionArgs = new UpdateSelectionEventArgs(new TimeSpan(0, 0, 0), _SelectDuration);
+      UpdateSelectionEventArgs SelectionArgs = new UpdateSelectionEventArgs(new TimeSpan(0, 0, 0), _Timer);
       UpdateButtons(
         Color.FromKnownColor(KnownColor.Control),
         Color.FromKnownColor(KnownColor.ControlText));
@@ -134,12 +133,12 @@ namespace SimpleTalk.GUI
       {
         DateTime StartTime = DateTime.Now;
 
-        while (StartTime.Add(_SelectDuration).CompareTo(DateTime.Now) > 0)
+        while (StartTime.Add(_Timer).CompareTo(DateTime.Now) > 0)
         {
           if (_CancelSelection)
             break; // Exit thread
 
-          SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _SelectDuration);
+          SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _Timer);
 
           // Update selelection
           OnUpdateSelection(this, SelectionArgs);
@@ -221,10 +220,8 @@ namespace SimpleTalk.GUI
       }
     }
 
-    public void StartSelection(TimeSpan duration)
+    public void StartSelection()
     {
-      _SelectDuration = duration;
-
       // Start new thread
       SelectionThread = new Thread(DoSelection);
       SelectionThread.Start();

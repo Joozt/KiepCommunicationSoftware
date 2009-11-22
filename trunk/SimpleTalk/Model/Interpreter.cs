@@ -10,12 +10,9 @@ namespace SimpleTalk.Model
   {
     private string _TextOutput;
     private string _TextOutputUpper;
-    private frmSettings _formSettings = new frmSettings();
 
     public Interpreter()
     {
-      //Hide settings form
-      _formSettings.Hide();
     }
 
     public string TextOutput
@@ -128,9 +125,9 @@ namespace SimpleTalk.Model
 
             case "&menu":
               //Open settings form
-              _formSettings.updateSettingsDisply();
-              _formSettings.Show();
-              _formSettings.Focus();
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
+              Core.Instance.SettingsForm.Show();
+              Core.Instance.SettingsForm.Focus();
               break;
 
             case "&auto":
@@ -149,31 +146,31 @@ namespace SimpleTalk.Model
 
             case "&ScanSpeedDown":
               //TODO: decrease scanning highlight time (speed)
-              Core.Instance.scanSpeed--;
-              _formSettings.updateSettingsDisply();
+              Core.Instance.ScanSpeed--;
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
             case "&ScanSpeedUp":
               //TODO: increase scanning highlight time (speed)
-              Core.Instance.scanSpeed++;
-              _formSettings.updateSettingsDisply();
+              Core.Instance.ScanSpeed++;
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
             case "&SecondWordSuggestion":
               //Toggle next word suggestion on/off
-              Core.Instance.nextWordSuggestionOn = !Core.Instance.nextWordSuggestionOn;
-              _formSettings.updateSettingsDisply();
+              Core.Instance.NextWordSuggestionOn = !Core.Instance.NextWordSuggestionOn;
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
             case "&AutoWordComplete":
               //Toggle automatic word completion on/off
-              Core.Instance.autoWordCompeltionOn = !Core.Instance.autoWordCompeltionOn;
-              _formSettings.updateSettingsDisply();
+              Core.Instance.AutoWordCompeltionOn = !Core.Instance.AutoWordCompeltionOn;
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
             case "&GoBack":
               //Close settings form
-              _formSettings.Hide();
+              Core.Instance.SettingsForm.Hide();
               break;
 
             #endregion

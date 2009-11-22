@@ -23,6 +23,13 @@ namespace SimpleTalk.GUI
       _Keyboard.CustomKeyPressed += new CustomKeyPressedEventHandler(OnKeyPressed);
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
+
+      Core.Instance.SpeedChanged += new EventHandler(OnSpeedChanged);
+    }
+
+    void OnSpeedChanged(object sender, EventArgs e)
+    {
+        _SimpleBeheaviour.Timer = Core.Instance.GetScanSpeed();
     }
 
     void OnButtonDown(object sender, CustomButtonEventArgs e)
@@ -44,24 +51,33 @@ namespace SimpleTalk.GUI
 
     private void frmSettings_FormClosing(object sender, FormClosingEventArgs e)
     {
-      // TODO: Automatically stop selection when stopping the application
+      Core.Instance.SpeedChanged -= OnSpeedChanged;
+
       _SimpleBeheaviour.StopSelection();
     }
 
 
-    public void updateSettingsDisply()
+    public void UpdateSettingsDisplay()
     {
-      txtScanTime.Text = String.Format("{0:0.0}", (float)Core.Instance.scanSpeed * 0.1);
+      txtScanTime.Text = String.Format("{0:0.0}", (float)Core.Instance.ScanSpeed * 0.1);
 
-      if (Core.Instance.autoWordCompeltionOn)
+      if (Core.Instance.AutoWordCompeltionOn)
         txtAutoComplete.Text = "AAN";
       else
         txtAutoComplete.Text = "UIT";
 
-      if (Core.Instance.nextWordSuggestionOn)
+      if (Core.Instance.NextWordSuggestionOn)
         txtNextWord.Text = "AAN";
       else
         txtNextWord.Text = "UIT";
+    }
+
+    private void frmSettings_VisibleChanged(object sender, EventArgs e)
+    {
+        if (Visible)
+            OnButtonDown(this, new CustomButtonEventArgs(ButtonType.ScanButton));
+
+        _SimpleBeheaviour.StopSelection();
     }  
   }
 }

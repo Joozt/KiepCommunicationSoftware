@@ -34,12 +34,14 @@ namespace SimpleTalk.GUI
       {
         if ((ColumnSelected == -1) && (RowSelected == -1))
         {
-          StartSelection(Timer);
+          StartSelection();
         }
         else if ((ColumnSelected == -1) && (RowSelected != -1))
         {
           _RowSelect = false;
           _Selected = true;
+
+          _Done = (Keyboard.GetNumberOfColumns(RowSelected) == 1);
         }
         else if ((ColumnSelected >= 0) && (RowSelected >= 0))
         {
