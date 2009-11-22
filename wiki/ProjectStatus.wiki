@@ -57,10 +57,10 @@ _Paul_
  * ~~Increase contrast between selection bar and letter~~  
  * ~~Fix button color only ok after on time scanning.~~ 
  * ~~Start scanning in auto suggestion list after pressing auto button~~
- * Adjust scan speed according to scanSpeed setting variable in the Core.cs
+ * ~~Adjust scan speed according to scanSpeed setting variable in the Core.cs~~
  * Rethink scanning structure, code is nog stable (option: "EDD" and review the concept ;-) )
- * Automatically stop selection when stopping the application  (in frmSettings.cs)
- * Hack to start autocomplete automatically (in frmMain.cs)
+ * ~~Automatically stop selection when stopping the application  (in frmSettings.cs)~~
+ * ~~Hack to start autocomplete automatically (in frmMain.cs)~~
 _Everyone_
  * ~~Add Joost specific words to "Joost_woorden.csv" in folder "woordenlijsten" on the SVN server.~~
  * Add Joost_woorden.CSV to database.
@@ -90,7 +90,7 @@ Note that the auto completion database was working during the demonstration.
  * Button hardware should be reconsidered
  * ~~Increase contrast between letter and background~~
  * ~~Increase contrast between selection bar and letter~~
- * Optional: make font adjustment per individual key possible (request of Ad)
+ * ~~Optional: make font adjustment per individual key possible (request of Ad)~~
 == Optional features ==
  * Make is possible for Joost to type some sentences in advance and save, email or SMS them. 
  * Center the text in setting buttons menu to the left.
