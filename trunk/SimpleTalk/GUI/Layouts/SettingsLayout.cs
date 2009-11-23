@@ -62,7 +62,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("TERUG NAAR HOOFSCHERM", "&GoBack", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("TERUG NAAR HOOFDSCHERM", "&GoBack", new Size(Width, _DefaultHeight)),
                 });
 
                  AutoFormat();
