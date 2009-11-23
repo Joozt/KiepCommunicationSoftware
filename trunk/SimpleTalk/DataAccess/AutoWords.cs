@@ -42,7 +42,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        Database.ExecuteQuery("AutoWords_Add",
+        Database.ExecuteQuery("AutoWords_Add", CommandType.StoredProcedure,
                               new SqlParameter("@WordID", newWord.WordID),
                               new SqlParameter("@Word", newWord.Word),
                               new SqlParameter("@Count", newWord.Count),
@@ -66,7 +66,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = Database.ExecuteQuery("AutoWords_Delete",
+        int recordsAffected = Database.ExecuteQuery("AutoWords_Delete", CommandType.StoredProcedure,
                                                     new SqlParameter("@WordID", word.WordID));
 
         if (recordsAffected == 0)
@@ -91,7 +91,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = Database.ExecuteQuery("AutoWords_Modify",
+        int recordsAffected = Database.ExecuteQuery("AutoWords_Modify", CommandType.StoredProcedure,
                                                     new SqlParameter("@WordID", modifiedWord.WordID),
                                                     new SqlParameter("@Word", modifiedWord.Word),
                                                     new SqlParameter("@Count", modifiedWord.Count),
@@ -120,7 +120,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = Database.GetDataReader("AutoWords_GetById",
+        _dataReader = Database.GetDataReader("AutoWords_GetById", CommandType.StoredProcedure,
                                              new SqlParameter("@WordID", wordID));
 
         Model.AutoWord autoWord = null;
@@ -149,7 +149,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = Database.GetDataReader("AutoWords_GetAll");
+        _dataReader = Database.GetDataReader("AutoWords_GetAll", CommandType.StoredProcedure);
 
         List<Model.AutoWord> autoWordList = new List<Model.AutoWord>();
 
@@ -193,7 +193,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = Database.ExecuteQuery("AutoWords_DeleteByWord",
+        int recordsAffected = Database.ExecuteQuery("AutoWords_DeleteByWord", CommandType.StoredProcedure,
                                                     new SqlParameter("@Word", word));
 
         if (recordsAffected == 0)
@@ -218,7 +218,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = Database.GetDataReader("AutoWords_GetByWord",
+        _dataReader = Database.GetDataReader("AutoWords_GetByWord", CommandType.StoredProcedure,
                                              new SqlParameter("@Word", word));
 
         Model.AutoWord autoWord = null;
@@ -247,7 +247,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = Database.GetDataReader("AutoWords_GetWordList",
+        _dataReader = Database.GetDataReader("AutoWords_GetWordList", CommandType.StoredProcedure,
                                              new SqlParameter("@Word", word));
 
         List<string> wordList = new List<string>();
@@ -276,7 +276,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = Database.ExecuteQuery("AutoWords_UpdateWordCount",
+        int recordsAffected = Database.ExecuteQuery("AutoWords_UpdateWordCount", CommandType.StoredProcedure,
                                                     new SqlParameter("@Word", word));
 
         if (recordsAffected == 0)
@@ -301,7 +301,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        Database.ExecuteQuery("AutoWords_Reset");
+        Database.ExecuteQuery("AutoWords_Reset", CommandType.StoredProcedure);
       }
       catch
       {
@@ -320,7 +320,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        Database.ExecuteQuery("AutoWords_Clear");
+        Database.ExecuteQuery("AutoWords_Clear",  CommandType.StoredProcedure);
       }
       catch
       {

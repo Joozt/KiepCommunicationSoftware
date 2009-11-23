@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using System.Media;
 
 namespace SimpleTalk.DataAccess
 {
@@ -22,7 +23,7 @@ namespace SimpleTalk.DataAccess
     private static string _userID = string.Empty;
     private static string _password = string.Empty;
 
-    public static void Connect()
+    public static void Connect(string databaseName)
     {
       try
       {
@@ -35,19 +36,7 @@ namespace SimpleTalk.DataAccess
         {
           if (string.IsNullOrEmpty(_connectionString))
           {
-            string authorisation = "Integrated Security = SSPI";
-
-            if (!string.IsNullOrEmpty(_userID) && !string.IsNullOrEmpty(_password))
-            {
-              authorisation = string.Format("User ID = {0};Password = {1}", _userID, _password);
-            }
-
-            if (string.IsNullOrEmpty(_serverName))
-            {
-              _serverName = string.Format(@"{0}\SQLEXPRESS", System.Environment.MachineName);
-            }
-
-            _connectionString = string.Format("Data Source = {0};Initial Catalog = {1};{2}", _serverName, _databaseName, authorisation);
+            _connectionString = GetConnectioSrting(databaseName);
           }
 
           if (string.IsNullOrEmpty(_connectionString))
@@ -62,6 +51,19 @@ namespace SimpleTalk.DataAccess
         {
           _sqlConnection.Open();
         }
+      }
+      catch (SqlException ex)
+      {
+        //if (!ex.Message.ToUpper().Contains("CANNOT OPEN DATABASE"))
+        //{
+        //  throw;
+        //}
+        //else
+        //{
+        //  GenerateDatabase();
+        //}
+
+        throw;
       }
       catch
       {
@@ -91,6 +93,8 @@ namespace SimpleTalk.DataAccess
           }
 
           _sqlConnection.Dispose();
+
+          _sqlConnection = null;
         }
       }
       catch
@@ -99,7 +103,52 @@ namespace SimpleTalk.DataAccess
       }
     }
 
-    private static void SetCommand(string sqlString, params SqlParameter[] parameters)
+    private static void GenerateDatabase()
+    {
+      try
+      {
+        _connectionString = string.Empty;
+
+        Disconnect();
+        Connect("master");
+
+        Database.ExecuteQuery("CREATE DATABASE AutoComplete", CommandType.Text);
+        Database.ExecuteQuery(Properties.Resources.GenerateAutoCompleteDatabase, CommandType.Text);
+
+        Disconnect();
+        Connect(string.Empty);
+      }
+      catch
+      {
+        throw;
+      }
+    }
+
+    private static string GetConnectioSrting(string databaseName)
+    {
+      try
+      {
+        string authorisation = "Integrated Security = SSPI";
+
+        if (!string.IsNullOrEmpty(_userID) && !string.IsNullOrEmpty(_password))
+        {
+          authorisation = string.Format("User ID = {0}; Password = {1}", _userID, _password);
+        }
+
+        if (string.IsNullOrEmpty(_serverName))
+        {
+          _serverName = string.Format(@"{0}\SQLEXPRESS", Environment.MachineName);
+        }
+
+        return string.Format("Data Source = {0};Initial Catalog = {1}; {2}", _serverName, (string.IsNullOrEmpty(databaseName) ? _databaseName : databaseName), authorisation);
+      }
+      catch
+      {
+        throw;
+      }
+    }
+
+    private static void SetCommand(string sqlString, CommandType commandType, params SqlParameter[] parameters)
     {
       try
       {
@@ -115,7 +164,7 @@ namespace SimpleTalk.DataAccess
         }
 
         _sqlCommand.Connection = _sqlConnection;
-        _sqlCommand.CommandType = CommandType.StoredProcedure;
+        _sqlCommand.CommandType = commandType;
         _sqlCommand.CommandText = sqlString;
 
         _sqlCommand.Parameters.AddRange(parameters);
@@ -126,11 +175,11 @@ namespace SimpleTalk.DataAccess
       }
     }
 
-    public static DbDataReader GetDataReader(string sqlString, params SqlParameter[] parameters)
+    public static DbDataReader GetDataReader(string sqlString, CommandType commandType, params SqlParameter[] parameters)
     {
       try
       {
-        SetCommand(sqlString, parameters);
+        SetCommand(sqlString, commandType, parameters);
 
         return _sqlCommand.ExecuteReader(CommandBehavior.SingleResult);
       }
@@ -140,11 +189,11 @@ namespace SimpleTalk.DataAccess
       }
     }
 
-    public static DataSet GetDataSet(string sqlString, params SqlParameter[] parameters)
+    public static DataSet GetDataSet(string sqlString, CommandType commandType, params SqlParameter[] parameters)
     {
       try
       {
-        SetCommand(sqlString, parameters);
+        SetCommand(sqlString, commandType, parameters);
 
         using (SqlDataAdapter dataAdapter = new SqlDataAdapter(_sqlCommand))
         {
@@ -159,11 +208,11 @@ namespace SimpleTalk.DataAccess
       }
     }
 
-    public static int ExecuteQuery(string sqlString, params SqlParameter[] parameters)
+    public static int ExecuteQuery(string sqlString, CommandType commandType, params SqlParameter[] parameters)
     {
       try
       {
-        SetCommand(sqlString, parameters);
+        SetCommand(sqlString, commandType, parameters);
 
         return _sqlCommand.ExecuteNonQuery();
       }

@@ -99,7 +99,16 @@ namespace SimpleTalk.Model
       set
       {
         if (value >= 5) //minimum button highlight time (scanSpeed) is 0.5 seconds
-          Properties.Settings.Default.scanSpeed = value;
+        {
+          if (value <= 40) //minimum button highlight time (scanSpeed) is 4 seconds
+          {
+            Properties.Settings.Default.scanSpeed = value;
+          }
+          else
+          {
+            Properties.Settings.Default.scanSpeed = 40;
+          }
+        }
         else
           Properties.Settings.Default.scanSpeed = 5;
 

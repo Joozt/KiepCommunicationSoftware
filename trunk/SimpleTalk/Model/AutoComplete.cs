@@ -29,7 +29,7 @@ namespace SimpleTalk.Model
     {
       try
       {
-        DataAccess.Database.Connect();
+        DataAccess.Database.Connect(string.Empty);
 
         _autoWords = new DataAccess.AutoWords();
         _nextWords = new DataAccess.NextWords();
