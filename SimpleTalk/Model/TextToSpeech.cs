@@ -48,44 +48,12 @@ namespace SimpleTalk.Model
     public void Say(string text, Process cmd)
     {
 
-        //Process cmd = new Process();
-
-        //cmd.StartInfo.FileName = "cmd.exe";
-        //cmd.StartInfo.RedirectStandardInput = true;
-        //cmd.StartInfo.RedirectStandardOutput = true;
-        //cmd.StartInfo.CreateNoWindow = true;
-        //cmd.StartInfo.UseShellExecute = false;
-
-        //cmd.Start();
-
-        
-
-        //cmd.StandardInput.WriteLine("cd .\\FestivalBinaries\\nextens");
-        //cmd.StandardInput.WriteLine(".\\bin\\festival.exe --libdir \"./lib/\"");
-        cmd.StandardInput.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
-        cmd.StandardInput.WriteLine("(ResynthCurrentInton u0000);");
-        cmd.StandardInput.Flush();
-        //cmd.StandardInput.Close();
-        
-        //string test = cmd.StandardOutput.ReadToEnd();
-       // TextWriter tw = new StreamWriter(@"C:\Projectspraak\SimpleTalk\bin\Debug\FestivalBinaries\nextens\test.txt");
-       // tw.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
-       // tw.WriteLine("(ResynthCurrentInton u0000);");
-       // tw.Close();
-
-        //P.StartInfo.FileName = @".\test.bat";
-        
-        //P.StartInfo.WorkingDirectory = @"C:\Projectspraak\SimpleTalk\bin\Debug\FestivalBinaries\nextens";
-
-        
-        //P.StartInfo.CreateNoWindow = true;
-        //if(P.Responding)
-       //     P.StandardInput.WriteLine("(SayText \"" + text + "\")");
-        
-
-        
-        //P.WaitForExit();
-        
+      if (!String.IsNullOrEmpty(text))
+        {
+            cmd.StandardInput.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
+            cmd.StandardInput.WriteLine("(ResynthCurrentInton u0000);");
+            cmd.StandardInput.Flush();
+        }      
     }
     [DllImport("User32.dll")]
     public static extern bool DestroyWindow(int hWnd);

@@ -137,8 +137,7 @@ namespace SimpleTalk.Model
 
             case "&say":
               //TODO: call text to speach engine
-              Core.Instance.TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, Core.Instance.TextToSpeech.P);
-             //Core.Instance.TextToSpeech(
+              Core.Instance.TextToSpeech.Say(_TextOutput, Core.Instance.TextToSpeech.P);
               break;
 
             #endregion
