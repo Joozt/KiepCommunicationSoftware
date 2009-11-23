@@ -42,7 +42,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        Database.ExecuteQuery("NextWords_Add",
+        Database.ExecuteQuery("NextWords_Add", CommandType.StoredProcedure,
                               new SqlParameter("@WordID", newNextWord.WordID),
                               new SqlParameter("@NextWordID", newNextWord.NextWordID),
                               new SqlParameter("@Count", newNextWord.Count));
@@ -64,7 +64,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        int recordsAffected = Database.ExecuteQuery("NextWords_Delete",
+        int recordsAffected = Database.ExecuteQuery("NextWords_Delete", CommandType.StoredProcedure,
                                                     new SqlParameter("@WordID", nextWord.WordID),
                                                     new SqlParameter("@NextWordID", nextWord.NextWordID));
 
@@ -90,7 +90,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        int recordsAffected = Database.ExecuteQuery("NextWords_Modify",
+        int recordsAffected = Database.ExecuteQuery("NextWords_Modify", CommandType.StoredProcedure,
                                                     new SqlParameter("@WordID", modifiedNextWord.WordID),
                                                     new SqlParameter("@NextWordID", modifiedNextWord.NextWordID),
                                                     new SqlParameter("@Count", modifiedNextWord.Count));
@@ -117,7 +117,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = Database.GetDataReader("NextWords_GetById",
+        _dataReader = Database.GetDataReader("NextWords_GetById", CommandType.StoredProcedure,
                                              new SqlParameter("@WordID", wordID),
                                              new SqlParameter("@NextWordID", nextWordID));
 
@@ -147,7 +147,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = Database.GetDataReader("NextWords_GetByWordID",
+        _dataReader = Database.GetDataReader("NextWords_GetByWordID", CommandType.StoredProcedure,
                                              new SqlParameter("@WordID", wordID));
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
@@ -176,7 +176,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = Database.GetDataReader("NextWords_GetByNextWordID",
+        _dataReader = Database.GetDataReader("NextWords_GetByNextWordID", CommandType.StoredProcedure,
                                              new SqlParameter("@NextWordID", nextWordID));
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
@@ -205,7 +205,7 @@ namespace SimpleTalk.DataAccess
 		{
 			try
 			{
-        _dataReader = Database.GetDataReader("NextWords_GetAll");
+        _dataReader = Database.GetDataReader("NextWords_GetAll", CommandType.StoredProcedure);
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
@@ -247,7 +247,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        int recordsAffected = Database.ExecuteQuery("NextWords_UpdateNextWordCount",
+        int recordsAffected = Database.ExecuteQuery("NextWords_UpdateNextWordCount", CommandType.StoredProcedure,
                                                     new SqlParameter("@Word", word),
                                                     new SqlParameter("@NextWord", nextWord));
 
@@ -273,7 +273,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        Database.ExecuteQuery("NextWords_AddNextWord",
+        Database.ExecuteQuery("NextWords_AddNextWord", CommandType.StoredProcedure,
                               new SqlParameter("@Word", word),
                               new SqlParameter("@NextWord", nextWord));
       }
@@ -294,7 +294,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        _dataReader = Database.GetDataReader("NextWords_GetNextWordList",
+        _dataReader = Database.GetDataReader("NextWords_GetNextWordList", CommandType.StoredProcedure,
                                              new SqlParameter("@Word", word));
 
         List<string> wordList = new List<string>();
@@ -323,7 +323,7 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        Database.ExecuteQuery("NextWords_Reset");
+        Database.ExecuteQuery("NextWords_Reset",  CommandType.StoredProcedure);
       }
       catch
       {

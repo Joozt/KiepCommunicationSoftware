@@ -59,5 +59,47 @@ namespace SimpleTalk.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USE [master]
+        ///GO
+        ////****** Object:  Database [AutoComplete]    Script Date: 11/19/2009 23:45:15 ******/
+        ///IF NOT EXISTS (SELECT name FROM sys.databases WHERE name = N&apos;AutoComplete&apos;)
+        ///BEGIN
+        ///CREATE DATABASE [AutoComplete] ON  PRIMARY 
+        ///( NAME = N&apos;AutoComplete&apos;, FILENAME = N&apos;C:\Program Files\Microsoft SQL Server\MSSQL10.MSSQLSERVER\MSSQL\DATA\AutoComplete.mdf&apos; , SIZE = 16384KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+        /// LOG ON 
+        ///( NAME = N&apos;AutoComplete_log&apos;, FILENAME = N&apos;C:\Program Files\Microsoft SQL Server [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string GenerateAutoCompleteDatabase {
+            get {
+                return ResourceManager.GetString("GenerateAutoCompleteDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @ECHO OFF
+        ///osql -S S071241\SQLEXPRESS -d AUTOCOMPLETE -E -i C:\spraakprogramma\SimpleTalk\Database\GenerateAutoCompleteDatabase.sql
+        ///ECHO Het bestand is uitgevoerd. 
+        ///ECHO -
+        ///PAUSE.
+        /// </summary>
+        internal static string GenerateAutoCompleteDatabase1 {
+            get {
+                return ResourceManager.GetString("GenerateAutoCompleteDatabase1", resourceCulture);
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream Ja {
+            get {
+                return ResourceManager.GetStream("Ja", resourceCulture);
+            }
+        }
+        
+        internal static System.IO.UnmanagedMemoryStream Nee {
+            get {
+                return ResourceManager.GetStream("Nee", resourceCulture);
+            }
+        }
     }
 }

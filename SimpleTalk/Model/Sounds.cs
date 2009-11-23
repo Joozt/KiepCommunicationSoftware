@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using WMPLib;
+using System.Media;
 
 namespace SimpleTalk.Model
 {
@@ -15,17 +15,11 @@ namespace SimpleTalk.Model
 
     public class Sounds
     {
-        private string _baseDirectory;
-
-        public WindowsMediaPlayer MediaPlayer;
-
+        SoundPlayer _soundPlayer;
+        
         public Sounds()
         {
-            MediaPlayer = new WindowsMediaPlayer();
-
-            _baseDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "AudioFiles");
         }
-
 
         public void PlaySound(SoundFiles soundFiles)
         {
@@ -33,18 +27,23 @@ namespace SimpleTalk.Model
             {
                 case SoundFiles.Ja:
                     {
-                        MediaPlayer.URL = Path.Combine(_baseDirectory, "Ja.wav");
+                        _soundPlayer = new SoundPlayer(Properties.Resources.Ja);
                         break;
                     }
                 case SoundFiles.Nee:
                     {
-                        MediaPlayer.URL = Path.Combine(_baseDirectory, "Nee.wav");
+                        _soundPlayer = new SoundPlayer(Properties.Resources.Nee);
                         break;
                     }
                 default:
                     {
                         break;
                     }
+            }
+
+            if (_soundPlayer != null)
+            {
+              _soundPlayer.Play();
             }
         }
 
