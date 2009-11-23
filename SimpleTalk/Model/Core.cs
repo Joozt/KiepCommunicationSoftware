@@ -103,6 +103,8 @@ namespace SimpleTalk.Model
         else
           Properties.Settings.Default.scanSpeed = 5;
 
+        Properties.Settings.Default.Save();
+
         OnSpeedChanged(this, new EventArgs());
       }
     }
@@ -121,6 +123,7 @@ namespace SimpleTalk.Model
       set
       {
         Properties.Settings.Default.nextWordSuggestionOn = value;
+        Properties.Settings.Default.Save();
       }
     }
 
@@ -133,6 +136,7 @@ namespace SimpleTalk.Model
       set
       {
         Properties.Settings.Default.autoWordCompletionOn = value;
+        Properties.Settings.Default.Save();
       }
     }
 
@@ -151,6 +155,9 @@ namespace SimpleTalk.Model
         // Initialize objects that could need the base objects at constructing
         _MainForm = new frmMain();
         _SettingsForm = new frmSettings();
+
+        // Update all keyboards
+        OnSpeedChanged(this, new EventArgs());
     }
   }
 }
