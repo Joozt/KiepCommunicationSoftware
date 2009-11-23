@@ -38,15 +38,15 @@ namespace SimpleTalk.GUI
         }
         else if ((ColumnSelected == -1) && (RowSelected != -1))
         {
-          _RowSelect = false;
+          //_RowSelect = false;
           _Selected = true;
 
-          _Done = (Keyboard.GetNumberOfColumns(RowSelected) == 1);
+          //_Done = (Keyboard.GetNumberOfColumns(RowSelected) == 1);
         }
         else if ((ColumnSelected >= 0) && (RowSelected >= 0))
         {
           _Selected = true;
-          _Done = true;
+          //_Done = true;
         }
       }
     }
@@ -59,11 +59,14 @@ namespace SimpleTalk.GUI
 
     void OnSelectionChanged(object sender, EventArgs e)
     {
-        if (_Done)
-        {
-            Reset();
+        //if (_Done)
+        //{
+//            Reset();
+            //return;
+        //}
+
+        if (_Selected)
             return;
-        }
 
         if (_RowSelect)
         {
@@ -124,8 +127,13 @@ namespace SimpleTalk.GUI
 
         if (ColumnSelected >= 0)
         {
-          e.Done = true;
-          e.AutoRestart = Keyboard.GetButton(RowSelected, ColumnSelected).AutoRescan;
+            _RowSelect = true;
+            e.Done = true;
+            e.AutoRestart = Keyboard.GetButton(RowSelected, ColumnSelected).AutoRescan;
+        }
+        else
+        {
+            _RowSelect = false;
         }
 
         e.Selected = true;

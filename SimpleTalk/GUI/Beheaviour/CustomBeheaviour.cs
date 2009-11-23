@@ -112,6 +112,8 @@ namespace SimpleTalk.GUI
 
     #endregion
 
+    static Object _aLock = new Object();
+
     protected void DoSelection()
     {
       _CancelSelection = false;
@@ -138,10 +140,13 @@ namespace SimpleTalk.GUI
           if (_CancelSelection)
             break; // Exit thread
 
-          SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _Timer);
+          lock (_aLock)
+          {
+              SelectionArgs = new UpdateSelectionEventArgs(DateTime.Now - StartTime, _Timer);
 
-          // Update selelection
-          OnUpdateSelection(this, SelectionArgs);
+              // Update selelection
+              OnUpdateSelection(this, SelectionArgs);
+          }
 
           // TODO: Quit if user has made his selection
           if ((SelectionArgs.Selected) || (SelectionArgs.Done))
@@ -149,7 +154,7 @@ namespace SimpleTalk.GUI
 
           UpdateButtons(SelectionArgs.BgColor, SelectionArgs.FgColor);
 
-          Thread.Sleep(100);
+          Thread.Sleep(10);
         }
 
         if (SelectionArgs.Done)
@@ -173,9 +178,11 @@ namespace SimpleTalk.GUI
             _CurrentColumn = -1;
             _CurrentRow = 0;
         }
-
-        // Trigger event next row/column
-        OnSelectionChanged(this, new EventArgs());
+        else
+        {
+            // Trigger event next row/column
+            OnSelectionChanged(this, new EventArgs());
+        }
 
         // Update selection
 
