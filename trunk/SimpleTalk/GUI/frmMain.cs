@@ -139,8 +139,8 @@ namespace SimpleTalk.GUI
     private void UpdateButtons(CustomButtonEventArgs e)
     {
 
-      cbButton1.Checked = (e.Button == ButtonType.ScanButton);
-      cbButton2.Checked = (e.Button == ButtonType.YesButton);
+      //cbButton1.Checked = (e.Button == ButtonType.ScanButton);
+      //cbButton2.Checked = (e.Button == ButtonType.YesButton);
 
     }
 
@@ -235,7 +235,7 @@ namespace SimpleTalk.GUI
 
     private void buttonImportWords_Click(object sender, EventArgs e)
     {
-      _AutoComplete.ImportWords(textBoxFilePathName.Text, Convert.ToInt32(numericUpDownCountOffset.Value), 0);
+      //_AutoComplete.ImportWords(textBoxFilePathName.Text, Convert.ToInt32(numericUpDownCountOffset.Value), 0);
     }
 
     private void buttonClearDatabase_Click(object sender, EventArgs e)
