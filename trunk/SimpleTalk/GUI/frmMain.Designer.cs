@@ -68,7 +68,7 @@ namespace SimpleTalk.GUI
             this.txtOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOutput.BackColor = System.Drawing.SystemColors.Window;
-            this.txtOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtOutput.Location = new System.Drawing.Point(4, 4);
             this.txtOutput.Multiline = true;
             this.txtOutput.Name = "txtOutput";
@@ -98,6 +98,7 @@ namespace SimpleTalk.GUI
             this.gbTest.Controls.Add(this.button5);
             this.gbTest.Controls.Add(this.button4);
             this.gbTest.Controls.Add(this.button1);
+            this.gbTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbTest.Location = new System.Drawing.Point(1122, 12);
             this.gbTest.Name = "gbTest";
             this.gbTest.Size = new System.Drawing.Size(150, 710);
@@ -107,6 +108,7 @@ namespace SimpleTalk.GUI
             // 
             // buttonClearDatabase
             // 
+            this.buttonClearDatabase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClearDatabase.Location = new System.Drawing.Point(6, 186);
             this.buttonClearDatabase.Name = "buttonClearDatabase";
             this.buttonClearDatabase.Size = new System.Drawing.Size(75, 23);
@@ -117,6 +119,7 @@ namespace SimpleTalk.GUI
             // 
             // numericUpDownCountOffset
             // 
+            this.numericUpDownCountOffset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numericUpDownCountOffset.Location = new System.Drawing.Point(6, 91);
             this.numericUpDownCountOffset.Minimum = new decimal(new int[] {
             100,
@@ -129,6 +132,7 @@ namespace SimpleTalk.GUI
             // 
             // buttonImport
             // 
+            this.buttonImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonImport.Location = new System.Drawing.Point(6, 143);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(75, 23);
@@ -139,6 +143,7 @@ namespace SimpleTalk.GUI
             // 
             // textBoxFilePathName
             // 
+            this.textBoxFilePathName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxFilePathName.Location = new System.Drawing.Point(6, 117);
             this.textBoxFilePathName.Name = "textBoxFilePathName";
             this.textBoxFilePathName.Size = new System.Drawing.Size(138, 20);
@@ -146,6 +151,7 @@ namespace SimpleTalk.GUI
             // 
             // button10
             // 
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Location = new System.Drawing.Point(80, 430);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(62, 23);
@@ -156,6 +162,7 @@ namespace SimpleTalk.GUI
             // 
             // button9
             // 
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Location = new System.Drawing.Point(6, 430);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(62, 23);
@@ -176,6 +183,7 @@ namespace SimpleTalk.GUI
             // 
             // nSelectionTime
             // 
+            this.nSelectionTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nSelectionTime.DecimalPlaces = 1;
             this.nSelectionTime.Increment = new decimal(new int[] {
             1,
@@ -206,9 +214,10 @@ namespace SimpleTalk.GUI
             // cbButton2
             // 
             this.cbButton2.AutoSize = true;
+            this.cbButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbButton2.Location = new System.Drawing.Point(6, 606);
             this.cbButton2.Name = "cbButton2";
-            this.cbButton2.Size = new System.Drawing.Size(96, 17);
+            this.cbButton2.Size = new System.Drawing.Size(93, 17);
             this.cbButton2.TabIndex = 20;
             this.cbButton2.Text = "Second button";
             this.cbButton2.UseVisualStyleBackColor = true;
@@ -216,15 +225,17 @@ namespace SimpleTalk.GUI
             // cbButton1
             // 
             this.cbButton1.AutoSize = true;
+            this.cbButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbButton1.Location = new System.Drawing.Point(6, 583);
             this.cbButton1.Name = "cbButton1";
-            this.cbButton1.Size = new System.Drawing.Size(78, 17);
+            this.cbButton1.Size = new System.Drawing.Size(75, 17);
             this.cbButton1.TabIndex = 19;
             this.cbButton1.Text = "First button";
             this.cbButton1.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Location = new System.Drawing.Point(6, 401);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(136, 23);
@@ -235,6 +246,7 @@ namespace SimpleTalk.GUI
             // 
             // button5
             // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Location = new System.Drawing.Point(6, 331);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(136, 23);
@@ -245,6 +257,7 @@ namespace SimpleTalk.GUI
             // 
             // button4
             // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Location = new System.Drawing.Point(6, 302);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(136, 23);
@@ -255,6 +268,7 @@ namespace SimpleTalk.GUI
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(6, 48);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 23);
