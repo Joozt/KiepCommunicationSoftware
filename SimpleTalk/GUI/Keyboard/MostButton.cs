@@ -16,6 +16,7 @@ namespace SimpleTalk.GUI
         public MostButton()
         {
           Font = new System.Drawing.Font("Consolas", 45.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          FlatStyle = FlatStyle.Flat;
         }
 
         public MostButton(string keys) : this()
