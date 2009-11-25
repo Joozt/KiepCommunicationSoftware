@@ -8,8 +8,8 @@ namespace SimpleTalk.Model
 {
   public class Interpreter
   {
-    private string _TextOutput;
-    private string _TextOutputUpper;
+    private string _TextOutput;// = "";
+    private string _TextOutputUpper;// = "";
 
     public Interpreter()
     {
@@ -78,8 +78,12 @@ namespace SimpleTalk.Model
         if (command[0] == '#')
         {
           string word = command.TrimStart('#');
-          //LastWord is?
-          List<string> wordArray = new List<string>(_TextOutput.Split(new string[] { " ", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+          //Find lastWord
+          List<string> wordArray;
+          if(!string.IsNullOrEmpty(_TextOutput))
+            wordArray = new List<string>(_TextOutput.Split(new string[] { " ", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+          else
+            wordArray = null;
 
           if (wordArray != null && wordArray.Count > 0)
           {
@@ -94,6 +98,10 @@ namespace SimpleTalk.Model
               //Or add next word and add space
               _TextOutput = _TextOutput + word + " ";
             }
+          }
+          else
+          {
+            _TextOutput = _TextOutput + word + " ";
           }
         }
         else
