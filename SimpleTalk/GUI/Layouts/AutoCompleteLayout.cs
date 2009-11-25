@@ -8,7 +8,7 @@ namespace SimpleTalk.GUI
 {
   class AutoCompleteLayout : CustomLayout
   {
-    int _DefaultWidth = 599;
+    int _DefaultWidth = 665;
     int _DefaultHeight = 90;
     int _hSpace = 4;
     int _vSpace = 4;

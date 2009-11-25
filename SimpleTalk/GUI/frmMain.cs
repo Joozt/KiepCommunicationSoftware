@@ -79,11 +79,6 @@ namespace SimpleTalk.GUI
       Properties.Settings.Default.Save();
     }
 
-    private void frmMain_Load(object sender, EventArgs e)
-    {
-
-    }
-
     void CreateProcessWindow()
     {
       Core.Instance.TextToSpeech.MakeProcess();
