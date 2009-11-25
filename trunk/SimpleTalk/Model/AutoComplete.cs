@@ -44,6 +44,8 @@ namespace SimpleTalk.Model
     {
       get
       {
+        _Suggestions.Add("TEST");
+        _Suggestions.Add("TEST");
         return _Suggestions;
       }
     }
