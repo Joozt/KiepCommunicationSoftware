@@ -1,0 +1,7 @@
+Woordenlijsten om database te vullen;
+
+File                                Opmerking                           Bron
+basiswoorden_adam.csv               ruim 3000 basiswoorden              http://amsterdam.nl/@184044/basiswoordenlijst/
+basiswoorden_OpenTaal_110G.txt      140.000 woorden                     www.OpenTaal.org
+1000_basiswoorden_wiki.csv          1000 basiswoorden                   http://nl.wiktionary.org/wiki/Categorie:Woordenlijsten
+Joost_woorden.csv                   Woorden die Joost typeren           Wij allemaal
