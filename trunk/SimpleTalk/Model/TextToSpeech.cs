@@ -15,116 +15,49 @@ using System.Runtime.InteropServices;
 namespace SimpleTalk.Model
 {
 
-  public class TextToSpeech
-  {
-      public Process P;
-
-      public TextToSpeech()
-      {
-          P = CreateProcess();
-      }
-//      private System.IO.StreamWriter c_StreamInput = null;
-
-    public Process CreateProcess()
+    public class TextToSpeech : IDisposable
     {
+        public Process _TextToSpeechProcess;
 
-
-        Process cmd = new Process();
-
-        cmd.StartInfo.FileName = "cmd.exe";
-        cmd.StartInfo.RedirectStandardInput = true;
-        cmd.StartInfo.RedirectStandardOutput = true;
-        cmd.StartInfo.CreateNoWindow = true;
-        cmd.StartInfo.UseShellExecute = false;
-
-        cmd.Start();
-
-        cmd.StandardInput.WriteLine("cd .\\FestivalBinaries\\nextens");
-        cmd.StandardInput.WriteLine(".\\bin\\festival.exe --libdir \"./lib/\"");
-        
-        return cmd;
-    }
-
-    public void Say(string text, Process cmd)
-    {
-
-      if (!String.IsNullOrEmpty(text))
+        public TextToSpeech()
         {
-            cmd.StandardInput.WriteLine("(set! u0000 (SynthText \"" + text + "\"));");
-            cmd.StandardInput.WriteLine("(ResynthCurrentInton u0000);");
-            cmd.StandardInput.Flush();
-        }      
-    }
-    [DllImport("User32.dll")]
-    public static extern bool DestroyWindow(int hWnd);
+            _TextToSpeechProcess = new Process();
 
-    public void StopSpeaking(int W2)
-    {
-    
-        
+            _TextToSpeechProcess.StartInfo.FileName = "cmd.exe";
+            _TextToSpeechProcess.StartInfo.RedirectStandardInput = true;
+            _TextToSpeechProcess.StartInfo.RedirectStandardOutput = true;
+            _TextToSpeechProcess.StartInfo.CreateNoWindow = true;
+            _TextToSpeechProcess.StartInfo.UseShellExecute = false;
 
-        //SetForegroundWindow(W2);
-        //SendKeys.SendWait("{(}quit{)} {enter}");
-        //System.Threading.Thread.Sleep(3000);
-        //initFestival();
-        
-    }
+            _TextToSpeechProcess.Start();
 
-    //public void CreateText(string text1)
-    //{
+            _TextToSpeechProcess.StandardInput.WriteLine("set PATH=.;.\\lib\\etc");
+            _TextToSpeechProcess.StandardInput.WriteLine("set HOME=C:");
+            _TextToSpeechProcess.StandardInput.WriteLine("cd .\\FestivalBinaries\\nextens");
+            _TextToSpeechProcess.StandardInput.WriteLine("sh -c \"./bin/festival.exe --libdir ./lib");
+        }
 
-    //    string[] lines = { "(set! u0000 (SynthText \"" + text1 + "\"));", "(ResynthCurrentInton u0000);" };
+        #region IDisposable Members
 
-    //    string folder = @"C:\Project\festivalbinaries\nextens\test.txt";
-    //    FileStream file = new FileStream(folder, FileMode.Create, FileAccess.Write);
-    //    StreamWriter sw = new StreamWriter(file);
-
-    //    foreach (string line in lines)
-    //    {
-    //        sw.WriteLine(line);
-    //    }
-
-    //    sw.Close();
-    //    file.Close();
-    //}
-
-    [DllImport("User32.dll")]
-    public static extern Int32 SetForegroundWindow(int hWnd);
-
-    public void initFestival()
-    {
-        SendKeys.SendWait("cd festivalbinaries\\nextens {enter}");
-        SendKeys.SendWait("set PATH=.;.\\lib\\etc{enter}");
-        SendKeys.SendWait("set HOME=C:{enter}");
-
-        SendKeys.SendWait("sh -c \"./bin/festival.exe --libdir ./lib\"{enter}");
-    }
-
-    public void MakeProcess()
-    {
-        
-        try
+        public void Dispose()
         {
-            Process myProcess = Process.Start("cmd.exe");
-            
+            _TextToSpeechProcess.StandardInput.WriteLine("(quit)");
+            _TextToSpeechProcess.StandardInput.WriteLine("exit");
+            _TextToSpeechProcess.WaitForExit();
 
-            if (myProcess.Responding)
+            GC.SuppressFinalize(this);
+        }
+
+        #endregion
+
+        public void Say(string text)
+        {
+            if (!String.IsNullOrEmpty(text))
             {
-                initFestival(); 
-                
-            }
-            else
-            {
-                myProcess.Kill();
-            
+                _TextToSpeechProcess.StandardInput.WriteLine("(SayText \"" + text + "\");");
+                _TextToSpeechProcess.StandardInput.Flush();
             }
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine("Exception Occurred :{0},{1}", ex.Message, ex.StackTrace.ToString());
-            
-        }
     }
-  }
 }
 

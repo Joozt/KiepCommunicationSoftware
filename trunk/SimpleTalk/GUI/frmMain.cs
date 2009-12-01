@@ -79,14 +79,6 @@ namespace SimpleTalk.GUI
       Properties.Settings.Default.Save();
     }
 
-    void CreateProcessWindow()
-    {
-      Core.Instance.TextToSpeech.MakeProcess();
-
-      //ActiveWindow AW = new ActiveWindow();
-      //W2 = AW.GetActiveWindow();
-    }
-
     void OnSuggestionsChanged(object sender, EventArgs e)
     {
       _AutoBeheaviour.StopSelection();
@@ -167,7 +159,7 @@ namespace SimpleTalk.GUI
     {
       // Speaking must be done in a seperate thread to avoid hanging the application!!
       //_TextToSpeech.Say("Dit is een gesproken tekst om te testen of ie werkt", W2);
-      Core.Instance.TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete, Core.Instance.TextToSpeech.P);  //txtOutput.Tex
+      Core.Instance.TextToSpeech.Say(Core.Instance.Interpreter.TextAutoComplete);  //txtOutput.Tex
     }
 
     private void button5_Click(object sender, EventArgs e)
