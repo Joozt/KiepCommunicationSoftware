@@ -148,6 +148,9 @@ namespace SimpleTalk.Model
               Core.Instance.TextToSpeech.Say(_TextOutput);
               break;
 
+            case "&empty":
+              // do nothing 
+              break;
             #endregion
 
             #region settingMenuCommands
