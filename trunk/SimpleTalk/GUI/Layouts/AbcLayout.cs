@@ -15,7 +15,7 @@ namespace SimpleTalk.GUI
 
         override public void ConstructLayout()
         {
-            int Width = (int)Math.Round(((3/2.0) * _DefaultWidth) + (0.5 * _vSpace));
+           /* int Width = (int)Math.Round(((3/2.0) * _DefaultWidth) + (0.5 * _vSpace));
 
             NewRow(
                 _DefaultWidth,
@@ -26,7 +26,22 @@ namespace SimpleTalk.GUI
                     new ButtonDefinition(">>", "&auto", new Size(Width, _DefaultHeight), false),
                     new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
+                });*/
+
+          int Width = (int)Math.Round((6 * _DefaultWidth+ 1 * _vSpace)/5.0);
+
+          NewRow(
+              _DefaultWidth,
+              _DefaultHeight,
+              new ButtonDefinition[5]
+                {
+                    new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition(">>", "&auto", new Size(Width, _DefaultHeight), false),
+                    new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("", "&empty", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
                 });
+
     
             List<ButtonDefinition> NewButtons = new List<ButtonDefinition>();
             
