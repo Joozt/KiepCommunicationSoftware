@@ -119,8 +119,8 @@ namespace SimpleTalk.GUI
         _AutoKeyboard.OnButtonPressed(e);
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.YesButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
-      if ((e.Button == ButtonType.NoButton)) Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
+      if ((e.Button == ButtonType.YesButton)) Core.Instance.TextToSpeech.Say("Ja"); //Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
+      if ((e.Button == ButtonType.NoButton)) Core.Instance.TextToSpeech.Say("Nee"); //Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
