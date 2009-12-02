@@ -36,7 +36,7 @@ namespace SimpleTalk.DataAccess
         {
           if (string.IsNullOrEmpty(_connectionString))
           {
-            _connectionString = GetConnectioSrting(databaseName);
+            _connectionString = GetConnectionString(databaseName);
           }
 
           if (string.IsNullOrEmpty(_connectionString))
@@ -124,7 +124,7 @@ namespace SimpleTalk.DataAccess
       }
     }
 
-    private static string GetConnectioSrting(string databaseName)
+    private static string GetConnectionString(string databaseName)
     {
       try
       {
