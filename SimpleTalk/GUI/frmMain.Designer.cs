@@ -104,6 +104,7 @@ namespace SimpleTalk.GUI
           this.pnlAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                       | System.Windows.Forms.AnchorStyles.Left)
                       | System.Windows.Forms.AnchorStyles.Right)));
+          this.pnlAutoComplete.BackColor = System.Drawing.SystemColors.Window;
           this.pnlAutoComplete.Location = new System.Drawing.Point(3, 3);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
           this.pnlAutoComplete.Size = new System.Drawing.Size(681, 566);

@@ -125,9 +125,12 @@ namespace SimpleTalk.DataAccess
 
         Model.AutoWord autoWord = null;
 
-        if (_dataReader.Read())
+        if (_dataReader != null)
         {
-          autoWord = CreateAutoWord(_dataReader);
+          if (_dataReader.Read())
+          {
+            autoWord = CreateAutoWord(_dataReader);
+          }
         }
 
         return autoWord;
@@ -153,9 +156,12 @@ namespace SimpleTalk.DataAccess
 
         List<Model.AutoWord> autoWordList = new List<Model.AutoWord>();
 
-        while (_dataReader.Read())
+        if (_dataReader != null)
         {
-          autoWordList.Add(CreateAutoWord(_dataReader));
+          while (_dataReader.Read())
+          {
+            autoWordList.Add(CreateAutoWord(_dataReader));
+          }
         }
 
         return autoWordList;
@@ -223,9 +229,12 @@ namespace SimpleTalk.DataAccess
 
         Model.AutoWord autoWord = null;
 
-        if (_dataReader.Read())
+        if (_dataReader != null)
         {
-          autoWord = CreateAutoWord(_dataReader);
+          if (_dataReader.Read())
+          {
+            autoWord = CreateAutoWord(_dataReader);
+          }
         }
 
         return autoWord;
@@ -252,9 +261,12 @@ namespace SimpleTalk.DataAccess
 
         List<string> wordList = new List<string>();
 
-        while (_dataReader.Read())
+        if (_dataReader != null)
         {
-          wordList.Add(CreateWord(_dataReader));
+          while (_dataReader.Read())
+          {
+            wordList.Add(CreateWord(_dataReader));
+          }
         }
 
         return wordList;
