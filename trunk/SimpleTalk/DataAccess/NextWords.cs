@@ -123,9 +123,12 @@ namespace SimpleTalk.DataAccess
 
         Model.NextWord nextWord = null;
 
-        if (_dataReader.Read())
+        if (_dataReader != null)
         {
-          nextWord = CreateNextWord(_dataReader);
+          if (_dataReader.Read())
+          {
+            nextWord = CreateNextWord(_dataReader);
+          }
         }
 
         return nextWord;
@@ -152,9 +155,12 @@ namespace SimpleTalk.DataAccess
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
-        if (_dataReader.Read())
+        if (_dataReader != null)
         {
-          nextWordList.Add(CreateNextWord(_dataReader));
+          if (_dataReader.Read())
+          {
+            nextWordList.Add(CreateNextWord(_dataReader));
+          }
         }
 
         return nextWordList;
@@ -181,9 +187,12 @@ namespace SimpleTalk.DataAccess
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
-        if (_dataReader.Read())
+        if (_dataReader != null)
         {
-          nextWordList.Add(CreateNextWord(_dataReader));
+          if (_dataReader.Read())
+          {
+            nextWordList.Add(CreateNextWord(_dataReader));
+          }
         }
 
         return nextWordList;
@@ -209,9 +218,12 @@ namespace SimpleTalk.DataAccess
 
         List<Model.NextWord> nextWordList = new List<Model.NextWord>();
 
-        while (_dataReader.Read())
+        if (_dataReader != null)
         {
-          nextWordList.Add(CreateNextWord(_dataReader));
+          while (_dataReader.Read())
+          {
+            nextWordList.Add(CreateNextWord(_dataReader));
+          }
         }
 
         return nextWordList;
@@ -299,9 +311,12 @@ namespace SimpleTalk.DataAccess
 
         List<string> wordList = new List<string>();
 
-        while (_dataReader.Read())
+        if (_dataReader != null)
         {
-          wordList.Add(CreateWord(_dataReader));
+          while (_dataReader.Read())
+          {
+            wordList.Add(CreateWord(_dataReader));
+          }
         }
 
         return wordList;

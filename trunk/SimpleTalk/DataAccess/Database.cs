@@ -19,19 +19,17 @@ namespace SimpleTalk.DataAccess
     private static DataSet _dataSet = null;
 
     private static string _serverName = string.Empty;
+    private static string _instanceName = "SQLEXPRESS";
     private static string _databaseName = "AutoComplete";
     private static string _userID = string.Empty;
     private static string _password = string.Empty;
+
+    private static bool _connected = false;
 
     public static void Connect(string databaseName)
     {
       try
       {
-        if (_dataSet == null)
-        {
-          _dataSet = new DataSet();
-        }
-
         if (_sqlConnection == null)
         {
           if (string.IsNullOrEmpty(_connectionString))
@@ -50,20 +48,15 @@ namespace SimpleTalk.DataAccess
         if ((_sqlConnection != null) && (_sqlConnection.State != ConnectionState.Open))
         {
           _sqlConnection.Open();
+
+          _connected = true;
         }
       }
       catch (SqlException ex)
       {
-        //if (!ex.Message.ToUpper().Contains("CANNOT OPEN DATABASE"))
-        //{
-        //  throw;
-        //}
-        //else
-        //{
-        //  GenerateDatabase();
-        //}
+        Disconnect();
 
-        throw;
+        _connected = false;
       }
       catch
       {
@@ -78,11 +71,15 @@ namespace SimpleTalk.DataAccess
         if (_dataSet != null)
         {
           _dataSet.Dispose();
+
+          _dataSet = null;
         }
 
         if (_sqlCommand != null)
         {
           _sqlCommand.Dispose();
+
+          _sqlCommand = null;
         }
 
         if (_sqlConnection != null)
@@ -137,7 +134,7 @@ namespace SimpleTalk.DataAccess
 
         if (string.IsNullOrEmpty(_serverName))
         {
-          _serverName = string.Format(@"{0}\SQLEXPRESS", Environment.MachineName);
+          _serverName = string.Format(@"{0}\{1}", Environment.MachineName, _instanceName);
         }
 
         return string.Format("Data Source = {0};Initial Catalog = {1}; {2}", _serverName, (string.IsNullOrEmpty(databaseName) ? _databaseName : databaseName), authorisation);
@@ -152,7 +149,10 @@ namespace SimpleTalk.DataAccess
     {
       try
       {
-        //Connect();
+        if (!_connected)
+        {
+          Connect(string.Empty);
+        }
 
         if (_sqlCommand == null)
         {
@@ -183,6 +183,14 @@ namespace SimpleTalk.DataAccess
 
         return _sqlCommand.ExecuteReader(CommandBehavior.SingleResult);
       }
+      catch (SqlException ex)
+      {
+        Disconnect();
+
+        _connected = false;
+
+        return null;
+      }
       catch
       {
         throw;
@@ -197,10 +205,23 @@ namespace SimpleTalk.DataAccess
 
         using (SqlDataAdapter dataAdapter = new SqlDataAdapter(_sqlCommand))
         {
+          if (_dataSet == null)
+          {
+            _dataSet = new DataSet();
+          }
+
           dataAdapter.Fill(_dataSet);
 
           return _dataSet;
         }
+      }
+      catch (SqlException ex)
+      {
+        Disconnect();
+
+        _connected = false;
+
+        return null;
       }
       catch
       {
@@ -215,6 +236,14 @@ namespace SimpleTalk.DataAccess
         SetCommand(sqlString, commandType, parameters);
 
         return _sqlCommand.ExecuteNonQuery();
+      }
+      catch (SqlException ex)
+      {
+        Disconnect();
+
+        _connected = false;
+
+        return 0;
       }
       catch
       {
