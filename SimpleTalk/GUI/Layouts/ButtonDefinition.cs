@@ -16,7 +16,7 @@ namespace SimpleTalk.GUI
 
     public ButtonDefinition(string text, string keys)
     {
-        _Font = new System.Drawing.Font("Consolas", 45.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))); 
+        _Font = new System.Drawing.Font("Consolas", 41.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))); 
       _AutoRescan = true;
       _Text = text;
       _Keys = keys;

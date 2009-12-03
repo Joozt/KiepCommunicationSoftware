@@ -8,27 +8,16 @@ namespace SimpleTalk.GUI
 {
     class AbcLayout : CustomLayout
     {
-        int _DefaultWidth = 90;
+        int _DefaultWidth = 105;
         int _DefaultHeight = 90;
         int _hSpace = 4;
         int _vSpace = 4;
 
         override public void ConstructLayout()
         {
-           /* int Width = (int)Math.Round(((3/2.0) * _DefaultWidth) + (0.5 * _vSpace));
-
-            NewRow(
-                _DefaultWidth,
-                _DefaultHeight,
-                new ButtonDefinition[4]
-                {
-                    new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition(">>", "&auto", new Size(Width, _DefaultHeight), false),
-                    new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
-                });*/
-
-          int Width = (int)Math.Round((6 * _DefaultWidth+ 1 * _vSpace)/5.0);
+            int WidthEmpty = 30;
+            int Width = (int)Math.Round((6 * _DefaultWidth + 1 * _vSpace - WidthEmpty) / 4.0);
+          
 
           NewRow(
               _DefaultWidth,
@@ -38,7 +27,7 @@ namespace SimpleTalk.GUI
                     new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition(">>", "&auto", new Size(Width, _DefaultHeight), false),
                     new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("", "&empty", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("", "&empty", new Size(WidthEmpty, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
                 });
 
