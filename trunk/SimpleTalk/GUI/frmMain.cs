@@ -229,5 +229,6 @@ namespace SimpleTalk.GUI
     {
       _AutoComplete.ClearDatabase();
     }
+
   }
 }

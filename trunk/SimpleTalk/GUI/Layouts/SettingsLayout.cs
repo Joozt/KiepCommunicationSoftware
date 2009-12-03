@@ -26,7 +26,7 @@ namespace SimpleTalk.GUI
                 });
 
             //Scan speed settting (+)
-            Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
+            
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
@@ -36,17 +36,17 @@ namespace SimpleTalk.GUI
                 });
 
             //Next word proposed by auto complete on/off
-              Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0*_hSpace);
+             
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("VOLGENDE WOORDSUGGESTIE", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("VOLGEND WOORD", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
                 });
 
              //Auto complete suggestion on/off
-             Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
+            
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
@@ -56,13 +56,13 @@ namespace SimpleTalk.GUI
                 });
 
               //Go back to form main
-              Width = (int)Math.Round(8.0 * _DefaultWidth + 1.0 * _hSpace);
+           
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("TERUG NAAR HOOFDSCHERM", "&GoBack", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("MENU TERUG", "&GoBack", new Size(Width, _DefaultHeight)),
                 });
 
                  AutoFormat();

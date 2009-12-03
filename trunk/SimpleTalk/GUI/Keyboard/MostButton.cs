@@ -64,5 +64,16 @@ namespace SimpleTalk.GUI
 
         #endregion
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // MostButton
+            // 
+            this.Margin = new System.Windows.Forms.Padding(1);
+            this.ResumeLayout(false);
+
+        }
+
     }
 }
