@@ -73,7 +73,14 @@ namespace SimpleTalk.GUI
         return txtOutput.SelectionLength;
       }
     }
-      
+
+  /*  public int CursorPos
+    {
+        get
+        {
+            return txtOutput.SelectionStart;
+        }
+    }*/
     void OnSpeedChanged(object sender, EventArgs e)
     {
         _SimpleBeheaviour.Timer = Core.Instance.GetScanSpeed();

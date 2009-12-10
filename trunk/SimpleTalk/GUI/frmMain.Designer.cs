@@ -47,7 +47,7 @@ namespace SimpleTalk.GUI
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1358, 157);
+            this.panel1.Size = new System.Drawing.Size(1264, 157);
             this.panel1.TabIndex = 11;
             // 
             // txtOutput
@@ -63,7 +63,7 @@ namespace SimpleTalk.GUI
             this.txtOutput.ReadOnly = true;
             this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtOutput.ShortcutsEnabled = false;
-            this.txtOutput.Size = new System.Drawing.Size(1334, 154);
+            this.txtOutput.Size = new System.Drawing.Size(1240, 154);
             this.txtOutput.TabIndex = 7;
             this.txtOutput.TabStop = false;
             this.txtOutput.TextChanged += new System.EventHandler(this.txtOutput_TextChanged);
@@ -85,7 +85,7 @@ namespace SimpleTalk.GUI
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.pnlAutoComplete);
-            this.splitContainer1.Size = new System.Drawing.Size(1358, 579);
+            this.splitContainer1.Size = new System.Drawing.Size(1264, 579);
             this.splitContainer1.SplitterDistance = 690;
             this.splitContainer1.TabIndex = 12;
             // 
@@ -107,7 +107,7 @@ namespace SimpleTalk.GUI
             this.pnlAutoComplete.BackColor = System.Drawing.SystemColors.Window;
             this.pnlAutoComplete.Location = new System.Drawing.Point(3, 3);
             this.pnlAutoComplete.Name = "pnlAutoComplete";
-            this.pnlAutoComplete.Size = new System.Drawing.Size(661, 573);
+            this.pnlAutoComplete.Size = new System.Drawing.Size(567, 573);
             this.pnlAutoComplete.TabIndex = 11;
             // 
             // frmMain
@@ -115,7 +115,7 @@ namespace SimpleTalk.GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1358, 741);
+            this.ClientSize = new System.Drawing.Size(1264, 741);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.Name = "frmMain";
