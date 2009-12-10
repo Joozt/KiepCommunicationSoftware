@@ -8,8 +8,8 @@ namespace SimpleTalk.Model
 {
   public class Interpreter
   {
-    private string _TextOutput;// = "";
-    private string _TextOutputUpper;// = "";
+    private string _TextOutput = "";
+    private string _TextOutputUpper = "";
 
     public Interpreter()
     {
@@ -66,11 +66,32 @@ namespace SimpleTalk.Model
 
     public void ProcessCommand(string command)
     {
+        int _SelLenght = Core.Instance.MainForm.SelectedTxtLenght;
+        int _SelStart = Core.Instance.MainForm.SelectedTxtStart;
 
       if (command.Length == 1 || Char.IsLetter(command[0]))
       {
         //if command is a single char add it to the output text
-        _TextOutput += command;
+
+          if (_TextOutput.Length <= _SelStart)
+              _TextOutput += command;
+          else
+          {
+              if (_SelLenght == 0)
+              {
+                  _TextOutput = _TextOutput.Insert(_SelStart, command);
+              }
+              else
+              {
+                  if (_TextOutput.Length >= _SelLenght + _SelStart)
+                      _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght);
+                  else
+                      _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
+                  _TextOutput = _TextOutput.Insert(_SelStart, command);
+              }
+
+          }
+
       }
       else
       {
@@ -125,10 +146,7 @@ namespace SimpleTalk.Model
 
             case "&clear":
 
-                 int _SelLenght = Core.Instance.MainForm.SelectedTxtLenght;
-                 int _SelStart = Core.Instance.MainForm.SelectedTxtStart;
-
-                  if ( Core.Instance.MainForm.SelectedTxtLenght == 0)
+                  if (_SelLenght == 0)
                   {
                       _TextOutput = "";
                   }
