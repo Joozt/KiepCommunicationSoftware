@@ -62,7 +62,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    public Form MainForm
+    public frmMain MainForm
     {
         get
         {
@@ -164,7 +164,7 @@ namespace SimpleTalk.Model
         // Initialize objects that could need the base objects at constructing
         _MainForm = new frmMain();
         _SettingsForm = new frmSettings();
-
+        
         // Update all keyboards
         OnSpeedChanged(this, new EventArgs());
     }
