@@ -124,7 +124,22 @@ namespace SimpleTalk.Model
               break;
 
             case "&clear":
-              _TextOutput = "";
+
+                 int _SelLenght = Core.Instance.MainForm.SelectedTxtLenght;
+                 int _SelStart = Core.Instance.MainForm.SelectedTxtStart;
+
+                  if ( Core.Instance.MainForm.SelectedTxtLenght == 0)
+                  {
+                      _TextOutput = "";
+                  }
+                  else
+                  {
+                      if (_TextOutput.Length >= _SelLenght + _SelStart)
+                          _TextOutput = _TextOutput.Remove( _SelStart,  _SelLenght);
+                      else
+                          _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
+                  }
+              
               break;
 
             #endregion

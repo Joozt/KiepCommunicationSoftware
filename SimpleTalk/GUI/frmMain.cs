@@ -33,6 +33,7 @@ namespace SimpleTalk.GUI
 
     public frmMain()
     {
+      
       InitializeComponent();
 
       _Keyboard = new CustomKeyboard(pnlKeyboard.Controls, _AbcLayout, _SimpleBeheaviour);
@@ -57,6 +58,22 @@ namespace SimpleTalk.GUI
       OnTextChanged(this, new EventArgs());
     }
 
+    public int SelectedTxtStart 
+    {
+     get
+        {
+        return txtOutput.SelectionStart;
+        }
+    }
+
+    public int SelectedTxtLenght 
+    {
+     get
+        {
+        return txtOutput.SelectionLength;
+      }
+    }
+      
     void OnSpeedChanged(object sender, EventArgs e)
     {
         _SimpleBeheaviour.Timer = Core.Instance.GetScanSpeed();
