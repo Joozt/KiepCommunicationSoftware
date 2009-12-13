@@ -5,10 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using System.IO;
+using System.Timers;
 using SimpleTalk.Model;
-using System.Threading;
 using SimpleTalk;
 using System.Diagnostics;
 
@@ -29,6 +30,8 @@ namespace SimpleTalk.GUI
     private bool _AutoActive;
     //private bool _keyPressed = false;
     private Font _defaultFont = new Font("Consolas", 45.00F, FontStyle.Bold);
+
+    private System.Timers.Timer _timerBgColor;
 
 
     public frmMain()
@@ -56,6 +59,8 @@ namespace SimpleTalk.GUI
 
       txtOutput.Font = _defaultFont;
       OnTextChanged(this, new EventArgs());
+
+      _timerBgColor = new System.Timers.Timer();
     }
 
     public int SelectedTxtStart 
@@ -143,8 +148,38 @@ namespace SimpleTalk.GUI
         _AutoKeyboard.OnButtonPressed(e);
 
       UpdateButtons(e);
-      if ((e.Button == ButtonType.YesButton)) Core.Instance.TextToSpeech.Say("Ja"); //Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
-      if ((e.Button == ButtonType.NoButton)) Core.Instance.TextToSpeech.Say("Nee"); //Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
+      if ((e.Button == ButtonType.YesButton))
+      {
+        Core.Instance.TextToSpeech.Say("Ja"); //Core.Instance.Sounds.PlaySound(SoundFiles.Ja);
+
+        if (Core.Instance.YesNoDisplayTime > 0)
+        {
+          txtOutput.BackColor = System.Drawing.Color.LimeGreen;
+          _timerBgColor.Interval = Core.Instance.YesNoDisplayTime;
+          _timerBgColor.Elapsed += new ElapsedEventHandler(_timerBgColorTick);
+          _timerBgColor.Enabled = true;
+        }
+      }
+      if ((e.Button == ButtonType.NoButton))
+      {
+        Core.Instance.TextToSpeech.Say("Nee"); //Core.Instance.Sounds.PlaySound(SoundFiles.Nee);
+
+        if (Core.Instance.YesNoDisplayTime > 0)
+        {
+          txtOutput.BackColor = System.Drawing.Color.Red;
+          _timerBgColor.Interval = Core.Instance.YesNoDisplayTime;
+          _timerBgColor.Elapsed += new ElapsedEventHandler(_timerBgColorTick);
+          _timerBgColor.Enabled = true;
+        }
+      }
+    }
+
+    public void _timerBgColorTick(object sender, EventArgs eArgs)
+    {
+      if (sender == _timerBgColor)
+      {
+        txtOutput.BackColor = System.Drawing.Color.White;
+      }
     }
 
     private void UpdateButtons(CustomButtonEventArgs e)
