@@ -189,13 +189,13 @@ namespace SimpleTalk.Model
             #region settingMenuCommands
 
             case "&ScanSpeedDown":
-              //TODO: decrease scanning highlight time (speed)
+              //decrease scanning highlight time (speed)
               Core.Instance.ScanSpeed--;
               (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
             case "&ScanSpeedUp":
-              //TODO: increase scanning highlight time (speed)
+              //increase scanning highlight time (speed)
               Core.Instance.ScanSpeed++;
               (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
@@ -211,6 +211,19 @@ namespace SimpleTalk.Model
               Core.Instance.AutoWordCompeltionOn = !Core.Instance.AutoWordCompeltionOn;
               (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
+
+            case "&YesNoColorTimeDown":
+              //decrease yes/no back groud color time
+              Core.Instance.YesNoDisplayTime -= 100; //in [ms] change per 0.1sec 
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
+              break;
+
+            case "&YesNoColorTimeUp":
+              //decrease yes/no back groud color time
+              Core.Instance.YesNoDisplayTime += 100; //in [ms] change per 0.1sec 
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
+              break;
+
 
             case "&GoBack":
               //Close settings form

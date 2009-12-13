@@ -157,7 +157,7 @@ namespace SimpleTalk.Model
       }
       set
       {
-        if (value < 0) 
+        if (value > 0) 
         {
           Properties.Settings.Default.yesNoDisplayTime = value;
         }

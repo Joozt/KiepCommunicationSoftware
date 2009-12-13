@@ -9,8 +9,8 @@ namespace SimpleTalk.GUI
     class SettingsLayout : CustomLayout
     {
         int _DefaultWidth = 100;
-        int _DefaultHeight = 100;
-        int _hSpace = 10;
+        int _DefaultHeight = 90;
+        int _hSpace = 5;
         int _vSpace = 10;
 
         override public void ConstructLayout()
@@ -53,6 +53,24 @@ namespace SimpleTalk.GUI
                 new ButtonDefinition[1]
                 {  
                    new ButtonDefinition("WOORD VOLTOOIEN", "&AutoWordComplete", new Size(Width, _DefaultHeight)),
+                });
+
+                 //Yes No back ground color time (-)
+                 NewRow(
+                     _DefaultWidth,
+                     _DefaultHeight,
+                     new ButtonDefinition[1]
+                {  
+                   new ButtonDefinition("JA/NEE KLEUR TIJD -", "&YesNoColorTimeDown", new Size(Width, _DefaultHeight)),
+                });
+
+                 //Yes No back ground color time (+)
+                 NewRow(
+                     _DefaultWidth,
+                     _DefaultHeight,
+                     new ButtonDefinition[1]
+                {  
+                   new ButtonDefinition("JA/NEE KLEUR TIJD +", "&YesNoColorTimeUp", new Size(Width, _DefaultHeight)),
                 });
 
               //Go back to form main
