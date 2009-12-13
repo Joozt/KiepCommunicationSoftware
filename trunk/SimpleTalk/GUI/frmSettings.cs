@@ -70,6 +70,8 @@ namespace SimpleTalk.GUI
         txtNextWord.Text = "AAN";
       else
         txtNextWord.Text = "UIT";
+
+      textYesNoDisplayTime.Text = String.Format("{0:0.0}", (float)Core.Instance.YesNoDisplayTime * 0.001);
     }
 
     private void frmSettings_VisibleChanged(object sender, EventArgs e)

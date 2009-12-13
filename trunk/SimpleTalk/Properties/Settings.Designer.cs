@@ -61,7 +61,7 @@ namespace SimpleTalk.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1200")]
         public int yesNoDisplayTime {
             get {
                 return ((int)(this["yesNoDisplayTime"]));
