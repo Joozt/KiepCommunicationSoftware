@@ -149,6 +149,26 @@ namespace SimpleTalk.Model
       }
     }
 
+    public int YesNoDisplayTime
+    {
+      get
+      {
+        return Properties.Settings.Default.yesNoDisplayTime;
+      }
+      set
+      {
+        if (value < 0) 
+        {
+          Properties.Settings.Default.yesNoDisplayTime = value;
+        }
+        else
+        {
+          Properties.Settings.Default.yesNoDisplayTime = 0;
+        }
+        Properties.Settings.Default.Save();
+      }
+    }
+
     #endregion 
 
     Core()
