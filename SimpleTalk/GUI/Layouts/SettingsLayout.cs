@@ -73,8 +73,19 @@ namespace SimpleTalk.GUI
                    new ButtonDefinition("JA/NEE KLEUR TIJD +", "&YesNoColorTimeUp", new Size(Width, _DefaultHeight)),
                 });
 
-              //Go back to form main
+              //Underscore space adding on/off
            
+                 NewRow(
+                _DefaultWidth,
+                _DefaultHeight,
+                new ButtonDefinition[1]
+                {  
+                   new ButtonDefinition("Spatie karakter", "&UnderscoreSpace", new Size(Width, _DefaultHeight)),
+                });
+
+
+                 //Go back to form main
+
                  NewRow(
                 _DefaultWidth,
                 _DefaultHeight,

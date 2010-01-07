@@ -13,11 +13,13 @@ namespace SimpleTalk.GUI
     Size _Size;
     bool _AutoRescan;
     Font _Font;
+    bool _Skip;
 
     public ButtonDefinition(string text, string keys)
     {
         _Font = new System.Drawing.Font("Consolas", 41.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))); 
       _AutoRescan = true;
+      _Skip = false;
       _Text = text;
       _Keys = keys;
       _Size = new Size(0, 0);
@@ -41,6 +43,12 @@ namespace SimpleTalk.GUI
         _AutoRescan = autoRescan;
     }
 
+    public ButtonDefinition(string text, string keys, bool autoRescan, bool skip)
+        : this(text, keys, autoRescan)
+    {
+        _Skip = skip;
+    }
+
     public ButtonDefinition(string text, string keys, Size size, Font font)
         : this(text, keys)
     {
@@ -57,6 +65,12 @@ namespace SimpleTalk.GUI
         : this(text, keys, size)
     {
         _AutoRescan = autoRescan;
+    }
+
+    public ButtonDefinition(string text, string keys, Size size, bool autoRescan, bool skip)
+        : this(text, keys, size, autoRescan)
+    {
+        _Skip = skip;
     }
 
     public string Text
@@ -88,6 +102,14 @@ namespace SimpleTalk.GUI
         get
         {
             return _AutoRescan;
+        }
+    }
+
+    public bool Skip
+    {
+        get
+        {
+            return _Skip;
         }
     }
 

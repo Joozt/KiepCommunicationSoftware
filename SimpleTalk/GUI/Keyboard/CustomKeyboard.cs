@@ -82,17 +82,18 @@ namespace SimpleTalk.GUI
             return Button;
         }
 
-        public MostButton AddButton(string text, string keys, Size size, bool autoRescan, Font font)
+        public MostButton AddButton(string text, string keys, Size size, bool autoRescan, bool skip, Font font)
         {
-            MostButton Button = AddButton(text, keys, size, autoRescan);
+            MostButton Button = AddButton(text, keys, size, autoRescan, skip);
             Button.Font = font;
             return Button;            
         }
 
-        public MostButton AddButton(string text, string keys, Size size, bool autoRescan)
+        public MostButton AddButton(string text, string keys, Size size, bool autoRescan, bool skip)
         {
             MostButton Button = AddButton(text, keys, size);
             Button.AutoRescan = autoRescan;
+            Button.Skip = skip;
             return Button;
         }
 
