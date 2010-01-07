@@ -12,6 +12,7 @@ namespace SimpleTalk.GUI
         string _Keys = "";
         bool _AutoSizeFont = true;
         bool _AutoRescan = true;
+        bool _Skip = false;
 
         public MostButton()
         {
@@ -59,6 +60,18 @@ namespace SimpleTalk.GUI
             set
             {
                 _AutoRescan = value;
+            }
+        }
+
+        public bool Skip
+        {
+            get
+            {
+                return _Skip;
+            }
+            set
+            {
+                _Skip = value;
             }
         }
 

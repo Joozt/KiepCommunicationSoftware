@@ -14,5 +14,8 @@
     <Setting Name="yesNoDisplayTime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1200</Value>
     </Setting>
+    <Setting Name="UnderscoreSpace" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

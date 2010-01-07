@@ -71,6 +71,11 @@ namespace SimpleTalk.GUI
       else
         txtNextWord.Text = "UIT";
 
+      if (Core.Instance.UnderscoreSpace)
+          txtUnderscoreSpace.Text = "AAN";
+      else
+          txtUnderscoreSpace.Text = "UIT";
+
       textYesNoDisplayTime.Text = String.Format("{0:0.0}", (float)Core.Instance.YesNoDisplayTime * 0.001);
     }
 

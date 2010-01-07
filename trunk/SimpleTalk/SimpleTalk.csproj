@@ -82,6 +82,8 @@
     </Compile>
     <Compile Include="GUI\Layouts\AutoCompleteLayout.cs" />
     <Compile Include="GUI\Layouts\ButtonDefinition.cs" />
+    <Compile Include="GUI\Layouts\AbcLayoutNew.cs" />
+    <Compile Include="GUI\Layouts\AutoCompleteLayoutNew.cs" />
     <Compile Include="GUI\Layouts\SettingsLayout.cs" />
     <Compile Include="GUI\CustomButtonEvent.cs" />
     <Compile Include="GUI\CustomForm.cs">

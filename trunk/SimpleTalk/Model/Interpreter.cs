@@ -27,6 +27,12 @@ namespace SimpleTalk.Model
         {
           _TextOutputUpper = "|";
         }
+
+        if (Core.Instance.UnderscoreSpace)
+        {
+            _TextOutputUpper = _TextOutputUpper.Replace(" ", "_ ");
+        }
+
         return _TextOutputUpper;
       }
       set
@@ -221,6 +227,12 @@ namespace SimpleTalk.Model
             case "&YesNoColorTimeUp":
               //decrease yes/no back groud color time
               Core.Instance.YesNoDisplayTime += 100; //in [ms] change per 0.1sec 
+              (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
+              break;
+
+            case "&UnderscoreSpace":
+              //decrease yes/no back groud color time
+              Core.Instance.UnderscoreSpace = !Core.Instance.UnderscoreSpace;
               (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 

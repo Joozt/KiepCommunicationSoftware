@@ -136,6 +136,19 @@ namespace SimpleTalk.Model
       }
     }
 
+    public bool UnderscoreSpace
+    {
+        get
+        {
+            return Properties.Settings.Default.UnderscoreSpace;
+        }
+        set
+        {
+            Properties.Settings.Default.UnderscoreSpace = value;
+            Properties.Settings.Default.Save();
+        }
+    }
+
     public bool AutoWordCompeltionOn
     {
       get

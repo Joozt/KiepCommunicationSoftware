@@ -18,7 +18,7 @@ namespace SimpleTalk.GUI
   public partial class frmMain : CustomForm, IDisposable
   {
     private CustomKeyboard _Keyboard;
-    private CustomLayout _AbcLayout = new AbcLayout();
+    private CustomLayout _AbcLayout = new AbcLayoutNew();//AbcLayout();
     private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
 
     private CustomKeyboard _AutoKeyboard;

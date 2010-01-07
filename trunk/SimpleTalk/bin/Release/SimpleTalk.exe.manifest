@@ -52,24 +52,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleTalk.exe" size="16641536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SimpleTalk.exe" size="16645632">
       <assemblyIdentity name="SimpleTalk" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wtyYJ/eM1zG52dsFvc9zMhNcpJU=</dsig:DigestValue>
+        <dsig:DigestValue>Xo1x/L9ZgTDp/QEfnwecWFBTWak=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SimpleTalk.exe.config" size="1079">
+  <file name="SimpleTalk.exe.config" size="1336">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>lTSlK4uja6GqNFeLeQXMleDrInY=</dsig:DigestValue>
+      <dsig:DigestValue>TDVnEgf/uAycDnJ3G0txlUYSObc=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

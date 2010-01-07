@@ -130,7 +130,7 @@ namespace SimpleTalk.GUI
         Color.FromKnownColor(KnownColor.ControlText));
 
       OnTimeStarted(this, new EventArgs());
-
+        
       do
       {
         DateTime StartTime = DateTime.Now;

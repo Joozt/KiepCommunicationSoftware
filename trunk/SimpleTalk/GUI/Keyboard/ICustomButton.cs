@@ -26,6 +26,12 @@ namespace SimpleTalk.GUI
             set;
         }
 
+        bool Skip
+        {
+            get;
+            set;
+        }
+
         Font Font
         {
             get;
