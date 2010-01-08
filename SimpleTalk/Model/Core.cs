@@ -34,6 +34,7 @@ namespace SimpleTalk.Model
 
     private frmMain _MainForm;
     private frmSettings _SettingsForm;
+    private frm123 __123Form;
     private Interpreter _Interpreter;
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
@@ -70,13 +71,22 @@ namespace SimpleTalk.Model
         }
     }
 
-    public Form SettingsForm
+    public frmSettings SettingsForm
     {
         get
         {
             return _SettingsForm;
         }
     }
+
+    public frm123 _123Form
+    {
+      get
+        {
+           return __123Form;
+        }
+    }
+
 
     public event EventHandler SpeedChanged;
 
@@ -197,6 +207,7 @@ namespace SimpleTalk.Model
         // Initialize objects that could need the base objects at constructing
         _MainForm = new frmMain();
         _SettingsForm = new frmSettings();
+        __123Form = new frm123();
         
         // Update all keyboards
         OnSpeedChanged(this, new EventArgs());

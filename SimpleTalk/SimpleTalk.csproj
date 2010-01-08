@@ -74,6 +74,12 @@
     <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\SimpleBeheaviour.cs" />
+    <Compile Include="GUI\frm123.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frm123.Designer.cs">
+      <DependentUpon>frm123.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Keyboard\ButtonEventArgs.cs" />
     <Compile Include="GUI\Keyboard\CustomKeyPressedEventArgs.cs" />
     <Compile Include="GUI\Keyboard\UpdateSelectionEventArgs.cs" />
@@ -84,6 +90,7 @@
     <Compile Include="GUI\Layouts\ButtonDefinition.cs" />
     <Compile Include="GUI\Layouts\AbcLayoutNew.cs" />
     <Compile Include="GUI\Layouts\AutoCompleteLayoutNew.cs" />
+    <Compile Include="GUI\Layouts\123Layout.cs" />
     <Compile Include="GUI\Layouts\SettingsLayout.cs" />
     <Compile Include="GUI\CustomButtonEvent.cs" />
     <Compile Include="GUI\CustomForm.cs">
@@ -117,6 +124,9 @@
     <Compile Include="Model\TextToSpeech.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frm123.resx">
+      <DependentUpon>frm123.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>

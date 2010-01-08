@@ -8,8 +8,10 @@ namespace SimpleTalk.Model
 {
   public class Interpreter
   {
-    private string _TextOutput = "";
-    private string _TextOutputUpper = "";
+    private string _TextOutputBegin = "";      //ouput text string before cursor
+    private string _TextOutputEnd = "";        //ouput text string after cursor
+    private string _TextOutput = "";           //total ouput text string
+    private string _TextOutputFormatted = "";
 
     public Interpreter()
     {
@@ -19,25 +21,20 @@ namespace SimpleTalk.Model
     {
       get
       {
-        if (!String.IsNullOrEmpty(_TextOutput))
-        {
-          _TextOutputUpper = _TextOutput.ToUpper() + '|';
-        }
-        else
-        {
-          _TextOutputUpper = "|";
-        }
+        _TextOutputFormatted = _TextOutputBegin + '|' + _TextOutputEnd;
+        _TextOutputFormatted = _TextOutputFormatted.ToUpper();
 
         if (Core.Instance.UnderscoreSpace)
         {
-            _TextOutputUpper = _TextOutputUpper.Replace(" ", "_ ");
+          _TextOutputFormatted = _TextOutputFormatted.Replace(" ", "_ ");  //add underscore (for better visibility) and space (for correct functioning of multiline)
         }
 
-        return _TextOutputUpper;
+        return _TextOutputFormatted;
       }
       set
       {
-        _TextOutput = value;
+        _TextOutputBegin = value;
+        _TextOutputEnd = "";
         OnTextChanged(this, new EventArgs());
       }
     }
@@ -46,6 +43,7 @@ namespace SimpleTalk.Model
     {
       get
       {
+        _TextOutput = _TextOutputBegin + _TextOutputEnd;
         return _TextOutput;
       }
     }
@@ -72,31 +70,32 @@ namespace SimpleTalk.Model
 
     public void ProcessCommand(string command)
     {
-        int _SelLenght = Core.Instance.MainForm.SelectedTxtLenght;
-        int _SelStart = Core.Instance.MainForm.SelectedTxtStart;
+      int _SelLenght = Core.Instance.MainForm.SelectedTxtLenght;
+      int _SelStart = Core.Instance.MainForm.SelectedTxtStart;
 
       if (command.Length == 1 || Char.IsLetter(command[0]))
       {
         //if command is a single char add it to the output text
+        _TextOutputBegin += command;
 
-          if (_TextOutput.Length <= _SelStart)
-              _TextOutput += command;
+  /*    if (_TextOutput.Length <= _SelStart)
+          _TextOutput += command;
+        else
+        {
+          if (_SelLenght == 0)
+          {
+            _TextOutput = _TextOutput.Insert(_SelStart, command);
+          }
           else
           {
-              if (_SelLenght == 0)
-              {
-                  _TextOutput = _TextOutput.Insert(_SelStart, command);
-              }
-              else
-              {
-                  if (_TextOutput.Length >= _SelLenght + _SelStart)
-                      _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght);
-                  else
-                      _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
-                  _TextOutput = _TextOutput.Insert(_SelStart, command);
-              }
-
+            if (_TextOutput.Length >= _SelLenght + _SelStart)
+              _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght);
+            else
+              _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
+              _TextOutput = _TextOutput.Insert(_SelStart, command);
           }
+
+        } */
 
       }
       else
@@ -107,28 +106,28 @@ namespace SimpleTalk.Model
           string word = command.TrimStart('#');
           //Find lastWord
           List<string> wordArray;
-          if(!string.IsNullOrEmpty(_TextOutput))
-            wordArray = new List<string>(_TextOutput.Split(new string[] { " ", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
+          if (!string.IsNullOrEmpty(_TextOutputBegin))
+            wordArray = new List<string>(_TextOutputBegin.Split(new string[] { " ", "\r\n" }, StringSplitOptions.RemoveEmptyEntries));
           else
             wordArray = null;
 
           if (wordArray != null && wordArray.Count > 0)
           {
             string lastWord = wordArray[wordArray.Count() - 1];
-            if (_TextOutput[_TextOutput.Length - 1] != ' ')
+            if (_TextOutputBegin[_TextOutputBegin.Length - 1] != ' ')
             {
               //Relpace partial word with complete word and add space
-              _TextOutput = _TextOutput.Substring(0, _TextOutput.Length - lastWord.Length) + word + " ";
+              _TextOutputBegin = _TextOutputBegin.Substring(0, _TextOutputBegin.Length - lastWord.Length) + word + " ";
             }
             else
             {
               //Or add next word and add space
-              _TextOutput = _TextOutput + word + " ";
+              _TextOutputBegin = _TextOutputBegin + word + " ";
             }
           }
           else
           {
-            _TextOutput = _TextOutput + word + " ";
+            _TextOutputBegin = _TextOutputBegin + word + " ";
           }
         }
         else
@@ -140,30 +139,33 @@ namespace SimpleTalk.Model
 
             case "&back":
               //back space action
-              if (!String.IsNullOrEmpty(_TextOutput))
+              if (!String.IsNullOrEmpty(_TextOutputBegin))
               {
-                _TextOutput = _TextOutput.Remove(_TextOutput.Length - 1);
+                _TextOutputBegin = _TextOutputBegin.Remove(_TextOutputBegin.Length - 1);
               }
               break;
 
             case "&space":
-              _TextOutput += " ";
+              _TextOutputBegin += " ";
               break;
 
             case "&clear":
 
-                  if (_SelLenght == 0)
-                  {
-                      _TextOutput = "";
-                  }
-                  else
-                  {
-                      if (_TextOutput.Length >= _SelLenght + _SelStart)
-                          _TextOutput = _TextOutput.Remove( _SelStart,  _SelLenght);
-                      else
-                          _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
-                  }
-              
+              _TextOutputBegin = "";
+              _TextOutputEnd = "";
+
+              /*if (_SelLenght == 0)
+              {
+                _TextOutput = "";
+              }
+              else
+              {
+                if (_TextOutput.Length >= _SelLenght + _SelStart)
+                  _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght);
+                else
+                  _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
+              } */
+
               break;
 
             #endregion
@@ -177,6 +179,12 @@ namespace SimpleTalk.Model
               Core.Instance.SettingsForm.Focus();
               break;
 
+            case "&123":
+              //Open number and scroll form
+              Core.Instance._123Form.Show();
+              Core.Instance._123Form.Focus();
+              break;
+              
             case "&auto":
               //Call function that jumps to auto completion / next word suggestion list
               OnAutoComplete(this, new EventArgs());
@@ -184,7 +192,7 @@ namespace SimpleTalk.Model
 
             case "&say":
               //TODO: call text to speach engine
-              Core.Instance.TextToSpeech.Say(_TextOutput);
+              Core.Instance.TextToSpeech.Say(_TextOutputBegin+_TextOutputEnd);
               break;
 
             case "&empty":
@@ -236,10 +244,56 @@ namespace SimpleTalk.Model
               (Core.Instance.SettingsForm as frmSettings).UpdateSettingsDisplay();
               break;
 
-
             case "&GoBack":
               //Close settings form
               Core.Instance.SettingsForm.Hide();
+              break;
+
+            #endregion
+
+            #region 123MenuCommands
+
+            case "&wordBack":
+              //Delete last word before cursor
+
+              break;
+
+            case "&charLeft":
+              //Move cursor 1 char to the left
+              if(!string.IsNullOrEmpty(_TextOutputBegin))
+              {
+                
+              }
+              break;
+
+            case "&charRight":
+              //Move cursor 1 char to the right
+
+              break;
+
+            case "&wordLeft":
+              //Move cursor 1 word to the left
+
+              break;
+
+            case "&wordRight":
+              //Move cursor 1 word to the right
+
+              break;
+
+            case "&questionMark":
+              //Add question mark and space
+              _TextOutputBegin += "? ";
+              break;
+
+            case "&exclamation":
+              //Add exclamation and space
+              _TextOutputBegin += "! ";
+              break;
+
+            case "&close123":
+              //Close number form
+              Core.Instance._123Form.Hide();
               break;
 
             #endregion
