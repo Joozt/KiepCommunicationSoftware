@@ -85,8 +85,9 @@ namespace SimpleTalk.GUI
           // splitContainer1.Panel2
           // 
           this.splitContainer1.Panel2.Controls.Add(this.pnlAutoComplete);
+          this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
           this.splitContainer1.Size = new System.Drawing.Size(1252, 579);
-          this.splitContainer1.SplitterDistance = 1223;
+          this.splitContainer1.SplitterDistance = 742;
           this.splitContainer1.TabIndex = 12;
           // 
           // pnlKeyboard
@@ -96,7 +97,7 @@ namespace SimpleTalk.GUI
                       | System.Windows.Forms.AnchorStyles.Right)));
           this.pnlKeyboard.Location = new System.Drawing.Point(12, 3);
           this.pnlKeyboard.Name = "pnlKeyboard";
-          this.pnlKeyboard.Size = new System.Drawing.Size(1326, 573);
+          this.pnlKeyboard.Size = new System.Drawing.Size(1191, 573);
           this.pnlKeyboard.TabIndex = 6;
           // 
           // pnlAutoComplete
@@ -107,7 +108,7 @@ namespace SimpleTalk.GUI
           this.pnlAutoComplete.BackColor = System.Drawing.SystemColors.Window;
           this.pnlAutoComplete.Location = new System.Drawing.Point(-638, 3);
           this.pnlAutoComplete.Name = "pnlAutoComplete";
-          this.pnlAutoComplete.Size = new System.Drawing.Size(579, 573);
+          this.pnlAutoComplete.Size = new System.Drawing.Size(631, 573);
           this.pnlAutoComplete.TabIndex = 11;
           // 
           // frmMain

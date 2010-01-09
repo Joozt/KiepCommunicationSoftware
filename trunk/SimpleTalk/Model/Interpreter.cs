@@ -43,8 +43,8 @@ namespace SimpleTalk.Model
     {
       get
       {
-        _TextOutput = _TextOutputBegin + _TextOutputEnd;
-        return _TextOutput;
+        //Note that the auto completion requires only the first part of the sentence because it should complete the word the is currently begin typed
+        return _TextOutputBegin;
       }
     }
 
@@ -255,31 +255,78 @@ namespace SimpleTalk.Model
 
             case "&wordBack":
               //Delete last word before cursor
+              if (!string.IsNullOrEmpty(_TextOutputBegin))
+              {
+                int _length = _TextOutputBegin.Length;
+                int i = _length - 1;
 
+                //search for first next space to the left
+                while (i > 0 && _TextOutputBegin[i] != ' ') i--;
+
+                _TextOutputBegin = _TextOutputBegin.Remove(i, _length - i);
+              }
               break;
 
             case "&charLeft":
               //Move cursor 1 char to the left
               if(!string.IsNullOrEmpty(_TextOutputBegin))
               {
-                
+                _TextOutputEnd = _TextOutputBegin[_TextOutputBegin.Length-1] + _TextOutputEnd;
+                _TextOutputBegin = _TextOutputBegin.Remove(_TextOutputBegin.Length - 1, 1);
               }
               break;
 
             case "&charRight":
               //Move cursor 1 char to the right
-
+              if (!string.IsNullOrEmpty(_TextOutputEnd))
+              {
+                _TextOutputBegin = _TextOutputBegin + _TextOutputEnd[0];
+                _TextOutputEnd = _TextOutputEnd.Remove(0, 1);
+              }
               break;
 
             case "&wordLeft":
               //Move cursor 1 word to the left
+              if (!string.IsNullOrEmpty(_TextOutputBegin))
+              {
+                int _length = _TextOutputBegin.Length;
+                int i = _length - 1;
 
+                //search for first next space to the left
+                while (i > 0 && _TextOutputBegin[i] != ' ') i--;
+
+                 _TextOutputEnd = _TextOutputBegin.Substring(i, _length - i) + _TextOutputEnd;
+                 _TextOutputBegin = _TextOutputBegin.Remove(i, _length - i);
+              }
               break;
 
             case "&wordRight":
               //Move cursor 1 word to the right
+              if (!string.IsNullOrEmpty(_TextOutputEnd))
+              {
+                int _length = _TextOutputEnd.Length;
+                int i = 0;
 
+                //search for first next space to the right
+                while (i < _length - 1 && _TextOutputEnd[i] != ' ') i++;
+
+                _TextOutputBegin = _TextOutputBegin + _TextOutputEnd.Substring(0, i+1);
+                _TextOutputEnd = _TextOutputEnd.Remove(0, i+1);
+              }
               break;
+
+            case "&home":
+              //Set cursor to begin of the line
+              _TextOutputEnd = _TextOutputBegin + _TextOutputEnd;
+              _TextOutputBegin = "";
+              break;
+
+            case "&end":
+              //Set cursor to end of the line
+              _TextOutputBegin = _TextOutputBegin + _TextOutputEnd;
+              _TextOutputEnd = "";
+              break;
+
 
             case "&questionMark":
               //Add question mark and space
