@@ -46,7 +46,7 @@ namespace SimpleTalk.GUI
 
             NewButtons.Add(new ButtonDefinition("SAY", "&say", new Size(Width, _DefaultHeight)));
             NewButtons.Add(new ButtonDefinition("123", "&123", new Size(Width, _DefaultHeight), false));
-            NewButtons.Add(new ButtonDefinition("MENU", "&menu", new Size(Width + 10, _DefaultHeight), false));
+            NewButtons.Add(new ButtonDefinition("MENU", "&menu", new Size(Width + 20, _DefaultHeight), false));
 
             NewRow(_DefaultWidth, _DefaultHeight, NewButtons);
 

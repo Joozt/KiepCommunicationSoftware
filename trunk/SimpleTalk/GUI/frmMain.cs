@@ -250,7 +250,7 @@ namespace SimpleTalk.GUI
       _AutoComplete.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
       
       //scroll output text box to the bottom (show the last two lines by default)
-      txtOutput.SelectionStart = txtOutput.Text.Length;
+      txtOutput.SelectionStart = Core.Instance.Interpreter.cursorPos;
       txtOutput.ScrollToCaret();
     }
 

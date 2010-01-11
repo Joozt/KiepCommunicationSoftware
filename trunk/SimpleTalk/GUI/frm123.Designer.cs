@@ -49,7 +49,8 @@
       this.ClientSize = new System.Drawing.Size(563, 570);
       this.ControlBox = false;
       this.Controls.Add(this.pnlControls);
-      this.Location = new System.Drawing.Point(20, 200);
+      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+      this.Location = new System.Drawing.Point(20, 170);
       this.MaximizeBox = false;
       this.MinimizeBox = false;
       this.Name = "frm123";
