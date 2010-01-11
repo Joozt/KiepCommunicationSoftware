@@ -48,6 +48,16 @@ namespace SimpleTalk.Model
       }
     }
 
+    public int cursorPos //The text lenght is required for the cursor position
+    {
+      get
+      {
+        //The begin text lenght with underscores added is returned as cursor position
+        return _TextOutputBegin.Replace(" ", "_ ").Length;
+      }
+    }
+
+
     public event EventHandler TextChanged;
 
     private void OnTextChanged(object sender, EventArgs e)
