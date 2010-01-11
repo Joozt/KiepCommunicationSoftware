@@ -42,11 +42,11 @@ namespace SimpleTalk.GUI
                 NewButtons.Add(new ButtonDefinition( c.ToString().ToUpper(), c.ToString()));
             }
 
-            Width = (int)Math.Round((2.0 * _DefaultWidth) + _vSpace);
+            Width = (int)Math.Round((4.0* _DefaultWidth + _vSpace)/3);
 
             NewButtons.Add(new ButtonDefinition("SAY", "&say", new Size(Width, _DefaultHeight)));
-            NewButtons.Add(new ButtonDefinition("MENU", "&menu", new Size(Width, _DefaultHeight), false));
             NewButtons.Add(new ButtonDefinition("123", "&123", new Size(Width, _DefaultHeight), false));
+            NewButtons.Add(new ButtonDefinition("MENU", "&menu", new Size(Width + 10, _DefaultHeight), false));
 
             NewRow(_DefaultWidth, _DefaultHeight, NewButtons);
 
