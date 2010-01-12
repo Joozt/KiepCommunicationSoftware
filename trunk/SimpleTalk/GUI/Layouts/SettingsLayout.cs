@@ -11,7 +11,7 @@ namespace SimpleTalk.GUI
         int _DefaultWidth = 100;
         int _DefaultHeight = 90;
         int _hSpace = 5;
-        int _vSpace = 10;
+        int _vSpace = 0;
 
         override public void ConstructLayout()
         {
