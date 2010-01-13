@@ -53,6 +53,11 @@ namespace SimpleTalk.GUI
       _AutoComplete = new AutoComplete();
       _AutoComplete.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
 
+      if (Core.Instance.UseAbcLayoutWithAutoComplete)
+      {
+          splitContainer1.SplitterDistance = splitContainer1.Width;
+      }
+
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
 
