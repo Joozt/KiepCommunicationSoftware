@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using SimpleTalk.Model;
 
 namespace SimpleTalk.GUI
 {
@@ -16,7 +17,7 @@ namespace SimpleTalk.GUI
 
         public MostButton()
         {
-          Font = new System.Drawing.Font("Consolas", 45.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+          Font = Core.DefaultFont;
           FlatStyle = FlatStyle.Flat;
         }
 
@@ -84,8 +85,13 @@ namespace SimpleTalk.GUI
             // MostButton
             // 
             this.Margin = new System.Windows.Forms.Padding(1);
-            this.ResumeLayout(false);
 
+            this.ResumeLayout(false);
+        }
+
+        protected override void OnPaint(PaintEventArgs pevent)
+        {
+            base.OnPaint(pevent);
         }
 
     }

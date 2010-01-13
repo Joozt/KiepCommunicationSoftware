@@ -6,135 +6,142 @@ using System.Drawing;
 
 namespace SimpleTalk.GUI
 {
-  class SimpleBeheaviour : CustomBeheaviour
-  {
-    private bool _RowSelect;
-    private bool _Selected;
-
-    public override void Attach()
+    class SimpleBeheaviour : CustomBeheaviour
     {
-      TimeStarted += new EventHandler(OnTimeStarted);
-      UpdateSelection += new UpdateSelectionEventHandler(OnUpdateSelection);
-      SelectionChanged += new EventHandler(OnSelectionChanged);
-      TimePassed += new EventHandler(OnTimePassed);
-    }
+        private bool _RowSelect;
+        private bool _Selected;
+        private bool _firstLine;
 
-    public override void Detach()
-    {
-      TimeStarted -= OnTimeStarted;
-      UpdateSelection -= OnUpdateSelection;
-      SelectionChanged -= OnSelectionChanged;
-      TimePassed -= OnTimePassed;
-    }
-
-    public override void OnButtonPressed(CustomButtonEventArgs e)
-    {
-      if (e.Button == ButtonType.ScanButton)
-      {
-        if ((ColumnSelected == -1) && (RowSelected == -1))
+        public override void Attach()
         {
-          StartSelection();
+            TimeStarted += new EventHandler(OnTimeStarted);
+            UpdateSelection += new UpdateSelectionEventHandler(OnUpdateSelection);
+            SelectionChanged += new EventHandler(OnSelectionChanged);
+            TimePassed += new EventHandler(OnTimePassed);
         }
-        else if ((ColumnSelected == -1) && (RowSelected != -1))
+
+        public override void Detach()
         {
-          _Selected = true;
+            TimeStarted -= OnTimeStarted;
+            UpdateSelection -= OnUpdateSelection;
+            SelectionChanged -= OnSelectionChanged;
+            TimePassed -= OnTimePassed;
         }
-        else if ((ColumnSelected >= 0) && (RowSelected >= 0))
+
+        public override void OnButtonPressed(CustomButtonEventArgs e)
         {
-          _Selected = true;
-        }
-      }
-    }
-
-    void OnTimePassed(object sender, EventArgs e)
-    {
-      Console.Write("\nSelection ended\n");
-      Reset();
-    }
-
-    void OnSelectionChanged(object sender, EventArgs e)
-    {
-        if (_Selected)
-            return;
-
-        if (_RowSelect)
-        {
-            if (!NextRow())
+            if (e.Button == ButtonType.ScanButton)
             {
-                StopSelection();
+                if ((ColumnSelected == -1) && (RowSelected == -1))
+                {
+                    _firstLine = true;
+                    StartSelection();
+                }
+                else if ((ColumnSelected == -1) && (RowSelected != -1))
+                {
+                    _Selected = true;
+                }
+                else if ((ColumnSelected >= 0) && (RowSelected >= 0))
+                {
+                    _Selected = true;
+                }
             }
         }
-        else
+
+        void OnTimePassed(object sender, EventArgs e)
         {
-            if (!NextColumn())
+            Console.Write("\nSelection ended\n");
+            Reset();
+        }
+
+        void OnSelectionChanged(object sender, EventArgs e)
+        {
+            if (_Selected)
+                return;
+
+            if (_RowSelect)
             {
-                StopSelection();
+                if (_firstLine)
+                {
+                    _firstLine = false;
+                    return;
+                }
+                if (!NextRow())
+                {
+                    StopSelection();
+                }
+            }
+            else
+            {
+                if (!NextColumn())
+                {
+                    StopSelection();
+                }
             }
         }
-    }
 
-    private void Reset()
-    {
-      _RowSelect = true;
-      _Selected = false;
-    }
-
-    public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
-    {
-        return 1;
-      //if (currentTime.Ticks == 0)
-      //  return 0;
-      //else if (currentTime > duration)
-      //  return 0;
-      //else
-      //  return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
-    }
-
-    public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
-    {
-      /* TODO: Other color function
-      int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
-      int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
-      return Color.FromArgb(ColorValue, ColorValue, ColorValue);
-       */
-      int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
-      return Color.FromArgb(Alpha, Color.Black);
-    }
-
-    void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
-    {
-      e.BgColor = GetSelectColor(e.CurrentTime, e.Duration);
-      e.FgColor = Color.White;
-
-      if (_Selected)
-      {
-        if ((RowSelected > -1) && (Keyboard.GetNumberOfColumns(RowSelected) == 1))
-        {
-          ColumnSelected = 0;
-        }
-
-        if (ColumnSelected >= 0)
+        private void Reset()
         {
             _RowSelect = true;
-            e.Done = true;
-            e.AutoRestart = Keyboard.GetButton(RowSelected, ColumnSelected).AutoRescan;
+            _Selected = false;
         }
-        else
+
+        public double GetSelectValue(TimeSpan currentTime, TimeSpan duration)
         {
-            _RowSelect = false;
+            return 1;
+            //if (currentTime.Ticks == 0)
+            //  return 0;
+            //else if (currentTime > duration)
+            //  return 0;
+            //else
+            //  return Math.Sin(Math.PI / (duration.Ticks / (double)currentTime.Ticks));
         }
 
-        e.Selected = true;
-        _Selected = false;
-      }
-    }
+        public Color GetSelectColor(TimeSpan currentTime, TimeSpan duration)
+        {
+            /* TODO: Other color function
+            int StartValue = Color.FromKnownColor(KnownColor.Control).B - 70;
+            int ColorValue = (int)Math.Round(70 + StartValue * (1-GetSelectValue(currentTime, duration)));
+            return Color.FromArgb(ColorValue, ColorValue, ColorValue);
+             */
+            int Alpha = (int)Math.Round(255 * GetSelectValue(currentTime, duration));
+            return Color.FromArgb(Alpha, Color.Black);
+        }
 
-    void OnTimeStarted(object sender, EventArgs e)
-    {
-      Console.Write("Start selection\n");
+        void OnUpdateSelection(object sender, UpdateSelectionEventArgs e)
+        {
+            e.BgColor = GetSelectColor(e.CurrentTime, e.Duration);
+            e.FgColor = Color.White;
 
-      _RowSelect = true;
-      _Selected = false;
+            if (_Selected)
+            {
+                if ((RowSelected > -1) && (Keyboard.GetNumberOfColumns(RowSelected) == 1))
+                {
+                    ColumnSelected = 0;
+                }
+
+                if (ColumnSelected >= 0)
+                {
+                    _RowSelect = true;
+                    e.Done = true;
+                    e.AutoRestart = Keyboard.GetButton(RowSelected, ColumnSelected).AutoRescan;
+                }
+                else
+                {
+                    _RowSelect = false;
+                }
+
+                e.Selected = true;
+                _Selected = false;
+            }
+        }
+
+        void OnTimeStarted(object sender, EventArgs e)
+        {
+            Console.Write("Start selection\n");
+
+            _RowSelect = true;
+            _Selected = false;
+        }
     }
-  }
 }

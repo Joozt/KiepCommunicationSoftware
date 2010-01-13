@@ -35,7 +35,7 @@ namespace SimpleTalk.GUI
 
             List<ButtonDefinition> NewButtons = new List<ButtonDefinition>();
 
-            NewRow(0, _DefaultHeight, new ButtonDefinition[1]{new ButtonDefinition("", "", new Size(0, _DefaultHeight), false, true)});
+            NewRow(0, _DefaultHeight, new ButtonDefinition[1]{new ButtonDefinition("", "", new Size(0, _DefaultHeight), false)});
 
             for ( char c = 'a'; c <= 'f'; c++)
             {
@@ -88,7 +88,6 @@ namespace SimpleTalk.GUI
                         ButtonDef.Keys,
                         ButtonDef.Size.IsEmpty ? new Size(DefaultWidth, DefaultHeight) : ButtonDef.Size,
                         ButtonDef.AutoRescan,
-                        ButtonDef.Skip,
                         ButtonDef.Font);
                 }
             }
