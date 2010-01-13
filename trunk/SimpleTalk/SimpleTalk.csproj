@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{8D3D7248-4628-4AF1-BD8C-E876D5380936}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -74,6 +74,12 @@
     <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\SimpleBeheaviour.cs" />
+    <Compile Include="GUI\frmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmHistory.Designer.cs">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frm123.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,7 @@
     <Compile Include="GUI\Layouts\AbcLayoutNew.cs" />
     <Compile Include="GUI\Layouts\AutoCompleteLayoutNew.cs" />
     <Compile Include="GUI\Layouts\123Layout.cs" />
+    <Compile Include="GUI\Layouts\HistoryLayout.cs" />
     <Compile Include="GUI\Layouts\SettingsLayout.cs" />
     <Compile Include="GUI\CustomButtonEvent.cs" />
     <Compile Include="GUI\CustomForm.cs">
@@ -124,6 +131,9 @@
     <Compile Include="Model\TextToSpeech.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frmHistory.resx">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frm123.resx">
       <DependentUpon>frm123.cs</DependentUpon>
     </EmbeddedResource>

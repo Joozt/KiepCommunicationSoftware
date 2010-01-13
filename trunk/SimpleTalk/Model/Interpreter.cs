@@ -195,6 +195,12 @@ namespace SimpleTalk.Model
               Core.Instance._123Form.Focus();
               break;
               
+            case "&history":
+              //Open history form
+              Core.Instance.HistoryForm.Show();
+              Core.Instance.HistoryForm.Focus();
+              break;
+
             case "&auto":
               //Call function that jumps to auto completion / next word suggestion list
               OnAutoComplete(this, new EventArgs());
@@ -356,6 +362,16 @@ namespace SimpleTalk.Model
               break;
 
             #endregion
+
+
+            #region historyCommands
+            case "&histClose":
+              //Close history form
+              Core.Instance.HistoryForm.Hide();
+              Core.Instance.MainForm.Focus();
+              break; 
+            #endregion
+
 
             default:
               //Todo: insert nice exception handler.
