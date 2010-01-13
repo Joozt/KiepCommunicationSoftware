@@ -121,7 +121,7 @@
       this.txtUnderscoreSpace.MinimumSize = new System.Drawing.Size(200, 100);
       this.txtUnderscoreSpace.Name = "txtUnderscoreSpace";
       this.txtUnderscoreSpace.ReadOnly = true;
-      this.txtUnderscoreSpace.Size = new System.Drawing.Size(200, 100);
+      this.txtUnderscoreSpace.Size = new System.Drawing.Size(200, 78);
       this.txtUnderscoreSpace.TabIndex = 9;
       this.txtUnderscoreSpace.Text = "AAN";
       this.txtUnderscoreSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

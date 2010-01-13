@@ -22,13 +22,15 @@ namespace SimpleTalk.GUI
           NewRow(
               _DefaultWidth,
               _DefaultHeight,
-              new ButtonDefinition[5]
+              new ButtonDefinition[6]
                 {
                     new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("SAY", "&say", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("123", "&123", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("", "&empty", new Size(WidthEmpty, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
-                    new ButtonDefinition("SAY", "&say", new Size(Width, _DefaultHeight)),
+                    
                 });
 
             List<ButtonDefinition> NewButtons = new List<ButtonDefinition>();

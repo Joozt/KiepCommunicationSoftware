@@ -18,7 +18,7 @@ namespace SimpleTalk.GUI
   public partial class frmMain : CustomForm, IDisposable
   {
     private CustomKeyboard _Keyboard;
-    private CustomLayout _AbcLayout = new AbcLayoutNew(); //AbcLayoutNew();//
+    private CustomLayout _AbcLayout = new AbcLayout(); //AbcLayoutNew();//
     private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
 
     private CustomKeyboard _AutoKeyboard;
@@ -140,7 +140,7 @@ namespace SimpleTalk.GUI
       UpdateButtons(new CustomButtonEventArgs(ButtonType.None)); // Uncheck all buttons
     }
 
-    void OnButtonDown(object sender, CustomButtonEventArgs e)
+    public void OnButtonDown(object sender, CustomButtonEventArgs e)
     {
       if (!_AutoActive)
         _Keyboard.OnButtonPressed(e);

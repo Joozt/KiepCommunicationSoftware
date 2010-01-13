@@ -35,6 +35,11 @@ namespace SimpleTalk.GUI
     void OnButtonDown(object sender, CustomButtonEventArgs e)
     {
       _Keyboard.OnButtonPressed(e);
+
+      if (e.Button == ButtonType.YesButton || e.Button == ButtonType.NoButton)
+      {
+        Core.Instance.MainForm.OnButtonDown(sender, e);
+      }
     }
 
     void OnKeyPressed(object sender, CustomKeyPressedEventArgs e)
