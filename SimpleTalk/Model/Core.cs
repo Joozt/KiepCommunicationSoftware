@@ -36,6 +36,7 @@ namespace SimpleTalk.Model
     private frmMain _MainForm;
     private frmSettings _SettingsForm;
     private frm123 __123Form;
+    private frmHistory _HistoryForm;
     private Interpreter _Interpreter;
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
@@ -94,6 +95,14 @@ namespace SimpleTalk.Model
         {
            return __123Form;
         }
+    }
+
+    public frmHistory HistoryForm
+    {
+      get
+      {
+        return _HistoryForm;
+      }
     }
 
 
@@ -240,6 +249,7 @@ namespace SimpleTalk.Model
         _MainForm = new frmMain();
         _SettingsForm = new frmSettings();
         __123Form = new frm123();
+        _HistoryForm = new frmHistory();
         
         // Update all keyboards
         OnSpeedChanged(this, new EventArgs());
