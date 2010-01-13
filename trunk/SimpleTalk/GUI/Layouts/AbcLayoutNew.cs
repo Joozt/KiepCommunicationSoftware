@@ -123,7 +123,7 @@ namespace SimpleTalk.GUI
                 {
                     uint width = GetButtonWidth(item.ToUpper());
 
-                    if (curPosition + width > maxWidth)
+                    if (curPosition + width < maxWidth)
                     {
                         AddAutoCompleteButton(new ButtonDefinition(item.ToUpper(), "#" + item, new Size((int)width, _DefaultHeight)));
                         curPosition += width;
