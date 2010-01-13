@@ -13,6 +13,8 @@ namespace SimpleTalk.GUI
     {
         private List<ICustomButton> _Buttons = new List<ICustomButton>();
 
+        public bool Skip { get; set; }
+
         public List<ICustomButton> Buttons
         {
             get

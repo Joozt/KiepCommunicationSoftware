@@ -28,6 +28,10 @@ namespace SimpleTalk.GUI
         return false;
       }
 
+      // Skip row if marked
+      if (Keyboard.RowButtons[_CurrentRow].Skip)
+          return NextRow();
+
       return true;
     }
 

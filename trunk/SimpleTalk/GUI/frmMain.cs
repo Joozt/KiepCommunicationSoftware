@@ -18,7 +18,7 @@ namespace SimpleTalk.GUI
   public partial class frmMain : CustomForm, IDisposable
   {
     private CustomKeyboard _Keyboard;
-    private CustomLayout _AbcLayout = new AbcLayout(); //AbcLayoutNew();//
+    private ICustomLayout _AbcLayout = Core.Instance.GetAbcLayout();
     private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
 
     private CustomKeyboard _AutoKeyboard;
@@ -29,7 +29,6 @@ namespace SimpleTalk.GUI
 
     private bool _AutoActive;
     //private bool _keyPressed = false;
-    private Font _defaultFont = new Font("Consolas", 45.00F, FontStyle.Bold);
 
     private System.Timers.Timer _timerBgColor;
 
@@ -57,7 +56,7 @@ namespace SimpleTalk.GUI
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
       CustomButtonUp += new CustomButtonEventHandler(OnButtonUp);
 
-      txtOutput.Font = _defaultFont;
+      txtOutput.Font = Core.DefaultFont;
       OnTextChanged(this, new EventArgs());
 
       _timerBgColor = new System.Timers.Timer();
@@ -110,9 +109,16 @@ namespace SimpleTalk.GUI
 
     void OnSuggestionsChanged(object sender, EventArgs e)
     {
-      _AutoBeheaviour.StopSelection();
-      _AutoLayout.ClearButtons();
-      _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6); //max number of shown suggestion is 6 (this is limited by the form design)
+        if (!Core.Instance.UseAbcLayoutWithAutoComplete)
+        {
+            _AutoBeheaviour.StopSelection();
+            _AutoLayout.ClearButtons();
+            _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6); //max number of shown suggestion is 6 (this is limited by the form design)
+        }
+        else
+        {
+            ((AbcLayoutNew)_AbcLayout).AddAutoCompleteButtons(_AutoComplete.Suggestions);
+        }
     }
 
     void OnAutoComplete(object sender, EventArgs e)

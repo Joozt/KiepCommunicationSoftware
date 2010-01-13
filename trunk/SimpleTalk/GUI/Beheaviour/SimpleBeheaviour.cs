@@ -133,6 +133,7 @@ namespace SimpleTalk.GUI
 
                 e.Selected = true;
                 _Selected = false;
+                _firstLine = true;
             }
         }
 

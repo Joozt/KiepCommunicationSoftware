@@ -106,6 +106,7 @@ namespace SimpleTalk.Model
             SpeedChanged(sender, new EventArgs());
         }
     }
+
     #region settings
 
     //scan speed in 1/10 of seconds
@@ -199,6 +200,28 @@ namespace SimpleTalk.Model
         }
         Properties.Settings.Default.Save();
       }
+    }
+
+
+    public ICustomLayout GetAbcLayout()
+    {
+        if (!UseAbcLayoutWithAutoComplete)
+            return new AbcLayout();
+        else
+            return new AbcLayoutNew();
+    }
+
+    public bool UseAbcLayoutWithAutoComplete
+    {
+        get
+        {
+            return Properties.Settings.Default.UseAbcLayoutWithAutoComplete;
+        }
+        set
+        {
+            Properties.Settings.Default.UseAbcLayoutWithAutoComplete = value;
+            Properties.Settings.Default.Save();
+        }
     }
 
     #endregion 
