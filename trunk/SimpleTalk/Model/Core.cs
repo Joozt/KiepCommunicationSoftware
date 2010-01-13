@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SimpleTalk.GUI;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SimpleTalk.Model
 {
@@ -38,6 +39,14 @@ namespace SimpleTalk.Model
     private Interpreter _Interpreter;
     private Sounds _Sounds;
     private TextToSpeech _TextToSpeech;
+
+    public static Font DefaultFont
+    {
+        get
+        {
+            return new System.Drawing.Font("Consolas", 41.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        }
+    }
 
     public Interpreter Interpreter
     {
