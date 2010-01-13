@@ -18,11 +18,11 @@ namespace SimpleTalk.GUI
   public partial class frmMain : CustomForm, IDisposable
   {
     private CustomKeyboard _Keyboard;
-    private CustomLayout _AbcLayout = new AbcLayout(); //AbcLayoutNew();//
+    private CustomLayout _AbcLayout = new AbcLayoutNew(); //AbcLayoutNew();//
     private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
 
     private CustomKeyboard _AutoKeyboard;
-    private AutoCompleteLayout _AutoLayout = new AutoCompleteLayout();
+    private AutoCompleteLayoutNew _AutoLayout = new AutoCompleteLayoutNew();
     private CustomBeheaviour _AutoBeheaviour = new SimpleBeheaviour();
 
     private AutoComplete _AutoComplete;

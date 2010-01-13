@@ -137,6 +137,17 @@ namespace SimpleTalk.GUI
         private ICustomBeheaviour _KeyboardBeheaviour;
         System.Windows.Forms.Control.ControlCollection _Controls;
 
+        public System.Windows.Forms.Control GetOwnerControl
+        {
+          get
+          {
+            if (_Controls == null)
+              return null;
+
+            return _Controls.Owner;
+          }
+        }
+
         public ICustomLayout KeyboardLayout
         {
           get
@@ -148,6 +159,7 @@ namespace SimpleTalk.GUI
             _KeyboardLayout = value;
           }
         }
+
 
         public ICustomBeheaviour KeyboardBeheaviour
         {
