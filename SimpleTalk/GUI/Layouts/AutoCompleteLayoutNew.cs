@@ -17,7 +17,7 @@ namespace SimpleTalk.GUI
      List<ButtonDefinition> _NewButtons = new List<ButtonDefinition>();
 
   
-
+    //TODO: Remove font definition here.
      private Font _defaultFont = new Font("Consolas", 45.00F, FontStyle.Bold);
 
     public override void ConstructLayout()

@@ -257,6 +257,7 @@ namespace SimpleTalk.Model
             case "&GoBack":
               //Close settings form
               Core.Instance.SettingsForm.Hide();
+              Core.Instance.MainForm.Focus();
               break;
 
             #endregion
@@ -351,6 +352,7 @@ namespace SimpleTalk.Model
             case "&close123":
               //Close number form
               Core.Instance._123Form.Hide();
+              Core.Instance.MainForm.Focus();
               break;
 
             #endregion

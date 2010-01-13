@@ -80,7 +80,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("Spatie karakter", "&UnderscoreSpace", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("SPATIE KARAKTER", "&UnderscoreSpace", new Size(Width, _DefaultHeight)),
                 });
 
 
