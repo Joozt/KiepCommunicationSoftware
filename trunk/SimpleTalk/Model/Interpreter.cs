@@ -186,7 +186,7 @@ namespace SimpleTalk.Model
                 break;
 
               case "&clear":
-
+                
                 _TextOutputBegin = "";
                 _TextOutputEnd = "";
 

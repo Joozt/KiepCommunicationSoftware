@@ -70,7 +70,9 @@
   <ItemGroup>
     <Compile Include="DataAccess\AutoWords.cs" />
     <Compile Include="DataAccess\Database.cs" />
+    <Compile Include="DataAccess\Letters.cs" />
     <Compile Include="DataAccess\NextWords.cs" />
+    <Compile Include="DataAccess\Phrases.cs" />
     <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
     <Compile Include="GUI\Beheaviour\SimpleBeheaviour.cs" />
@@ -126,7 +128,9 @@
     <Compile Include="Model\AutoWords.cs" />
     <Compile Include="Model\Core.cs" />
     <Compile Include="Model\Interpreter.cs" />
+    <Compile Include="Model\Letters.cs" />
     <Compile Include="Model\NextWords.cs" />
+    <Compile Include="Model\Phrases.cs" />
     <Compile Include="Model\Sounds.cs" />
     <Compile Include="Model\TextToSpeech.cs" />
     <Compile Include="Program.cs" />

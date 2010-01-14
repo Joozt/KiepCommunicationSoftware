@@ -24,6 +24,8 @@ namespace SimpleTalk.Model
 
     private DataAccess.AutoWords _autoWords;
     private DataAccess.NextWords _nextWords;
+    private DataAccess.Letters _letters;
+    private DataAccess.Phrases _phrases;
 
     public AutoComplete()
     {
@@ -33,6 +35,8 @@ namespace SimpleTalk.Model
 
         _autoWords = new DataAccess.AutoWords();
         _nextWords = new DataAccess.NextWords();
+        _letters = new DataAccess.Letters();
+        _phrases = new DataAccess.Phrases();
       }
       catch //(Exception ex)
       {
@@ -91,6 +95,18 @@ namespace SimpleTalk.Model
       }
     }
 
+    private void SetLettersCount(string letter)
+    {
+      try
+      {
+        _letters.UpdateLetterCount(letter);
+      }
+      catch //(Exception ex)
+      {
+        //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+      }
+    }
+
     private void SetNextWordsCount(string secondLastWord, string lastWord)
     {
       try
@@ -123,6 +139,19 @@ namespace SimpleTalk.Model
       }
     }
 
+    private List<string> GetPhraseList()
+    {
+      try
+      {
+        return _phrases.GetPhraseList();
+      }
+      catch //(Exception ex)
+      {
+        return null;
+        //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+      }
+    }
+
     private void GetNextWordList(string word)
     {
       try
@@ -139,6 +168,18 @@ namespace SimpleTalk.Model
         }
 
         OnSuggestionsChanged(this, new EventArgs());
+      }
+      catch //(Exception ex)
+      {
+        //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+      }
+    }
+
+    public void AddPhrase(string phrase)
+    {
+      try
+      {
+        _phrases.Add(new Phrase(default(int), DateTime.Now, phrase));
       }
       catch //(Exception ex)
       {
@@ -273,6 +314,8 @@ namespace SimpleTalk.Model
       {
         _nextWords.Dispose();
         _autoWords.Dispose();
+        _letters.Dispose();
+        _phrases.Dispose();
       }
       catch //(Exception ex)
       {
@@ -286,6 +329,8 @@ namespace SimpleTalk.Model
       {
         _nextWords.Reset();
         _autoWords.Reset();
+        _letters.Reset();
+        _phrases.Reset();
       }
       catch //(Exception ex)
       {
@@ -299,6 +344,8 @@ namespace SimpleTalk.Model
       {
         _nextWords.Reset();
         _autoWords.Clear();
+        _letters.Reset();
+        _phrases.Reset();
       }
       catch //(Exception ex)
       {
