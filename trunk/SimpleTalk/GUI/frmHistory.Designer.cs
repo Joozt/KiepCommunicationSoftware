@@ -40,7 +40,7 @@
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.pnlControls.Location = new System.Drawing.Point(10, 10);
       this.pnlControls.Name = "pnlControls";
-      this.pnlControls.Size = new System.Drawing.Size(850, 710);
+      this.pnlControls.Size = new System.Drawing.Size(1336, 710);
       this.pnlControls.TabIndex = 6;
       // 
       // txtNumberOfPages
@@ -49,12 +49,12 @@
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.txtNumberOfPages.BackColor = System.Drawing.SystemColors.Window;
       this.txtNumberOfPages.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNumberOfPages.Location = new System.Drawing.Point(1052, 10);
-      this.txtNumberOfPages.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtNumberOfPages.MinimumSize = new System.Drawing.Size(200, 100);
+      this.txtNumberOfPages.Location = new System.Drawing.Point(1196, 12);
+      this.txtNumberOfPages.MaximumSize = new System.Drawing.Size(150, 80);
+      this.txtNumberOfPages.MinimumSize = new System.Drawing.Size(150, 80);
       this.txtNumberOfPages.Name = "txtNumberOfPages";
       this.txtNumberOfPages.ReadOnly = true;
-      this.txtNumberOfPages.Size = new System.Drawing.Size(200, 100);
+      this.txtNumberOfPages.Size = new System.Drawing.Size(150, 78);
       this.txtNumberOfPages.TabIndex = 8;
       this.txtNumberOfPages.Text = "30";
       this.txtNumberOfPages.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -65,29 +65,29 @@
                   | System.Windows.Forms.AnchorStyles.Right)));
       this.txtPageNumber.BackColor = System.Drawing.SystemColors.Window;
       this.txtPageNumber.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtPageNumber.Location = new System.Drawing.Point(837, 10);
-      this.txtPageNumber.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtPageNumber.MinimumSize = new System.Drawing.Size(200, 100);
+      this.txtPageNumber.Location = new System.Drawing.Point(1040, 12);
+      this.txtPageNumber.MaximumSize = new System.Drawing.Size(150, 80);
+      this.txtPageNumber.MinimumSize = new System.Drawing.Size(150, 80);
       this.txtPageNumber.Name = "txtPageNumber";
       this.txtPageNumber.ReadOnly = true;
-      this.txtPageNumber.Size = new System.Drawing.Size(200, 100);
+      this.txtPageNumber.Size = new System.Drawing.Size(150, 78);
       this.txtPageNumber.TabIndex = 9;
       this.txtPageNumber.Text = "1";
       this.txtPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
       // 
-      // frmSettings
+      // frmHistory
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-      this.ClientSize = new System.Drawing.Size(1264, 732);
+      this.ClientSize = new System.Drawing.Size(1358, 732);
       this.ControlBox = false;
       this.Controls.Add(this.txtPageNumber);
       this.Controls.Add(this.txtNumberOfPages);
       this.Controls.Add(this.pnlControls);
       this.MaximizeBox = false;
       this.MinimizeBox = false;
-      this.Name = "frmSettings";
+      this.Name = "frmHistory";
       this.Text = "History";
       this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
       this.Load += new System.EventHandler(this.frmSettings_Load);
