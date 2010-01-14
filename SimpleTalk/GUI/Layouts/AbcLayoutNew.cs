@@ -25,7 +25,7 @@ namespace SimpleTalk.GUI
           NewRow(
               _DefaultWidth,
               _DefaultHeight,
-              new ButtonDefinition[6]
+              new ButtonDefinition[7]
                 {
                     new ButtonDefinition("SPA", " ", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("<=", "&back", new Size(Width, _DefaultHeight)),
@@ -33,6 +33,7 @@ namespace SimpleTalk.GUI
                     new ButtonDefinition("123", "&123", new Size(Width, _DefaultHeight)),
                     new ButtonDefinition("", "&empty", new Size(WidthEmpty, _DefaultHeight)),
                     new ButtonDefinition("CLR", "&clear", new Size(Width, _DefaultHeight)),
+                    new ButtonDefinition("OUD", "&history", new Size(Width + 20, _DefaultHeight), false)
                     
                 });
 
