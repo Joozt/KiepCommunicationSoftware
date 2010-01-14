@@ -8,7 +8,7 @@ using SimpleTalk.Model;
 
 namespace SimpleTalk.GUI
 {
-    public class MostButton: Button, ICustomButton
+    public class MostButton : Button, ICustomButton
     {
         string _Keys = "";
         bool _AutoSizeFont = true;
@@ -17,11 +17,15 @@ namespace SimpleTalk.GUI
 
         public MostButton()
         {
-          Font = Core.DefaultFont;
-          FlatStyle = FlatStyle.Flat;
+            InitializeComponent();
+
+            Font = Core.DefaultFont;
+
+            //FlatStyle = FlatStyle.Flat;
         }
 
-        public MostButton(string keys) : this()
+        public MostButton(string keys)
+            : this()
         {
             _Keys = keys;
         }
@@ -84,7 +88,8 @@ namespace SimpleTalk.GUI
             // 
             // MostButton
             // 
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Margin = new System.Windows.Forms.Padding(0);
 
             this.ResumeLayout(false);
         }
