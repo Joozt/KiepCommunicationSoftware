@@ -55,6 +55,7 @@
       this.MinimizeBox = false;
       this.Name = "frm123";
       this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+      this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
       this.Text = "Numbers";
       this.VisibleChanged += new System.EventHandler(this.frm123_VisibleChanged);
