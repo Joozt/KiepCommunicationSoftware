@@ -21,6 +21,10 @@ namespace SimpleTalk.GUI
             {
                 return _Buttons;
             }
+          set
+          {
+            _Buttons = value;
+          }
         }
 
         public event ButtonEventHandler NewButton;

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.Media;
+using System.IO;
 
 namespace SimpleTalk.DataAccess
 {
@@ -19,7 +20,7 @@ namespace SimpleTalk.DataAccess
     private static DataSet _dataSet = null;
 
     private static string _serverName = string.Empty;
-    private static string _instanceName = "SQLEXPRESS";
+    private static string _instanceName = string.Empty;//"SQLEXPRESS";
     private static string _databaseName = "AutoComplete";
     private static string _userID = string.Empty;
     private static string _password = string.Empty;
@@ -134,7 +135,7 @@ namespace SimpleTalk.DataAccess
 
         if (string.IsNullOrEmpty(_serverName))
         {
-          _serverName = string.Format(@"{0}\{1}", Environment.MachineName, _instanceName);
+          _serverName = Path.Combine(Environment.MachineName, _instanceName);
         }
 
         return string.Format("Data Source = {0};Initial Catalog = {1}; {2}", _serverName, (string.IsNullOrEmpty(databaseName) ? _databaseName : databaseName), authorisation);

@@ -55,7 +55,7 @@ namespace SimpleTalk.GUI
 
       if (Core.Instance.UseAbcLayoutWithAutoComplete)
       {
-          splitContainer1.SplitterDistance = splitContainer1.Width;
+          splitContainer1.Panel2Collapsed = true;
       }
 
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
