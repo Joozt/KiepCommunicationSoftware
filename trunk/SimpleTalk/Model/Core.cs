@@ -45,7 +45,7 @@ namespace SimpleTalk.Model
     {
         get
         {
-            return new System.Drawing.Font("Consolas", 41.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            return new System.Drawing.Font("Consolas", 58.00F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
     }
 

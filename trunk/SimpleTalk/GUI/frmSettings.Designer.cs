@@ -28,136 +28,140 @@
     /// </summary>
     private void InitializeComponent()
     {
-      this.pnlControls = new System.Windows.Forms.Panel();
-      this.txtScanTime = new System.Windows.Forms.TextBox();
-      this.txtNextWord = new System.Windows.Forms.TextBox();
-      this.txtAutoComplete = new System.Windows.Forms.TextBox();
-      this.textYesNoDisplayTime = new System.Windows.Forms.TextBox();
-      this.txtUnderscoreSpace = new System.Windows.Forms.TextBox();
-      this.SuspendLayout();
-      // 
-      // pnlControls
-      // 
-      this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                  | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.pnlControls.Location = new System.Drawing.Point(10, 10);
-      this.pnlControls.Name = "pnlControls";
-      this.pnlControls.Size = new System.Drawing.Size(850, 710);
-      this.pnlControls.TabIndex = 6;
-      // 
-      // txtScanTime
-      // 
-      this.txtScanTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtScanTime.BackColor = System.Drawing.SystemColors.Window;
-      this.txtScanTime.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtScanTime.Location = new System.Drawing.Point(860, 10);
-      this.txtScanTime.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtScanTime.MinimumSize = new System.Drawing.Size(200, 100);
-      this.txtScanTime.Name = "txtScanTime";
-      this.txtScanTime.ReadOnly = true;
-      this.txtScanTime.Size = new System.Drawing.Size(200, 78);
-      this.txtScanTime.TabIndex = 7;
-      this.txtScanTime.Text = "1,2";
-      this.txtScanTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // txtNextWord
-      // 
-      this.txtNextWord.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtNextWord.BackColor = System.Drawing.SystemColors.Window;
-      this.txtNextWord.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtNextWord.Location = new System.Drawing.Point(860, 185);
-      this.txtNextWord.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtNextWord.MinimumSize = new System.Drawing.Size(200, 100);
-      this.txtNextWord.Name = "txtNextWord";
-      this.txtNextWord.ReadOnly = true;
-      this.txtNextWord.Size = new System.Drawing.Size(200, 78);
-      this.txtNextWord.TabIndex = 8;
-      this.txtNextWord.Text = "UIT";
-      this.txtNextWord.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // txtAutoComplete
-      // 
-      this.txtAutoComplete.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtAutoComplete.BackColor = System.Drawing.SystemColors.Window;
-      this.txtAutoComplete.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtAutoComplete.Location = new System.Drawing.Point(860, 275);
-      this.txtAutoComplete.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtAutoComplete.MinimumSize = new System.Drawing.Size(200, 100);
-      this.txtAutoComplete.Name = "txtAutoComplete";
-      this.txtAutoComplete.ReadOnly = true;
-      this.txtAutoComplete.Size = new System.Drawing.Size(200, 78);
-      this.txtAutoComplete.TabIndex = 9;
-      this.txtAutoComplete.Text = "AAN";
-      this.txtAutoComplete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // textYesNoDisplayTime
-      // 
-      this.textYesNoDisplayTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.textYesNoDisplayTime.BackColor = System.Drawing.SystemColors.Window;
-      this.textYesNoDisplayTime.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.textYesNoDisplayTime.Location = new System.Drawing.Point(860, 365);
-      this.textYesNoDisplayTime.MaximumSize = new System.Drawing.Size(200, 100);
-      this.textYesNoDisplayTime.MinimumSize = new System.Drawing.Size(200, 100);
-      this.textYesNoDisplayTime.Name = "textYesNoDisplayTime";
-      this.textYesNoDisplayTime.ReadOnly = true;
-      this.textYesNoDisplayTime.Size = new System.Drawing.Size(200, 78);
-      this.textYesNoDisplayTime.TabIndex = 7;
-      this.textYesNoDisplayTime.Text = "1,2";
-      this.textYesNoDisplayTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // txtUnderscoreSpace
-      // 
-      this.txtUnderscoreSpace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                  | System.Windows.Forms.AnchorStyles.Right)));
-      this.txtUnderscoreSpace.BackColor = System.Drawing.SystemColors.Window;
-      this.txtUnderscoreSpace.Font = new System.Drawing.Font("Consolas", 45F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.txtUnderscoreSpace.Location = new System.Drawing.Point(860, 545);
-      this.txtUnderscoreSpace.MaximumSize = new System.Drawing.Size(200, 100);
-      this.txtUnderscoreSpace.MinimumSize = new System.Drawing.Size(200, 100);
-      this.txtUnderscoreSpace.Name = "txtUnderscoreSpace";
-      this.txtUnderscoreSpace.ReadOnly = true;
-      this.txtUnderscoreSpace.Size = new System.Drawing.Size(200, 78);
-      this.txtUnderscoreSpace.TabIndex = 9;
-      this.txtUnderscoreSpace.Text = "AAN";
-      this.txtUnderscoreSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-      // 
-      // frmSettings
-      // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-      this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-      this.ClientSize = new System.Drawing.Size(1264, 732);
-      this.ControlBox = false;
-      this.Controls.Add(this.txtUnderscoreSpace);
-      this.Controls.Add(this.txtAutoComplete);
-      this.Controls.Add(this.txtNextWord);
-      this.Controls.Add(this.textYesNoDisplayTime);
-      this.Controls.Add(this.txtScanTime);
-      this.Controls.Add(this.pnlControls);
-      this.MaximizeBox = false;
-      this.MinimizeBox = false;
-      this.Name = "frmSettings";
-      this.Text = "Settings";
-      this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-      this.VisibleChanged += new System.EventHandler(this.frmSettings_VisibleChanged);
-      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
-      this.ResumeLayout(false);
-      this.PerformLayout();
+        this.pnlControls = new System.Windows.Forms.Panel();
+        this.btnNextWord = new SimpleTalk.GUI.MostButton();
+        this.btnAutoComplete = new SimpleTalk.GUI.MostButton();
+        this.btnYesNoDisplayTime = new SimpleTalk.GUI.MostButton();
+        this.btnUnderscoreSpace = new SimpleTalk.GUI.MostButton();
+        this.btnScanTime = new SimpleTalk.GUI.MostButton();
+        this.SuspendLayout();
+        // 
+        // pnlControls
+        // 
+        this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                    | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.pnlControls.Location = new System.Drawing.Point(10, 9);
+        this.pnlControls.Name = "pnlControls";
+        this.pnlControls.Size = new System.Drawing.Size(1104, 711);
+        this.pnlControls.TabIndex = 6;
+        // 
+        // btnNextWord
+        // 
+        this.btnNextWord.AutoFontSize = true;
+        this.btnNextWord.AutoRescan = true;
+        this.btnNextWord.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.btnNextWord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.btnNextWord.Font = new System.Drawing.Font("Consolas", 58F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.btnNextWord.Keys = "";
+        this.btnNextWord.Location = new System.Drawing.Point(1117, 189);
+        this.btnNextWord.Margin = new System.Windows.Forms.Padding(0);
+        this.btnNextWord.Name = "btnNextWord";
+        this.btnNextWord.Size = new System.Drawing.Size(200, 86);
+        this.btnNextWord.Skip = false;
+        this.btnNextWord.TabIndex = 8;
+        this.btnNextWord.Text = "UIT";
+        this.btnNextWord.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        // 
+        // btnAutoComplete
+        // 
+        this.btnAutoComplete.AutoFontSize = true;
+        this.btnAutoComplete.AutoRescan = true;
+        this.btnAutoComplete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.btnAutoComplete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.btnAutoComplete.Font = new System.Drawing.Font("Consolas", 58F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.btnAutoComplete.Keys = "";
+        this.btnAutoComplete.Location = new System.Drawing.Point(1117, 279);
+        this.btnAutoComplete.Margin = new System.Windows.Forms.Padding(0);
+        this.btnAutoComplete.Name = "btnAutoComplete";
+        this.btnAutoComplete.Size = new System.Drawing.Size(200, 86);
+        this.btnAutoComplete.Skip = false;
+        this.btnAutoComplete.TabIndex = 9;
+        this.btnAutoComplete.Text = "AAN";
+        this.btnAutoComplete.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        // 
+        // btnYesNoDisplayTime
+        // 
+        this.btnYesNoDisplayTime.AutoFontSize = true;
+        this.btnYesNoDisplayTime.AutoRescan = true;
+        this.btnYesNoDisplayTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.btnYesNoDisplayTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.btnYesNoDisplayTime.Font = new System.Drawing.Font("Consolas", 58F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.btnYesNoDisplayTime.Keys = "";
+        this.btnYesNoDisplayTime.Location = new System.Drawing.Point(1117, 369);
+        this.btnYesNoDisplayTime.Margin = new System.Windows.Forms.Padding(0);
+        this.btnYesNoDisplayTime.Name = "btnYesNoDisplayTime";
+        this.btnYesNoDisplayTime.Size = new System.Drawing.Size(200, 86);
+        this.btnYesNoDisplayTime.Skip = false;
+        this.btnYesNoDisplayTime.TabIndex = 7;
+        this.btnYesNoDisplayTime.Text = "1,2";
+        this.btnYesNoDisplayTime.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        // 
+        // btnUnderscoreSpace
+        // 
+        this.btnUnderscoreSpace.AutoFontSize = true;
+        this.btnUnderscoreSpace.AutoRescan = true;
+        this.btnUnderscoreSpace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.btnUnderscoreSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.btnUnderscoreSpace.Font = new System.Drawing.Font("Consolas", 58F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.btnUnderscoreSpace.Keys = "";
+        this.btnUnderscoreSpace.Location = new System.Drawing.Point(1117, 549);
+        this.btnUnderscoreSpace.Margin = new System.Windows.Forms.Padding(0);
+        this.btnUnderscoreSpace.Name = "btnUnderscoreSpace";
+        this.btnUnderscoreSpace.Size = new System.Drawing.Size(200, 86);
+        this.btnUnderscoreSpace.Skip = false;
+        this.btnUnderscoreSpace.TabIndex = 9;
+        this.btnUnderscoreSpace.Text = "AAN";
+        this.btnUnderscoreSpace.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        // 
+        // btnScanTime
+        // 
+        this.btnScanTime.AutoFontSize = true;
+        this.btnScanTime.AutoRescan = true;
+        this.btnScanTime.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+        this.btnScanTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+        this.btnScanTime.Font = new System.Drawing.Font("Consolas", 58F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.btnScanTime.Keys = "";
+        this.btnScanTime.Location = new System.Drawing.Point(1117, 9);
+        this.btnScanTime.Margin = new System.Windows.Forms.Padding(0);
+        this.btnScanTime.Name = "btnScanTime";
+        this.btnScanTime.Size = new System.Drawing.Size(200, 86);
+        this.btnScanTime.Skip = false;
+        this.btnScanTime.TabIndex = 10;
+        this.btnScanTime.Text = "1,2";
+        this.btnScanTime.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+        // 
+        // frmSettings
+        // 
+        this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+        this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+        this.BackColor = System.Drawing.SystemColors.ControlLightLight;
+        this.ClientSize = new System.Drawing.Size(1284, 732);
+        this.ControlBox = false;
+        this.Controls.Add(this.btnScanTime);
+        this.Controls.Add(this.btnUnderscoreSpace);
+        this.Controls.Add(this.btnAutoComplete);
+        this.Controls.Add(this.btnNextWord);
+        this.Controls.Add(this.btnYesNoDisplayTime);
+        this.Controls.Add(this.pnlControls);
+        this.MaximizeBox = false;
+        this.MinimizeBox = false;
+        this.Name = "frmSettings";
+        this.Text = "Settings";
+        this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        this.VisibleChanged += new System.EventHandler(this.frmSettings_VisibleChanged);
+        this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSettings_FormClosing);
+        this.ResumeLayout(false);
 
     }
 
     #endregion
 
     private System.Windows.Forms.Panel pnlControls;
-    private System.Windows.Forms.TextBox txtScanTime;
-    private System.Windows.Forms.TextBox txtNextWord;
-    private System.Windows.Forms.TextBox txtAutoComplete;
-    private System.Windows.Forms.TextBox textYesNoDisplayTime;
-    private System.Windows.Forms.TextBox txtUnderscoreSpace;
+    private SimpleTalk.GUI.MostButton btnNextWord;
+    private SimpleTalk.GUI.MostButton btnAutoComplete;
+    private SimpleTalk.GUI.MostButton btnYesNoDisplayTime;
+    private SimpleTalk.GUI.MostButton btnUnderscoreSpace;
+    private SimpleTalk.GUI.MostButton btnScanTime;
   }
 }

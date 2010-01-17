@@ -64,24 +64,24 @@ namespace SimpleTalk.GUI
 
     public void UpdateSettingsDisplay()
     {
-      txtScanTime.Text = String.Format("{0:0.0}", (float)Core.Instance.ScanSpeed * 0.1);
+      btnScanTime.Text = String.Format("{0:0.0}", (float)Core.Instance.ScanSpeed * 0.1);
 
       if (Core.Instance.AutoWordCompeltionOn)
-        txtAutoComplete.Text = "AAN";
+        btnAutoComplete.Text = "AAN";
       else
-        txtAutoComplete.Text = "UIT";
+        btnAutoComplete.Text = "UIT";
 
       if (Core.Instance.NextWordSuggestionOn)
-        txtNextWord.Text = "AAN";
+        btnNextWord.Text = "AAN";
       else
-        txtNextWord.Text = "UIT";
+        btnNextWord.Text = "UIT";
 
       if (Core.Instance.UnderscoreSpace)
-          txtUnderscoreSpace.Text = "AAN";
+          btnUnderscoreSpace.Text = "AAN";
       else
-          txtUnderscoreSpace.Text = "UIT";
+          btnUnderscoreSpace.Text = "UIT";
 
-      textYesNoDisplayTime.Text = String.Format("{0:0.0}", (float)Core.Instance.YesNoDisplayTime * 0.001);
+      btnYesNoDisplayTime.Text = String.Format("{0:0.0}", (float)Core.Instance.YesNoDisplayTime * 0.001);
     }
 
     private void frmSettings_VisibleChanged(object sender, EventArgs e)
