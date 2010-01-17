@@ -105,6 +105,7 @@ namespace SimpleTalk.GUI
             if (strings.Count == 0)
             {
                 _autoComplete.Skip = true;
+                ClearAutoCompleteButtons();
                 AddAutoCompleteButton(new ButtonDefinition("", "", new Size(0, _DefaultHeight), false));
                 return;
             }
@@ -112,7 +113,7 @@ namespace SimpleTalk.GUI
             uint maxWidth = (uint)System.Windows.Forms.Screen.FromControl(Keyboard.GetOwnerControl).WorkingArea.Width;
             uint curPosition = 0;
 
-            _autoComplete.Buttons.Clear();
+            ClearAutoCompleteButtons();
 
             _autoComplete.Skip = false;
 
@@ -137,6 +138,16 @@ namespace SimpleTalk.GUI
             }
 
             AutoFormat();
+        }
+
+        private void ClearAutoCompleteButtons()
+        {
+            foreach (MostButton button in _autoComplete.Buttons)
+            {
+                _Keyboard.GetOwnerControl.Controls.Remove(button);
+            }
+
+            _autoComplete.Buttons.Clear();
         }
 
         private void NewRow(int DefaultWidth, int DefaultHeight, IEnumerable<ButtonDefinition> NewButtons)

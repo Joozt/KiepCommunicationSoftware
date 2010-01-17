@@ -8,31 +8,29 @@ namespace SimpleTalk.GUI
 {
     class SettingsLayout : CustomLayout
     {
-        int _DefaultWidth = 100;
-        int _DefaultHeight = 90;
-        int _hSpace = 5;
-        int _vSpace = 0;
+        int _DefaultWidth = 1100;
+        int _DefaultHeight = 86;
+        int _hSpace = 4;
+        int _vSpace = 4;
 
         override public void ConstructLayout()
         {
             //Scan speed settting (-)
-            int Width = (int)Math.Round(8.0* _DefaultWidth + 1.0*_hSpace);
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("KNOP OPLICHT TIJD -", "&ScanSpeedDown", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("KNOP OPLICHT TIJD -", "&ScanSpeedDown"),
                 });
 
             //Scan speed settting (+)
-            
             NewRow(
                 _DefaultWidth,
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("KNOP OPLICHT TIJD +", "&ScanSpeedUp", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("KNOP OPLICHT TIJD +", "&ScanSpeedUp"),
                 });
 
             //Next word proposed by auto complete on/off
@@ -42,7 +40,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("VOLGEND WOORD", "&SecondWordSuggestion", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("VOLGEND WOORD", "&SecondWordSuggestion"),
                 });
 
              //Auto complete suggestion on/off
@@ -52,7 +50,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("WOORD VOLTOOIEN", "&AutoWordComplete", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("WOORD VOLTOOIEN", "&AutoWordComplete"),
                 });
 
                  //Yes No back ground color time (-)
@@ -61,7 +59,7 @@ namespace SimpleTalk.GUI
                      _DefaultHeight,
                      new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("JA/NEE KLEUR TIJD -", "&YesNoColorTimeDown", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("JA/NEE KLEUR TIJD -", "&YesNoColorTimeDown"),
                 });
 
                  //Yes No back ground color time (+)
@@ -70,7 +68,7 @@ namespace SimpleTalk.GUI
                      _DefaultHeight,
                      new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("JA/NEE KLEUR TIJD +", "&YesNoColorTimeUp", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("JA/NEE KLEUR TIJD +", "&YesNoColorTimeUp"),
                 });
 
               //Underscore space adding on/off
@@ -80,7 +78,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("SPATIE KARAKTER", "&UnderscoreSpace", new Size(Width, _DefaultHeight)),
+                   new ButtonDefinition("SPATIE KARAKTER", "&UnderscoreSpace"),
                 });
 
 
@@ -91,7 +89,7 @@ namespace SimpleTalk.GUI
                 _DefaultHeight,
                 new ButtonDefinition[1]
                 {  
-                   new ButtonDefinition("MENU TERUG", "&GoBack", new Size(Width, _DefaultHeight), false),
+                   new ButtonDefinition("MENU TERUG", "&GoBack"),
                 });
 
                  AutoFormat();
