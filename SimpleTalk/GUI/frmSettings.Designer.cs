@@ -147,6 +147,7 @@
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Name = "frmSettings";
+        this.ShowInTaskbar = false;
         this.Text = "Settings";
         this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         this.VisibleChanged += new System.EventHandler(this.frmSettings_VisibleChanged);

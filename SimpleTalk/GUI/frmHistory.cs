@@ -13,8 +13,10 @@ namespace SimpleTalk.GUI
   public partial class frmHistory : CustomForm
   {
     private CustomKeyboard _Keyboard;
-    private CustomLayout _HistoryLayout = new HistoryLayout();
+    private HistoryLayout _HistoryLayout = new HistoryLayout();
     private CustomBeheaviour _SimpleBeheaviour = new SimpleBeheaviour();
+
+      private int _PageNumber = 0;
 
     public frmHistory()
     {
@@ -25,6 +27,29 @@ namespace SimpleTalk.GUI
       CustomButtonDown += new CustomButtonEventHandler(OnButtonDown);
 
       Core.Instance.SpeedChanged += new EventHandler(OnSpeedChanged);
+    }
+
+    public void UpdatePageNumber()
+    {
+        int numberOfPages = (int)Math.Ceiling(Model.DatabaseFunctions.PhrasesCount() / 6.0);
+
+        if (_PageNumber < 1)
+        {
+            _PageNumber = 1;
+        }
+
+        if (_PageNumber > numberOfPages)
+        {
+            _PageNumber = numberOfPages;
+        }
+
+        txtNumberOfPages.Text = numberOfPages.ToString();
+        txtPageNumber.Text = _PageNumber.ToString();
+    }
+
+    public void AddButtons(DateTime dateTime)
+    {
+        _HistoryLayout.AddButtons(dateTime);
     }
 
     void OnSpeedChanged(object sender, EventArgs e)
@@ -73,6 +98,46 @@ namespace SimpleTalk.GUI
     private void frmSettings_Load(object sender, EventArgs e)
     {
 
-    }  
+    }
+
+    public DateTime? UpDateTime
+    {
+        get
+        {
+            return _HistoryLayout.UpDateTime;
+        }
+        set
+        {
+            _HistoryLayout.UpDateTime = value;
+        }
+    }
+
+    public DateTime? DownDateTime
+    {
+        get
+        {
+            return _HistoryLayout.DownDateTime;
+        }
+    }
+
+    public DateTime CurrentDateTime
+    {
+        get
+        {
+            return _HistoryLayout.CurrentDateTime;
+        }
+    }
+
+    public int PageNumber
+    {
+        get
+        {
+            return _PageNumber;
+        }
+        set
+        {
+            _PageNumber = value;
+        }
+    }
   }
 }

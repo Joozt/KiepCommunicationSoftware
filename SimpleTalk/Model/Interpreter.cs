@@ -48,6 +48,15 @@ namespace SimpleTalk.Model
       }
     }
 
+    public string Text
+    {
+        get
+        {
+            //Note that the auto completion requires only the first part of the sentence because it should complete the word the is currently begin typed
+            return _TextOutputBegin + _TextOutputEnd;
+        }
+    }
+
     public int cursorPos //The text lenght is required for the cursor position
     {
       get
@@ -160,10 +169,11 @@ namespace SimpleTalk.Model
             }
             else
             {
-              //command is a database id of the line that should be removed from the database
+                DatabaseFunctions.DeletePhrase(Convert.ToDateTime(command.Trim('%')));
 
-              //TODO: remove line with ID///
+                Core.Instance.HistoryForm.AddButtons(Core.Instance.HistoryForm.CurrentDateTime);
 
+                Core.Instance.HistoryForm.UpdatePageNumber();
             }
           }
           else
@@ -186,21 +196,11 @@ namespace SimpleTalk.Model
                 break;
 
               case "&clear":
-                
+
+                DatabaseFunctions.AddPhrase(_TextOutputBegin + _TextOutputEnd);
+
                 _TextOutputBegin = "";
                 _TextOutputEnd = "";
-
-                /*if (_SelLenght == 0)
-                {
-                  _TextOutput = "";
-                }
-                else
-                {
-                  if (_TextOutput.Length >= _SelLenght + _SelStart)
-                    _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght);
-                  else
-                    _TextOutput = _TextOutput.Remove(_SelStart, _SelLenght - 1);
-                } */
 
                 break;
 
@@ -224,6 +224,10 @@ namespace SimpleTalk.Model
               case "&history":
                 //Open history form
                 Core.Instance.HistoryForm.Show();
+                Core.Instance.HistoryForm.PageNumber = 1;
+                Core.Instance.HistoryForm.AddButtons(DateTime.Now);
+
+                Core.Instance.HistoryForm.UpdatePageNumber();
                 Core.Instance.HistoryForm.Focus();
                 break;
 
@@ -392,12 +396,25 @@ namespace SimpleTalk.Model
 
               #region historyMenuCommands
               case "&histDown":
-                //Show next lines
+                
+
+                if (Core.Instance.HistoryForm.DownDateTime.HasValue)
+                {
+                    Core.Instance.HistoryForm.UpDateTime = Core.Instance.HistoryForm.CurrentDateTime;
+                    Core.Instance.HistoryForm.AddButtons(Core.Instance.HistoryForm.DownDateTime.Value);
+                    Core.Instance.HistoryForm.PageNumber++;
+                    Core.Instance.HistoryForm.UpdatePageNumber();
+                }
 
                 break;
 
               case "&histUp":
-                //Show previous lines
+                if (Core.Instance.HistoryForm.UpDateTime.HasValue)
+                {
+                    Core.Instance.HistoryForm.AddButtons(Core.Instance.HistoryForm.UpDateTime.Value);
+                    Core.Instance.HistoryForm.PageNumber--;
+                    Core.Instance.HistoryForm.UpdatePageNumber();
+                }
 
                 break;
 

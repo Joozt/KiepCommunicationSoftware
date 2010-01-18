@@ -6,15 +6,15 @@ using System.IO;
 
 namespace SimpleTalk.Model
 {
-  class AutoComplete
+  public static class DatabaseFunctions
   {
-    private List<string> _Suggestions = new List<string>();
+      private static List<string> _Suggestions = new List<string>();
     //remember length of word list, because items are only stored with increasing amount of text. 
-    private int textLength = 0;
-    private int previousTextLength = 0;
+      private static int textLength = 0;
+      private static int previousTextLength = 0;
 
-    public event EventHandler SuggestionsChanged;
-    private void OnSuggestionsChanged(object sender, EventArgs e)
+      public static event EventHandler SuggestionsChanged;
+      private static void OnSuggestionsChanged(object sender, EventArgs e)
     {
       if (SuggestionsChanged != null)
       {
@@ -22,29 +22,12 @@ namespace SimpleTalk.Model
       }
     }
 
-    private DataAccess.AutoWords _autoWords;
-    private DataAccess.NextWords _nextWords;
-    private DataAccess.Letters _letters;
-    private DataAccess.Phrases _phrases;
+    private static DataAccess.AutoWords _autoWords;
+    private static DataAccess.NextWords _nextWords;
+    private static DataAccess.Letters _letters;
+    private static DataAccess.Phrases _phrases;
 
-    public AutoComplete()
-    {
-      try
-      {
-        DataAccess.Database.Connect(string.Empty);
-
-        _autoWords = new DataAccess.AutoWords();
-        _nextWords = new DataAccess.NextWords();
-        _letters = new DataAccess.Letters();
-        _phrases = new DataAccess.Phrases();
-      }
-      catch //(Exception ex)
-      {
-        //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
-      }
-    }
-
-    public List<string> Suggestions
+    public static List<string> Suggestions
     {
       get
       {
@@ -52,7 +35,24 @@ namespace SimpleTalk.Model
       }
     }
 
-    public void ImportWords(string fileNamePath, int countOffset, int countOffsetWhenDouble)
+    public static void Initialize()
+    {
+        try
+        {
+            DataAccess.Database.Connect(string.Empty);
+
+            _autoWords = new DataAccess.AutoWords();
+            _nextWords = new DataAccess.NextWords();
+            _letters = new DataAccess.Letters();
+            _phrases = new DataAccess.Phrases();
+        }
+        catch //(Exception ex)
+        {
+            //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        }
+    }
+
+    public static void ImportWords(string fileNamePath, int countOffset, int countOffsetWhenDouble)
     {
       try
       {
@@ -83,7 +83,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    private void SetWordsCount(string word)
+    private static void SetWordsCount(string word)
     {
       try
       {
@@ -95,7 +95,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    private void SetLettersCount(string letter)
+    private static void SetLettersCount(string letter)
     {
       try
       {
@@ -107,7 +107,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    private void SetNextWordsCount(string secondLastWord, string lastWord)
+    private static void SetNextWordsCount(string secondLastWord, string lastWord)
     {
       try
       {
@@ -119,7 +119,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    private void GetWordList(string word)
+    private static void GetWordList(string word)
     {
       try
       {
@@ -130,7 +130,7 @@ namespace SimpleTalk.Model
         else
           _Suggestions.Clear();
 
-          OnSuggestionsChanged(this, new EventArgs());
+          OnSuggestionsChanged(null, EventArgs.Empty);
         
       }
       catch //(Exception ex)
@@ -139,11 +139,11 @@ namespace SimpleTalk.Model
       }
     }
 
-    private List<string> GetPhraseList()
+    public static List<KeyValuePair<DateTime, string>> GetPhraseList(DateTime dateTime)
     {
       try
       {
-        return _phrases.GetPhraseList();
+          return _phrases.GetPhraseList(dateTime);
       }
       catch //(Exception ex)
       {
@@ -152,7 +152,20 @@ namespace SimpleTalk.Model
       }
     }
 
-    private void GetNextWordList(string word)
+    public static int PhrasesCount()
+    {
+        try
+        {
+            return _phrases.Count();
+        }
+        catch //(Exception ex)
+        {
+            return 0;
+            //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        }
+    }
+
+    private static void GetNextWordList(string word)
     {
       try
       {
@@ -167,7 +180,7 @@ namespace SimpleTalk.Model
           _Suggestions.Clear();
         }
 
-        OnSuggestionsChanged(this, new EventArgs());
+        OnSuggestionsChanged(null, EventArgs.Empty);
       }
       catch //(Exception ex)
       {
@@ -175,11 +188,11 @@ namespace SimpleTalk.Model
       }
     }
 
-    public void AddPhrase(string phrase)
+    public static void AddPhrase(string phrase)
     {
       try
       {
-        _phrases.Add(new Phrase(default(int), DateTime.Now, phrase));
+        _phrases.Add(new Phrase(default(int), Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")), phrase));
       }
       catch //(Exception ex)
       {
@@ -187,7 +200,19 @@ namespace SimpleTalk.Model
       }
     }
 
-    public void OnTextChanged(string text)
+    public static void DeletePhrase(DateTime dateTime)
+    {
+        try
+        {
+            _phrases.DeleteByDateTime(dateTime);
+        }
+        catch //(Exception ex)
+        {
+            //System.Windows.Forms.MessageBox.Show(ex.Message, "Error", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+        }
+    }
+
+    public static void OnTextChanged(string text)
     {
       try
       {
@@ -207,7 +232,7 @@ namespace SimpleTalk.Model
         {
           //return empty list in case of empty string
           Suggestions.Clear();  //This line should be uncommented in the final code 
-          OnSuggestionsChanged(this, new EventArgs());
+          OnSuggestionsChanged(null, EventArgs.Empty);
         }
         else
         {
@@ -303,12 +328,12 @@ namespace SimpleTalk.Model
       }
     }
 
-    public List<string> GetAutoCompleteList()
+    public static List<string> GetAutoCompleteList()
     {
       return Suggestions;
     }
 
-    public void Dispose()
+    public static void Dispose()
     {
       try
       {
@@ -316,6 +341,8 @@ namespace SimpleTalk.Model
         _autoWords.Dispose();
         _letters.Dispose();
         _phrases.Dispose();
+
+        DataAccess.Database.Disconnect();
       }
       catch //(Exception ex)
       {
@@ -323,7 +350,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    public void ResetDatabase()
+    public static void ResetDatabase()
     {
       try
       {
@@ -338,7 +365,7 @@ namespace SimpleTalk.Model
       }
     }
 
-    public void ClearDatabase()
+    public static void ClearDatabase()
     {
       try
       {

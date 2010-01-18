@@ -124,7 +124,7 @@
     <Compile Include="GUI\Keyboard\MostButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Model\AutoComplete.cs" />
+    <Compile Include="Model\DatabaseFunctions.cs" />
     <Compile Include="Model\AutoWords.cs" />
     <Compile Include="Model\Core.cs" />
     <Compile Include="Model\Interpreter.cs" />

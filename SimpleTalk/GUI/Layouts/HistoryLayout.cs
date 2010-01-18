@@ -15,79 +15,69 @@ namespace SimpleTalk.GUI
     int _hSpace = 5;
     int _vSpace = 0;
 
+    private DateTime _CurrentDateTime = DateTime.Now;
+    private DateTime? _DownDateTime = null;
+    private DateTime? _UpDateTime = null;
+
     override public void ConstructLayout()
     {
-      //AddButtons(new Dictionary< int, string>(), 0, 1);
-      Dictionary<int, string> bla = new Dictionary<int, string>();
-      bla.Add(2, "zeg maar iets");
-      bla.Add(7, "zeg maar iets ook als steld het niet veel voor ");
-      bla.Add(3, "dit is eigenlijk maar een zure functie");
-      bla.Add(232, "Zucht");
-      bla.Add(4, "zeg maar iets ook als steld het niet veel voor ");
-      bla.Add(10, "dit is eigenlijk maar een zure functie");
-      bla.Add(70, "Zucht");
-      AddButtons(bla, 3, 6); //6 is the default max number (max lines that fit on the screen)
     }
 
-    public void AddButtons(Dictionary<int, string> linesList, int start, int max)
+    public void AddButtons(DateTime dateTime)
     {
+        _Keyboard.ClearButtons();
 
-      NewRow(
-        _DefaultWidth,
-        _DefaultHeight,
-        new ButtonDefinition[2]
-                {
-                    new ButtonDefinition("OMHOOG", "&histUp", new Size(_TextWidth/2-2, _DefaultHeight)),
-                    new ButtonDefinition("OMLAAG", "&histDown", new Size(_TextWidth/2-3, _DefaultHeight)),
-                    });
+        List<KeyValuePair<DateTime, string>> lines = Model.DatabaseFunctions.GetPhraseList(dateTime);
 
+        _DownDateTime = null;
 
-      int Number = 0;
-
-      foreach (KeyValuePair<int, string> line in linesList)
-      {
-        if (Number >= start + max)
-          break;
-        else
+        if (lines.Count >= 7)
         {
-          if (Number >= start)
-          {
-            int maxLineLength = 20;
-            if (line.Value.Length > maxLineLength)
-            {
-              //Strip end and add dots (...) 
-              string shortLine = "";
-              shortLine = line.Value.Substring(0, maxLineLength) + "...";
+            _DownDateTime = lines[6].Key;
+        }
 
-              NewRow(
+                NewRow(
                   _DefaultWidth,
                   _DefaultHeight,
-                  new ButtonDefinition[3]
+                  new ButtonDefinition[2] 
+                { new ButtonDefinition("OMHOOG", "&histUp", new Size(_TextWidth / 3 , _DefaultHeight)), 
+                  new ButtonDefinition("OMLAAG", "&histDown", new Size(_TextWidth / 3, _DefaultHeight)) });
+
+                if (lines.Count > 0)
                 {
-                    new ButtonDefinition(shortLine.ToUpper(), "%" + line.Value.ToString(), new Size(_TextWidth, _DefaultHeight),false),
-                    new ButtonDefinition("", "&empty", new Size(_BlankWidth, _DefaultHeight)),
-                    new ButtonDefinition("WIS", "%%" + line.Key.ToString(), new Size(_DefaultWidth, _DefaultHeight))
-                });
-            }
-            else
-            {
-              NewRow(
-                      _DefaultWidth,
-                       _DefaultHeight,
-                      new ButtonDefinition[3]
+                    for (int index = 0; index <= (lines.Count >= 6 ? 5 : lines.Count - 1); index++)
+                    {
+                        int maxLineLength = 20;
+                        if (lines[index].Value.Length > maxLineLength)
+                        {
+                            //Strip end and add dots (...) 
+                            string shortLine = "";
+                            shortLine = lines[index].Value.Substring(0, maxLineLength) + "...";
+
+                            NewRow(
+                                _DefaultWidth,
+                                _DefaultHeight,
+                                new ButtonDefinition[3]
                 {
-                    new ButtonDefinition(line.Value.ToUpper(), "%" + line.Value.ToString(), new Size(_TextWidth, _DefaultHeight),false),
+                    new ButtonDefinition(shortLine.ToUpper(), "%" + lines[index].Value.ToString(), new Size(_TextWidth, _DefaultHeight),false),
                     new ButtonDefinition("", "&empty", new Size(_BlankWidth, _DefaultHeight)),
-                    new ButtonDefinition("WIS", "%%" + line.Key.ToString(), new Size(_DefaultWidth, _DefaultHeight))
+                    new ButtonDefinition("WIS", "%%" + lines[index].Key.ToString(), new Size(_DefaultWidth, _DefaultHeight))
                 });
-            }
-
-          }
-
-          Number++;
-        }
-      }
-
+                        }
+                        else
+                        {
+                            NewRow(
+                                    _DefaultWidth,
+                                     _DefaultHeight,
+                                    new ButtonDefinition[3]
+                {
+                    new ButtonDefinition(lines[index].Value.ToUpper(), "%" + lines[index].Value.ToString(), new Size(_TextWidth, _DefaultHeight),false),
+                    new ButtonDefinition("", "&empty", new Size(_BlankWidth, _DefaultHeight)),
+                    new ButtonDefinition("WIS", "%%" + lines[index].Key.ToString(), new Size(_DefaultWidth, _DefaultHeight))
+                });
+                        }
+                    }
+                }
       NewRow(
           _DefaultWidth,
           _DefaultHeight,
@@ -127,6 +117,34 @@ namespace SimpleTalk.GUI
     public override void AutoFormat()
     {
       Keyboard.AutoFormat(0, 0, _vSpace, _hSpace);
+    }
+
+    public DateTime? UpDateTime
+    {
+        get
+        {
+            return _UpDateTime;
+        }
+        set
+        {
+            _UpDateTime = value;
+        }
+    }
+
+    public DateTime? DownDateTime
+    {
+        get
+        {
+            return _DownDateTime;
+        }
+    }
+
+    public DateTime CurrentDateTime
+    {
+        get
+        {
+            return _CurrentDateTime;
+        }
     }
   }
 }
