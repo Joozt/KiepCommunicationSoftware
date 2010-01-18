@@ -9,8 +9,8 @@ namespace SimpleTalk.GUI
   class HistoryLayout : CustomLayout
   {
     int _DefaultWidth = 200;
-    int _BlankWidth = 50;
-    int _TextWidth = 1100;
+    int _BlankWidth = 30;
+    int _TextWidth = 1015;
     int _DefaultHeight = 90;
     int _hSpace = 5;
     int _vSpace = 0;
