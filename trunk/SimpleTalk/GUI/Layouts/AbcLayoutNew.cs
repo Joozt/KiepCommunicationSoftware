@@ -9,10 +9,10 @@ namespace SimpleTalk.GUI
 {
     class AbcLayoutNew : CustomLayout
     {
-        int _DefaultWidth = 105;
+        int _DefaultWidth = 90;
         int _DefaultHeight = 90;
-        int _hSpace = 4;
-        int _vSpace = 4;
+        int _hSpace = 0;
+        int _vSpace = 0;
 
         RowButtons _autoComplete = null;
 

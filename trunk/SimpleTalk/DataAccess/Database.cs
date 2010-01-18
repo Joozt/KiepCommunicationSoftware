@@ -20,7 +20,7 @@ namespace SimpleTalk.DataAccess
     private static DataSet _dataSet = null;
 
     private static string _serverName = string.Empty;
-    private static string _instanceName = string.Empty;//"SQLEXPRESS";
+    private static string _instanceName = "SQL2008";//"SQLEXPRESS";
     private static string _databaseName = "AutoComplete";
     private static string _userID = string.Empty;
     private static string _password = string.Empty;

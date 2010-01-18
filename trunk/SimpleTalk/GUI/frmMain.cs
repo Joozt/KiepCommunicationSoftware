@@ -25,8 +25,6 @@ namespace SimpleTalk.GUI
     private AutoCompleteLayoutNew _AutoLayout = new AutoCompleteLayoutNew();
     private CustomBeheaviour _AutoBeheaviour = new SimpleBeheaviour();
 
-    private AutoComplete _AutoComplete;
-
     private bool _AutoActive;
     //private bool _keyPressed = false;
 
@@ -50,8 +48,8 @@ namespace SimpleTalk.GUI
       Core.Instance.Interpreter.AutoComplete += new EventHandler(OnAutoComplete);
       Core.Instance.Interpreter.TextChanged += new EventHandler(OnTextChanged);
 
-      _AutoComplete = new AutoComplete();
-      _AutoComplete.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
+      DatabaseFunctions.Initialize();
+      DatabaseFunctions.SuggestionsChanged += new EventHandler(OnSuggestionsChanged);
 
       if (Core.Instance.UseAbcLayoutWithAutoComplete)
       {
@@ -98,6 +96,11 @@ namespace SimpleTalk.GUI
 
     private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
     {
+        if (!string.IsNullOrEmpty(Core.Instance.Interpreter.Text))
+        {
+            DatabaseFunctions.AddPhrase(Core.Instance.Interpreter.Text);
+        }
+
       Core.Instance.SpeedChanged -= OnSpeedChanged;
 
       // Automatically stop selection when stopping the application
@@ -105,8 +108,7 @@ namespace SimpleTalk.GUI
       _AutoBeheaviour.StopSelection();
 
       //Disconnect database
-      _AutoComplete.Dispose();
-      DataAccess.Database.Disconnect();
+      DatabaseFunctions.Dispose();
 
       //Save settings
       Properties.Settings.Default.Save();
@@ -118,17 +120,17 @@ namespace SimpleTalk.GUI
         {
             _AutoBeheaviour.StopSelection();
             _AutoLayout.ClearButtons();
-            _AutoLayout.AddButtons(_AutoComplete.Suggestions, 6); //max number of shown suggestion is 6 (this is limited by the form design)
+            _AutoLayout.AddButtons(DatabaseFunctions.Suggestions, 6); //max number of shown suggestion is 6 (this is limited by the form design)
         }
         else
         {
-            ((AbcLayoutNew)_AbcLayout).AddAutoCompleteButtons(_AutoComplete.Suggestions);
+            ((AbcLayoutNew)_AbcLayout).AddAutoCompleteButtons(DatabaseFunctions.Suggestions);
         }
     }
 
     void OnAutoComplete(object sender, EventArgs e)
     {
-      if (_AutoComplete.Suggestions.Count > 0)
+      if (DatabaseFunctions.Suggestions.Count > 0)
       {
         _AutoActive = true;
         _AutoKeyboard.OnButtonPressed(new CustomButtonEventArgs(ButtonType.ScanButton)); // TODO: Hack to start autocomplete automatically
@@ -215,7 +217,7 @@ namespace SimpleTalk.GUI
 
     private void button1_Click(object sender, EventArgs e)
     {
-      _AutoComplete.ResetDatabase();
+      DatabaseFunctions.ResetDatabase();
     }
 
     private void button2_Click(object sender, EventArgs e)
@@ -258,7 +260,7 @@ namespace SimpleTalk.GUI
     private void txtOutput_TextChanged(object sender, EventArgs e)
     {
       //TODO: set autocompelete on dedicated event (from
-      _AutoComplete.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
+      DatabaseFunctions.OnTextChanged(Core.Instance.Interpreter.TextAutoComplete);
       
       //scroll output text box to the bottom (show the last two lines by default)
       txtOutput.SelectionStart = Core.Instance.Interpreter.cursorPos;
@@ -297,7 +299,7 @@ namespace SimpleTalk.GUI
 
     private void buttonClearDatabase_Click(object sender, EventArgs e)
     {
-      _AutoComplete.ClearDatabase();
+      DatabaseFunctions.ClearDatabase();
     }
 
     private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
