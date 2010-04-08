@@ -1,1 +1,0 @@
-(SayText "hallo ik ben een heaum");
