@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8D3D7248-4628-4AF1-BD8C-E876D5380936}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SimpleTalk</RootNamespace>
+    <AssemblyName>SimpleTalk</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ManifestCertificateThumbprint>78A5336425AB032B21FBDF2B6E05589D71C1F013</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SimpleTalk_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <SignManifests>true</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\AutoWords.cs" />
+    <Compile Include="DataAccess\Database.cs" />
+    <Compile Include="DataAccess\Letters.cs" />
+    <Compile Include="DataAccess\NextWords.cs" />
+    <Compile Include="DataAccess\Phrases.cs" />
+    <Compile Include="GUI\Beheaviour\CustomBeheaviour.cs" />
+    <Compile Include="GUI\Beheaviour\ICustomBeheaviour.cs" />
+    <Compile Include="GUI\Beheaviour\SimpleBeheaviour.cs" />
+    <Compile Include="GUI\frmHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmHistory.Designer.cs">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frm123.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frm123.Designer.cs">
+      <DependentUpon>frm123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Keyboard\ButtonEventArgs.cs" />
+    <Compile Include="GUI\Keyboard\CustomKeyPressedEventArgs.cs" />
+    <Compile Include="GUI\Keyboard\UpdateSelectionEventArgs.cs" />
+    <Compile Include="GUI\Layouts\AbcLayout.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GUI\Layouts\AutoCompleteLayout.cs" />
+    <Compile Include="GUI\Layouts\ButtonDefinition.cs" />
+    <Compile Include="GUI\Layouts\AbcLayoutNew.cs" />
+    <Compile Include="GUI\Layouts\AutoCompleteLayoutNew.cs" />
+    <Compile Include="GUI\Layouts\123Layout.cs" />
+    <Compile Include="GUI\Layouts\HistoryLayout.cs" />
+    <Compile Include="GUI\Layouts\SettingsLayout.cs" />
+    <Compile Include="GUI\CustomButtonEvent.cs" />
+    <Compile Include="GUI\CustomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Keyboard\CustomKeyboard.cs" />
+    <Compile Include="GUI\Layouts\CustomLayout.cs" />
+    <Compile Include="GUI\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Keyboard\ICustomButton.cs" />
+    <Compile Include="GUI\Layouts\ICustomLayout.cs" />
+    <Compile Include="GUI\Keyboard\MostButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Model\DatabaseFunctions.cs" />
+    <Compile Include="Model\AutoWords.cs" />
+    <Compile Include="Model\Core.cs" />
+    <Compile Include="Model\Interpreter.cs" />
+    <Compile Include="Model\Letters.cs" />
+    <Compile Include="Model\NextWords.cs" />
+    <Compile Include="Model\Phrases.cs" />
+    <Compile Include="Model\Sounds.cs" />
+    <Compile Include="Model\TextToSpeech.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\frmHistory.resx">
+      <DependentUpon>frmHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frm123.resx">
+      <DependentUpon>frm123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Keyboard\MostButton.resx">
+      <DependentUpon>MostButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="AudioFiles\Ja.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="AudioFiles\Nee.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Database\GenerateAutoCompleteDatabase.sql" />
+    <None Include="Diagrams\Forms.cd" />
+    <None Include="Diagrams\Keyboard.cd" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
