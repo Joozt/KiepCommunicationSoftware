@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimpleTalk.GUI.CustomForm">
+    <Position X="4.75" Y="2" Width="1.75" />
+    <Members>
+      <Field Name="_KeyPressed" Hidden="true" />
+      <Method Name="CheckButton" Hidden="true" />
+      <Method Name="CustomForm" Hidden="true" />
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="OnCustomButtonDown" Hidden="true" />
+      <Method Name="OnCustomButtonUp" Hidden="true" />
+      <Method Name="PreFilterMessage" Hidden="true" />
+      <Field Name="WM_KEYDOWN" Hidden="true" />
+      <Field Name="WM_KEYUP" Hidden="true" />
+      <Field Name="WM_SYSKEYDOWN" Hidden="true" />
+      <Field Name="WM_SYSKEYUP" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAACBAAIAoAAABAAAAAAAAAAAACCAAAgAAICA=</HashCode>
+      <FileName>GUI\CustomForm.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SimpleTalk.GUI.frmMain" Collapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAASAACsAABABCICpAAACEMw7AAAg4HCfggEgZAQ=</HashCode>
+      <FileName>GUI\frmMain.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_Keyboard" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimpleTalk.GUI.frmSettings" Collapsed="true">
+    <Position X="7" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACEAAAAAAACAAAACAACAAAAAIAAAAAAAAAE=</HashCode>
+      <FileName>GUI\frmSettings.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_Keyboard" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimpleTalk.GUI.CustomKeyboard" Collapsed="true">
+    <Position X="5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAEAAAAIAAAgAADEAIAADAAgAAAAAEAAAAAAIQEI=</HashCode>
+      <FileName>GUI\Keyboard\CustomKeyboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>
