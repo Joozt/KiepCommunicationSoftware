@@ -9,8 +9,12 @@ Features of KiepCommunication:
  - Autocompletion
  - Speak "yes" and "no" .WAV files via numpad
  
-![Tobii Screenshot](TobiiScreenshot.png)
-
 ![KiepCommunication Screenshot](KiepCommunicationScreenshot.png)
+
+---
+
+The Tobii page set is derived from a standard Tobii Communicator page set and optimized.
+
+![Tobii Screenshot](TobiiScreenshot.png)
 
 See [KiepProjects](https://github.com/Joozt/KiepProjects) for an overview of all Kiep projects.
